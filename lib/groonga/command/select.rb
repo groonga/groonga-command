@@ -1,0 +1,63 @@
+# -*- coding: utf-8 -*-
+#
+# Copyright (C) 2012  Kouhei Sutou <kou@clear-code.com>
+#
+# This library is free software; you can redistribute it and/or
+# modify it under the terms of the GNU Lesser General Public
+# License as published by the Free Software Foundation; either
+# version 2.1 of the License, or (at your option) any later version.
+#
+# This library is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# Lesser General Public License for more details.
+#
+# You should have received a copy of the GNU Lesser General Public
+# License along with this library; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+
+require "groonga/command/base"
+require "English"
+require "shellwords"
+require "cgi"
+
+module Groonga
+  module Command
+    class Select < Base
+      Command.register("select", self)
+
+      def sortby
+        @parameters["sortby"]
+      end
+
+      def scorer
+        @parameters["scorer"]
+      end
+
+      def query
+        @parameters["query"]
+      end
+
+      def filter
+        @parameters["filter"]
+      end
+
+      def conditions
+        @conditions ||= filter.split(/(?:&&|&!|\|\|)/).collect do |condition|
+          condition = condition.strip
+          condition = condition.gsub(/\A[\s\(]*/, '')
+          condition = condition.gsub(/[\s\)]*\z/, '') unless /\(/ =~ condition
+          condition
+        end
+      end
+
+      def drilldowns
+        @drilldowns ||= (@parameters["drilldown"] || "").split(/\s*,\s*/)
+      end
+
+      def output_columns
+        @parameters["output_columns"]
+      end
+    end
+  end
+end
