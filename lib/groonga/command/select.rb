@@ -30,19 +30,19 @@ module Groonga
       end
 
       def sortby
-        @arguments["sortby"]
+        @arguments[:sortby]
       end
 
       def scorer
-        @arguments["scorer"]
+        @arguments[:scorer]
       end
 
       def query
-        @arguments["query"]
+        @arguments[:query]
       end
 
       def filter
-        @arguments["filter"]
+        @arguments[:filter]
       end
 
       def conditions
@@ -55,11 +55,11 @@ module Groonga
       end
 
       def drilldowns
-        @drilldowns ||= (@arguments["drilldown"] || "").split(/\s*,\s*/)
+        @drilldowns ||= (@arguments[:drilldown] || "").split(/\s*,\s*/)
       end
 
       def output_columns
-        @arguments["output_columns"]
+        @arguments[:output_columns]
       end
     end
   end

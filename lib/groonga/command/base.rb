@@ -64,14 +64,14 @@ module Groonga
       def to_uri_format
         path = "/d/#{@name}"
         arguments = @arguments.dup
-        output_type = arguments.delete("output_type")
+        output_type = arguments.delete(:output_type)
         path << ".#{output_type}" if output_type
         unless arguments.empty?
           sorted_arguments = arguments.sort_by do |name, _|
             name.to_s
           end
           uri_arguments = sorted_arguments.collect do |name, value|
-            "#{CGI.escape(name)}=#{CGI.escape(value)}"
+            "#{CGI.escape(name.to_s)}=#{CGI.escape(value)}"
           end
           path << "?"
           path << uri_arguments.join("&")
@@ -102,13 +102,21 @@ module Groonga
 
       private
       def construct_arguments(pair_arguments, ordered_arguments)
-        arguments = pair_arguments.dup
+        arguments = {}
+
+        pair_arguments.each do |key, value|
+          key = key.to_sym if key.is_a?(String)
+          arguments[key] = value
+        end
+
         names = self.class.parameter_names
         ordered_arguments.each_with_index do |argument, i|
           name = names[i]
           break if name.nil?
+          name = name.to_sym if name.is_a?(String)
           arguments[name] = argument
         end
+
         arguments
       end
     end

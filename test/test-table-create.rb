@@ -30,11 +30,11 @@ class TableCreateTest < Test::Unit::TestCase
                       default_tokenizer)
       assert_instance_of(Groonga::Command::TableCreate, command)
       assert_equal({
-                     "name"              => name,
-                     "flags"             => flags,
-                     "key_type"          => key_type,
-                     "value_type"        => value_type,
-                     "default_tokenizer" => default_tokenizer,
+                     :name              => name,
+                     :flags             => flags,
+                     :key_type          => key_type,
+                     :value_type        => value_type,
+                     :default_tokenizer => default_tokenizer,
                    },
                    command.arguments)
     end
