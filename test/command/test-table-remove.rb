@@ -18,10 +18,12 @@
 
 class TableRemoveCommandTest < Test::Unit::TestCase
   class CommandLineTest < self
+    include GroongaCommandTestUtils::CommandLineCommandParser
+
     def test_ordered_arguments
       name = "Users"
 
-      command = parse("table_remove", name)
+      command = parse(name)
       assert_instance_of(Groonga::Command::TableRemove, command)
       assert_equal({
                      :name => name,
@@ -30,9 +32,8 @@ class TableRemoveCommandTest < Test::Unit::TestCase
     end
 
     private
-    def parse(command, *parameters)
-      command_line = "#{command} " + parameters.join(" ")
-      Groonga::Command::Parser.parse(command_line)
+    def parse(*arguments)
+      super("table_remove", *arguments, :output_type => false)
     end
   end
 end

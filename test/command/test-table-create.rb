@@ -18,6 +18,8 @@
 
 class TableCreateCommandTest < Test::Unit::TestCase
   class CommandLineTest < self
+    include GroongaCommandTestUtils::CommandLineCommandParser
+
     def test_ordered_arguments
       name              = "Users"
       flags             = "TABLE_PAT_KEY"
@@ -25,8 +27,7 @@ class TableCreateCommandTest < Test::Unit::TestCase
       value_type        = "UInt32"
       default_tokenizer = "TokenBigram"
 
-      command = parse("table_create",
-                      name, flags, key_type, value_type,
+      command = parse(name, flags, key_type, value_type,
                       default_tokenizer)
       assert_instance_of(Groonga::Command::TableCreate, command)
       assert_equal({
@@ -40,9 +41,8 @@ class TableCreateCommandTest < Test::Unit::TestCase
     end
 
     private
-    def parse(command, *parameters)
-      command_line = "#{command} " + parameters.join(" ")
-      Groonga::Command::Parser.parse(command_line)
+    def parse(*arguments)
+      super("table_create", *arguments, :output_type => false)
     end
   end
 end

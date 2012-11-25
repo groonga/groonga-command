@@ -28,8 +28,16 @@ module GroongaCommandTestUtils
       Groonga::Command.find(name).new(name, arguments)
     end
 
-    def parse_http_path(command, arguments)
-      path = "/d/#{command}.json"
+    def parse_http_path(command, arguments, options={})
+      path = "/d/#{command}"
+      case options[:output_type]
+      when false
+      when nil
+        path << ".json"
+      else
+        path << ".#{options[:output_type]}"
+      end
+
       unless arguments.empty?
         uri_arguments = arguments.collect do |key, value|
           [CGI.escape(key.to_s), CGI.escape(value.to_s)].join("=")
@@ -37,20 +45,40 @@ module GroongaCommandTestUtils
         path << "?"
         path << uri_arguments.join("&")
       end
+
       Groonga::Command::Parser.parse(path)
     end
 
-    def parse_command_line(command, arguments)
-      command_line = "#{command} --output_type json"
-      arguments.each do |key, value|
-        if /"| / =~ value
-          escaped_value = '"' + value.gsub(/"/, '\"') + '"'
-        else
-          escaped_value = value
-        end
-        command_line << " --#{key} #{escaped_value}"
+    def parse_command_line(command, arguments, options={})
+      command_line = "#{command}"
+      case options[:output_type]
+      when false
+      when nil
+        command_line << " --output_type json"
+      else
+        command_line << " --output_type #{options[:output_type]}"
       end
+
+      if arguments.is_a?(Hash)
+        arguments.each do |key, value|
+          escaped_value = escape_command_line_value(value)
+          command_line << " --#{key} #{escaped_value}"
+        end
+      else
+        arguments.each do |argument|
+          command_line << " #{escape_command_line_value(argument)}"
+        end
+      end
+
       Groonga::Command::Parser.parse(command_line)
+    end
+
+    def escape_command_line_value(value)
+      if /"| / =~ value
+        '"' + value.gsub(/"/, '\"') + '"'
+      else
+        value
+      end
     end
   end
 
@@ -58,8 +86,8 @@ module GroongaCommandTestUtils
     include CommandParser
 
     private
-    def parse(command, arguments={})
-      parse_http_path(command, arguments)
+    def parse(command, arguments={}, options={})
+      parse_http_path(command, arguments, options)
     end
   end
 
@@ -67,8 +95,8 @@ module GroongaCommandTestUtils
     include CommandParser
 
     private
-    def parse(command, arguments={})
-      parse_command_line(command, arguments)
+    def parse(command, arguments={}, options={})
+      parse_command_line(command, arguments, options)
     end
   end
 end

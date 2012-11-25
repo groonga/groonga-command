@@ -18,11 +18,13 @@
 
 class TableRenameCommandTest < Test::Unit::TestCase
   class CommandLineTest < self
+    include GroongaCommandTestUtils::CommandLineCommandParser
+
     def test_ordered_arguments
       name     = "Users"
       new_name = "People"
 
-      command = parse("table_rename", name, new_name)
+      command = parse(name, new_name)
       assert_instance_of(Groonga::Command::TableRename, command)
       assert_equal({
                      :name     => name,
@@ -32,9 +34,8 @@ class TableRenameCommandTest < Test::Unit::TestCase
     end
 
     private
-    def parse(command, *arguments)
-      command_line = "#{command} " + arguments.join(" ")
-      Groonga::Command::Parser.parse(command_line)
+    def parse(*arguments)
+      super("table_rename", arguments, :output_type => false)
     end
   end
 end
