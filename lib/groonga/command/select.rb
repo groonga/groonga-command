@@ -24,19 +24,19 @@ module Groonga
       Command.register("select", self)
 
       def sortby
-        @parameters["sortby"]
+        @arguments["sortby"]
       end
 
       def scorer
-        @parameters["scorer"]
+        @arguments["scorer"]
       end
 
       def query
-        @parameters["query"]
+        @arguments["query"]
       end
 
       def filter
-        @parameters["filter"]
+        @arguments["filter"]
       end
 
       def conditions
@@ -49,11 +49,11 @@ module Groonga
       end
 
       def drilldowns
-        @drilldowns ||= (@parameters["drilldown"] || "").split(/\s*,\s*/)
+        @drilldowns ||= (@arguments["drilldown"] || "").split(/\s*,\s*/)
       end
 
       def output_columns
-        @parameters["output_columns"]
+        @arguments["output_columns"]
       end
     end
   end

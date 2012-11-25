@@ -44,31 +44,31 @@ module Groonga
 
       private
       def parse_uri_path(path)
-        name, parameters_string = path.split(/\?/, 2)
-        parameters = {}
-        if parameters_string
-          parameters_string.split(/&/).each do |parameter_string|
-            key, value = parameter_string.split(/\=/, 2)
-            parameters[key] = CGI.unescape(value)
+        name, arguments_string = path.split(/\?/, 2)
+        arguments = {}
+        if arguments_string
+          arguments_string.split(/&/).each do |argument_string|
+            key, value = argument_string.split(/\=/, 2)
+            arguments[key] = CGI.unescape(value)
           end
         end
         name = name.gsub(/\A\/d\//, '')
         name, output_type = name.split(/\./, 2)
-        parameters["output_type"] = output_type if output_type
+        arguments["output_type"] = output_type if output_type
         command_class = Command.find(name)
-        command = command_class.new(name, parameters)
+        command = command_class.new(name, arguments)
         command.original_format = :uri
         command
       end
 
       def parse_command_line(command_line)
         name, *options = Shellwords.shellwords(command_line)
-        parameters = {}
+        arguments = {}
         options.each_slice(2) do |key, value|
-          parameters[key.gsub(/\A--/, '')] = value
+          arguments[key.gsub(/\A--/, '')] = value
         end
         command_class = Command.find(name)
-        command = command_class.new(name, parameters)
+        command = command_class.new(name, arguments)
         command.original_format = :command
         command
       end

@@ -33,18 +33,18 @@ module Groonga
     end
 
     class Base
-      attr_reader :name, :parameters
+      attr_reader :name, :arguments
       attr_accessor :original_format
-      def initialize(name, parameters)
+      def initialize(name, arguments)
         @name = name
-        @parameters = parameters
+        @arguments = arguments
         @original_format = nil
       end
 
       def ==(other)
         other.is_a?(self.class) and
           @name == other.name and
-          @parameters == other.parameters
+          @arguments == other.arguments
       end
 
       def uri_format?
@@ -57,28 +57,28 @@ module Groonga
 
       def to_uri_format
         path = "/d/#{@name}"
-        parameters = @parameters.dup
-        output_type = parameters.delete("output_type")
+        arguments = @arguments.dup
+        output_type = arguments.delete("output_type")
         path << ".#{output_type}" if output_type
-        unless parameters.empty?
-          sorted_parameters = parameters.sort_by do |name, _|
+        unless arguments.empty?
+          sorted_arguments = arguments.sort_by do |name, _|
             name.to_s
           end
-          uri_parameters = sorted_parameters.collect do |name, value|
+          uri_arguments = sorted_arguments.collect do |name, value|
             "#{CGI.escape(name)}=#{CGI.escape(value)}"
           end
           path << "?"
-          path << uri_parameters.join("&")
+          path << uri_arguments.join("&")
         end
         path
       end
 
       def to_command_format
         command_line = [@name]
-        sorted_parameters = @parameters.sort_by do |name, _|
+        sorted_arguments = @arguments.sort_by do |name, _|
           name.to_s
         end
-        sorted_parameters.each do |name, value|
+        sorted_arguments.each do |name, value|
           escaped_value = value.gsub(/[\n"\\]/) do
             special_character = $MATCH
             case special_character
