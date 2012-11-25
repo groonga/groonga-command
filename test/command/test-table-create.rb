@@ -42,7 +42,7 @@ class TableCreateCommandTest < Test::Unit::TestCase
 
     private
     def parse(*arguments)
-      super("table_create", *arguments, :output_type => false)
+      super("table_create", arguments, :output_type => false)
     end
   end
 end

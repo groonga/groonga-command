@@ -33,7 +33,7 @@ class TableRemoveCommandTest < Test::Unit::TestCase
 
     private
     def parse(*arguments)
-      super("table_remove", *arguments, :output_type => false)
+      super("table_remove", arguments, :output_type => false)
     end
   end
 end
