@@ -21,6 +21,7 @@ require "cgi"
 
 require "groonga/command/base"
 require "groonga/command/select"
+require "groonga/command/table-create"
 
 module Groonga
   module Command
@@ -62,13 +63,19 @@ module Groonga
       end
 
       def parse_command_line(command_line)
-        name, *options = Shellwords.shellwords(command_line)
-        arguments = {}
-        options.each_slice(2) do |key, value|
-          arguments[key.gsub(/\A--/, '')] = value
+        name, *arguments = Shellwords.shellwords(command_line)
+        pair_arguments = {}
+        ordered_arguments = []
+        until arguments.empty?
+          argument = arguments.shift
+          if argument.start_with?("--")
+            pair_arguments[argument.sub(/\A--/, "")] = arguments.shift
+          else
+            ordered_arguments << argument
+          end
         end
         command_class = Command.find(name)
-        command = command_class.new(name, arguments)
+        command = command_class.new(name, pair_arguments, ordered_arguments)
         command.original_format = :command
         command
       end

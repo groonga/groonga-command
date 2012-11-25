@@ -20,46 +20,19 @@ require "groonga/command/base"
 
 module Groonga
   module Command
-    class Select < Base
-      Command.register("select", self)
+    class TableCreate < Base
+      Command.register("table_create", self)
 
       class << self
         def parameter_names
-          [] # TODO
+          [
+            "name",
+            "flags",
+            "key_type",
+            "value_type",
+            "default_tokenizer",
+          ]
         end
-      end
-
-      def sortby
-        @arguments["sortby"]
-      end
-
-      def scorer
-        @arguments["scorer"]
-      end
-
-      def query
-        @arguments["query"]
-      end
-
-      def filter
-        @arguments["filter"]
-      end
-
-      def conditions
-        @conditions ||= filter.split(/(?:&&|&!|\|\|)/).collect do |condition|
-          condition = condition.strip
-          condition = condition.gsub(/\A[\s\(]*/, '')
-          condition = condition.gsub(/[\s\)]*\z/, '') unless /\(/ =~ condition
-          condition
-        end
-      end
-
-      def drilldowns
-        @drilldowns ||= (@arguments["drilldown"] || "").split(/\s*,\s*/)
-      end
-
-      def output_columns
-        @arguments["output_columns"]
       end
     end
   end

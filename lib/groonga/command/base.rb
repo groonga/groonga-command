@@ -33,11 +33,17 @@ module Groonga
     end
 
     class Base
+      class << self
+        def parameter_names
+          []
+        end
+      end
+
       attr_reader :name, :arguments
       attr_accessor :original_format
-      def initialize(name, arguments)
+      def initialize(name, pair_arguments, ordered_arguments=[])
         @name = name
-        @arguments = arguments
+        @arguments = construct_arguments(pair_arguments, ordered_arguments)
         @original_format = nil
       end
 
@@ -92,6 +98,18 @@ module Groonga
           command_line << "\"#{escaped_value}\""
         end
         command_line.join(" ")
+      end
+
+      private
+      def construct_arguments(pair_arguments, ordered_arguments)
+        arguments = pair_arguments.dup
+        names = self.class.parameter_names
+        ordered_arguments.each_with_index do |argument, i|
+          name = names[i]
+          break if name.nil?
+          arguments[name] = argument
+        end
+        arguments
       end
     end
   end
