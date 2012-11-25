@@ -28,35 +28,9 @@ class ParserTest < Test::Unit::TestCase
                            "output_type" => "json"),
                    select)
     end
-
-    def test_scorer
-      select = parse("select",
-                     :table => "Users",
-                     :filter => "age<=30",
-                     :scorer => "_score = random()")
-      assert_equal("_score = random()", select.scorer)
-    end
   end
 
   module ParseFilterTests
-    def test_parenthesis
-      filter = 'geo_in_rectangle(location,' +
-                                '"35.73360x139.7394","62614x139.7714") && ' +
-               '((type == "たいやき" || type == "和菓子")) && ' +
-               'keyword @ "たいやき" &! keyword @ "白" &! keyword @ "養殖"'
-      select = parse("select",
-                     :table => "Users",
-                     :filter => filter)
-      assert_equal(['geo_in_rectangle(location,' +
-                                     '"35.73360x139.7394","62614x139.7714")',
-                     'type == "たいやき"',
-                     'type == "和菓子"',
-                     'keyword @ "たいやき"',
-                     'keyword @ "白"',
-                     'keyword @ "養殖"'],
-                   select.conditions)
-    end
-
     def test_to_uri_format
       filter = 'geo_in_rectangle(location,' +
                                 '"35.73360x139.7394","62614x139.7714") && ' +
