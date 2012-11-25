@@ -22,6 +22,7 @@ require "cgi"
 require "groonga/command/base"
 require "groonga/command/select"
 require "groonga/command/table-create"
+require "groonga/command/table-remove"
 
 module Groonga
   module Command
