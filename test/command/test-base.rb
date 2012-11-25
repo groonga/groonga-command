@@ -21,7 +21,8 @@ class BaseCommandTest < Test::Unit::TestCase
     def test_to_uri_format
       select = Groonga::Command::Base.new("select",
                                           :table => "Users",
-                                          :filter => "age<=30")
+                                          :filter => "age<=30",
+                                          :output_type => "json")
       assert_equal("/d/select.json?filter=age%3C%3D30&table=Users",
                    select.to_uri_format)
     end
@@ -29,7 +30,8 @@ class BaseCommandTest < Test::Unit::TestCase
     def test_to_command_format
       select = Groonga::Command::Base.new("select",
                                           :table => "Users",
-                                          :filter => "age<=30")
+                                          :filter => "age<=30",
+                                          :output_type => "json")
       assert_equal("select --filter \"age<=30\" " +
                      "--output_type \"json\" --table \"Users\"",
                    select.to_command_format)
