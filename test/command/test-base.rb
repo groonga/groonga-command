@@ -16,7 +16,7 @@
 # License along with this library; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
-class CommandTest < Test::Unit::TestCase
+class BaseCommandTest < Test::Unit::TestCase
   class ConvertTest < self
     def test_to_uri_format
       select = Groonga::Command::Base.new("select",
