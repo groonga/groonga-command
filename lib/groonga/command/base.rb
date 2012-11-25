@@ -47,6 +47,11 @@ module Groonga
         @original_format = nil
       end
 
+      def [](name)
+        name = name.to_sym if name.is_a?(String)
+        @arguments[name]
+      end
+
       def ==(other)
         other.is_a?(self.class) and
           @name == other.name and
