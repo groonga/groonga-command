@@ -27,6 +27,7 @@ require "groonga/command/table-rename"
 require "groonga/command/column-create"
 require "groonga/command/column-remove"
 require "groonga/command/column-rename"
+require "groonga/command/delete"
 require "groonga/command/truncate"
 
 module Groonga
