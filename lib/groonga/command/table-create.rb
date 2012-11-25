@@ -26,11 +26,11 @@ module Groonga
       class << self
         def parameter_names
           [
-            "name",
-            "flags",
-            "key_type",
-            "value_type",
-            "default_tokenizer",
+            :name,
+            :flags,
+            :key_type,
+            :value_type,
+            :default_tokenizer,
           ]
         end
       end
