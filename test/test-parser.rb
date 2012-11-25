@@ -36,23 +36,6 @@ class ParserTest < Test::Unit::TestCase
                      :scorer => "_score = random()")
       assert_equal("_score = random()", select.scorer)
     end
-
-    def test_to_uri_format
-      select = parse("select",
-                     :table => "Users",
-                     :filter => "age<=30")
-      assert_equal("/d/select.json?filter=age%3C%3D30&table=Users",
-                   select.to_uri_format)
-    end
-
-    def test_to_command_format
-      select = parse("select",
-                     :table => "Users",
-                     :filter => "age<=30")
-      assert_equal("select --filter \"age<=30\" " +
-                   "--output_type \"json\" --table \"Users\"",
-                   select.to_command_format)
-    end
   end
 
   module ParseFilterTests
