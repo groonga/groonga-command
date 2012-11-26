@@ -20,6 +20,7 @@ require "shellwords"
 require "cgi"
 
 require "groonga/command/base"
+require "groonga/command/get"
 require "groonga/command/select"
 require "groonga/command/suggest"
 require "groonga/command/load"
