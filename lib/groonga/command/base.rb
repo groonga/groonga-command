@@ -40,11 +40,12 @@ module Groonga
       end
 
       attr_reader :name, :arguments
-      attr_accessor :original_format
+      attr_accessor :original_format, :original_source
       def initialize(name, pair_arguments, ordered_arguments=[])
         @name = name
         @arguments = construct_arguments(pair_arguments, ordered_arguments)
         @original_format = nil
+        @original_source = nil
       end
 
       def [](name)
