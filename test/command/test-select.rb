@@ -17,6 +17,16 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 class SelectCommandTest < Test::Unit::TestCase
+  include GroongaCommandTestUtils::CommandLineCommandParser
+
+  def test_ordered_argument
+    table = "Users"
+    command = parse("select", [table], :output_type => false)
+
+    assert_instance_of(Groonga::Command::Select, command)
+    assert_equal({:table => table}, command.arguments)
+  end
+
   def test_scorer
     select = command(:table => "Users",
                      :filter => "age<=30",
