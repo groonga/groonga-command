@@ -217,14 +217,12 @@ module Groonga
             end
           end
           @buffer = rest
-          @command.original_source << json
-          @json_parser << json
+          parse_json(json)
           if separator.empty?
             throw(tag)
           else
-            @command.original_source << separator
             @load_value_completed = false
-            @json_parser << separator
+            parse_json(separator)
           end
         else
           spaces, start_json, rest = @buffer.partition("[")
@@ -245,6 +243,18 @@ module Groonga
             end
             @in_load_values = true
           end
+        end
+      end
+
+      def parse_json(json)
+        @command.original_source << json
+        begin
+          @json_parser << json
+        rescue Yajl::ParseError
+          message = "Invalid JSON: #{$!.message}: <#{json}>:\n"
+          message << @command.original_source
+          raise ParseError.new(message)
+        else
         end
       end
 
