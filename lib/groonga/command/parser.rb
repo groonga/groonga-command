@@ -114,7 +114,7 @@ module Groonga
 
           consume_data(parser, data)
           if parsed_command.nil?
-            raise ParseError, "not completed: <#{data.inspect}>"
+            raise ParseError.new("not completed", data.lines.to_a.last, "")
           end
 
           parsed_command
@@ -144,7 +144,9 @@ module Groonga
 
       def finish
         if @loading
-          raise ParseError, "not completed"
+          raise ParseError.new("not completed",
+                               @command.original_source.lines.to_a.last,
+                               "")
         else
           catch do |tag|
             parse_line(@buffer)
