@@ -240,9 +240,6 @@ module Groonga
                 return
               end
             end
-            unless /\A\s*[\[\{]/ =~ json
-              raise ParseError, "garbage before value"
-            end
           end
           @buffer = rest
           parse_json(json)
