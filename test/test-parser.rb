@@ -234,6 +234,22 @@ load --table Users
 EOC
             end
           end
+
+          def test_garbage_before_json
+            message = "there are garbages before JSON"
+            before = "load --table Users\n"
+            after = "XXX\n"
+            error = Groonga::Command::ParseError.new(message, before, after)
+            assert_raise(error) do
+              @parser << <<-EOC
+load --table Users
+XXX
+[
+{"_key": "alice", "name": "Alice"}
+]
+EOC
+            end
+          end
         end
       end
 

@@ -255,7 +255,9 @@ module Groonga
         else
           spaces, start_json, rest = @buffer.partition("[")
           unless /\A\s*\z/ =~ spaces
-            raise ParseError, "garbage before JSON"
+            raise ParseError.new("there are garbages before JSON",
+                                 @command.original_source.lines.to_a.last,
+                                 spaces)
           end
           if start_json.empty?
             @command.original_source << @buffer
