@@ -51,7 +51,7 @@ Gem::Specification.new do |spec|
   spec.licenses = ["LGPLv2.1+"]
   spec.require_paths = ["lib"]
 
-  spec.add_runtime_dependency("yajl")
+  spec.add_runtime_dependency("yajl-ruby")
 
   spec.add_development_dependency("test-unit")
   spec.add_development_dependency("test-unit-notify")
