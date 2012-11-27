@@ -68,6 +68,9 @@ module Groonga
           parser.on_load_complete do |command|
             yield(:on_load_complete, command)
           end
+          parser.on_comment do |comment|
+            yield(:on_comment, comment)
+          end
 
           consume_data(parser, data)
         end
@@ -118,7 +121,7 @@ module Groonga
           raise ParseError, "not completed"
         else
           catch do |tag|
-            consume_command(tag, @buffer)
+            parse_line(@buffer)
           end
         end
       end
@@ -163,6 +166,16 @@ module Groonga
         end
       end
 
+      # @overload on_comment(comment)
+      # @overload on_comment {|comment| }
+      def on_comment(*arguments, &block)
+        if block_given?
+          @on_comment_hook = block
+        else
+          @on_comment_hook.call(*arguments) if @on_comment_hook
+        end
+      end
+
       private
       def consume_buffer
         catch do |tag|
@@ -170,7 +183,7 @@ module Groonga
             if @loading
               consume_load_values(tag)
             else
-              consume_command(tag, consume_line(tag))
+              parse_line(consume_line(tag))
             end
           end
         end
@@ -248,9 +261,19 @@ module Groonga
         end
       end
 
-      def consume_command(tag, line)
-        @command = parse(line)
-        @command.original_source = line
+      def parse_line(line)
+        case line
+        when /\A\s*\z/
+        when /\A\#/
+          on_comment($POSTMATCH)
+        else
+          @command = parse_command(line)
+          @command.original_source = line
+          process_command
+        end
+      end
+
+      def process_command
         if @command.name == "load"
           on_load_start(@command)
           if @command[:values]
@@ -270,7 +293,7 @@ module Groonga
         end
       end
 
-      def parse(input)
+      def parse_command(input)
         if input.start_with?("/d/")
           parse_uri_path(input)
         else

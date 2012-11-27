@@ -193,6 +193,32 @@ EOC
           assert_equal(expected_events, @events)
         end
       end
+
+      class CommentTest < self
+        def test_newline
+          parsed_comment = nil
+          @parser.on_comment do |comment|
+            parsed_comment = comment
+          end
+
+          @parser << "# status"
+          assert_nil(parsed_comment)
+          @parser << "\n"
+          assert_equal(" status", parsed_comment)
+        end
+
+        def test_finish
+          parsed_comment = nil
+          @parser.on_comment do |comment|
+            parsed_comment = comment
+          end
+
+          @parser << "# status"
+          assert_nil(parsed_comment)
+          @parser.finish
+          assert_equal(" status", parsed_comment)
+        end
+      end
     end
   end
 end
