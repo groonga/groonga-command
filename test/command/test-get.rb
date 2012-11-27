@@ -29,8 +29,8 @@ class GetCommandTest < Test::Unit::TestCase
       assert_instance_of(Groonga::Command::Get, command)
 
       expected_arguments = {
-        :table => table,
-        :key => key,
+        :table          => table,
+        :key            => key,
         :output_columns => output_columns,
       }
       assert_equal(expected_arguments, command.arguments)
