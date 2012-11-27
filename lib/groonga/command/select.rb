@@ -25,7 +25,10 @@ module Groonga
 
       class << self
         def parameter_names
-          [:table]
+          # TODO: Fill me
+          [
+            :table
+          ]
         end
       end
 
