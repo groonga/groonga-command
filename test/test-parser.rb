@@ -116,6 +116,9 @@ class ParserTest < Test::Unit::TestCase
           @parser.on_load_start do |command|
             @events << [:load_start, command.original_source.dup]
           end
+          @parser.on_load_header do |command, header|
+            @events << [:load_header, command.original_source.dup, header]
+          end
           @parser.on_load_value do |command, value|
             @events << [:load_value, command.original_source.dup, value]
           end
@@ -124,7 +127,7 @@ class ParserTest < Test::Unit::TestCase
           end
         end
 
-        def test_inline
+        def test_inline_bracket
           command_line = "load --values '[{\"_key\": 1}]' --table IDs"
           @parser << command_line
           assert_equal([], @events)
@@ -132,6 +135,20 @@ class ParserTest < Test::Unit::TestCase
           assert_equal([
                          [:load_start, command_line],
                          [:load_value, command_line, {"_key" => 1}],
+                         [:load_complete, command_line],
+                       ],
+                       @events)
+        end
+
+        def test_inline_brace
+          command_line = "load --values '[[\"_key\"], [1]]' --table IDs"
+          @parser << command_line
+          assert_equal([], @events)
+          @parser << "\n"
+          assert_equal([
+                         [:load_start, command_line],
+                         [:load_header, command_line, ["_key"]],
+                         [:load_value, command_line, [1]],
                          [:load_complete, command_line],
                        ],
                        @events)
@@ -149,8 +166,7 @@ EOC
           expected_events << [:load_start, <<-EOC.chomp]
 load --table Users
 EOC
-          # FIXME: It should be stored into command[:columns].
-          expected_events << [:load_value, <<-EOC.chomp, ["_key", "name"]]
+          expected_events << [:load_header, <<-EOC.chomp, ["_key", "name"]]
 load --table Users
 [
 ["_key", "name"]

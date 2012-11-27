@@ -88,6 +88,9 @@ module Groonga
           parser.on_load_start do |command|
             yield(:on_load_start, command)
           end
+          parser.on_load_header do |command, header|
+            yield(:on_load_header, command, header)
+          end
           parser.on_load_value do |command, value|
             yield(:on_load_value, command, value)
           end
@@ -171,6 +174,16 @@ module Groonga
           @on_load_start_hook = block
         else
           @on_load_start_hook.call(*arguments) if @on_load_start_hook
+        end
+      end
+
+      # @overload on_load_header(command)
+      # @overload on_load_header {|command| }
+      def on_load_header(*arguments, &block)
+        if block_given?
+          @on_load_header_hook = block
+        else
+          @on_load_header_hook.call(*arguments) if @on_load_header_hook
         end
       end
 
@@ -266,8 +279,14 @@ module Groonga
             @command.original_source << spaces << start_json
             @buffer = rest
             @json_parser = Yajl::Parser.new
-            @json_parser.on_parse_complete = lambda do |value|
-              on_load_value(@command, value)
+            @json_first_completed = true
+            @json_parser.on_parse_complete = lambda do |object|
+              if object.is_a?(Array) and @json_first_completed
+                on_load_header(@command, object)
+              else
+                on_load_value(@command, object)
+              end
+              @json_first_completed = false
               @load_value_completed = true
             end
             @in_load_values = true
@@ -317,6 +336,10 @@ module Groonga
           on_load_start(@command)
           if @command[:values]
             values = Yajl::Parser.parse(@command[:values])
+            if values.first.is_a?(Array)
+              header = values.shift
+              on_load_header(@command, header)
+            end
             values.each do |value|
               on_load_value(@command, value)
             end
@@ -388,6 +411,7 @@ module Groonga
       def initialize_hooks
         @on_command_hook = nil
         @on_load_start_hook = nil
+        @on_load_header_hook = nil
         @on_load_value_hook = nil
         @on_load_complete_hook = nil
       end
