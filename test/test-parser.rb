@@ -205,6 +205,36 @@ load --table Users
 EOC
           assert_equal(expected_events, @events)
         end
+
+        class ErrorTest < self
+          def test_location
+            message = "record separate comma is missing"
+            before = "{\"_key\": \"alice\", \"name\": \"Alice\"}"
+            after = "\n{\"_key\": \"bob\""
+            error = Groonga::Command::ParseError.new(message, before, after)
+            assert_equal(<<-EOS.chomp, error.message)
+record separate comma is missing:
+{"_key": "alice", "name": "Alice"}
+                                  ^
+{"_key": "bob"
+EOS
+          end
+
+          def test_no_record_separate_comma
+            message = "record separate comma is missing"
+            before = "{\"_key\": \"alice\", \"name\": \"Alice\"}"
+            after = "\n{\"_key\": \"bob\""
+            error = Groonga::Command::ParseError.new(message, before, after)
+            assert_raise(error) do
+              @parser << <<-EOC
+load --table Users
+[
+{"_key": "alice", "name": "Alice"}
+{"_key": "bob",   "name": "Bob"}
+EOC
+            end
+          end
+        end
       end
 
       class CommentTest < self

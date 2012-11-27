@@ -40,6 +40,32 @@ require "groonga/command/truncate"
 module Groonga
   module Command
     class ParseError < Error
+      attr_reader :reason, :location
+      def initialize(reason, before, after)
+        @reason = reason
+        @location = compute_location(before, after)
+        super("#{@reason}:\n#{@location}")
+      end
+
+      private
+      def compute_location(before, after)
+        location = ""
+        if before[-1] == ?\n
+          location << before
+          location << after
+          location << "^"
+        elsif after[0] == ?\n
+          location << before
+          location << "\n"
+          location << " " * before.bytesize + "^"
+          location << after
+        else
+          location << before
+          location << after
+          location << " " * before.bytesize + "^"
+        end
+        location
+      end
     end
 
     class Parser
@@ -201,7 +227,9 @@ module Groonga
                 @load_value_completed = false
                 return
               else
-                raise ParseError, "garbage before value"
+                raise ParseError.new("record separate comma is missing",
+                                     @command.original_source.lines.to_a.last,
+                                     json)
               end
             elsif separator == "]"
               if /\A\s*\z/ =~ json
@@ -251,9 +279,10 @@ module Groonga
         begin
           @json_parser << json
         rescue Yajl::ParseError
-          message = "Invalid JSON: #{$!.message}: <#{json}>:\n"
-          message << @command.original_source
-          raise ParseError.new(message)
+          before_json = @command.original_source[0..(-json.bytesize)]
+          message = "invalid JSON: #{$!.message}: <#{json}>:\n"
+          message << before_json
+          raise ParseError.new(message, before_json, json)
         else
         end
       end
