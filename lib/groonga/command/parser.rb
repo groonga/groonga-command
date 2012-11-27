@@ -322,6 +322,7 @@ module Groonga
       def parse_line(line)
         case line
         when /\A\s*\z/
+          # ignore empty line
         when /\A\#/
           on_comment($POSTMATCH)
         else
