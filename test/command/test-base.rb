@@ -82,4 +82,33 @@ class BaseCommandTest < Test::Unit::TestCase
                    select.to_command_format)
     end
   end
+
+  sub_test_case("#[]") do
+    def setup
+      @table = "Users"
+      @select = Groonga::Command::Base.new("select", :table => @table)
+    end
+
+    def test_symbol
+      assert_equal(@table, @select[:table])
+    end
+
+    def test_string
+      assert_equal(@table, @select["table"])
+    end
+  end
+
+  sub_test_case("#has_key?") do
+    def setup
+      @select = Groonga::Command::Base.new("select", :table => "Users")
+    end
+
+    def test_symbol
+      assert_true(@select.has_key?(:table))
+    end
+
+    def test_string
+      assert_true(@select.has_key?("table"))
+    end
+  end
 end

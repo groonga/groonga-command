@@ -49,8 +49,11 @@ module Groonga
       end
 
       def [](name)
-        name = name.to_sym if name.is_a?(String)
-        @arguments[name]
+        @arguments[normalize_name(name)]
+      end
+
+      def has_key?(name)
+        @arguments.has_key?(normalize_name(name))
       end
 
       def ==(other)
@@ -124,6 +127,11 @@ module Groonga
         end
 
         arguments
+      end
+
+      def normalize_name(name)
+        name = name.to_sym if name.is_a?(String)
+        name
       end
     end
   end
