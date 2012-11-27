@@ -127,7 +127,8 @@ class ParserTest < Test::Unit::TestCase
           end
         end
 
-        def test_inline_bracket
+        class InlineTest < self
+        def test_bracket
           command_line = "load --values '[{\"_key\": 1}]' --table IDs"
           @parser << command_line
           assert_equal([], @events)
@@ -140,7 +141,7 @@ class ParserTest < Test::Unit::TestCase
                        @events)
         end
 
-        def test_inline_brace
+        def test_brace
           command_line = "load --values '[[\"_key\"], [1]]' --table IDs"
           @parser << command_line
           assert_equal([], @events)
@@ -153,7 +154,9 @@ class ParserTest < Test::Unit::TestCase
                        ],
                        @events)
         end
+        end
 
+        class MultiLineTest < self
         def test_bracket
           @parser << <<-EOC
 load --table Users
@@ -220,6 +223,7 @@ load --table Users
 ]
 EOC
           assert_equal(expected_events, @events)
+        end
         end
 
         class ErrorTest < self
