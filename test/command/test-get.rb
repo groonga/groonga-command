@@ -24,8 +24,8 @@ class GetCommandTest < Test::Unit::TestCase
       table          = "Users"
       key            = "Alice"
       output_columns = "name, address"
-      arguments = [table, key, output_columns]
-      command = parse(*arguments)
+
+      command = parse(table, key, output_columns)
       assert_instance_of(Groonga::Command::Get, command)
 
       expected_arguments = {
