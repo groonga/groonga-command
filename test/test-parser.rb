@@ -94,6 +94,19 @@ class ParserTest < Test::Unit::TestCase
           @parser.finish
           assert_equal("status", parsed_command.name)
         end
+
+        def test_empty_line
+          parsed_command = nil
+          @parser.on_command do |command|
+            parsed_command = command
+          end
+
+          @parser << "\n"
+          assert_nil(parsed_command)
+
+          @parser << "status\n"
+          assert_equal("status", parsed_command.name)
+        end
       end
 
       class LoadTest < self
