@@ -284,7 +284,6 @@ module Groonga
           message = "invalid JSON: #{$!.message}: <#{json}>:\n"
           message << before_json
           raise ParseError.new(message, before_json, json)
-        else
         end
       end
 
