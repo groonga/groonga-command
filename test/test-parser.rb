@@ -129,7 +129,25 @@ class ParserTest < Test::Unit::TestCase
 
         class InlineTest < self
           class BracketTest < self
-            def test_bracket
+            def test_have_columns
+              command_line =
+                "load " +
+                  "--columns '_key, name' " +
+                  "--values '[[\"alice\", \"Alice\"]]' " +
+                  "--table Users"
+              @parser << command_line
+              assert_equal([], @events)
+              @parser << "\n"
+              assert_equal([
+                             [:load_start, command_line],
+                             [:load_header, command_line, ["_key", "name"]],
+                             [:load_value, command_line, ["alice", "Alice"]],
+                             [:load_complete, command_line],
+                           ],
+                           @events)
+            end
+
+            def test_no_columns
               command_line = "load --values '[[\"_key\"], [1]]' --table IDs"
               @parser << command_line
               assert_equal([], @events)
