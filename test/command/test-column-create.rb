@@ -24,16 +24,16 @@ class ColumnCreateCommandTest < Test::Unit::TestCase
       table    = "Lexicon"
       name     = "content_index"
       flags    = "COLUMN_INDEX"
-      key_type = "Posts"
+      type     = "Posts"
       source   = "content"
 
-      command = parse(table, name, flags, key_type, source)
+      command = parse(table, name, flags, type, source)
       assert_instance_of(Groonga::Command::ColumnCreate, command)
       assert_equal({
                      :table    => table,
                      :name     => name,
                      :flags    => flags,
-                     :key_type => key_type,
+                     :type     => type,
                      :source   => source,
                    },
                    command.arguments)

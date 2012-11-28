@@ -29,7 +29,7 @@ module Groonga
             :table,
             :name,
             :flags,
-            :key_type,
+            :type,
             :source,
           ]
         end
