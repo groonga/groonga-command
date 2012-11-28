@@ -1,1 +1,5 @@
 /test/.test-result/
+/.yardoc/
+/doc/reference/
+doc/po/groonga-command.pot
+/pkg/
