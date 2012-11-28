@@ -158,38 +158,38 @@ class ParserTest < Test::Unit::TestCase
 
         class MultiLineTest < self
           class BracketTest < self
-          def test_bracket
-            @parser << <<-EOC
+            def test_bracket
+              @parser << <<-EOC
 load --table Users
 [
 ["_key", "name"],
 ["alice", "Alice"]
 ]
 EOC
-            expected_events = []
-            expected_events << [:load_start, <<-EOC.chomp]
+              expected_events = []
+              expected_events << [:load_start, <<-EOC.chomp]
 load --table Users
 EOC
-            expected_events << [:load_header, <<-EOC.chomp, ["_key", "name"]]
+              expected_events << [:load_header, <<-EOC.chomp, ["_key", "name"]]
 load --table Users
 [
 ["_key", "name"]
 EOC
-            expected_events << [:load_value, <<-EOC.chomp, ["alice", "Alice"]]
+              expected_events << [:load_value, <<-EOC.chomp, ["alice", "Alice"]]
 load --table Users
 [
 ["_key", "name"],
 ["alice", "Alice"]
 EOC
-            expected_events << [:load_complete, <<-EOC.chomp]
+              expected_events << [:load_complete, <<-EOC.chomp]
 load --table Users
 [
 ["_key", "name"],
 ["alice", "Alice"]
 ]
 EOC
-            assert_equal(expected_events, @events)
-          end
+              assert_equal(expected_events, @events)
+            end
           end
 
           def test_brace
