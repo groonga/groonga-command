@@ -88,8 +88,8 @@ module Groonga
           parser.on_load_start do |command|
             yield(:on_load_start, command)
           end
-          parser.on_load_header do |command, header|
-            yield(:on_load_header, command, header)
+          parser.on_load_columns do |command, header|
+            yield(:on_load_columns, command, header)
           end
           parser.on_load_value do |command, value|
             yield(:on_load_value, command, value)
@@ -177,13 +177,13 @@ module Groonga
         end
       end
 
-      # @overload on_load_header(command)
-      # @overload on_load_header {|command| }
-      def on_load_header(*arguments, &block)
+      # @overload on_load_columns(command)
+      # @overload on_load_columns {|command| }
+      def on_load_columns(*arguments, &block)
         if block_given?
-          @on_load_header_hook = block
+          @on_load_columns_hook = block
         else
-          @on_load_header_hook.call(*arguments) if @on_load_header_hook
+          @on_load_columns_hook.call(*arguments) if @on_load_columns_hook
         end
       end
 
@@ -282,7 +282,7 @@ module Groonga
             @json_parser.on_parse_complete = lambda do |object|
               if object.is_a?(Array) and @command.columns.nil?
                 @command.columns = object
-                on_load_header(@command, object)
+                on_load_columns(@command, object)
               else
                 on_load_value(@command, object)
               end
@@ -335,14 +335,14 @@ module Groonga
         if @command.name == "load"
           on_load_start(@command)
           if @command.columns
-            on_load_header(@command, @command.columns)
+            on_load_columns(@command, @command.columns)
           end
           if @command[:values]
             values = Yajl::Parser.parse(@command[:values])
             if @command.columns.nil? and values.first.is_a?(Array)
               header = values.shift
               @command.columns = header
-              on_load_header(@command, header)
+              on_load_columns(@command, header)
             end
             values.each do |value|
               on_load_value(@command, value)
@@ -415,7 +415,7 @@ module Groonga
       def initialize_hooks
         @on_command_hook = nil
         @on_load_start_hook = nil
-        @on_load_header_hook = nil
+        @on_load_columns_hook = nil
         @on_load_value_hook = nil
         @on_load_complete_hook = nil
       end
