@@ -128,6 +128,7 @@ class ParserTest < Test::Unit::TestCase
         end
 
         class InlineTest < self
+          class BracketTest < self
           def test_bracket
             command_line = "load --values '[{\"_key\": 1}]' --table IDs"
             @parser << command_line
@@ -139,6 +140,7 @@ class ParserTest < Test::Unit::TestCase
                            [:load_complete, command_line],
                          ],
                          @events)
+          end
           end
 
           def test_brace
