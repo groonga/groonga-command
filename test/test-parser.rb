@@ -129,18 +129,18 @@ class ParserTest < Test::Unit::TestCase
 
         class InlineTest < self
           class BracketTest < self
-          def test_bracket
-            command_line = "load --values '[{\"_key\": 1}]' --table IDs"
-            @parser << command_line
-            assert_equal([], @events)
-            @parser << "\n"
-            assert_equal([
-                           [:load_start, command_line],
-                           [:load_value, command_line, {"_key" => 1}],
-                           [:load_complete, command_line],
-                         ],
-                         @events)
-          end
+            def test_bracket
+              command_line = "load --values '[{\"_key\": 1}]' --table IDs"
+              @parser << command_line
+              assert_equal([], @events)
+              @parser << "\n"
+              assert_equal([
+                             [:load_start, command_line],
+                             [:load_value, command_line, {"_key" => 1}],
+                             [:load_complete, command_line],
+                           ],
+                           @events)
+            end
           end
 
           def test_brace
