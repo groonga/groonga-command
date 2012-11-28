@@ -157,6 +157,7 @@ class ParserTest < Test::Unit::TestCase
         end
 
         class MultiLineTest < self
+          class BracketTest < self
           def test_bracket
             @parser << <<-EOC
 load --table Users
@@ -188,6 +189,7 @@ load --table Users
 ]
 EOC
             assert_equal(expected_events, @events)
+          end
           end
 
           def test_brace
