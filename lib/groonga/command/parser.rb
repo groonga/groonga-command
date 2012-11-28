@@ -279,14 +279,13 @@ module Groonga
             @command.original_source << spaces << start_json
             @buffer = rest
             @json_parser = Yajl::Parser.new
-            @json_first_completed = true
             @json_parser.on_parse_complete = lambda do |object|
-              if object.is_a?(Array) and @json_first_completed
+              if object.is_a?(Array) and @command.columns.nil?
+                @command.columns = object
                 on_load_header(@command, object)
               else
                 on_load_value(@command, object)
               end
-              @json_first_completed = false
               @load_value_completed = true
             end
             @in_load_values = true
@@ -335,10 +334,14 @@ module Groonga
       def process_command
         if @command.name == "load"
           on_load_start(@command)
+          if @command.columns
+            on_load_header(@command, @command.columns)
+          end
           if @command[:values]
             values = Yajl::Parser.parse(@command[:values])
-            if values.first.is_a?(Array)
+            if @command.columns.nil? and values.first.is_a?(Array)
               header = values.shift
+              @command.columns = header
               on_load_header(@command, header)
             end
             values.each do |value|

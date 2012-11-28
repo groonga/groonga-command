@@ -35,6 +35,22 @@ module Groonga
           ]
         end
       end
+
+      attr_writer :columns
+      def initialize(*argumetns)
+        super
+        @columns = nil
+      end
+
+      def columns
+        @columns ||= parse_columns(self[:columns])
+      end
+
+      private
+      def parse_columns(columns)
+        return columns if columns.nil?
+        columns.split(/\s*,\s*/)
+      end
     end
   end
 end

@@ -158,7 +158,35 @@ class ParserTest < Test::Unit::TestCase
 
         class MultiLineTest < self
           class BracketTest < self
-            def test_bracket
+            def test_have_columns
+              @parser << <<-EOC
+load --table Users --columns "_key, name"
+[
+["alice", "Alice"]
+]
+EOC
+              expected_events = []
+              expected_events << [:load_start, <<-EOC.chomp]
+load --table Users --columns "_key, name"
+EOC
+              expected_events << [:load_header, <<-EOC.chomp, ["_key", "name"]]
+load --table Users --columns "_key, name"
+EOC
+              expected_events << [:load_value, <<-EOC.chomp, ["alice", "Alice"]]
+load --table Users --columns "_key, name"
+[
+["alice", "Alice"]
+EOC
+              expected_events << [:load_complete, <<-EOC.chomp]
+load --table Users --columns "_key, name"
+[
+["alice", "Alice"]
+]
+EOC
+              assert_equal(expected_events, @events)
+            end
+
+            def test_no_columns
               @parser << <<-EOC
 load --table Users
 [
