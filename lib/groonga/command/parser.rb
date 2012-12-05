@@ -24,6 +24,7 @@ require "yajl"
 require "groonga/command/error"
 
 require "groonga/command/base"
+
 require "groonga/command/get"
 require "groonga/command/select"
 require "groonga/command/suggest"
@@ -36,6 +37,7 @@ require "groonga/command/column-remove"
 require "groonga/command/column-rename"
 require "groonga/command/delete"
 require "groonga/command/truncate"
+require "groonga/command/register"
 
 module Groonga
   module Command
