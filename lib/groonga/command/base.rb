@@ -52,6 +52,10 @@ module Groonga
         @arguments[normalize_name(name)]
       end
 
+      def []=(name, value)
+        @arguments[normalize_name(name)] = value
+      end
+
       def has_key?(name)
         @arguments.has_key?(normalize_name(name))
       end

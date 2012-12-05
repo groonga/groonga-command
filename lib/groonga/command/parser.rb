@@ -113,8 +113,16 @@ module Groonga
           parser.on_command do |command|
             parsed_command = command
           end
+          parser.on_load_columns do |command, columns|
+            command[:columns] ||= columns.join(",")
+          end
+          values = []
+          parser.on_load_value do |_, value|
+            values << value
+          end
           parser.on_load_complete do |command|
             parsed_command = command
+            parsed_command[:values] ||= Yajl::Encoder.encode(values)
           end
 
           consume_data(parser, data)
