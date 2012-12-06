@@ -4,7 +4,7 @@
 
 It's bug fix release.
 
-### Inmprovements
+### Improvements
 
   * Supported "register" command.
 
