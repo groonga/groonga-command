@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: groonga-command 0.9.5\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-11-20 22:17+0900\n"
-"PO-Revision-Date: 2012-12-06 17:05+0900\n"
+"PO-Revision-Date: 2012-12-06 17:27+0900\n"
 "Last-Translator: Haruka Yoshihara <yoshihara@clear-code.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -892,7 +892,7 @@ msgstr "### 改善"
 
 #: doc/text/news.md:9
 msgid "  * Supported \"register\" command."
-msgstr "registerコマンドをサポート。"
+msgstr " * registerコマンドをサポート。"
 
 #: doc/text/news.md:11
 msgid "### Fixes"
