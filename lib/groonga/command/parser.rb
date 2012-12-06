@@ -413,7 +413,6 @@ module Groonga
         command
       end
 
-      private
       def reset
         @command = nil
         @loading = false
