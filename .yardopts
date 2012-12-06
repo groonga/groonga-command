@@ -1,0 +1,6 @@
+--protected
+--no-private
+--output doc/reference/en
+--title "groonga-command API Reference"
+-
+doc/text/*
