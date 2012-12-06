@@ -72,6 +72,16 @@ module Groonga
 
     class Parser
       class << self
+
+        # parses groonga command or HTTP (starts with "/d/") command.
+        # @overload parse(data)
+        #   @!macro [new] parser.parse.argument
+        #     @param [String] data parsed command.
+        #     @return [Groonga::Command] Returns
+        #       {Groonga::Command} including parsed data.
+        #   @!macro parser.parse.argument
+        # @overload parse(data, &block)
+        #   @!macro parser.parse.argument
         def parse(data, &block)
           if block_given?
             event_parse(data, &block)
@@ -150,11 +160,15 @@ module Groonga
         initialize_hooks
       end
 
+      # Streaming parsing command.
+      # @param [String] chunk parsed chunk of command.
       def <<(chunk)
         @buffer << chunk
         consume_buffer
       end
 
+      # Finishes parsing. If Parser is loading values specified "load"
+      # command, this method raises {ParseError}.
       def finish
         if @loading
           raise ParseError.new("not completed",
