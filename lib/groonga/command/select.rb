@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (C) 2012  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-2013  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -62,7 +62,7 @@ module Groonga
 
       private
       def split_filter_conditions
-        filter.split(/(?:&&|&!|\|\|)/).collect do |condition|
+        (filter || "").split(/(?:&&|&!|\|\|)/).collect do |condition|
           condition = condition.strip
           condition = condition.gsub(/\A[\s\(]*/, '')
           condition = condition.gsub(/[\s\)]*\z/, '') unless /\(/ =~ condition

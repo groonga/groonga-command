@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (C) 2011-2012  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2011-2013  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -54,6 +54,13 @@ class SelectCommandTest < Test::Unit::TestCase
                      'keyword @ "たいやき"',
                      'keyword @ "白"',
                      'keyword @ "養殖"'],
+                   select.conditions)
+    end
+
+    def test_omitted
+      select = command(:table => "Users",
+                       :filter => nil)
+      assert_equal([],
                    select.conditions)
     end
   end
