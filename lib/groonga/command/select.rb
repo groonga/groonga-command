@@ -49,12 +49,7 @@ module Groonga
       end
 
       def conditions
-        @conditions ||= filter.split(/(?:&&|&!|\|\|)/).collect do |condition|
-          condition = condition.strip
-          condition = condition.gsub(/\A[\s\(]*/, '')
-          condition = condition.gsub(/[\s\)]*\z/, '') unless /\(/ =~ condition
-          condition
-        end
+        @conditions ||= split_filter_conditions
       end
 
       def drilldowns
@@ -63,6 +58,16 @@ module Groonga
 
       def output_columns
         self[:output_columns]
+      end
+
+      private
+      def split_filter_conditions
+        filter.split(/(?:&&|&!|\|\|)/).collect do |condition|
+          condition = condition.strip
+          condition = condition.gsub(/\A[\s\(]*/, '')
+          condition = condition.gsub(/[\s\)]*\z/, '') unless /\(/ =~ condition
+          condition
+        end
       end
     end
   end
