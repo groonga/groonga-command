@@ -43,6 +43,12 @@ class ParserTest < Test::Unit::TestCase
       assert_not_predicate(command, :command_format?)
     end
 
+    def test_no_value
+      path = "/d/select?table=Users&key_only"
+      command = Groonga::Command::Parser.parse(path)
+      assert_equal({:table => "Users"}, command.arguments)
+    end
+
     class ParseTest < self
       include ParseTests
     end
