@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (C) 2012  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-2013  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -72,6 +72,10 @@ module Groonga
 
       def command_format?
         @original_format == :command
+      end
+
+      def output_type
+        (self[:output_type] || :json).to_sym
       end
 
       def to_uri_format

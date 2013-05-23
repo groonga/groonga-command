@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (C) 2011-2012  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2011-2013  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -109,6 +109,19 @@ class BaseCommandTest < Test::Unit::TestCase
 
     def test_string
       assert_true(@select.has_key?("table"))
+    end
+  end
+
+  sub_test_case("#output_type") do
+    def test_default
+      command = Groonga::Command::Base.new("table_list", {})
+      assert_equal(:json, command.output_type)
+    end
+
+    def test_specified
+      command = Groonga::Command::Base.new("table_list",
+                                           :output_type => "xml")
+      assert_equal(:xml, command.output_type)
     end
   end
 end
