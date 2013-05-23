@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (C) 2011-2012  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2011-2013  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -25,6 +25,7 @@ require "groonga/command/error"
 
 require "groonga/command/base"
 
+require "groonga/command/dump"
 require "groonga/command/get"
 require "groonga/command/select"
 require "groonga/command/suggest"
