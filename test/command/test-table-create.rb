@@ -56,6 +56,11 @@ class TableCreateCommandTest < Test::Unit::TestCase
         assert_equal(["TABLE_NO_KEY"],
                      command.flags)
       end
+
+      def test_no_flags
+        command = parse({})
+        assert_equal([], command.flags)
+      end
     end
   end
 end
