@@ -50,6 +50,10 @@ module Groonga
       def table_pat_key?
         flags.include?("TABLE_PAT_KEY")
       end
+
+      def table_dat_key?
+        flags.include?("TABLE_DAT_KEY")
+      end
     end
   end
 end
