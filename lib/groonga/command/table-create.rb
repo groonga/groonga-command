@@ -54,6 +54,10 @@ module Groonga
       def table_dat_key?
         flags.include?("TABLE_DAT_KEY")
       end
+
+      def key_with_sis?
+        flags.include?("KEY_WITH_SIS")
+      end
     end
   end
 end
