@@ -46,6 +46,10 @@ module Groonga
       def table_hash_key?
         flags.include?("TABLE_HASH_KEY")
       end
+
+      def table_pat_key?
+        flags.include?("TABLE_PAT_KEY")
+      end
     end
   end
 end

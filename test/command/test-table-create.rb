@@ -96,6 +96,23 @@ class TableCreateCommandTest < Test::Unit::TestCase
             assert_equal(data[:expected], command.table_hash_key?)
           end
         end
+
+        class TablePatKeyTest < self
+          data({
+              "TABLE_PAT_KEY" => {
+                :expected => true,
+                :flags    => "TABLE_PAT_KEY",
+              },
+              "other flag"   => {
+                :expected => false,
+                :flags    => "TABLE_DAT_KEY",
+              }
+            })
+          def test_table_pat_key?(data)
+            command = parse({"flags" => data[:flags]})
+            assert_equal(data[:expected], command.table_pat_key?)
+          end
+        end
       end
     end
   end
