@@ -61,6 +61,23 @@ class TableCreateCommandTest < Test::Unit::TestCase
         command = parse({})
         assert_equal([], command.flags)
       end
+
+      class PredicateTest < self
+        data({
+              "TABLE_NO_KEY" => {
+                :expected => true,
+                :flags    => "TABLE_NO_KEY",
+              },
+              "other flag"   => {
+                :expected => false,
+                :flags    => "TABLE_HASH_KEY",
+              }
+             })
+        def test_table_no_key?(data)
+          command = parse({"flags" => data[:flags]})
+          assert_equal(data[:expected], command.table_no_key?)
+        end
+      end
     end
   end
 end

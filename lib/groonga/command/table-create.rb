@@ -38,6 +38,10 @@ module Groonga
       def flags
         @flags ||= (self[:flags] || "").split(/\s*\|\s*/)
       end
+
+      def table_no_key?
+        flags.include?("TABLE_NO_KEY")
+      end
     end
   end
 end
