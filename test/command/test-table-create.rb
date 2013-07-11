@@ -63,6 +63,7 @@ class TableCreateCommandTest < Test::Unit::TestCase
       end
 
       class PredicateTest < self
+        class TableNoKeyTest < self
         data({
               "TABLE_NO_KEY" => {
                 :expected => true,
@@ -76,6 +77,7 @@ class TableCreateCommandTest < Test::Unit::TestCase
         def test_table_no_key?(data)
           command = parse({"flags" => data[:flags]})
           assert_equal(data[:expected], command.table_no_key?)
+        end
         end
       end
     end
