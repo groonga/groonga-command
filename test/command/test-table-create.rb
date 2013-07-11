@@ -39,6 +39,12 @@ class TableCreateCommandTest < Test::Unit::TestCase
                    command.arguments)
     end
 
+    def test_flags
+      command = parse({"flags" => "TABLE_PAT_KEY|KEY_WITH_SIS"})
+      assert_equal(["TABLE_PAT_KEY", "KEY_WITH_SIS"],
+                   command.flags)
+    end
+
     private
     def parse(arguments)
       super("table_create", arguments, :output_type => false)
