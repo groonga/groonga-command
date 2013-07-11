@@ -63,7 +63,6 @@ class TableCreateCommandTest < Test::Unit::TestCase
       end
 
       class PredicateTest < self
-        class TableNoKeyTest < self
           data({
               "TABLE_NO_KEY" => {
                 :expected => true,
@@ -78,9 +77,7 @@ class TableCreateCommandTest < Test::Unit::TestCase
             command = parse({"flags" => data[:flags]})
             assert_equal(data[:expected], command.table_no_key?)
           end
-        end
 
-        class TableHashKeyTest < self
           data({
               "TABLE_HASH_KEY" => {
                 :expected => true,
@@ -95,9 +92,7 @@ class TableCreateCommandTest < Test::Unit::TestCase
             command = parse({"flags" => data[:flags]})
             assert_equal(data[:expected], command.table_hash_key?)
           end
-        end
 
-        class TablePatKeyTest < self
           data({
               "TABLE_PAT_KEY" => {
                 :expected => true,
@@ -112,9 +107,7 @@ class TableCreateCommandTest < Test::Unit::TestCase
             command = parse({"flags" => data[:flags]})
             assert_equal(data[:expected], command.table_pat_key?)
           end
-        end
 
-        class TableDatKeyTest < self
           data({
               "TABLE_DAT_KEY" => {
                 :expected => true,
@@ -129,9 +122,7 @@ class TableCreateCommandTest < Test::Unit::TestCase
             command = parse({"flags" => data[:flags]})
             assert_equal(data[:expected], command.table_dat_key?)
           end
-        end
 
-        class TableKeyWithSisTest < self
           data({
               "TABLE_DAT_KEY" => {
                 :expected => true,
@@ -146,7 +137,6 @@ class TableCreateCommandTest < Test::Unit::TestCase
             command = parse({"flags" => data[:flags]})
             assert_equal(data[:expected], command.key_with_sis?)
           end
-        end
       end
     end
   end
