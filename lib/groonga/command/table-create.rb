@@ -42,6 +42,10 @@ module Groonga
       def table_no_key?
         flags.include?("TABLE_NO_KEY")
       end
+
+      def table_hash_key?
+        flags.include?("TABLE_HASH_KEY")
+      end
     end
   end
 end
