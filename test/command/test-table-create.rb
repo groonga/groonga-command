@@ -64,7 +64,7 @@ class TableCreateCommandTest < Test::Unit::TestCase
 
       class PredicateTest < self
         class TableNoKeyTest < self
-        data({
+          data({
               "TABLE_NO_KEY" => {
                 :expected => true,
                 :flags    => "TABLE_NO_KEY",
@@ -73,11 +73,11 @@ class TableCreateCommandTest < Test::Unit::TestCase
                 :expected => false,
                 :flags    => "TABLE_HASH_KEY",
               }
-             })
-        def test_table_no_key?(data)
-          command = parse({"flags" => data[:flags]})
-          assert_equal(data[:expected], command.table_no_key?)
-        end
+            })
+          def test_table_no_key?(data)
+            command = parse({"flags" => data[:flags]})
+            assert_equal(data[:expected], command.table_no_key?)
+          end
         end
       end
     end
