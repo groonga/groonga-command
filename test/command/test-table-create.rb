@@ -40,11 +40,11 @@ class TableCreateCommandTest < Test::Unit::TestCase
     end
 
     class FlagsTest < self
-    def test_flags
-      command = parse({"flags" => "TABLE_PAT_KEY|KEY_WITH_SIS"})
-      assert_equal(["TABLE_PAT_KEY", "KEY_WITH_SIS"],
-                   command.flags)
-    end
+      def test_flags
+        command = parse({"flags" => "TABLE_PAT_KEY|KEY_WITH_SIS"})
+        assert_equal(["TABLE_PAT_KEY", "KEY_WITH_SIS"],
+                     command.flags)
+      end
     end
 
     private
