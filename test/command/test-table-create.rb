@@ -124,7 +124,7 @@ class TableCreateCommandTest < Test::Unit::TestCase
         end
 
         data({
-               "TABLE_DAT_KEY" => {
+               "KEY_WITH_SIS" => {
                  :expected => true,
                  :flags    => "KEY_WITH_SIS|TABLE_PAT_KEY",
                },
