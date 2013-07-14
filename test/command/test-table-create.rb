@@ -64,75 +64,75 @@ class TableCreateCommandTest < Test::Unit::TestCase
 
       class PredicateTest < self
         data({
-            "TABLE_NO_KEY" => {
-              :expected => true,
-              :flags    => "TABLE_NO_KEY",
-            },
-            "other flag"   => {
-              :expected => false,
-              :flags    => "TABLE_HASH_KEY",
-            }
-          })
+               "TABLE_NO_KEY" => {
+                 :expected => true,
+                 :flags    => "TABLE_NO_KEY",
+               },
+               "other flag"   => {
+                 :expected => false,
+                 :flags    => "TABLE_HASH_KEY",
+               }
+             })
         def test_table_no_key?(data)
           command = parse({"flags" => data[:flags]})
           assert_equal(data[:expected], command.table_no_key?)
         end
 
         data({
-            "TABLE_HASH_KEY" => {
-              :expected => true,
-              :flags    => "TABLE_HASH_KEY",
-            },
-            "other flag"   => {
-              :expected => false,
-              :flags    => "TABLE_PAT_KEY",
-            }
-          })
+               "TABLE_HASH_KEY" => {
+                 :expected => true,
+                 :flags    => "TABLE_HASH_KEY",
+               },
+               "other flag"   => {
+                 :expected => false,
+                 :flags    => "TABLE_PAT_KEY",
+               }
+             })
         def test_table_hash_key?(data)
           command = parse({"flags" => data[:flags]})
           assert_equal(data[:expected], command.table_hash_key?)
         end
 
         data({
-            "TABLE_PAT_KEY" => {
-              :expected => true,
-              :flags    => "TABLE_PAT_KEY",
-            },
-            "other flag"   => {
-              :expected => false,
-              :flags    => "TABLE_DAT_KEY",
-            }
-          })
+               "TABLE_PAT_KEY" => {
+                 :expected => true,
+                 :flags    => "TABLE_PAT_KEY",
+               },
+               "other flag"   => {
+                 :expected => false,
+                 :flags    => "TABLE_DAT_KEY",
+               }
+             })
         def test_table_pat_key?(data)
           command = parse({"flags" => data[:flags]})
           assert_equal(data[:expected], command.table_pat_key?)
         end
 
         data({
-            "TABLE_DAT_KEY" => {
-              :expected => true,
-              :flags    => "TABLE_DAT_KEY",
-            },
-            "other flag"   => {
-              :expected => false,
-              :flags    => "TABLE_NO_KEY",
-            }
-          })
+               "TABLE_DAT_KEY" => {
+                 :expected => true,
+                 :flags    => "TABLE_DAT_KEY",
+               },
+               "other flag"   => {
+                 :expected => false,
+                 :flags    => "TABLE_NO_KEY",
+               }
+             })
         def test_table_dat_key?(data)
           command = parse({"flags" => data[:flags]})
           assert_equal(data[:expected], command.table_dat_key?)
         end
 
         data({
-            "TABLE_DAT_KEY" => {
-              :expected => true,
-              :flags    => "KEY_WITH_SIS|TABLE_PAT_KEY",
-            },
-            "other flag"   => {
-              :expected => false,
-              :flags    => "TABLE_NO_KEY",
-            }
-          })
+               "TABLE_DAT_KEY" => {
+                 :expected => true,
+                 :flags    => "KEY_WITH_SIS|TABLE_PAT_KEY",
+               },
+               "other flag"   => {
+                 :expected => false,
+                 :flags    => "TABLE_NO_KEY",
+               }
+             })
         def test_key_with_sis?(data)
           command = parse({"flags" => data[:flags]})
           assert_equal(data[:expected], command.key_with_sis?)
