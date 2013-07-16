@@ -38,6 +38,10 @@ module Groonga
       def flags
         @flags ||= (self[:flags] || "").split(/\s*\|\s*/)
       end
+
+      def column_scalar?
+        flags.include?("COLUMN_SCALAR")
+      end
     end
   end
 end

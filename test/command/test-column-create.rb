@@ -61,6 +61,23 @@ class ColumnCreateCommandTest < Test::Unit::TestCase
         command = parse({})
         assert_equal([], command.flags)
       end
+
+      class PredicateTest < self
+        data({
+               "COLUMN_SCALAR" => {
+                 :expected => true,
+                 :flags    => "COLUMN_SCALAR",
+               },
+               "other flag"   => {
+                 :expected => false,
+                 :flags    => "COLUMN_VECTOR",
+               }
+             })
+        def test_column_scalar?(data)
+          command = parse({"flags" => data[:flags]})
+          assert_equal(data[:expected], command.column_scalar?)
+        end
+      end
     end
   end
 end
