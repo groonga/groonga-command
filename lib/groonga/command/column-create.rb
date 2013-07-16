@@ -42,6 +42,10 @@ module Groonga
       def column_scalar?
         flags.include?("COLUMN_SCALAR")
       end
+
+      def column_vector?
+        flags.include?("COLUMN_VECTOR")
+      end
     end
   end
 end
