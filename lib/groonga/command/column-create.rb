@@ -46,6 +46,10 @@ module Groonga
       def column_vector?
         flags.include?("COLUMN_VECTOR")
       end
+
+      def column_index?
+        flags.include?("COLUMN_INDEX")
+      end
     end
   end
 end

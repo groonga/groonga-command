@@ -92,6 +92,21 @@ class ColumnCreateCommandTest < Test::Unit::TestCase
           command = parse({"flags" => data[:flags]})
           assert_equal(data[:expected], command.column_vector?)
         end
+
+        data({
+               "COLUMN_INDEX" => {
+                 :expected => true,
+                 :flags    => "COLUMN_INDEX",
+               },
+               "other flag"   => {
+                 :expected => false,
+                 :flags    => "COLUMN_SCALAR",
+               }
+             })
+        def test_column_index?(data)
+          command = parse({"flags" => data[:flags]})
+          assert_equal(data[:expected], command.column_index?)
+        end
       end
     end
   end
