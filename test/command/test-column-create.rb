@@ -137,6 +137,21 @@ class ColumnCreateCommandTest < Test::Unit::TestCase
           command = parse({"flags" => data[:flags]})
           assert_equal(data[:expected], command.with_weight?)
         end
+
+        data({
+               "WITH_POSITION" => {
+                 :expected => true,
+                 :flags    => "COLUMN_INDEX|WITH_POSITION",
+               },
+               "other flag"   => {
+                 :expected => false,
+                 :flags    => "COLUMN_INDEX|WITH_SECTION",
+               }
+             })
+        def test_with_position?(data)
+          command = parse({"flags" => data[:flags]})
+          assert_equal(data[:expected], command.with_position?)
+        end
       end
     end
   end

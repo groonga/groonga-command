@@ -58,6 +58,10 @@ module Groonga
       def with_weight?
         flags.include?("WITH_WEIGHT")
       end
+
+      def with_position?
+        flags.include?("WITH_POSITION")
+      end
     end
   end
 end
