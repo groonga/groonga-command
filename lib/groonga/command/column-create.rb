@@ -50,6 +50,10 @@ module Groonga
       def column_index?
         flags.include?("COLUMN_INDEX")
       end
+
+      def with_section?
+        flags.include?("WITH_SECTION")
+      end
     end
   end
 end
