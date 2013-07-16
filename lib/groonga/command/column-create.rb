@@ -54,6 +54,10 @@ module Groonga
       def with_section?
         flags.include?("WITH_SECTION")
       end
+
+      def with_weight?
+        flags.include?("WITH_WEIGHT")
+      end
     end
   end
 end
