@@ -27,7 +27,7 @@ class ColumnCreateCommandTest < Test::Unit::TestCase
       type     = "Posts"
       source   = "content"
 
-      command = parse(table, name, flags, type, source)
+      command = parse([table, name, flags, type, source])
       assert_instance_of(Groonga::Command::ColumnCreate, command)
       assert_equal({
                      :table    => table,
@@ -40,7 +40,7 @@ class ColumnCreateCommandTest < Test::Unit::TestCase
     end
 
     private
-    def parse(*arguments)
+    def parse(arguments)
       super("column_create", arguments, :output_type => false)
     end
   end
