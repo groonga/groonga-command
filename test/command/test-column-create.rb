@@ -43,5 +43,24 @@ class ColumnCreateCommandTest < Test::Unit::TestCase
     def parse(arguments)
       super("column_create", arguments, :output_type => false)
     end
+
+    class FlagsTest < self
+      def test_multiple
+        command = parse({"flags" => "COLUMN_INDEX|WITH_POSITION"})
+        assert_equal(["COLUMN_INDEX", "WITH_POSITION"],
+                     command.flags)
+      end
+
+      def test_one
+        command = parse({"flags" => "COLUMN_VECTOR"})
+        assert_equal(["COLUMN_VECTOR"],
+                     command.flags)
+      end
+
+      def test_no_flags
+        command = parse({})
+        assert_equal([], command.flags)
+      end
+    end
   end
 end

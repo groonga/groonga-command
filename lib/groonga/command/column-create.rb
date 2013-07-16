@@ -34,6 +34,10 @@ module Groonga
           ]
         end
       end
+
+      def flags
+        @flags ||= (self[:flags] || "").split(/\s*\|\s*/)
+      end
     end
   end
 end
