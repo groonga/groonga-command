@@ -1,5 +1,25 @@
 # News
 
+## 1.0.3: 2013-07-23
+
+### Improvements
+
+  * Added predicate methods of table_create flags
+    to {Groonga::Command::TableCreate}
+    * {Groonga::Command::TableCreate#table_no_key?}
+    * {Groonga::Command::TableCreate#table_hash_key?}
+    * {Groonga::Command::TableCreate#table_pat_key?}
+    * {Groonga::Command::TableCreate#table_dat_key?}
+    * {Groonga::Command::TableCreate#key_with_sis?}
+  * Added predicate methods of column_create flags
+    to {Groonga::Command::ColumnCreate}
+    * {Groonga::Command::ColumnCreate#column_scalar?}
+    * {Groonga::Command::ColumnCreate#column_vector?}
+    * {Groonga::Command::ColumnCreate#column_index?}
+    * {Groonga::Command::ColumnCreate#with_section?}
+    * {Groonga::Command::ColumnCreate#with_weight?}
+    * {Groonga::Command::ColumnCreate#with_position?}
+
 ## 1.0.2: 2013-06-27
 
 ### Improvements
