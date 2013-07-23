@@ -39,22 +39,37 @@ module Groonga
         @flags ||= (self[:flags] || "").split(/\s*\|\s*/)
       end
 
+      # @return [Boolean] true if "TABLE_NO_KEY" is specified in {#flags},
+      #   false otherwise.
+      # @since 1.0.3
       def table_no_key?
         flags.include?("TABLE_NO_KEY")
       end
 
+      # @return [Boolean] true if "TABLE_HASH_KEY" is specified in {#flags},
+      #   false otherwise.
+      # @since 1.0.3
       def table_hash_key?
         flags.include?("TABLE_HASH_KEY")
       end
 
+      # @return [Boolean] true if "TABLE_PAT_KEY" is specified in {#flags},
+      #   false otherwise.
+      # @since 1.0.3
       def table_pat_key?
         flags.include?("TABLE_PAT_KEY")
       end
 
+      # @return [Boolean] true if "TABLE_DAT_KEY" is specified in {#flags},
+      #   false otherwise.
+      # @since 1.0.3
       def table_dat_key?
         flags.include?("TABLE_DAT_KEY")
       end
 
+      # @return [Boolean] true if "KEY_WITH_SIS" is specified in {#flags},
+      #   false otherwise.
+      # @since 1.0.3
       def key_with_sis?
         flags.include?("KEY_WITH_SIS")
       end
