@@ -39,26 +39,44 @@ module Groonga
         @flags ||= (self[:flags] || "").split(/\s*\|\s*/)
       end
 
+      # @return [Boolean] true if "COLUMN_SCALAR" is specified in {#flags},
+      #   false otherwise.
+      # @since 1.0.3
       def column_scalar?
         flags.include?("COLUMN_SCALAR")
       end
 
+      # @return [Boolean] true if "COLUMN_VECTOR" is specified in {#flags},
+      #   false otherwise.
+      # @since 1.0.3
       def column_vector?
         flags.include?("COLUMN_VECTOR")
       end
 
+      # @return [Boolean] true if "COLUMN_INDEX" is specified in {#flags},
+      #   false otherwise.
+      # @since 1.0.3
       def column_index?
         flags.include?("COLUMN_INDEX")
       end
 
+      # @return [Boolean] true if "WITH_SECTION" is specified in {#flags},
+      #   false otherwise.
+      # @since 1.0.3
       def with_section?
         flags.include?("WITH_SECTION")
       end
 
+      # @return [Boolean] true if "WITH_WEIGHT" is specified in {#flags},
+      #   false otherwise.
+      # @since 1.0.3
       def with_weight?
         flags.include?("WITH_WEIGHT")
       end
 
+      # @return [Boolean] true if "WITH_POSITION" is specified in {#flags},
+      #   false otherwise.
+      # @since 1.0.3
       def with_position?
         flags.include?("WITH_POSITION")
       end
