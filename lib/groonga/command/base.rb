@@ -119,7 +119,7 @@ module Groonga
 
       def to_hash
         converted_hash = {}
-        names = self.class.parameter_names.each do |parameter|
+        self.class.parameter_names.each do |parameter|
           unless self[parameter].nil?
             converted_hash[parameter] = self[parameter]
           end
