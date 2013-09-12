@@ -117,6 +117,16 @@ module Groonga
         command_line.join(" ")
       end
 
+      def to_hash
+        converted_hash = {}
+        names = self.class.parameter_names.each do |parameter|
+          unless self[parameter].nil?
+            converted_hash[parameter] = self[parameter]
+          end
+        end
+        converted_hash
+      end
+
       private
       def construct_arguments(pair_arguments, ordered_arguments)
         arguments = {}

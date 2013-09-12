@@ -83,6 +83,31 @@ class BaseCommandTest < Test::Unit::TestCase
     end
   end
 
+  class CovnertToHashTest < self
+    class TemporaryCommand < Groonga::Command::Base
+      Groonga::Command.register("temporary_command", self)
+
+      class << self
+        def parameter_names
+          [
+            :parameter1,
+            :parameter2,
+            :parameter3,
+          ]
+        end
+      end
+    end
+
+    def test_convert
+      select = TemporaryCommand.new("temporary_command",
+                                    :parameter1 => "value1",
+                                    :parameter2 => "value2")
+      assert_equal({ :parameter1 => "value1",
+                     :parameter2 => "value2" },
+                   select.to_hash)
+    end
+  end
+
   sub_test_case("#[]") do
     def setup
       @table = "Users"
