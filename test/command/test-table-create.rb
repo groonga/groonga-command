@@ -26,8 +26,9 @@ class TableCreateCommandTest < Test::Unit::TestCase
       key_type          = "ShortText"
       value_type        = "UInt32"
       default_tokenizer = "TokenBigram"
+      normalizer        = "NormalizerAuto"
 
-      command = parse([name, flags, key_type, value_type, default_tokenizer])
+      command = parse([name, flags, key_type, value_type, default_tokenizer, normalizer])
       assert_instance_of(Groonga::Command::TableCreate, command)
       assert_equal({
                      :name              => name,
@@ -35,6 +36,7 @@ class TableCreateCommandTest < Test::Unit::TestCase
                      :key_type          => key_type,
                      :value_type        => value_type,
                      :default_tokenizer => default_tokenizer,
+                     :normalizer        => normalizer,
                    },
                    command.arguments)
     end

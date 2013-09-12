@@ -31,6 +31,7 @@ module Groonga
             :key_type,
             :value_type,
             :default_tokenizer,
+            :normalizer,
           ]
         end
       end
