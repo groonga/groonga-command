@@ -25,9 +25,16 @@ module Groonga
 
       class << self
         def parameter_names
-          # TODO: Fill me
           [
-            :table
+            :table,
+            :sortby,
+            :scorer,
+            :query,
+            :filter,
+            :conditions,
+            :drilldowns,
+            :output_columns,
+            :output_type,
           ]
         end
       end
