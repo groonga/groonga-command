@@ -305,7 +305,7 @@ module Groonga
             @buffer = rest
             @json_parser = Yajl::Parser.new
             @json_parser.on_parse_complete = lambda do |object|
-              if object.is_a?(Array) and @command.columns.nil?
+              if object.is_a?(::Array) and @command.columns.nil?
                 @command.columns = object
                 on_load_columns(@command, object)
               else
@@ -364,7 +364,7 @@ module Groonga
           end
           if @command[:values]
             values = Yajl::Parser.parse(@command[:values])
-            if @command.columns.nil? and values.first.is_a?(Array)
+            if @command.columns.nil? and values.first.is_a?(::Array)
               header = values.shift
               @command.columns = header
               on_load_columns(@command, header)
