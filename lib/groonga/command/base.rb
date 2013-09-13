@@ -16,8 +16,8 @@
 # License along with this library; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
-require "English"
-require "cgi"
+require "groonga/command/format/uri"
+require "groonga/command/format/command"
 
 module Groonga
   module Command
@@ -79,42 +79,11 @@ module Groonga
       end
 
       def to_uri_format
-        path = "/d/#{@name}"
-        arguments = @arguments.dup
-        output_type = arguments.delete(:output_type)
-        path << ".#{output_type}" if output_type
-        unless arguments.empty?
-          sorted_arguments = arguments.sort_by do |name, _|
-            name.to_s
-          end
-          uri_arguments = sorted_arguments.collect do |name, value|
-            "#{CGI.escape(name.to_s)}=#{CGI.escape(value)}"
-          end
-          path << "?"
-          path << uri_arguments.join("&")
-        end
-        path
+        Format::URI.new(@name, @arguments).path
       end
 
       def to_command_format
-        command_line = [@name]
-        sorted_arguments = @arguments.sort_by do |name, _|
-          name.to_s
-        end
-        sorted_arguments.each do |name, value|
-          escaped_value = value.gsub(/[\n"\\]/) do
-            special_character = $MATCH
-            case special_character
-            when "\n"
-              "\\n"
-            else
-              "\\#{special_character}"
-            end
-          end
-          command_line << "--#{name}"
-          command_line << "\"#{escaped_value}\""
-        end
-        command_line.join(" ")
+        Format::Command.new(@name, @arguments).command_line
       end
 
       private
