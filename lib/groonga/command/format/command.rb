@@ -22,6 +22,21 @@ module Groonga
   module Command
     module Format
       class Command
+        class << self
+          def escape_value(value)
+            escaped_value = value.gsub(/[\n"\\]/) do
+              special_character = $MATCH
+              case special_character
+              when "\n"
+                "\\n"
+              else
+                "\\#{special_character}"
+              end
+            end
+            "\"#{escaped_value}\""
+          end
+        end
+
         def initialize(name, arguments)
           @name = name
           @arguments = arguments
@@ -33,17 +48,8 @@ module Groonga
             name.to_s
           end
           sorted_arguments.each do |name, value|
-            escaped_value = value.gsub(/[\n"\\]/) do
-              special_character = $MATCH
-              case special_character
-              when "\n"
-                "\\n"
-              else
-                "\\#{special_character}"
-              end
-            end
             components << "--#{name}"
-            components << "\"#{escaped_value}\""
+            components << self.class.escape_value(value)
           end
           components.join(" ")
         end
