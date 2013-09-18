@@ -27,14 +27,24 @@ module Groonga
         def parameter_names
           [
             :table,
-            :sortby,
-            :scorer,
+            :match_columns,
             :query,
             :filter,
-            :conditions,
-            :drilldowns,
+            :scorer,
+            :sortby,
             :output_columns,
-            :output_type,
+            :offset,
+            :limit,
+            :drilldown,
+            :drilldown_sortby,
+            :drilldown_output_columns,
+            :drilldown_offset,
+            :drilldown_limit,
+            :cache,
+            :match_escalation_threshold,
+            :query_expansion,
+            :query_flags,
+            :query_expander,
           ]
         end
       end

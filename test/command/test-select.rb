@@ -21,10 +21,71 @@ class SelectCommandTest < Test::Unit::TestCase
 
   def test_ordered_argument
     table = "Users"
-    command = parse("select", [table], :output_type => false)
+    match_columns = "name * 10 || description"
+    query = "groonga"
+    filter = "age >= 18"
+    scorer = "_score = age"
+    sortby = "_score"
+    output_columns = "_key, name"
+    offset = "10"
+    limit = "20"
+    drilldown = "name"
+    drilldown_sortby = "_nsubrecs"
+    drilldown_output_columns = "name, _nsubrecs"
+    drilldown_offset = "5"
+    drilldown_limit = "10"
+    cache = "no"
+    match_escalation_threshold = "-1"
+    query_expansion = "deprecated"
+    query_flags = "ALLOW_LEADING_NOT"
+    query_expander = "Terms.synonym"
+    command = parse("select",
+                    [
+                      table,
+                      match_columns,
+                      query,
+                      filter,
+                      scorer,
+                      sortby,
+                      output_columns,
+                      offset,
+                      limit,
+                      drilldown,
+                      drilldown_sortby,
+                      drilldown_output_columns,
+                      drilldown_offset,
+                      drilldown_limit,
+                      cache,
+                      match_escalation_threshold,
+                      query_expansion,
+                      query_flags,
+                      query_expander,
+                    ],
+                    :output_type => false)
 
     assert_instance_of(Groonga::Command::Select, command)
-    assert_equal({:table => table}, command.arguments)
+    assert_equal({
+                   :table                      => table,
+                   :match_columns              => match_columns,
+                   :query                      => query,
+                   :filter                     => filter,
+                   :scorer                     => scorer,
+                   :sortby                     => sortby,
+                   :output_columns             => output_columns,
+                   :offset                     => offset,
+                   :limit                      => limit,
+                   :drilldown                  => drilldown,
+                   :drilldown_sortby           => drilldown_sortby,
+                   :drilldown_output_columns   => drilldown_output_columns,
+                   :drilldown_offset           => drilldown_offset,
+                   :drilldown_limit            => drilldown_limit,
+                   :cache                      => cache,
+                   :match_escalation_threshold => match_escalation_threshold,
+                   :query_expansion            => query_expansion,
+                   :query_flags                => query_flags,
+                   :query_expander             => query_expander,
+                 },
+                 command.arguments)
   end
 
   def test_scorer
