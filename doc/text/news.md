@@ -1,5 +1,16 @@
 # News
 
+## 1.0.4: 2013-09-18
+
+### Improvements
+
+  * {Groonga::Command::TableCreate}: Supported "--normalizer" parameter.
+  * {Groonga::Command::Select}: Supported all parameters.
+
+### Fixes
+
+  * Fixed a bug that is caused by using with rroonga.
+
 ## 1.0.3: 2013-07-23
 
 ### Improvements
