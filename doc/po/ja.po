@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: groonga-command 0.9.5\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-11-20 22:17+0900\n"
-"PO-Revision-Date: 2012-12-06 17:27+0900\n"
+"PO-Revision-Date: 2013-09-18 17:20+0900\n"
 "Last-Translator: Haruka Yoshihara <yoshihara@clear-code.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -863,7 +863,7 @@ msgstr ""
 
 #: ../../doc/text/news.md:1
 msgid "# News"
-msgstr ""
+msgstr "# おしらせ"
 
 #: ../../doc/text/news.md:3
 msgid "## 1.0.4: 2013-09-18"
@@ -879,6 +879,8 @@ msgid ""
 "  * {Groonga::Command::TableCreate}: Supported \"--normalizer\" parameter.\n"
 "  * {Groonga::Command::Select}: Supported all parameters."
 msgstr ""
+"  * {Groonga::Command::TableCreate}: \"--normalizer\"パラメーターをサポート。\n"
+"  * {Groonga::Command::Select}: すべてのパラメーターをサポート。"
 
 #: ../../doc/text/news.md:10 ../../doc/text/news.md:52
 msgid "### Fixes"
@@ -886,7 +888,7 @@ msgstr "### 修正"
 
 #: ../../doc/text/news.md:12
 msgid "  * Fixed a bug that is caused by using with rroonga."
-msgstr ""
+msgstr "  * rroongaと一緒に使うと問題が発生するバグを修正。"
 
 #: ../../doc/text/news.md:14
 msgid "## 1.0.3: 2013-07-23"
@@ -910,6 +912,19 @@ msgid ""
 "    * {Groonga::Command::ColumnCreate#with_weight?}\n"
 "    * {Groonga::Command::ColumnCreate#with_position?}"
 msgstr ""
+"  * {Groonga::Command::TableCreate}にtable_createのフラグ用の述語メソッドを追加。\n"
+"    * {Groonga::Command::TableCreate#table_no_key?}\n"
+"    * {Groonga::Command::TableCreate#table_hash_key?}\n"
+"    * {Groonga::Command::TableCreate#table_pat_key?}\n"
+"    * {Groonga::Command::TableCreate#table_dat_key?}\n"
+"    * {Groonga::Command::TableCreate#key_with_sis?}\n"
+"  * {Groonga::Command::ColumnCreate}にcolumn_createのフラグ用の述語メソッドを追加。\n"
+"    * {Groonga::Command::ColumnCreate#column_scalar?}\n"
+"    * {Groonga::Command::ColumnCreate#column_vector?}\n"
+"    * {Groonga::Command::ColumnCreate#column_index?}\n"
+"    * {Groonga::Command::ColumnCreate#with_section?}\n"
+"    * {Groonga::Command::ColumnCreate#with_weight?}\n"
+"    * {Groonga::Command::ColumnCreate#with_position?}"
 
 #: ../../doc/text/news.md:34
 msgid "## 1.0.2: 2013-06-27"
@@ -923,6 +938,10 @@ msgid ""
 "  * Supported {Groonga::Command::Select#conditions} without\n"
 "    filter parameter."
 msgstr ""
+"  * \"dump\"コマンドをサポート。\n"
+"  * {Groonga::Command::Base#output_type}を追加。\n"
+"  * [http] キーのみのパラメーターをサポート。\n"
+"  * filterパラメーターがないときでも{Groonga::Command::Select#conditions}を使えるようにした。"
 
 #: ../../doc/text/news.md:44
 msgid "## 1.0.1: 2012-12-06"
@@ -950,7 +969,7 @@ msgstr ""
 
 #: ../../doc/text/news.md:59
 msgid "The first release!!!"
-msgstr ""
+msgstr "最初のリリース！！！"
 
 # Groonga
 #: ../../lib/groonga/command/base.rb:3
