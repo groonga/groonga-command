@@ -380,7 +380,7 @@ module Groonga
           end
         else
           on_command(@command)
-          reset
+          @command = nil
         end
       end
 

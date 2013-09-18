@@ -113,6 +113,24 @@ class ParserTest < Test::Unit::TestCase
           @parser << "status\n"
           assert_equal("status", parsed_command.name)
         end
+
+        def test_multi_lines
+          parsed_commands = []
+          @parser.on_command do |command|
+            parsed_commands << command
+          end
+
+          @parser << <<-COMMAND_LIST.chomp
+table_list
+status
+          COMMAND_LIST
+          assert_equal(["table_list"],
+                       parsed_commands.collect(&:name))
+
+          @parser.finish
+          assert_equal(["table_list", "status"],
+                       parsed_commands.collect(&:name))
+        end
       end
 
       class LoadTest < self
