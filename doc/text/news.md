@@ -1,5 +1,12 @@
 # News
 
+## 1.0.5: 2013-09-29
+
+### Improvements
+
+  * Extracted {Groonga::Command::Parser} as groonga-command-parser gem.
+    Now, groonga-command gem doesn't depend on any extension libraries.
+
 ## 1.0.4: 2013-09-18
 
 ### Improvements
