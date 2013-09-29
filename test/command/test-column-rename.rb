@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (C) 2012  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-2013  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -17,27 +17,26 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 class ColumnRenameCommandTest < Test::Unit::TestCase
-  class CommandLineTest < self
-    include GroongaCommandTestUtils::CommandLineCommandParser
+  private
+  def column_rename_command(pair_arguments={}, ordered_arguments=[])
+    Groonga::Command::ColumnRename.new("column_rename",
+                                       pair_arguments,
+                                       ordered_arguments)
+  end
 
+  class ConstructorTest < self
     def test_ordered_arguments
       table    = "Users"
       name     = "name"
       new_name = "nick"
 
-      command = parse(table, name, new_name)
-      assert_instance_of(Groonga::Command::ColumnRename, command)
+      command = column_rename_command({}, [table, name, new_name])
       assert_equal({
                      :table    => table,
                      :name     => name,
                      :new_name => new_name,
                    },
                    command.arguments)
-    end
-
-    private
-    def parse(*arguments)
-      super("column_rename", arguments, :output_type => false)
     end
   end
 end

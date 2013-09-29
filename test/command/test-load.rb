@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (C) 2012  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-2013  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -17,9 +17,14 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 class LoadCommandTest < Test::Unit::TestCase
-  class CommandLineTest < self
-    include GroongaCommandTestUtils::CommandLineCommandParser
+  private
+  def load_command(pair_arguments={}, ordered_arguments=[])
+    Groonga::Command::Load.new("load",
+                               pair_arguments,
+                               ordered_arguments)
+  end
 
+  class ConstructorTest < self
     def test_ordered_arguments
       values     = "[[\"Alice\"], [\"Bob\"]]"
       table      = "Users"
@@ -28,8 +33,15 @@ class LoadCommandTest < Test::Unit::TestCase
       input_type = "json"
       each       = "strlen(_key)"
 
-      command = parse(values, table, columns, ifexists, input_type, each)
-      assert_instance_of(Groonga::Command::Load, command)
+      ordered_arguments = [
+        values,
+        table,
+        columns,
+        ifexists,
+        input_type,
+        each,
+      ]
+      command = load_command({}, ordered_arguments)
       assert_equal({
                      :values     => values,
                      :table      => table,
@@ -39,11 +51,6 @@ class LoadCommandTest < Test::Unit::TestCase
                      :each       => each,
                    },
                    command.arguments)
-    end
-
-    private
-    def parse(*arguments)
-      super("load", arguments, :output_type => false)
     end
   end
 end

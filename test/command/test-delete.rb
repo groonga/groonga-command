@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (C) 2012  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-2013  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -17,17 +17,21 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 class DeleteCommandTest < Test::Unit::TestCase
-  class CommandLineTest < self
-    include GroongaCommandTestUtils::CommandLineCommandParser
+  private
+  def delete_command(pair_arguments={}, ordered_arguments=[])
+    Groonga::Command::Delete.new("delete",
+                                 pair_arguments,
+                                 ordered_arguments)
+  end
 
+  class ConstructorTest < self
     def test_ordered_arguments
       table  = "Users"
       key    = "Alice"
       id     = "29"
       filter = "age == 20"
 
-      command = parse(table, key, id, filter)
-      assert_instance_of(Groonga::Command::Delete, command)
+      command = delete_command({}, [table, key, id, filter])
       assert_equal({
                      :table  => table,
                      :key    => key,
@@ -35,11 +39,6 @@ class DeleteCommandTest < Test::Unit::TestCase
                      :filter => filter,
                    },
                    command.arguments)
-    end
-
-    private
-    def parse(*arguments)
-      super("delete", arguments, :output_type => false)
     end
   end
 end

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (C) 2012  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-2013  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -17,25 +17,24 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 class ColumnRemoveCommandTest < Test::Unit::TestCase
-  class CommandLineTest < self
-    include GroongaCommandTestUtils::CommandLineCommandParser
+  private
+  def column_remove_command(pair_arguments={}, ordered_arguments=[])
+    Groonga::Command::ColumnRemove.new("column_remove",
+                                       pair_arguments,
+                                       ordered_arguments)
+  end
 
+  class ConstructorTest < self
     def test_ordered_arguments
       table = "Users"
       name  = "age"
 
-      command = parse(table, name)
-      assert_instance_of(Groonga::Command::ColumnRemove, command)
+      command = column_remove_command({}, [table, name])
       assert_equal({
                      :table => table,
                      :name  => name,
                    },
                    command.arguments)
-    end
-
-    private
-    def parse(*arguments)
-      super("column_remove", arguments, :output_type => false)
     end
   end
 end

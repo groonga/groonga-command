@@ -1,6 +1,6 @@
 # -*- mode: ruby; coding: utf-8 -*-
 #
-# Copyright (C) 2012  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-2013  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -51,8 +51,6 @@ Gem::Specification.new do |spec|
   spec.homepage = "https://github.com/groonga/groonga-command"
   spec.licenses = ["LGPLv2.1+"]
   spec.require_paths = ["lib"]
-
-  spec.add_runtime_dependency("yajl-ruby")
 
   spec.add_development_dependency("test-unit")
   spec.add_development_dependency("test-unit-notify")

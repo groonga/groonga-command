@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (C) 2012  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-213  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -17,9 +17,14 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 class ColumnCreateCommandTest < Test::Unit::TestCase
-  class CommandLineTest < self
-    include GroongaCommandTestUtils::CommandLineCommandParser
+  private
+  def column_create_command(pair_arguments={}, ordered_arguments=[])
+    Groonga::Command::ColumnCreate.new("column_create",
+                                       pair_arguments,
+                                       ordered_arguments)
+  end
 
+  class ConstructorTest < self
     def test_ordered_arguments
       table    = "Lexicon"
       name     = "content_index"
@@ -27,8 +32,7 @@ class ColumnCreateCommandTest < Test::Unit::TestCase
       type     = "Posts"
       source   = "content"
 
-      command = parse([table, name, flags, type, source])
-      assert_instance_of(Groonga::Command::ColumnCreate, command)
+      command = column_create_command({}, [table, name, flags, type, source])
       assert_equal({
                      :table    => table,
                      :name     => name,
@@ -38,120 +42,115 @@ class ColumnCreateCommandTest < Test::Unit::TestCase
                    },
                    command.arguments)
     end
+  end
 
-    private
-    def parse(arguments)
-      super("column_create", arguments, :output_type => false)
+  class FlagsTest < self
+    def test_multiple
+      command = column_create_command({"flags" => "COLUMN_INDEX|WITH_POSITION"})
+      assert_equal(["COLUMN_INDEX", "WITH_POSITION"],
+                   command.flags)
     end
 
-    class FlagsTest < self
-      def test_multiple
-        command = parse({"flags" => "COLUMN_INDEX|WITH_POSITION"})
-        assert_equal(["COLUMN_INDEX", "WITH_POSITION"],
-                     command.flags)
+    def test_one
+      command = column_create_command({"flags" => "COLUMN_VECTOR"})
+      assert_equal(["COLUMN_VECTOR"],
+                   command.flags)
+    end
+
+    def test_no_flags
+      command = column_create_command({})
+      assert_equal([], command.flags)
+    end
+
+    class PredicateTest < self
+      data({
+             "COLUMN_SCALAR" => {
+               :expected => true,
+               :flags    => "COLUMN_SCALAR",
+             },
+             "other flag"   => {
+               :expected => false,
+               :flags    => "COLUMN_VECTOR",
+             }
+           })
+      def test_column_scalar?(data)
+        command = column_create_command({"flags" => data[:flags]})
+        assert_equal(data[:expected], command.column_scalar?)
       end
 
-      def test_one
-        command = parse({"flags" => "COLUMN_VECTOR"})
-        assert_equal(["COLUMN_VECTOR"],
-                     command.flags)
+      data({
+             "COLUMN_VECTOR" => {
+               :expected => true,
+               :flags    => "COLUMN_VECTOR",
+             },
+             "other flag"   => {
+               :expected => false,
+               :flags    => "COLUMN_INDEX",
+             }
+           })
+      def test_column_vector?(data)
+        command = column_create_command({"flags" => data[:flags]})
+        assert_equal(data[:expected], command.column_vector?)
       end
 
-      def test_no_flags
-        command = parse({})
-        assert_equal([], command.flags)
+      data({
+             "COLUMN_INDEX" => {
+               :expected => true,
+               :flags    => "COLUMN_INDEX",
+             },
+             "other flag"   => {
+               :expected => false,
+               :flags    => "COLUMN_SCALAR",
+             }
+           })
+      def test_column_index?(data)
+        command = column_create_command({"flags" => data[:flags]})
+        assert_equal(data[:expected], command.column_index?)
       end
 
-      class PredicateTest < self
-        data({
-               "COLUMN_SCALAR" => {
-                 :expected => true,
-                 :flags    => "COLUMN_SCALAR",
-               },
-               "other flag"   => {
-                 :expected => false,
-                 :flags    => "COLUMN_VECTOR",
-               }
-             })
-        def test_column_scalar?(data)
-          command = parse({"flags" => data[:flags]})
-          assert_equal(data[:expected], command.column_scalar?)
-        end
+      data({
+             "WITH_SECTION" => {
+               :expected => true,
+               :flags    => "COLUMN_INDEX|WITH_SECTION",
+             },
+             "other flag"   => {
+               :expected => false,
+               :flags    => "COLUMN_INDEX|WITH_WEIGHT",
+             }
+           })
+      def test_with_section?(data)
+        command = column_create_command({"flags" => data[:flags]})
+        assert_equal(data[:expected], command.with_section?)
+      end
 
-        data({
-               "COLUMN_VECTOR" => {
-                 :expected => true,
-                 :flags    => "COLUMN_VECTOR",
-               },
-               "other flag"   => {
-                 :expected => false,
-                 :flags    => "COLUMN_INDEX",
-               }
-             })
-        def test_column_vector?(data)
-          command = parse({"flags" => data[:flags]})
-          assert_equal(data[:expected], command.column_vector?)
-        end
+      data({
+             "WITH_WEIGHT" => {
+               :expected => true,
+               :flags    => "COLUMN_INDEX|WITH_WEIGHT",
+             },
+             "other flag"   => {
+               :expected => false,
+               :flags    => "COLUMN_INDEX|WITH_POSITION",
+             }
+           })
+      def test_with_weight?(data)
+        command = column_create_command({"flags" => data[:flags]})
+        assert_equal(data[:expected], command.with_weight?)
+      end
 
-        data({
-               "COLUMN_INDEX" => {
-                 :expected => true,
-                 :flags    => "COLUMN_INDEX",
-               },
-               "other flag"   => {
-                 :expected => false,
-                 :flags    => "COLUMN_SCALAR",
-               }
-             })
-        def test_column_index?(data)
-          command = parse({"flags" => data[:flags]})
-          assert_equal(data[:expected], command.column_index?)
-        end
-
-        data({
-               "WITH_SECTION" => {
-                 :expected => true,
-                 :flags    => "COLUMN_INDEX|WITH_SECTION",
-               },
-               "other flag"   => {
-                 :expected => false,
-                 :flags    => "COLUMN_INDEX|WITH_WEIGHT",
-               }
-             })
-        def test_with_section?(data)
-          command = parse({"flags" => data[:flags]})
-          assert_equal(data[:expected], command.with_section?)
-        end
-
-        data({
-               "WITH_WEIGHT" => {
-                 :expected => true,
-                 :flags    => "COLUMN_INDEX|WITH_WEIGHT",
-               },
-               "other flag"   => {
-                 :expected => false,
-                 :flags    => "COLUMN_INDEX|WITH_POSITION",
-               }
-             })
-        def test_with_weight?(data)
-          command = parse({"flags" => data[:flags]})
-          assert_equal(data[:expected], command.with_weight?)
-        end
-
-        data({
-               "WITH_POSITION" => {
-                 :expected => true,
-                 :flags    => "COLUMN_INDEX|WITH_POSITION",
-               },
-               "other flag"   => {
-                 :expected => false,
-                 :flags    => "COLUMN_INDEX|WITH_SECTION",
-               }
-             })
-        def test_with_position?(data)
-          command = parse({"flags" => data[:flags]})
-          assert_equal(data[:expected], command.with_position?)
-        end
+      data({
+             "WITH_POSITION" => {
+               :expected => true,
+               :flags    => "COLUMN_INDEX|WITH_POSITION",
+             },
+             "other flag"   => {
+               :expected => false,
+               :flags    => "COLUMN_INDEX|WITH_SECTION",
+             }
+           })
+      def test_with_position?(data)
+        command = column_create_command({"flags" => data[:flags]})
+        assert_equal(data[:expected], command.with_position?)
       end
     end
   end

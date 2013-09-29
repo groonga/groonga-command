@@ -17,14 +17,14 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 class DumpCommandTest < Test::Unit::TestCase
-  include GroongaCommandTestUtils::CommandLineCommandParser
-
-  def test_output_type
-    assert_equal(:none, command.output_type)
+  private
+  def dump_command(pair_arguments={}, ordered_arguments=[])
+    Groonga::Command::Dump.new("dump", pair_arguments, ordered_arguments)
   end
 
-  private
-  def command(arguments={})
-    Groonga::Command::Dump.new("dump", arguments)
+  class OutputTypeTest < self
+    def test_none
+      assert_equal(:none, dump_command.output_type)
+    end
   end
 end

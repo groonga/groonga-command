@@ -6,9 +6,9 @@ groonga-command
 
 ## Description
 
-Groonga-command is a library to process
-[groonga](http://groonga.org/)'s command syntax. You can write a
-program to process groonga's command by using groonga-command.
+Groonga-command is a library that represents
+[groonga](http://groonga.org/)'s command. You can write a program that
+handle groonga's command by using groonga-command.
 
 ## Install
 
