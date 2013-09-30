@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (C) 2012-2013  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2013  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -16,22 +16,13 @@
 # License along with this library; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
-require "groonga/command/version"
+require "groonga/command/base"
 
-require "groonga/command/error"
+module Groonga
+  module Command
+    class Status < Base
+      Command.register("status", self)
+    end
+  end
+end
 
-require "groonga/command/column-create"
-require "groonga/command/column-remove"
-require "groonga/command/column-rename"
-require "groonga/command/delete"
-require "groonga/command/dump"
-require "groonga/command/get"
-require "groonga/command/load"
-require "groonga/command/register"
-require "groonga/command/select"
-require "groonga/command/status"
-require "groonga/command/suggest"
-require "groonga/command/table-create"
-require "groonga/command/table-remove"
-require "groonga/command/table-rename"
-require "groonga/command/truncate"
