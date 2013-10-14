@@ -2,5 +2,6 @@
 --no-private
 --output doc/reference/en
 --title "groonga-command API Reference"
+--markup markdown
 -
 doc/text/*
