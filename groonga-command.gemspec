@@ -52,6 +52,8 @@ Gem::Specification.new do |spec|
   spec.licenses = ["LGPLv2.1+"]
   spec.require_paths = ["lib"]
 
+  spec.add_runtime_dependency("json")
+
   spec.add_development_dependency("test-unit")
   spec.add_development_dependency("test-unit-notify")
   spec.add_development_dependency("rake")

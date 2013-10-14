@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (C) 2012  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-2013  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -15,6 +15,8 @@
 # You should have received a copy of the GNU Lesser General Public
 # License along with this library; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+
+require "json"
 
 require "groonga/command/base"
 
@@ -36,10 +38,16 @@ module Groonga
         end
       end
 
+      attr_writer :values
       attr_writer :columns
       def initialize(*argumetns)
         super
+        @values = nil
         @columns = nil
+      end
+
+      def values
+        @values ||= parse_values(self[:values])
       end
 
       def columns
@@ -47,6 +55,11 @@ module Groonga
       end
 
       private
+      def parse_values(values)
+        return values if values.nil?
+        JSON.parse(values)
+      end
+
       def parse_columns(columns)
         return columns if columns.nil?
         columns.split(/\s*,\s*/)

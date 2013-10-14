@@ -53,4 +53,39 @@ class LoadCommandTest < Test::Unit::TestCase
                    command.arguments)
     end
   end
+
+  class ValuesTest < self
+    def test_nil
+      command = load_command
+      assert_nil(command.values)
+    end
+
+    def test_empty
+      command = load_command(:values => "[]")
+      assert_equal([], command.values)
+    end
+
+    def test_array
+      command = load_command(:values => "[[\"Alice\"]]")
+      assert_equal([["Alice"]], command.values)
+    end
+
+    def test_object_literal
+      command = load_command(:values => "[{\"key\": \"Alice\"}]")
+      assert_equal([{"key" => "Alice"}], command.values)
+    end
+
+    def test_writer
+      command = load_command(:values => "[{\"key\": \"Alice\"}]")
+      command.values = [["Alice"]]
+      assert_equal({
+                     :reader          => [["Alice"]],
+                     :array_reference => "[{\"key\": \"Alice\"}]",
+                   },
+                   {
+                     :reader          => command.values,
+                     :array_reference => command[:values],
+                   })
+    end
+  end
 end
