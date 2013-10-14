@@ -20,6 +20,9 @@ require "groonga/command/base"
 
 module Groonga
   module Command
+    # A command class that represents `tokenize` command.
+    #
+    # @since 1.0.6
     class Tokenize < Base
       Command.register("tokenize", self)
 
@@ -34,18 +37,30 @@ module Groonga
         end
       end
 
+      # @return [String] `tokenizer` parameter value.
+      # @since 1.0.6
       def tokenizer
         self[:tokenizer]
       end
 
+      # @return [String] `string` parameter value.
+      # @since 1.0.6
       def string
         self[:string]
       end
 
+      # @return [String] `normalizer` parameter value.
+      # @since 1.0.6
       def normalizer
         self[:normalizer]
       end
 
+      # @return [Array<String>] An array of flags specified in `flags`
+      #   parameter value. This array is extracted by parsing `flags`
+      #   parameter value. If `flags` parameter value is nil or empty,
+      #   an empty array is returned.
+      #
+      # @since 1.0.6
       def flags
         @flags ||= (self[:flags] || "").split(/\s*[| ]\s*/)
       end
