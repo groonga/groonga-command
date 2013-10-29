@@ -1,5 +1,17 @@
 # News
 
+## 1.0.6: 2013-10-29
+
+### Improvements
+
+  * {Groonga::Command::Status}: Added.
+  * {Groonga::Command::Select}: Added accessor for "values" parameter.
+  * {Groonga::Command::Tokenize}: Added.
+  * {Groonga::Command::ColumnList}: Added.
+  * {Groonga::Command::Normalize}: Added.
+  * {Groonga::Command::RubyEval}: Added.
+  * {Groonga::Command::RubyLoad}: Added.
+
 ## 1.0.5: 2013-09-29
 
 ### Improvements
