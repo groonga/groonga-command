@@ -7,8 +7,8 @@ groonga-command
 ## Description
 
 Groonga-command is a library that represents
-[groonga](http://groonga.org/)'s command. You can write a program that
-handle groonga's command by using groonga-command.
+[Groonga](http://groonga.org/)'s command. You can write a program that
+handle Groonga's command by using groonga-command.
 
 ## Install
 
