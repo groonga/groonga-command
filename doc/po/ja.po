@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: groonga-command 0.9.5\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-11-20 22:17+0900\n"
-"PO-Revision-Date: 2013-09-29 18:14+0900\n"
+"PO-Revision-Date: 2013-10-29 18:14+0900\n"
 "Last-Translator: Haruka Yoshihara <yoshihara@clear-code.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -34,14 +34,13 @@ msgid "## Description"
 msgstr "## 説明"
 
 #: ../../README.md:9
-#, fuzzy
 msgid ""
 "Groonga-command is a library that represents\n"
-"[groonga](http://groonga.org/)'s command. You can write a program that\n"
-"handle groonga's command by using groonga-command."
+"[Groonga](http://groonga.org/)'s command. You can write a program that\n"
+"handle Groonga's command by using groonga-command."
 msgstr ""
-"groonga-commandは[groonga](http://groonga.org/ja/)のコマンドの記法（\"select Sites\"といったGQ"
-"TPの記法や、\"/d/select?table=Sites\"といったHTTPの記法）を処理するためのライブラリです。groonga-commandを使ってg"
+"groonga-commandは[Groonga](http://groonga.org/ja/)のコマンドの記法（\"select Sites\"といったGQ"
+"TPの記法や、\"/d/select?table=Sites\"といったHTTPの記法）を処理するためのライブラリです。groonga-commandを使ってG"
 "roongaのコマンドを処理することができます。"
 
 #: ../../README.md:13
@@ -876,15 +875,38 @@ msgid "# News"
 msgstr "# おしらせ"
 
 #: ../../doc/text/news.md:3
-msgid "## 1.0.5: 2013-09-29"
+msgid "## 1.0.6: 2013-10-29"
 msgstr ""
 
-#: ../../doc/text/news.md:5 ../../doc/text/news.md:12 ../../doc/text/news.md:23
-#: ../../doc/text/news.md:43 ../../doc/text/news.md:55
+#: ../../doc/text/news.md:5 ../../doc/text/news.md:17 ../../doc/text/news.md:24
+#: ../../doc/text/news.md:35 ../../doc/text/news.md:55
+#: ../../doc/text/news.md:67
 msgid "### Improvements"
 msgstr "### 改善"
 
 #: ../../doc/text/news.md:7
+msgid ""
+"  * {Groonga::Command::Status}: Added.\n"
+"  * {Groonga::Command::Select}: Added accessor for \"values\" parameter.\n"
+"  * {Groonga::Command::Tokenize}: Added.\n"
+"  * {Groonga::Command::ColumnList}: Added.\n"
+"  * {Groonga::Command::Normalize}: Added.\n"
+"  * {Groonga::Command::RubyEval}: Added.\n"
+"  * {Groonga::Command::RubyLoad}: Added."
+msgstr ""
+"  * {Groonga::Command::Status}: 追加。\n"
+"  * {Groonga::Command::Select}: 「values」パラメーターのアクセサーを追加。\n"
+"  * {Groonga::Command::Tokenize}: 追加。\n"
+"  * {Groonga::Command::ColumnList}: 追加。\n"
+"  * {Groonga::Command::Normalize}: 追加。\n"
+"  * {Groonga::Command::RubyEval}: 追加。\n"
+"  * {Groonga::Command::RubyLoad}: 追加。"
+
+#: ../../doc/text/news.md:15
+msgid "## 1.0.5: 2013-09-29"
+msgstr ""
+
+#: ../../doc/text/news.md:19
 msgid ""
 "  * Extracted {Groonga::Command::Parser} as groonga-command-parser gem.\n"
 "    Now, groonga-command gem doesn't depend on any extension libraries."
@@ -892,11 +914,11 @@ msgstr ""
 "  * {Groonga::Command::Parser}をgroonga-command-parser gemに移動した。\n"
 "    これで、groonga-command gemは拡張ライブラリに依存しなくなった。"
 
-#: ../../doc/text/news.md:10
+#: ../../doc/text/news.md:22
 msgid "## 1.0.4: 2013-09-18"
 msgstr ""
 
-#: ../../doc/text/news.md:14
+#: ../../doc/text/news.md:26
 msgid ""
 "  * {Groonga::Command::TableCreate}: Supported \"--normalizer\" parameter.\n"
 "  * {Groonga::Command::Select}: Supported all parameters."
@@ -904,19 +926,19 @@ msgstr ""
 "  * {Groonga::Command::TableCreate}: \"--normalizer\"パラメーターをサポート。\n"
 "  * {Groonga::Command::Select}: すべてのパラメーターをサポート。"
 
-#: ../../doc/text/news.md:17 ../../doc/text/news.md:59
+#: ../../doc/text/news.md:29 ../../doc/text/news.md:71
 msgid "### Fixes"
 msgstr "### 修正"
 
-#: ../../doc/text/news.md:19
+#: ../../doc/text/news.md:31
 msgid "  * Fixed a bug that is caused by using with rroonga."
 msgstr "  * rroongaと一緒に使うと問題が発生するバグを修正。"
 
-#: ../../doc/text/news.md:21
+#: ../../doc/text/news.md:33
 msgid "## 1.0.3: 2013-07-23"
 msgstr ""
 
-#: ../../doc/text/news.md:25
+#: ../../doc/text/news.md:37
 msgid ""
 "  * Added predicate methods of table_create flags\n"
 "    to {Groonga::Command::TableCreate}\n"
@@ -948,11 +970,11 @@ msgstr ""
 "    * {Groonga::Command::ColumnCreate#with_weight?}\n"
 "    * {Groonga::Command::ColumnCreate#with_position?}"
 
-#: ../../doc/text/news.md:41
+#: ../../doc/text/news.md:53
 msgid "## 1.0.2: 2013-06-27"
 msgstr ""
 
-#: ../../doc/text/news.md:45
+#: ../../doc/text/news.md:57
 msgid ""
 "  * Supported \"dump\" command.\n"
 "  * Added {Groonga::Command::Base#output_type}.\n"
@@ -965,19 +987,19 @@ msgstr ""
 "  * [http] キーのみのパラメーターをサポート。\n"
 "  * filterパラメーターがないときでも{Groonga::Command::Select#conditions}を使えるようにした。"
 
-#: ../../doc/text/news.md:51
+#: ../../doc/text/news.md:63
 msgid "## 1.0.1: 2012-12-06"
 msgstr ""
 
-#: ../../doc/text/news.md:53
+#: ../../doc/text/news.md:65
 msgid "It's bug fix release."
 msgstr "バグフィックスリリースです。"
 
-#: ../../doc/text/news.md:57
+#: ../../doc/text/news.md:69
 msgid "  * Supported \"register\" command."
 msgstr " * registerコマンドをサポート。"
 
-#: ../../doc/text/news.md:61
+#: ../../doc/text/news.md:73
 msgid ""
 "  * Asigned value and columns of \"load\" command to a result command\n"
 "    correctly in stand alone parsing."
@@ -985,47 +1007,59 @@ msgstr ""
 "  * loadコマンドをスタンドアロンでパースしているときに、valuesとして設\n"
 "    定された値を正しく返り値に設定するように修正。"
 
-#: ../../doc/text/news.md:64
+#: ../../doc/text/news.md:76
 msgid "## 1.0.0: 2012-11-29"
 msgstr ""
 
-#: ../../doc/text/news.md:66
+#: ../../doc/text/news.md:78
 msgid "The first release!!!"
 msgstr "最初のリリース！！！"
 
 # Groonga
 #: ../../lib/groonga/command/base.rb:3
 #: ../../lib/groonga/command/column-create.rb:3
+#: ../../lib/groonga/command/column-list.rb:3
 #: ../../lib/groonga/command/column-remove.rb:3
 #: ../../lib/groonga/command/column-rename.rb:3
 #: ../../lib/groonga/command/delete.rb:3 ../../lib/groonga/command/dump.rb:3
 #: ../../lib/groonga/command/error.rb:3
 #: ../../lib/groonga/command/format/command.rb:3
 #: ../../lib/groonga/command/format/uri.rb:3 ../../lib/groonga/command/get.rb:3
-#: ../../lib/groonga/command/load.rb:3 ../../lib/groonga/command/register.rb:3
-#: ../../lib/groonga/command/select.rb:3 ../../lib/groonga/command/suggest.rb:3
+#: ../../lib/groonga/command/load.rb:3 ../../lib/groonga/command/normalize.rb:3
+#: ../../lib/groonga/command/register.rb:3
+#: ../../lib/groonga/command/ruby-eval.rb:3
+#: ../../lib/groonga/command/ruby-load.rb:3
+#: ../../lib/groonga/command/select.rb:3 ../../lib/groonga/command/status.rb:3
+#: ../../lib/groonga/command/suggest.rb:3
 #: ../../lib/groonga/command/table-create.rb:3
 #: ../../lib/groonga/command/table-remove.rb:3
 #: ../../lib/groonga/command/table-rename.rb:3
+#: ../../lib/groonga/command/tokenize.rb:3
 #: ../../lib/groonga/command/truncate.rb:3
 #: ../../lib/groonga/command/version.rb:3
-msgid "Copyright (C) 2012  Kouhei Sutou <kou@clear-code.com>"
+msgid "Copyright (C) 2012-2013  Kouhei Sutou <kou@clear-code.com>"
 msgstr ""
 
 # Groonga
 #: ../../lib/groonga/command/base.rb:5
 #: ../../lib/groonga/command/column-create.rb:5
+#: ../../lib/groonga/command/column-list.rb:5
 #: ../../lib/groonga/command/column-remove.rb:5
 #: ../../lib/groonga/command/column-rename.rb:5
 #: ../../lib/groonga/command/delete.rb:5 ../../lib/groonga/command/dump.rb:5
 #: ../../lib/groonga/command/error.rb:5
 #: ../../lib/groonga/command/format/command.rb:5
 #: ../../lib/groonga/command/format/uri.rb:5 ../../lib/groonga/command/get.rb:5
-#: ../../lib/groonga/command/load.rb:5 ../../lib/groonga/command/register.rb:5
-#: ../../lib/groonga/command/select.rb:5 ../../lib/groonga/command/suggest.rb:5
+#: ../../lib/groonga/command/load.rb:5 ../../lib/groonga/command/normalize.rb:5
+#: ../../lib/groonga/command/register.rb:5
+#: ../../lib/groonga/command/ruby-eval.rb:5
+#: ../../lib/groonga/command/ruby-load.rb:5
+#: ../../lib/groonga/command/select.rb:5 ../../lib/groonga/command/status.rb:5
+#: ../../lib/groonga/command/suggest.rb:5
 #: ../../lib/groonga/command/table-create.rb:5
 #: ../../lib/groonga/command/table-remove.rb:5
 #: ../../lib/groonga/command/table-rename.rb:5
+#: ../../lib/groonga/command/tokenize.rb:5
 #: ../../lib/groonga/command/truncate.rb:5
 #: ../../lib/groonga/command/version.rb:5
 msgid ""
@@ -1038,6 +1072,7 @@ msgstr ""
 # Groonga
 #: ../../lib/groonga/command/base.rb:10
 #: ../../lib/groonga/command/column-create.rb:10
+#: ../../lib/groonga/command/column-list.rb:10
 #: ../../lib/groonga/command/column-remove.rb:10
 #: ../../lib/groonga/command/column-rename.rb:10
 #: ../../lib/groonga/command/delete.rb:10 ../../lib/groonga/command/dump.rb:10
@@ -1045,12 +1080,17 @@ msgstr ""
 #: ../../lib/groonga/command/format/command.rb:10
 #: ../../lib/groonga/command/format/uri.rb:10
 #: ../../lib/groonga/command/get.rb:10 ../../lib/groonga/command/load.rb:10
+#: ../../lib/groonga/command/normalize.rb:10
 #: ../../lib/groonga/command/register.rb:10
+#: ../../lib/groonga/command/ruby-eval.rb:10
+#: ../../lib/groonga/command/ruby-load.rb:10
 #: ../../lib/groonga/command/select.rb:10
+#: ../../lib/groonga/command/status.rb:10
 #: ../../lib/groonga/command/suggest.rb:10
 #: ../../lib/groonga/command/table-create.rb:10
 #: ../../lib/groonga/command/table-remove.rb:10
 #: ../../lib/groonga/command/table-rename.rb:10
+#: ../../lib/groonga/command/tokenize.rb:10
 #: ../../lib/groonga/command/truncate.rb:10
 #: ../../lib/groonga/command/version.rb:10
 msgid ""
@@ -1063,6 +1103,7 @@ msgstr ""
 # Groonga
 #: ../../lib/groonga/command/base.rb:15
 #: ../../lib/groonga/command/column-create.rb:15
+#: ../../lib/groonga/command/column-list.rb:15
 #: ../../lib/groonga/command/column-remove.rb:15
 #: ../../lib/groonga/command/column-rename.rb:15
 #: ../../lib/groonga/command/delete.rb:15 ../../lib/groonga/command/dump.rb:15
@@ -1070,12 +1111,17 @@ msgstr ""
 #: ../../lib/groonga/command/format/command.rb:15
 #: ../../lib/groonga/command/format/uri.rb:15
 #: ../../lib/groonga/command/get.rb:15 ../../lib/groonga/command/load.rb:15
+#: ../../lib/groonga/command/normalize.rb:15
 #: ../../lib/groonga/command/register.rb:15
+#: ../../lib/groonga/command/ruby-eval.rb:15
+#: ../../lib/groonga/command/ruby-load.rb:15
 #: ../../lib/groonga/command/select.rb:15
+#: ../../lib/groonga/command/status.rb:15
 #: ../../lib/groonga/command/suggest.rb:15
 #: ../../lib/groonga/command/table-create.rb:15
 #: ../../lib/groonga/command/table-remove.rb:15
 #: ../../lib/groonga/command/table-rename.rb:15
+#: ../../lib/groonga/command/tokenize.rb:15
 #: ../../lib/groonga/command/truncate.rb:15
 #: ../../lib/groonga/command/version.rb:15
 msgid ""
@@ -1084,9 +1130,9 @@ msgid ""
 "Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA"
 msgstr ""
 
-# @param
-#: ../../lib/groonga/command/base.rb:43 ../../lib/groonga/command/load.rb:39
-msgid "tag|param|value"
+# Groonga::Command::Base#arguments
+#: ../../lib/groonga/command/base.rb:43
+msgid "Returns the value of attribute arguments"
 msgstr ""
 
 # Groonga::Command::Base#name
@@ -1094,9 +1140,10 @@ msgstr ""
 msgid "Returns the value of attribute name"
 msgstr ""
 
-# @param value
-#: ../../lib/groonga/command/base.rb:43
-msgid "the value to set the attribute original_format to."
+# @param
+#: ../../lib/groonga/command/base.rb:43 ../../lib/groonga/command/load.rb:41
+#: ../../lib/groonga/command/load.rb:42
+msgid "tag|param|value"
 msgstr ""
 
 # @param value
@@ -1104,19 +1151,9 @@ msgstr ""
 msgid "the value to set the attribute original_source to."
 msgstr ""
 
-# Groonga::Command::Base#arguments
+# @param value
 #: ../../lib/groonga/command/base.rb:43
-msgid "Returns the value of attribute arguments"
-msgstr ""
-
-# Groonga::Command::Base#original_source
-#: ../../lib/groonga/command/base.rb:44
-msgid "Returns the value of attribute original_source"
-msgstr ""
-
-# Groonga::Command::Base#original_source=
-#: ../../lib/groonga/command/base.rb:44
-msgid "Sets the attribute original_source"
+msgid "the value to set the attribute original_format to."
 msgstr ""
 
 # Groonga::Command::Base#original_format=
@@ -1129,9 +1166,19 @@ msgstr ""
 msgid "Returns the value of attribute original_format"
 msgstr ""
 
+# Groonga::Command::Base#original_source=
+#: ../../lib/groonga/command/base.rb:44
+msgid "Sets the attribute original_source"
+msgstr ""
+
 # @return [Base]
 #: ../../lib/groonga/command/base.rb:44
 msgid "a new instance of Base"
+msgstr ""
+
+# Groonga::Command::Base#original_source
+#: ../../lib/groonga/command/base.rb:44
+msgid "Returns the value of attribute original_source"
 msgstr ""
 
 # @return [Boolean]
@@ -1191,6 +1238,35 @@ msgid ""
 "false otherwise."
 msgstr ""
 
+# Groonga::Command::ColumnList
+#: ../../lib/groonga/command/column-list.rb:24
+msgid "A command class that represents `column_list` command."
+msgstr ""
+
+# @since
+#: ../../lib/groonga/command/column-list.rb:30
+#: ../../lib/groonga/command/column-list.rb:39
+#: ../../lib/groonga/command/normalize.rb:30
+#: ../../lib/groonga/command/normalize.rb:41
+#: ../../lib/groonga/command/normalize.rb:47
+#: ../../lib/groonga/command/normalize.rb:57
+#: ../../lib/groonga/command/ruby-eval.rb:30
+#: ../../lib/groonga/command/ruby-eval.rb:39
+#: ../../lib/groonga/command/ruby-load.rb:30
+#: ../../lib/groonga/command/ruby-load.rb:39
+#: ../../lib/groonga/command/tokenize.rb:30
+#: ../../lib/groonga/command/tokenize.rb:42
+#: ../../lib/groonga/command/tokenize.rb:48
+#: ../../lib/groonga/command/tokenize.rb:54
+#: ../../lib/groonga/command/tokenize.rb:64
+msgid "1.0.6"
+msgstr ""
+
+# @return [String]
+#: ../../lib/groonga/command/column-list.rb:39
+msgid "`table` parameter value."
+msgstr ""
+
 # @return [Command]
 #: ../../lib/groonga/command/format/command.rb:40
 msgid "a new instance of Command"
@@ -1202,18 +1278,75 @@ msgid "a new instance of URI"
 msgstr ""
 
 # @param value
-#: ../../lib/groonga/command/load.rb:39
+#: ../../lib/groonga/command/load.rb:41
+msgid "the value to set the attribute values to."
+msgstr ""
+
+# Groonga::Command::Load#values=
+#: ../../lib/groonga/command/load.rb:42
+msgid "Sets the attribute values"
+msgstr ""
+
+# @param value
+#: ../../lib/groonga/command/load.rb:42
 msgid "the value to set the attribute columns to."
 msgstr ""
 
 # Groonga::Command::Load#columns=
-#: ../../lib/groonga/command/load.rb:40
+#: ../../lib/groonga/command/load.rb:43
 msgid "Sets the attribute columns"
 msgstr ""
 
 # @return [Load]
-#: ../../lib/groonga/command/load.rb:40
+#: ../../lib/groonga/command/load.rb:43
 msgid "a new instance of Load"
+msgstr ""
+
+# Groonga::Command::Normalize
+#: ../../lib/groonga/command/normalize.rb:24
+msgid "A command class that represents `normalize` command."
+msgstr ""
+
+# @return [String]
+#: ../../lib/groonga/command/normalize.rb:41
+#: ../../lib/groonga/command/tokenize.rb:54
+msgid "`normalizer` parameter value."
+msgstr ""
+
+# @return [String]
+#: ../../lib/groonga/command/normalize.rb:47
+#: ../../lib/groonga/command/tokenize.rb:48
+msgid "`string` parameter value."
+msgstr ""
+
+# @return [Array<String>]
+#: ../../lib/groonga/command/normalize.rb:57
+#: ../../lib/groonga/command/tokenize.rb:64
+msgid ""
+"An array of flags specified in `flags`\n"
+"parameter value. This array is extracted by parsing `flags`\n"
+"parameter value. If `flags` parameter value is nil or empty,\n"
+"an empty array is returned."
+msgstr ""
+
+# Groonga::Command::RubyEval
+#: ../../lib/groonga/command/ruby-eval.rb:24
+msgid "A command class that represents `ruby_eval` command."
+msgstr ""
+
+# @return [String]
+#: ../../lib/groonga/command/ruby-eval.rb:39
+msgid "`script` parameter value."
+msgstr ""
+
+# Groonga::Command::RubyLoad
+#: ../../lib/groonga/command/ruby-load.rb:24
+msgid "A command class that represents `ruby_load` command."
+msgstr ""
+
+# @return [String]
+#: ../../lib/groonga/command/ruby-load.rb:39
+msgid "`path` parameter value."
 msgstr ""
 
 # @return [Boolean]
@@ -1251,34 +1384,13 @@ msgid ""
 "false otherwise."
 msgstr ""
 
-#: ../../README.md:9
-#~ msgid ""
-#~ "Groonga-command is a library to process\n"
-#~ "[groonga](http://groonga.org/)'s command syntax. You can write a\n"
-#~ "program to process groonga's command by using groonga-command."
-#~ msgstr ""
-#~ "groonga-commandは[groonga](http://groonga.org/ja/)のコマンドの記法（\"select Sites\"といったGQ"
-#~ "TPの記法や、\"/d/select?table=Sites\"といったHTTPの記法）を処理するためのライブラリです。groonga-commandを使ってg"
-#~ "roongaのコマンドを処理することができます。"
+# Groonga::Command::Tokenize
+#: ../../lib/groonga/command/tokenize.rb:24
+msgid "A command class that represents `tokenize` command."
+msgstr ""
 
-# Groonga::Command::Parser.parse
-#: ../../lib/groonga/command/parser.rb:78
-#~ msgid "parses groonga command or HTTP (starts with \"/d/\") command."
-#~ msgstr "groongaのコマンドや\"d/\"から始まるHTTPのコマンドをパースします。"
+# @return [String]
+#: ../../lib/groonga/command/tokenize.rb:42
+msgid "`tokenizer` parameter value."
+msgstr ""
 
-# Groonga::Command::Parser#<<
-#: ../../lib/groonga/command/parser.rb:165
-#~ msgid "Streaming parsing command."
-#~ msgstr "groongaコマンドをストリーミングでパースします。"
-
-# @param [String] chunk
-#: ../../lib/groonga/command/parser.rb:166
-#~ msgid "parsed chunk of command."
-#~ msgstr "パースするコマンド片。"
-
-# Groonga::Command::Parser#finish
-#: ../../lib/groonga/command/parser.rb:172
-#~ msgid ""
-#~ "Finishes parsing. If Parser is loading values specified \"load\"\n"
-#~ "command, this method raises {ParseError}."
-#~ msgstr "パースを終了する。もしloadコマンドで指定された値のロード途中だった場合、{ParseError} を発生させる。"
