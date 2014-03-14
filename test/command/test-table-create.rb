@@ -173,4 +173,16 @@ class TableCreateCommandTest < Test::Unit::TestCase
       assert_nil(command.default_tokenizer)
     end
   end
+
+  class NormalizerTest < self
+    def test_specified
+      command = table_create_command({"normalizer" => "NormalizerAuto"})
+      assert_equal("NormalizerAuto", command.normalizer)
+    end
+
+    def test_omitted
+      command = table_create_command
+      assert_nil(command.normalizer)
+    end
+  end
 end

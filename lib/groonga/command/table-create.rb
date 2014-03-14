@@ -86,6 +86,12 @@ module Groonga
       def default_tokenizer
         self[:default_tokenizer]
       end
+
+      # @return [String, nil] Normalizer name or nil.
+      # @since 1.0.7
+      def normalizer
+        self[:normalizer]
+      end
     end
   end
 end
