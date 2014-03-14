@@ -161,4 +161,16 @@ class TableCreateCommandTest < Test::Unit::TestCase
       end
     end
   end
+
+  class DefaultTokenizerTest < self
+    def test_specified
+      command = table_create_command({"default_tokenizer" => "TokenBigram"})
+      assert_equal("TokenBigram", command.default_tokenizer)
+    end
+
+    def test_omitted
+      command = table_create_command
+      assert_nil(command.default_tokenizer)
+    end
+  end
 end

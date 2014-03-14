@@ -80,6 +80,12 @@ module Groonga
       def key_with_sis?
         flags.include?("KEY_WITH_SIS")
       end
+
+      # @return [String, nil] Default tokenizer name or nil.
+      # @since 1.0.7
+      def default_tokenizer
+        self[:default_tokenizer]
+      end
     end
   end
 end
