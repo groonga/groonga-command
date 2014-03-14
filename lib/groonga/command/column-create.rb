@@ -35,6 +35,12 @@ module Groonga
         end
       end
 
+      # @return [String] table name.
+      # @since 1.0.7
+      def table
+        self[:table]
+      end
+
       def flags
         @flags ||= (self[:flags] || "").split(/\s*\|\s*/)
       end

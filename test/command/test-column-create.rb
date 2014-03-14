@@ -44,6 +44,14 @@ class ColumnCreateCommandTest < Test::Unit::TestCase
     end
   end
 
+  class TableTest < self
+    def test_reader
+      command = column_create_command({"table" => "Logs"})
+      assert_equal("Logs",
+                   command.table)
+    end
+  end
+
   class FlagsTest < self
     def test_multiple
       command = column_create_command({"flags" => "COLUMN_INDEX|WITH_POSITION"})
