@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (C) 2012-213  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-2014  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -152,6 +152,29 @@ class ColumnCreateCommandTest < Test::Unit::TestCase
         command = column_create_command({"flags" => data[:flags]})
         assert_equal(data[:expected], command.with_position?)
       end
+    end
+  end
+
+  class SourcesTest < self
+    def test_no_source
+      command = column_create_command
+      assert_equal([], command.sources)
+    end
+
+    def test_empty
+      command = column_create_command("source" => "")
+      assert_equal([], command.sources)
+    end
+
+    def test_one
+      command = column_create_command("source" => "title")
+      assert_equal(["title"], command.sources)
+    end
+
+    def test_multiple
+      command = column_create_command("source" => "title, text, comment")
+      assert_equal(["title", "text", "comment"],
+                   command.sources)
     end
   end
 end

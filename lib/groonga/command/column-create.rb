@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (C) 2012  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-2014  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -79,6 +79,13 @@ module Groonga
       # @since 1.0.3
       def with_position?
         flags.include?("WITH_POSITION")
+      end
+
+      # @return [::Array<String>] an array of index sources. If {#source} is
+      #   empty or nil, this method returns an empty array.
+      # @since 1.0.7
+      def sources
+        @sources ||= (self[:source] || "").split(/\s*,\s*/)
       end
     end
   end
