@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (C) 2012-2013  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-2014  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -51,6 +51,18 @@ class TableCreateCommandTest < Test::Unit::TestCase
                      :normalizer        => normalizer,
                    },
                    command.arguments)
+    end
+  end
+
+  class KeyTypeTest < self
+    def test_specified
+      command = table_create_command({"key_type" => "ShortText"})
+      assert_equal("ShortText", command.key_type)
+    end
+
+    def test_omitted
+      command = table_create_command
+      assert_nil(command.key_type)
     end
   end
 

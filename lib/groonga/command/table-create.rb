@@ -36,6 +36,12 @@ module Groonga
         end
       end
 
+      # @return [String, nil] Key type name, nil for array no key table.
+      # @since 1.0.7
+      def key_type
+        self[:key_type]
+      end
+
       def flags
         @flags ||= (self[:flags] || "").split(/\s*\|\s*/)
       end
