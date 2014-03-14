@@ -163,6 +163,14 @@ class ColumnCreateCommandTest < Test::Unit::TestCase
     end
   end
 
+  class TypeTest < self
+    def test_reader
+      command = column_create_command({"type" => "ShortText"})
+      assert_equal("ShortText",
+                   command.type)
+    end
+  end
+
   class SourcesTest < self
     def test_no_source
       command = column_create_command

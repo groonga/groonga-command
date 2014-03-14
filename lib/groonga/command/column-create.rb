@@ -45,6 +45,12 @@ module Groonga
         @flags ||= (self[:flags] || "").split(/\s*\|\s*/)
       end
 
+      # @return [String] value type name of the column.
+      # @since 1.0.7
+      def type
+        self[:type]
+      end
+
       # @return [Boolean] true if "COLUMN_SCALAR" is specified in {#flags},
       #   false otherwise.
       # @since 1.0.3
