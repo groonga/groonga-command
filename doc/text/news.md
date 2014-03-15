@@ -1,5 +1,16 @@
 # News
 
+## 1.0.7: 2014-03-15
+
+### Improvements
+
+  * {Groonga::Command::ColumnCreate#sources}: Added.
+  * {Groonga::Command::ColumnCreate#table}: Added.
+  * {Groonga::Command::ColumnCreate#type}: Added.
+  * {Groonga::Command::TableCreate#key_type}: Added.
+  * {Groonga::Command::TableCreate#default_tokenizer}: Added.
+  * {Groonga::Command::TableCreate#normalizer}: Added.
+
 ## 1.0.6: 2013-10-29
 
 ### Improvements
