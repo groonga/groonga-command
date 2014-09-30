@@ -98,6 +98,20 @@ class BaseCommandTest < Test::Unit::TestCase
     end
   end
 
+  sub_test_case("#key?") do
+    def setup
+      @select = Groonga::Command::Base.new("select", :table => "Users")
+    end
+
+    def test_symbol
+      assert_true(@select.key?(:table))
+    end
+
+    def test_string
+      assert_true(@select.key?("table"))
+    end
+  end
+
   sub_test_case("#has_key?") do
     def setup
       @select = Groonga::Command::Base.new("select", :table => "Users")

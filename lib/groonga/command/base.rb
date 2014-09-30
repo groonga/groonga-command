@@ -56,9 +56,10 @@ module Groonga
         @arguments[normalize_name(name)] = value
       end
 
-      def has_key?(name)
-        @arguments.has_key?(normalize_name(name))
+      def key?(name)
+        @arguments.key?(normalize_name(name))
       end
+      alias_method :has_key?, :key?
 
       def ==(other)
         other.is_a?(self.class) and
