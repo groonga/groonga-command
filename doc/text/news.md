@@ -1,5 +1,13 @@
 # News
 
+## 1.0.8: 2014-09-30
+
+### Improvements
+
+  * {Groonga::Command::Base#key?}: Added.
+  * Accepted nil value arguments on formatting to URI or command line.
+    Nil value arguments are ignored.
+
 ## 1.0.7: 2014-03-15
 
 ### Improvements
