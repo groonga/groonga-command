@@ -48,6 +48,15 @@ class BaseCommandTest < Test::Unit::TestCase
                    "keyword+%40+%22%E9%A4%8A%E6%AE%96%22&table=Users",
                    select.to_uri_format)
     end
+
+    def test_nil
+      select = Groonga::Command::Base.new("select",
+                                          :table => "Users",
+                                          :filter => nil,
+                                          :output_type => "json")
+      assert_equal("/d/select.json?table=Users",
+                   select.to_uri_format)
+    end
   end
 
   class CovnertToCommandFormatTest < self
@@ -79,6 +88,15 @@ class BaseCommandTest < Test::Unit::TestCase
                        "keyword @ \\\"たいやき\\\" &! keyword @ \\\"白\\\" &! " +
                        "keyword @ \\\"養殖\\\"\" " +
                      "--output_type \"json\" --table \"Users\"",
+                   select.to_command_format)
+    end
+
+    def test_nil
+      select = Groonga::Command::Base.new("select",
+                                          :table => "Users",
+                                          :filter => nil,
+                                          :output_type => "json")
+      assert_equal("select --output_type \"json\" --table \"Users\"",
                    select.to_command_format)
     end
   end

@@ -80,11 +80,11 @@ module Groonga
       end
 
       def to_uri_format
-        Format::URI.new(@name, @arguments).path
+        Format::URI.new(@name, normalized_arguments).path
       end
 
       def to_command_format
-        Format::Command.new(@name, @arguments).command_line
+        Format::Command.new(@name, normalized_arguments).command_line
       end
 
       private
@@ -110,6 +110,12 @@ module Groonga
       def normalize_name(name)
         name = name.to_sym if name.is_a?(String)
         name
+      end
+
+      def normalized_arguments
+        @arguments.reject do |_, value|
+          value.nil?
+        end
       end
     end
   end
