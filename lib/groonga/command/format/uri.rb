@@ -22,13 +22,14 @@ module Groonga
   module Command
     module Format
       class URI
-        def initialize(name, arguments)
+        def initialize(prefix, name, arguments)
+          @prefix = prefix
           @name = name
           @arguments = arguments
         end
 
         def path
-          path = "/d/#{@name}"
+          path = "/#{@prefix}/#{@name}"
           arguments = @arguments.dup
           output_type = arguments.delete(:output_type)
           path << ".#{output_type}" if output_type

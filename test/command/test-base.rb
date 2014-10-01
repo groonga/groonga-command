@@ -57,6 +57,15 @@ class BaseCommandTest < Test::Unit::TestCase
       assert_equal("/d/select.json?table=Users",
                    select.to_uri_format)
     end
+
+    def test_prefix
+      select = Groonga::Command::Base.new("select",
+                                          :table => "Users",
+                                          :output_type => "json")
+      select.prefix = "db1"
+      assert_equal("/db1/select.json?table=Users",
+                   select.to_uri_format)
+    end
   end
 
   class CovnertToCommandFormatTest < self
