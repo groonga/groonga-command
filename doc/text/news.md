@@ -1,5 +1,19 @@
 # News
 
+## 1.0.9: 2014-10-02
+
+### Improvements
+
+  * {Groonga::Command::Base#path_prefix}: Added.
+    [GitHub#1] [Patch by Hajime Wakahara]
+  * {Groonga::Command::Base#path_prefix=}: Added. It is for customizing
+    "/d" position in command URI.
+    [GitHub#1] [Patch by Hajime Wakahara]
+
+### Thanks
+
+  * Hajime Wakahara
+
 ## 1.0.8: 2014-09-30
 
 ### Improvements
