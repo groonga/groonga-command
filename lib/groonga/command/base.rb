@@ -40,12 +40,13 @@ module Groonga
       end
 
       attr_reader :name, :arguments
-      attr_accessor :original_format, :original_source
+      attr_accessor :original_format, :original_source, :prefix
       def initialize(name, pair_arguments, ordered_arguments=[])
         @name = name
         @arguments = construct_arguments(pair_arguments, ordered_arguments)
         @original_format = nil
         @original_source = nil
+        @prefix = "d"
       end
 
       def [](name)
@@ -80,7 +81,7 @@ module Groonga
       end
 
       def to_uri_format
-        Format::URI.new(@name, normalized_arguments).path
+        Format::URI.new(@prefix, @name, normalized_arguments).path
       end
 
       def to_command_format
