@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (C) 2011-2013  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2011-2014  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -58,11 +58,11 @@ class BaseCommandTest < Test::Unit::TestCase
                    select.to_uri_format)
     end
 
-    def test_prefix
+    def test_path_prefix
       select = Groonga::Command::Base.new("select",
                                           :table => "Users",
                                           :output_type => "json")
-      select.prefix = "db1"
+      select.path_prefix = "/db1"
       assert_equal("/db1/select.json?table=Users",
                    select.to_uri_format)
     end

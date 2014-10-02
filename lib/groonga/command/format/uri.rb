@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (C) 2012-2013  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-2014  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -22,14 +22,14 @@ module Groonga
   module Command
     module Format
       class URI
-        def initialize(prefix, name, arguments)
-          @prefix = prefix
+        def initialize(path_prefix, name, arguments)
+          @path_prefix = path_prefix
           @name = name
           @arguments = arguments
         end
 
         def path
-          path = "/#{@prefix}/#{@name}"
+          path = [@path_prefix.chomp("/"), @name].join("/")
           arguments = @arguments.dup
           output_type = arguments.delete(:output_type)
           path << ".#{output_type}" if output_type

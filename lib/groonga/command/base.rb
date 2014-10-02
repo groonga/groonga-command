@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (C) 2012-2013  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-2014  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -40,13 +40,13 @@ module Groonga
       end
 
       attr_reader :name, :arguments
-      attr_accessor :original_format, :original_source, :prefix
+      attr_accessor :original_format, :original_source, :path_prefix
       def initialize(name, pair_arguments, ordered_arguments=[])
         @name = name
         @arguments = construct_arguments(pair_arguments, ordered_arguments)
         @original_format = nil
         @original_source = nil
-        @prefix = "d"
+        @path_prefix = "/d/"
       end
 
       def [](name)
@@ -81,7 +81,7 @@ module Groonga
       end
 
       def to_uri_format
-        Format::URI.new(@prefix, @name, normalized_arguments).path
+        Format::URI.new(@path_prefix, @name, normalized_arguments).path
       end
 
       def to_command_format
