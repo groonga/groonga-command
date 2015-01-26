@@ -33,6 +33,8 @@ module Groonga
             :string,
             :normalizer,
             :flags,
+            :mode,
+            :token_filters,
           ]
         end
       end
@@ -55,7 +57,7 @@ module Groonga
         self[:normalizer]
       end
 
-      # @return [Array<String>] An array of flags specified in `flags`
+      # @return [Array<String>] An array of flag specified in `flags`
       #   parameter value. This array is extracted by parsing `flags`
       #   parameter value. If `flags` parameter value is nil or empty,
       #   an empty array is returned.
@@ -63,6 +65,23 @@ module Groonga
       # @since 1.0.6
       def flags
         @flags ||= (self[:flags] || "").split(/\s*[| ]\s*/)
+      end
+
+      # @return [String] `mode` parameter value.
+      #
+      # @since 1.1.0
+      def mode
+        self[:mode]
+      end
+
+      # @return [Array<String>] An array of token filter specified in
+      #   `token_filters` parameter value. This array is extracted by
+      #   parsing `token_filters` parameter value. If `token_filters`
+      #   parameter value is nil or empty, an empty array is returned.
+      #
+      # @since 1.1.0
+      def token_filters
+        @token_filters ||= (self[:token_filters] || "").split(/\s*,\s*/)
       end
     end
   end

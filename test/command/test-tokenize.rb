@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (C) 2013  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2013-2015  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -30,12 +30,16 @@ class TokenizeCommandTest < Test::Unit::TestCase
       string     = "groonga ruby linux"
       normalizer = "NormalizerAuto"
       flags      = "NONE"
+      mode       = "ADD"
+      token_filters = "TokenFilterStem"
 
       ordered_arguments = [
         tokenizer,
         string,
         normalizer,
         flags,
+        mode,
+        token_filters
       ]
       command = tokenize_command({}, ordered_arguments)
       assert_equal({
@@ -43,6 +47,8 @@ class TokenizeCommandTest < Test::Unit::TestCase
                      :string     => string,
                      :normalizer => normalizer,
                      :flags      => flags,
+                     :mode       => mode,
+                     :token_filters => token_filters,
                    },
                    command.arguments)
     end
@@ -93,6 +99,39 @@ class TokenizeCommandTest < Test::Unit::TestCase
     def test_spaces_around_separator
       command = tokenize_command(:flags => "NONE | ENABLE_TOKENIZED_DELIMITER")
       assert_equal(["NONE", "ENABLE_TOKENIZED_DELIMITER"], command.flags)
+    end
+  end
+
+  class ModeTest < self
+    def test_reader
+      command = tokenize_command(:mode => "ADD")
+      assert_equal("ADD", command.mode)
+    end
+  end
+
+  class TokenFiltersTest < self
+    def test_nil
+      command = tokenize_command
+      assert_equal([], command.token_filters)
+    end
+
+    def test_empty
+      command = tokenize_command(:token_filters => "")
+      assert_equal([], command.token_filters)
+    end
+
+    def test_comma_separator
+      token_filters = "TokenFilterStem,TokenFilterStopWord"
+      command = tokenize_command(:token_filters => token_filters)
+      assert_equal(["TokenFilterStem", "TokenFilterStopWord"],
+                   command.token_filters)
+    end
+
+    def test_spaces_around_separator
+      token_filters = "TokenFilterStem , TokenFilterStopWord"
+      command = tokenize_command(:token_filters => token_filters)
+      assert_equal(["TokenFilterStem", "TokenFilterStopWord"],
+                   command.token_filters)
     end
   end
 end
