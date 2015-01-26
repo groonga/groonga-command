@@ -35,7 +35,7 @@ class TableTokenizeCommandTest < Test::Unit::TestCase
         flags,
         mode,
       ]
-      command = tokenize_command({}, ordered_arguments)
+      command = table_tokenize_command({}, ordered_arguments)
       assert_equal({
                      :table  => table,
                      :string => string,
@@ -85,7 +85,7 @@ class TableTokenizeCommandTest < Test::Unit::TestCase
 
     def test_spaces_around_separator
       flags = "NONE | ENABLE_TOKENIZED_DELIMITER"
-      command = table_tokenize_command(:flags => flag)
+      command = table_tokenize_command(:flags => flags)
       assert_equal(["NONE", "ENABLE_TOKENIZED_DELIMITER"], command.flags)
     end
   end
