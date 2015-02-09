@@ -1,5 +1,15 @@
 # News
 
+## 1.1.0: 2015-02-09
+
+### Improvements
+
+  * {Groonga::Command::RangeFilter}: Added.
+  * {Groonga::Command::TableTokenize}: Added.
+  * {Groonga::Command::Tokenize#mode}: Added.
+  * {Groonga::Command::Tokenize#token_filters}: Added.
+  * {Groonga::Command::RequestCancel}: Added.
+
 ## 1.0.9: 2014-10-02
 
 ### Improvements
