@@ -55,14 +55,14 @@ class LogicalCountCommandTest < Test::Unit::TestCase
     end
   end
 
-  class TableTest < self
+  class LogicalTableTest < self
     def test_reader
       command = logical_count_command(:logical_table => "Logs")
       assert_equal("Logs", command.logical_table)
     end
   end
 
-  class ColumnTest < self
+  class ShardKeyTest < self
     def test_reader
       command = logical_count_command(:shard_key => "timestamp")
       assert_equal("timestamp", command.shard_key)
