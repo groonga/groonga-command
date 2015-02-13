@@ -1,5 +1,19 @@
 # News
 
+## 1.1.1: 2015-02-13
+
+### Improvements
+
+  * {Groonga::Command::LogicalRangeFilter}: Added.
+    [GitHub#4] [Patch by Hiroshi Hatake]
+  * {Groonga::Command::LogicalCount}: Added.
+    [GitHub#5] [Patch by Hiroshi Hatake]
+
+### Fixes
+
+  * Fix return type in yard doc.
+    [GitHub#7] [Patch by Hiroshi Hatake]
+
 ## 1.1.0: 2015-02-09
 
 ### Improvements
