@@ -83,7 +83,7 @@ module Groonga
         self[:max_border]
       end
 
-      # @return [String] `offset` parameter value.
+      # @return [Integer] `offset` parameter value.
       #
       # @since 1.1.0
       def offset
@@ -92,7 +92,7 @@ module Groonga
         value
       end
 
-      # @return [String] `limit` parameter value.
+      # @return [Integer] `limit` parameter value.
       #
       # @since 1.1.0
       def limit
