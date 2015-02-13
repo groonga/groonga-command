@@ -31,9 +31,9 @@ class LogicalRangeFilterCommandTest < Test::Unit::TestCase
       max            = "2015-02-13 00:00:00"
       max_border     = "exclude"
       order          = "ascending"
-      filter         = "value == 10"
       offset         = "10"
       limit          = "20"
+      filter         = "value == 10"
       output_columns = "_key, timestamp"
 
       ordered_arguments = [
@@ -58,9 +58,9 @@ class LogicalRangeFilterCommandTest < Test::Unit::TestCase
                      :max            => max,
                      :max_border     => max_border,
                      :order          => order,
-                     :filter         => filter,
                      :offset         => offset,
                      :limit          => limit,
+                     :filter         => filter,
                      :output_columns => output_columns,
                    },
                    command.arguments)
