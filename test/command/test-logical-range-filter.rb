@@ -102,6 +102,13 @@ class LogicalRangeFilterCommandTest < Test::Unit::TestCase
     end
   end
 
+  class OrderTest < self
+    def test_reader
+      command = logical_range_filter_command(:order => "descending")
+      assert_equal("descending", command.order)
+    end
+  end
+
   class OffsetTest < self
     def test_reader
       command = logical_range_filter_command(:offset => "10")
