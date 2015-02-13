@@ -9,7 +9,7 @@
   * {Groonga::Command::LogicalCount}: Added.
     [GitHub#5] [Patch by Hiroshi Hatake]
 
-### Fixed
+### Fixes
 
   * Fix return type in YARD doc.
     [GitHub#7] [Patch by Hiroshi Hatake]
