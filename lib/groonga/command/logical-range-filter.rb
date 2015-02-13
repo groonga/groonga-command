@@ -93,7 +93,7 @@ module Groonga
         self[:order]
       end
 
-      # @return [String] `offset` parameter value.
+      # @return [Integer] `offset` parameter value.
       #
       # @since 1.1.1
       def offset
@@ -102,7 +102,7 @@ module Groonga
         value
       end
 
-      # @return [String] `limit` parameter value.
+      # @return [Integer] `limit` parameter value.
       #
       # @since 1.1.1
       def limit
