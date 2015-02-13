@@ -11,7 +11,7 @@
 
 ### Fixes
 
-  * Fix return type in yard doc.
+  * Fix return type in YARD doc.
     [GitHub#7] [Patch by Hiroshi Hatake]
 
 ## 1.1.0: 2015-02-09
