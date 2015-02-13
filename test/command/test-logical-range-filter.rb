@@ -30,7 +30,7 @@ class LogicalRangeFilterCommandTest < Test::Unit::TestCase
       min_border     = "include"
       max            = "2015-02-13 00:00:00"
       max_border     = "exclude"
-      order          = "asending"
+      order          = "ascending"
       filter         = "value == 10"
       offset         = "10"
       limit          = "20"
