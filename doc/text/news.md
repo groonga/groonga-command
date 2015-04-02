@@ -1,5 +1,12 @@
 # News
 
+## 1.1.2: 2015-04-02
+
+### Improvements
+
+  * {Groonga::Command::PluginRegister}: Added.
+  * {Groonga::Command::PluginUnregister}: Added.
+
 ## 1.1.1: 2015-02-13
 
 ### Improvements
