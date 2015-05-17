@@ -1,5 +1,7 @@
 # README
 
+[![Gem Version](https://badge.fury.io/rb/groonga-command.svg)](http://badge.fury.io/rb/groonga-command)
+
 ## Name
 
 groonga-command
