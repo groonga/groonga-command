@@ -20,7 +20,7 @@ require "groonga/command/base"
 
 module Groonga
   module Command
-    # A command class that represents `logical_count` command.
+    # A command class that represents `logical_range_filter` command.
     #
     # @since 1.1.1
     class LogicalRangeFilter < Base
