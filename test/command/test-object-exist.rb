@@ -14,30 +14,30 @@
 # License along with this library; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
-require "groonga/command/base"
+class ObjectExistCommandTest < Test::Unit::TestCase
+  private
+  def object_exist_command(pair_arguments={}, ordered_arguments=[])
+    Groonga::Command::ObjectExist.new("object_exist",
+                                      pair_arguments,
+                                      ordered_arguments)
+  end
 
-module Groonga
-  module Command
-    # A command class that represents `exist` command.
-    #
-    # @since 1.1.3
-    class Exist < Base
-      Command.register("exist", self)
+  class ConstructorTest < self
+    def test_ordered_arguments
+      name = "Users"
 
-      class << self
-        def parameter_names
-          [
-            :name,
-          ]
-        end
-      end
+      command = object_exist_command({}, [name])
+      assert_equal({
+                     :name => name,
+                   },
+                   command.arguments)
+    end
+  end
 
-      # @return [String] `name` parameter value.
-      #
-      # @since 1.1.3
-      def name
-        self[:name]
-      end
+  class NameTest < self
+    def test_reader
+      command = object_exist_command(:name => "Users")
+      assert_equal("Users", command.name)
     end
   end
 end
