@@ -25,7 +25,7 @@ class LogicalTableRemoveCommandTest < Test::Unit::TestCase
   class ConstructorTest < self
     def test_ordered_arguments
       logical_table  = "Logs"
-      shard_key      = "timestamp",
+      shard_key      = "timestamp"
       min            = "2015-02-12 00:00:00"
       min_border     = "include"
       max            = "2015-02-13 00:00:00"
