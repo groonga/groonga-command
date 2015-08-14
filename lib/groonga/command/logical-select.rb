@@ -34,6 +34,17 @@ module Groonga
             :max,
             :max_border,
             :filter,
+            :sortby,
+            :output_columns,
+            :offset,
+            :limit,
+            :drilldown,
+            :drilldown_sortby,
+            :drilldown_output_columns,
+            :drilldown_offset,
+            :drilldown_limit,
+            :drilldown_calc_types,
+            :drilldown_calc_target,
           ]
         end
       end
@@ -85,6 +96,90 @@ module Groonga
       # @since 1.1.3
       def filter
         self[:filter]
+      end
+
+      # @return [String] `sortby` parameter value.
+      #
+      # @since 1.1.3
+      def sortby
+        self[:sortby]
+      end
+
+      # @return [String] `output_columns` parameter value.
+      #
+      # @since 1.1.3
+      def output_columns
+        self[:output_columns]
+      end
+
+      # @return [Integer] `offset` parameter value.
+      #
+      # @since 1.1.3
+      def offset
+        integer_value(:offset)
+      end
+
+      # @return [Integer] `limit` parameter value.
+      #
+      # @since 1.1.3
+      def limit
+        integer_value(:limit)
+      end
+
+      # @return [String] `drilldown` parameter value.
+      #
+      # @since 1.1.3
+      def drilldown
+        self[:drilldown]
+      end
+
+      # @return [Array<String>] drilldown keys.
+      #
+      # @since 1.1.3
+      def drilldowns
+        @drilldowns ||= array_value(:drilldown)
+      end
+
+      # @return [String] `drilldown_sortby` parameter value.
+      #
+      # @since 1.1.3
+      def drilldown_sortby
+        self[:drilldown_sortby]
+      end
+
+      # @return [String] `drilldown_output_columns` parameter value.
+      #
+      # @since 1.1.3
+      def drilldown_output_columns
+        self[:drilldown_output_columns]
+      end
+
+      # @return [String] `drilldown_offset` parameter value.
+      #
+      # @since 1.1.3
+      def drilldown_offset
+        integer_value(:drilldown_offset)
+      end
+
+      # @return [String] `drilldown_limit` parameter value.
+      #
+      # @since 1.1.3
+      def drilldown_limit
+        integer_value(:drilldown_limit)
+      end
+
+      # @return [String] `drilldown_calc_types` parameter value.
+      #
+      # @since 1.1.3
+      def drilldown_calc_types
+        self[:drilldown_calc_types]
+      end
+
+      # @return [String] `drilldown_calc_target` parameter value.
+      #
+      # @since 1.1.3
+      def drilldown_calc_target
+        self[:drilldown_calc_target]
       end
     end
   end

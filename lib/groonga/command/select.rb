@@ -70,7 +70,7 @@ module Groonga
       end
 
       def drilldowns
-        @drilldowns ||= (self[:drilldown] || "").split(/\s*,\s*/)
+        @drilldowns ||= array_value(:drilldown)
       end
 
       def output_columns

@@ -118,6 +118,21 @@ module Groonga
           value.nil?
         end
       end
+
+      def integer_value(name)
+        value = self[name]
+        return value if value.nil?
+
+        begin
+          Integer(value)
+        rescue ArgumentError
+          value
+        end
+      end
+
+      def array_value(name)
+        (self[name] || "").strip.split(/\s*,\s*/)
+      end
     end
   end
 end
