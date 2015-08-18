@@ -14,35 +14,30 @@
 # License along with this library; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
-require "groonga/command/base"
+class ThreadLimitCommandTest < Test::Unit::TestCase
+  private
+  def thread_limit_command(pair_arguments={}, ordered_arguments=[])
+    Groonga::Command::ThreadLimit.new("thread_limit",
+                                      pair_arguments,
+                                      ordered_arguments)
+  end
 
-module Groonga
-  module Command
-    # A command class that represents `thread_count` command.
-    #
-    # @since 1.1.3
-    class ThreadCount < Base
-      Command.register("thread_count", self)
+  class ConstructorTest < self
+    def test_ordered_arguments
+      max = "1"
 
-      class << self
-        def parameter_names
-          [
-            :new_count,
-          ]
-        end
-      end
+      command = thread_limit_command({}, [max])
+      assert_equal({
+                     :max => max,
+                   },
+                   command.arguments)
+    end
+  end
 
-      # @return [Integer] `new_count` parameter value.
-      #
-      # @since 1.1.3
-      def new_count
-        count = self[:new_count]
-        if count
-          Integer(count)
-        else
-          nil
-        end
-      end
+  class MaxTest < self
+    def test_reader
+      command = thread_limit_command(:max => "1")
+      assert_equal(1, command.max)
     end
   end
 end
