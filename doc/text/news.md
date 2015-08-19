@@ -1,5 +1,20 @@
 # News
 
+## 1.1.3: 2015-08-19
+
+### Improvements
+
+  * {Groonga::Command::ColumnCopy}: Added.
+  * {Groonga::Command::IOFlush}: Added.
+  * {Groonga::Command::LogLevel}: Added.
+  * {Groonga::Command::LogPut}: Added.
+  * {Groonga::Command::LogicalSelect}: Added.
+  * {Groonga::Command::LogicalShardList}: Added.
+  * {Groonga::Command::LogicalTableRemove}: Added.
+  * {Groonga::Command::ObjectExist}: Added.
+  * {Groonga::Command::TableList}: Added.
+  * {Groonga::Command::ThreadLimit}: Added.
+
 ## 1.1.2: 2015-04-02
 
 ### Improvements
