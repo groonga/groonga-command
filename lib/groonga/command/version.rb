@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (C) 2012-2014  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-2015  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -18,6 +18,6 @@
 
 module Groonga
   module Command
-    VERSION = "1.1.3"
+    VERSION = "1.1.4"
   end
 end
