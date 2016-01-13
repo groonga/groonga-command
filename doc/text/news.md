@@ -1,5 +1,13 @@
 # News
 
+## 1.1.4: 2016-01-13
+
+### Improvements
+
+  * {Groonga::Command::ConfGet}: Added.
+  * {Groonga::Command::ConfSet}: Added.
+  * {Groonga::Command::ConfDelete}: Added.
+
 ## 1.1.3: 2015-08-19
 
 ### Improvements
