@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (C) 2012-2015  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-2016  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -25,6 +25,9 @@ require "groonga/command/column-create"
 require "groonga/command/column-list"
 require "groonga/command/column-remove"
 require "groonga/command/column-rename"
+require "groonga/command/conf-delete"
+require "groonga/command/conf-get"
+require "groonga/command/conf-set"
 require "groonga/command/delete"
 require "groonga/command/dump"
 require "groonga/command/get"
