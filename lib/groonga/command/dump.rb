@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (C) 2013  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2013-2016  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -22,6 +22,19 @@ module Groonga
   module Command
     class Dump < Base
       Command.register("dump", self)
+
+      class << self
+        def parameter_names
+          [
+            :tables,
+            :dump_plugins,
+            :dump_schema,
+            :dump_records,
+            :dump_indexes,
+            :dump_confs,
+          ]
+        end
+      end
 
       def output_type
         :none
