@@ -14,10 +14,10 @@
 # License along with this library; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
-class ConfSetCommandTest < Test::Unit::TestCase
+class ConfigSetCommandTest < Test::Unit::TestCase
   private
   def conf_set_command(pair_arguments={}, ordered_arguments=[])
-    Groonga::Command::ConfSet.new("conf_set",
+    Groonga::Command::ConfigSet.new("config_set",
                                   pair_arguments,
                                   ordered_arguments)
   end

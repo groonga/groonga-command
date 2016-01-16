@@ -14,10 +14,10 @@
 # License along with this library; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
-class ConfDeleteCommandTest < Test::Unit::TestCase
+class ConfigDeleteCommandTest < Test::Unit::TestCase
   private
   def conf_delete_command(pair_arguments={}, ordered_arguments=[])
-    Groonga::Command::ConfDelete.new("conf_delete",
+    Groonga::Command::ConfigDelete.new("config_delete",
                                      pair_arguments,
                                      ordered_arguments)
   end
