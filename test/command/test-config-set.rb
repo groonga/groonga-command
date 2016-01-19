@@ -16,7 +16,7 @@
 
 class ConfigSetCommandTest < Test::Unit::TestCase
   private
-  def conf_set_command(pair_arguments={}, ordered_arguments=[])
+  def config_set_command(pair_arguments={}, ordered_arguments=[])
     Groonga::Command::ConfigSet.new("config_set",
                                   pair_arguments,
                                   ordered_arguments)
@@ -27,11 +27,11 @@ class ConfigSetCommandTest < Test::Unit::TestCase
       key   = "alias.table"
       value = "Aliases"
 
-      command = conf_set_command({},
-                                 [
-                                   key,
-                                   value,
-                                 ])
+      command = config_set_command({},
+                                   [
+                                     key,
+                                     value,
+                                   ])
       assert_equal({
                      :key   => key,
                      :value => value,
@@ -42,15 +42,15 @@ class ConfigSetCommandTest < Test::Unit::TestCase
 
   class KeyTest < self
     def test_reader
-      command = conf_set_command(:key => "alias.table")
+      command = config_set_command(:key => "alias.table")
       assert_equal("alias.table", command.key)
     end
   end
 
   class ValueTest < self
     def test_reader
-      command = conf_set_command(:key => "alias.table",
-                                 :value => "Aliases")
+      command = config_set_command(:key => "alias.table",
+                                   :value => "Aliases")
       assert_equal("Aliases", command.value)
     end
   end

@@ -18,11 +18,11 @@ require "groonga/command/base"
 
 module Groonga
   module Command
-    # A command class that represents `conf_set` command.
+    # A command class that represents `config_set` command.
     #
-    # @since 1.1.4
-    class ConfSet < Base
-      Command.register("conf_set", self)
+    # @since 1.1.5
+    class ConfigSet < Base
+      Command.register("config_set", self)
 
       class << self
         def parameter_names

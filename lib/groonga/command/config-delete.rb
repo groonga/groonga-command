@@ -18,11 +18,11 @@ require "groonga/command/base"
 
 module Groonga
   module Command
-    # A command class that represents `conf_delete` command.
+    # A command class that represents `config_delete` command.
     #
-    # @since 1.1.4
-    class ConfDelete < Base
-      Command.register("conf_delete", self)
+    # @since 1.1.5
+    class ConfigDelete < Base
+      Command.register("config_delete", self)
 
       class << self
         def parameter_names

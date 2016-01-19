@@ -29,7 +29,7 @@ class DumpCommandTest < Test::Unit::TestCase
       dump_schema  = "yes"
       dump_records = "no"
       dump_indexes = "yes"
-      dump_confs   = "no"
+      dump_configs = "no"
 
       command = dump_command({},
                              [
@@ -38,7 +38,7 @@ class DumpCommandTest < Test::Unit::TestCase
                                dump_schema,
                                dump_records,
                                dump_indexes,
-                               dump_confs,
+                               dump_configs,
                              ])
       assert_equal({
                      :tables       => tables,
@@ -46,7 +46,7 @@ class DumpCommandTest < Test::Unit::TestCase
                      :dump_schema  => dump_schema,
                      :dump_records => dump_records,
                      :dump_indexes => dump_indexes,
-                     :dump_confs   => dump_confs,
+                     :dump_configs => dump_configs,
                    },
                    command.arguments)
     end

@@ -31,7 +31,7 @@ module Groonga
             :dump_schema,
             :dump_records,
             :dump_indexes,
-            :dump_confs,
+            :dump_configs,
           ]
         end
       end

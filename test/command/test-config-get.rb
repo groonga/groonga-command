@@ -16,7 +16,7 @@
 
 class ConfigGetCommandTest < Test::Unit::TestCase
   private
-  def conf_get_command(pair_arguments={}, ordered_arguments=[])
+  def config_get_command(pair_arguments={}, ordered_arguments=[])
     Groonga::Command::ConfigGet.new("config_get",
                                   pair_arguments,
                                   ordered_arguments)
@@ -26,10 +26,10 @@ class ConfigGetCommandTest < Test::Unit::TestCase
     def test_ordered_arguments
       key = "alias.table"
 
-      command = conf_get_command({},
-                                 [
-                                   key,
-                                 ])
+      command = config_get_command({},
+                                   [
+                                     key,
+                                   ])
       assert_equal({
                      :key => key,
                    },
@@ -39,7 +39,7 @@ class ConfigGetCommandTest < Test::Unit::TestCase
 
   class KeyTest < self
     def test_reader
-      command = conf_get_command(:key => "alias.table")
+      command = config_get_command(:key => "alias.table")
       assert_equal("alias.table", command.key)
     end
   end

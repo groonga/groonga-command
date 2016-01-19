@@ -16,17 +16,17 @@
 
 class ConfigDeleteCommandTest < Test::Unit::TestCase
   private
-  def conf_delete_command(pair_arguments={}, ordered_arguments=[])
+  def config_delete_command(pair_arguments={}, ordered_arguments=[])
     Groonga::Command::ConfigDelete.new("config_delete",
-                                     pair_arguments,
-                                     ordered_arguments)
+                                       pair_arguments,
+                                       ordered_arguments)
   end
 
   class ConstructorTest < self
     def test_ordered_arguments
       key = "alias.table"
 
-      command = conf_delete_command({},
+      command = config_delete_command({},
                                     [
                                       key,
                                     ])
@@ -39,7 +39,7 @@ class ConfigDeleteCommandTest < Test::Unit::TestCase
 
   class KeyTest < self
     def test_reader
-      command = conf_delete_command(:key => "alias.table")
+      command = config_delete_command(:key => "alias.table")
       assert_equal("alias.table", command.key)
     end
   end
