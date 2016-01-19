@@ -1,12 +1,21 @@
 # News
 
+## 1.1.5: 2016-01-19
+
+### Improvements
+
+  * Renamed to {Groonga::Command::ConfigGet} from {Groonga::Command::ConfGet}.
+  * Renamed to {Groonga::Command::ConfigSet} from {Groonga::Command::ConfSet}.
+  * Renamed to {Groonga::Command::ConfigDelete} from
+    {Groonga::Command::ConfDelete}.
+
 ## 1.1.4: 2016-01-13
 
 ### Improvements
 
-  * {Groonga::Command::ConfGet}: Added.
-  * {Groonga::Command::ConfSet}: Added.
-  * {Groonga::Command::ConfDelete}: Added.
+  * `Groonga::Command::ConfGet`: Added.
+  * `Groonga::Command::ConfSet`: Added.
+  * `Groonga::Command::ConfDelete`: Added.
 
 ## 1.1.3: 2015-08-19
 
