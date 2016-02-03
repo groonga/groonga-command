@@ -1,5 +1,11 @@
 # News
 
+## 1.1.6: 2016-02-03
+
+### Improvements
+
+  * {Groonga::Command::Inspect}: Added.
+
 ## 1.1.5: 2016-01-19
 
 ### Improvements
