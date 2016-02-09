@@ -43,8 +43,8 @@ module Groonga
       # @return [Boolean] `force` parameter value.
       #
       # @since 1.1.7
-      def force
-        self[:force] != "yes"
+      def force?
+        self[:force] == "yes"
       end
     end
   end
