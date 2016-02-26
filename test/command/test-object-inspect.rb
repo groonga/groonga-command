@@ -14,33 +14,33 @@
 # License along with this library; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
-class InspectCommandTest < Test::Unit::TestCase
+class ObjectInspectCommandTest < Test::Unit::TestCase
   private
-  def inspect_command(pair_arguments={}, ordered_arguments=[])
-    Groonga::Command::Inspect.new("inspect",
-                                  pair_arguments,
-                                  ordered_arguments)
+  def object_inspect_command(pair_arguments={}, ordered_arguments=[])
+    Groonga::Command::ObjectInspect.new("object_inspect",
+                                        pair_arguments,
+                                        ordered_arguments)
   end
 
   class ConstructorTest < self
     def test_ordered_arguments
-      target_name = "Users"
+      name = "Users"
 
-      command = inspect_command({},
+      command = object_inspect_command({},
                                 [
-                                  target_name,
+                                  name,
                                 ])
       assert_equal({
-                     :target_name => target_name,
+                     :name => name,
                    },
                    command.arguments)
     end
   end
 
-  class TargetNameTest < self
+  class NameTest < self
     def test_reader
-      command = inspect_command(:target_name => "Users")
-      assert_equal("Users", command.target_name)
+      command = object_inspect_command(:name => "Users")
+      assert_equal("Users", command.name)
     end
   end
 end

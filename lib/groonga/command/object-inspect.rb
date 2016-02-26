@@ -18,25 +18,25 @@ require "groonga/command/base"
 
 module Groonga
   module Command
-    # A command class that represents `inspect` command.
+    # A command class that represents `object_inspect` command.
     #
-    # @since 1.1.6
-    class Inspect < Base
-      Command.register("inspect", self)
+    # @since 1.1.7
+    class ObjectInspect < Base
+      Command.register("object_inspect", self)
 
       class << self
         def parameter_names
           [
-            :target_name,
+            :name,
           ]
         end
       end
 
-      # @return [String] `target_name` parameter value.
+      # @return [String] `name` parameter value.
       #
-      # @since 1.1.6
-      def target_name
-        self[:target_name]
+      # @since 1.1.7
+      def name
+        self[:name]
       end
     end
   end
