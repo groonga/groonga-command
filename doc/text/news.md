@@ -1,5 +1,12 @@
 # News
 
+## 1.1.7: 2016-03-07
+
+### Improvements
+
+  * Renamed to {Groonga::Command::ObjectInspect} from {Groonga::Command::Inspect}.
+  * {Groonga::Command::ObjectRemove}: Added.
+
 ## 1.1.6: 2016-02-03
 
 ### Improvements
