@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-#
-# Copyright (C) 2012  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-2016  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -29,6 +27,13 @@ module Groonga
             :name,
           ]
         end
+      end
+
+      # @return [String] `name` parameter value.
+      #
+      # @since 1.1.8
+      def name
+        self[:name]
       end
     end
   end
