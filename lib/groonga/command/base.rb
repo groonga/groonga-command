@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-#
-# Copyright (C) 2012-2014  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-2016  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -78,6 +76,13 @@ module Groonga
 
       def output_type
         (self[:output_type] || :json).to_sym
+      end
+
+      # @return [String, nil] `request_id` parameter value.
+      #
+      # @since 1.1.8
+      def request_id
+        self[:request_id]
       end
 
       def to_uri_format
