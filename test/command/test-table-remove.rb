@@ -25,12 +25,12 @@ class TableRemoveCommandTest < Test::Unit::TestCase
   class ConstructorTest < self
     def test_ordered_arguments
       name = "Users"
-      recursive = "yes"
+      dependent = "yes"
 
-      command = table_remove_command({}, [name, recursive])
+      command = table_remove_command({}, [name, dependent])
       assert_equal({
                      :name => name,
-                     :recursive => recursive,
+                     :dependent => dependent,
                    },
                    command.arguments)
     end
@@ -43,19 +43,19 @@ class TableRemoveCommandTest < Test::Unit::TestCase
     end
   end
 
-  class RecursiveTest < self
+  class DependentTest < self
     class ReaderTest < self
       def test_default
         command = table_remove_command
         assert do
-          command.recursive?
+          command.dependent?
         end
       end
 
       def test_no
-        command = table_remove_command(:recursive => "no")
+        command = table_remove_command(:dependent => "no")
         assert do
-          not command.recursive?
+          not command.dependent?
         end
       end
     end

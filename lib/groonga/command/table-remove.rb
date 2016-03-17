@@ -25,7 +25,7 @@ module Groonga
         def parameter_names
           [
             :name,
-            :recursive,
+            :dependent,
           ]
         end
       end
@@ -37,11 +37,11 @@ module Groonga
         self[:name]
       end
 
-      # @return [Boolean] `recursive` parameter value.
+      # @return [Boolean] `dependent` parameter value.
       #
       # @since 1.1.8
-      def recursive?
-        self[:recursive] != "no"
+      def dependent?
+        self[:dependent] != "no"
       end
     end
   end
