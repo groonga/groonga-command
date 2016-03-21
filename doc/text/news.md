@@ -1,5 +1,20 @@
 # News
 
+## 1.1.8: 2016-03-21
+
+### Improvements
+
+  * {Groonga::Command::Shutdown}: Added.
+  * {Groonga::Command::TableRemove#name}: Added.
+  * {Groonga::Command::TableRemove#dependent?}: Added.
+  * {Groonga::Command::Base#request_id}: Added.
+  * {Groonga::Command.all}: Added.
+  * {Groonga::Command.find}: Supported `Symbol` as command name.
+  * {Groonga::Command#command_name}: Added. Because
+    {Groonga::Command#name} may be overwritten by subclasses. For
+    example, {Groonga::TableRemove#name} overwrites it.
+  * {Groonga::Command#name}: Made deprecated.
+
 ## 1.1.7: 2016-03-07
 
 ### Improvements
