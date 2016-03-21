@@ -51,7 +51,11 @@ module Groonga
         end
       end
 
-      attr_reader :command_name, :arguments
+      # @return [String] The command name.
+      #
+      # @since 1.1.8
+      attr_reader :command_name
+      attr_reader :arguments
       attr_accessor :original_format, :original_source, :path_prefix
       def initialize(command_name, pair_arguments, ordered_arguments=[])
         @command_name = command_name
@@ -64,13 +68,6 @@ module Groonga
       # @deprecated since 1.1.8. Use {#command_name} instead.
       def name
         command_name
-      end
-
-      # @return [String] The command name.
-      #
-      # @since 1.1.8
-      def command_name
-        @command_name
       end
 
       def [](name)
