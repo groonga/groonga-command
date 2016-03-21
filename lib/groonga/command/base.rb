@@ -88,7 +88,7 @@ module Groonga
 
       def ==(other)
         other.is_a?(self.class) and
-          @name == other.name and
+          @command_name == other.name and
           @arguments == other.arguments
       end
 
@@ -112,11 +112,11 @@ module Groonga
       end
 
       def to_uri_format
-        Format::URI.new(@path_prefix, @name, normalized_arguments).path
+        Format::URI.new(@path_prefix, @command_name, normalized_arguments).path
       end
 
       def to_command_format
-        Format::Command.new(@name, normalized_arguments).command_line
+        Format::Command.new(@command_name, normalized_arguments).command_line
       end
 
       private
