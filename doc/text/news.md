@@ -1,5 +1,11 @@
 # News
 
+## 1.2.0: 2016-03-21
+
+### Improvements
+
+  * Suppressed a warning.
+
 ## 1.1.9: 2016-03-21
 
 ### Fixes
