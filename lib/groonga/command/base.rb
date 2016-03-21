@@ -26,11 +26,21 @@ module Groonga
       end
 
       def register(name, klass)
-        @@registered_commands[name] = klass
+        @@registered_commands[normalize_name(name)] = klass
       end
 
       def find(name)
-        @@registered_commands[name] || Base
+        @@registered_commands[normalize_name(name)] || Base
+      end
+
+      private
+      def normalize_name(name)
+        case name
+        when String
+          name.to_sym
+        else
+          name
+        end
       end
     end
 
