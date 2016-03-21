@@ -1,5 +1,11 @@
 # News
 
+## 1.1.9: 2016-03-21
+
+### Fixes
+
+  * Fixed a bug that correct command name isn't used.
+
 ## 1.1.8: 2016-03-21
 
 ### Improvements
