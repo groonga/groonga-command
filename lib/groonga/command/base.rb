@@ -21,6 +21,10 @@ module Groonga
   module Command
     class << self
       @@registered_commands = {}
+      def all
+        @@registered_commands
+      end
+
       def register(name, klass)
         @@registered_commands[name] = klass
       end
