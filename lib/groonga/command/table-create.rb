@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-#
-# Copyright (C) 2012  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-2016  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -32,6 +30,7 @@ module Groonga
             :value_type,
             :default_tokenizer,
             :normalizer,
+            :token_filters,
           ]
         end
       end
@@ -91,6 +90,12 @@ module Groonga
       # @since 1.0.7
       def normalizer
         self[:normalizer]
+      end
+
+      # @return [::Array<String>] Token filter names.
+      # @since 1.2.1
+      def token_filters
+        @token_filters ||= (self[:token_filters] || "").split(/\s*\|\s*/)
       end
     end
   end

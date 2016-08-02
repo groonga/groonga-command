@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-#
-# Copyright (C) 2012-2014  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-2016  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -32,6 +30,7 @@ class TableCreateCommandTest < Test::Unit::TestCase
       value_type        = "UInt32"
       default_tokenizer = "TokenBigram"
       normalizer        = "NormalizerAuto"
+      token_filters     = "TokenFilterStopWord|TokenFilterStem"
 
       ordered_arguments = [
         name,
@@ -40,6 +39,7 @@ class TableCreateCommandTest < Test::Unit::TestCase
         value_type,
         default_tokenizer,
         normalizer,
+        token_filters,
       ]
       command = table_create_command({}, ordered_arguments)
       assert_equal({
@@ -49,6 +49,7 @@ class TableCreateCommandTest < Test::Unit::TestCase
                      :value_type        => value_type,
                      :default_tokenizer => default_tokenizer,
                      :normalizer        => normalizer,
+                     :token_filters     => token_filters,
                    },
                    command.arguments)
     end
@@ -183,6 +184,31 @@ class TableCreateCommandTest < Test::Unit::TestCase
     def test_omitted
       command = table_create_command
       assert_nil(command.normalizer)
+    end
+  end
+
+  class TokenFiltersTest < self
+    def test_multiple
+      arguments = {
+        "token_filters" => "TokenFilterStopWord|TokenFilterStem",
+      }
+      command = table_create_command(arguments)
+      assert_equal(["TokenFilterStopWord", "TokenFilterStem"],
+                   command.token_filters)
+    end
+
+    def test_one
+      arguments = {
+        "token_filters" => "TokenFilterStopWord",
+      }
+      command = table_create_command(arguments)
+      assert_equal(["TokenFilterStopWord"],
+                   command.token_filters)
+    end
+
+    def test_no_flags
+      command = table_create_command
+      assert_equal([], command.token_filters)
     end
   end
 end
