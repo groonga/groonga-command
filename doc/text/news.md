@@ -1,5 +1,13 @@
 # News
 
+## 1.2.1: 2016-08-03
+
+### Improvements
+
+  * {Groonga::Command::Schema}: Added.
+  * {Groonga::Command::QueryExpand}: Added.
+  * {Groonga::Command::TableCreate#token_filters}: Added.
+
 ## 1.2.0: 2016-03-21
 
 ### Improvements
