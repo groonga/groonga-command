@@ -67,6 +67,18 @@ class TableCreateCommandTest < Test::Unit::TestCase
     end
   end
 
+  class ValueTypeTest < self
+    def test_specified
+      command = table_create_command({"value_type" => "UInt64"})
+      assert_equal("UInt64", command.value_type)
+    end
+
+    def test_omitted
+      command = table_create_command
+      assert_nil(command.value_type)
+    end
+  end
+
   class FlagsTest < self
     def test_multiple
       command = table_create_command({"flags" => "TABLE_PAT_KEY|KEY_WITH_SIS"})

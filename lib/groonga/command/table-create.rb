@@ -41,6 +41,15 @@ module Groonga
         self[:key_type]
       end
 
+      # @return [String, nil] Value type name, `nil` for no value
+      #   table. Double array trie table always returns `nil` because
+      #   double array trie table doesn't support value.
+      #
+      # @since 1.2.2
+      def value_type
+        self[:value_type]
+      end
+
       def flags
         @flags ||= (self[:flags] || "").split(/\s*\|\s*/)
       end
