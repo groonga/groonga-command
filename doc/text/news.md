@@ -1,5 +1,11 @@
 # News
 
+## 1.2.2: 2016-08-05
+
+### Improvements
+
+  * {Groonga::Command::TableCreate#value_type}: Added.
+
 ## 1.2.1: 2016-08-03
 
 ### Improvements
