@@ -2,5 +2,6 @@
 /.yardoc/
 /doc/reference/
 /doc/po/groonga-command.pot
+/doc/po/ja/
 /pkg/
 /Gemfile.lock
