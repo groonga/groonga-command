@@ -39,6 +39,13 @@ module Groonga
 
       Command.register(command_name, self)
 
+      # @return [String] The table name.
+      #
+      # @since 1.2.4
+      def name
+        self[:name]
+      end
+
       # @return [String, nil] Key type name, nil for array no key table.
       # @since 1.0.7
       def key_type

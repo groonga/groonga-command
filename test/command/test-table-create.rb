@@ -54,6 +54,14 @@ class TableCreateCommandTest < Test::Unit::TestCase
     end
   end
 
+  class NameTest < self
+    def test_reader
+      command = table_create_command({"name" => "Users"})
+      assert_equal("Users",
+                   command.name)
+    end
+  end
+
   class KeyTypeTest < self
     def test_specified
       command = table_create_command({"key_type" => "ShortText"})
