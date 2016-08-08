@@ -37,14 +37,14 @@ module Groonga
 
       Command.register(command_name, self)
 
-      # @return [String] `name` parameter value.
+      # @return [String] The object name to be removed.
       #
       # @since 1.1.7
       def name
         self[:name]
       end
 
-      # @return [Boolean] `force` parameter value.
+      # @return [Boolean] Whether force to remove the object or not.
       #
       # @since 1.1.7
       def force?
