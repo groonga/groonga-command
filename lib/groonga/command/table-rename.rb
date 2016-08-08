@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-#
-# Copyright (C) 2012  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-2016  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -35,6 +33,20 @@ module Groonga
       end
 
       Command.register(command_name, self)
+
+      # @return [String] The table name to be renamed.
+      #
+      # @since 1.2.4
+      def name
+        self[:name]
+      end
+
+      # @return [String] The new table name.
+      #
+      # @since 1.2.4
+      def new_name
+        self[:new_name]
+      end
     end
   end
 end

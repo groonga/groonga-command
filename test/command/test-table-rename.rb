@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-#
-# Copyright (C) 2012-2013  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-2016  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -34,6 +32,22 @@ class TableRenameCommandTest < Test::Unit::TestCase
                      :new_name => new_name,
                    },
                    command.arguments)
+    end
+  end
+
+  class NameTest < self
+    def test_reader
+      command = table_rename_command({"name" => "Users"})
+      assert_equal("Users",
+                   command.name)
+    end
+  end
+
+  class NewNameTest < self
+    def test_reader
+      command = table_rename_command({"new_name" => "People"})
+      assert_equal("People",
+                   command.new_name)
     end
   end
 end
