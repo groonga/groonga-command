@@ -34,14 +34,15 @@ module Groonga
 
       Command.register(command_name, self)
 
-      # @return [String] `name` parameter value.
+      # @return [String] The table name to be removed.
       #
       # @since 1.1.8
       def name
         self[:name]
       end
 
-      # @return [Boolean] `dependent` parameter value.
+      # @return [Boolean] Whether the dependent objects of the table
+      #    are also removed or not.
       #
       # @since 1.1.8
       def dependent?
