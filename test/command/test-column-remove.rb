@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-#
-# Copyright (C) 2012-2013  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-2016  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -34,6 +32,22 @@ class ColumnRemoveCommandTest < Test::Unit::TestCase
                      :name  => name,
                    },
                    command.arguments)
+    end
+  end
+
+  class TableTest < self
+    def test_reader
+      command = column_remove_command({"table" => "Logs"})
+      assert_equal("Logs",
+                   command.table)
+    end
+  end
+
+  class NameTest < self
+    def test_reader
+      command = column_remove_command({"name" => "message"})
+      assert_equal("message",
+                   command.name)
     end
   end
 end
