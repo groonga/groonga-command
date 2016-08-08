@@ -1,5 +1,27 @@
 # News
 
+## 1.2.4: 2016-08-08
+
+### Improvements
+
+  * {Groonga::Command::ColumnCreate#name}: Added.
+
+  * {Groonga::Command::ColumnRemove#table}: Added.
+
+  * {Groonga::Command::ColumnRemove#name}: Added.
+
+  * {Groonga::Command::ColumnRename#table}: Added.
+
+  * {Groonga::Command::ColumnRename#name}: Added.
+
+  * {Groonga::Command::ColumnRename#new_name}: Added.
+
+  * {Groonga::Command::TableCreate#name}: Added.
+
+  * {Groonga::Command::TableRename#name}: Added.
+
+  * {Groonga::Command::TableRename#new_name}: Added.
+
 ## 1.2.3: 2016-08-08
 
 ### Improvements
