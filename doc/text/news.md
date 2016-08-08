@@ -42,32 +42,33 @@
   * {Groonga::Command::Base#request_id}: Added.
   * {Groonga::Command.all}: Added.
   * {Groonga::Command.find}: Supported `Symbol` as command name.
-  * {Groonga::Command#command_name}: Added. Because
-    {Groonga::Command#name} may be overwritten by subclasses. For
-    example, {Groonga::TableRemove#name} overwrites it.
-  * {Groonga::Command#name}: Made deprecated.
+  * {Groonga::Command::Base#command_name}: Added. Because
+    {Groonga::Command::Base#name} may be overwritten by subclasses. For
+    example, {Groonga::Command::TableRemove#name} overwrites it.
+  * {Groonga::Command::Base#name}: Made deprecated.
 
 ## 1.1.7: 2016-03-07
 
 ### Improvements
 
-  * Renamed to {Groonga::Command::ObjectInspect} from {Groonga::Command::Inspect}.
+  * Renamed to {Groonga::Command::ObjectInspect} from
+    `Groonga::Command::Inspect`.
   * {Groonga::Command::ObjectRemove}: Added.
 
 ## 1.1.6: 2016-02-03
 
 ### Improvements
 
-  * {Groonga::Command::Inspect}: Added.
+  * `Groonga::Command::Inspect`: Added.
 
 ## 1.1.5: 2016-01-19
 
 ### Improvements
 
-  * Renamed to {Groonga::Command::ConfigGet} from {Groonga::Command::ConfGet}.
-  * Renamed to {Groonga::Command::ConfigSet} from {Groonga::Command::ConfSet}.
+  * Renamed to {Groonga::Command::ConfigGet} from `Groonga::Command::ConfGet`.
+  * Renamed to {Groonga::Command::ConfigSet} from `Groonga::Command::ConfSet`.
   * Renamed to {Groonga::Command::ConfigDelete} from
-    {Groonga::Command::ConfDelete}.
+    `Groonga::Command::ConfDelete`.
 
 ## 1.1.4: 2016-01-13
 
@@ -172,7 +173,7 @@
 
 ### Improvements
 
-  * Extracted {Groonga::Command::Parser} as groonga-command-parser gem.
+  * Extracted `Groonga::Command::Parser` as groonga-command-parser gem.
     Now, groonga-command gem doesn't depend on any extension libraries.
 
 ## 1.0.4: 2013-09-18

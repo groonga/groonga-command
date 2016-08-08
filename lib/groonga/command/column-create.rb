@@ -95,8 +95,10 @@ module Groonga
         flags.include?("WITH_POSITION")
       end
 
-      # @return [::Array<String>] an array of index sources. If {#source} is
-      #   empty or nil, this method returns an empty array.
+      # @return [::Array<String>] an array of index sources. If
+      #   `source` parameter value is empty or nil, this method
+      #   returns an empty array.
+      #
       # @since 1.0.7
       def sources
         @sources ||= (self[:source] || "").split(/\s*,\s*/)
