@@ -1,5 +1,11 @@
 # News
 
+## 1.2.5: 2016-08-08
+
+### Improvements
+
+  * {Groonga::Command::Register#path}: Added.
+
 ## 1.2.4: 2016-08-08
 
 ### Improvements
