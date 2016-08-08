@@ -19,8 +19,7 @@
 class RubyEvalCommandTest < Test::Unit::TestCase
   private
   def ruby_eval_command(pair_arguments={}, ordered_arguments=[])
-    Groonga::Command::RubyEval.new("ruby_eval",
-                                   pair_arguments,
+    Groonga::Command::RubyEval.new(pair_arguments,
                                    ordered_arguments)
   end
 

@@ -19,8 +19,7 @@
 class NormalizeCommandTest < Test::Unit::TestCase
   private
   def normalize_command(pair_arguments={}, ordered_arguments=[])
-    Groonga::Command::Normalize.new("normalize",
-                                    pair_arguments,
+    Groonga::Command::Normalize.new(pair_arguments,
                                     ordered_arguments)
   end
 

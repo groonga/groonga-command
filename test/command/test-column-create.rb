@@ -19,8 +19,7 @@
 class ColumnCreateCommandTest < Test::Unit::TestCase
   private
   def column_create_command(pair_arguments={}, ordered_arguments=[])
-    Groonga::Command::ColumnCreate.new("column_create",
-                                       pair_arguments,
+    Groonga::Command::ColumnCreate.new(pair_arguments,
                                        ordered_arguments)
   end
 

@@ -22,15 +22,19 @@ module Groonga
     #
     # @since 1.1.2
     class PluginRegister < Base
-      Command.register("plugin_register", self)
-
       class << self
+        def command_name
+          "plugin_register"
+        end
+
         def parameter_names
           [
             :name,
           ]
         end
       end
+
+      Command.register(command_name, self)
 
       # @return [String] `name` parameter value.
       #

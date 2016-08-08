@@ -17,8 +17,7 @@
 class ColumnCopyCommandTest < Test::Unit::TestCase
   private
   def column_copy_command(pair_arguments={}, ordered_arguments=[])
-    Groonga::Command::ColumnCopy.new("column_copy",
-                                     pair_arguments,
+    Groonga::Command::ColumnCopy.new(pair_arguments,
                                      ordered_arguments)
   end
 

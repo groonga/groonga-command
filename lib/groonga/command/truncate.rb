@@ -21,15 +21,19 @@ require "groonga/command/base"
 module Groonga
   module Command
     class Truncate < Base
-      Command.register("truncate", self)
-
       class << self
+        def command_name
+          "truncate"
+        end
+
         def parameter_names
           [
             :table,
           ]
         end
       end
+
+      Command.register(command_name, self)
     end
   end
 end

@@ -1,4 +1,4 @@
-# Copyright (C) 2015  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2015-2016  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -22,9 +22,11 @@ module Groonga
     #
     # @since 1.1.3
     class ColumnCopy < Base
-      Command.register("column_copy", self)
-
       class << self
+        def command_name
+          "column_copy"
+        end
+
         def parameter_names
           [
             :from_table,
@@ -34,6 +36,8 @@ module Groonga
           ]
         end
       end
+
+      Command.register(command_name, self)
 
       # @return [String] `from_table` parameter value.
       #

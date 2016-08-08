@@ -17,7 +17,7 @@
 class SchemaCommandTest < Test::Unit::TestCase
   private
   def schema_command(pair_arguments={}, ordered_arguments=[])
-    Groonga::Command::Schema.new("schema", pair_arguments, ordered_arguments)
+    Groonga::Command::Schema.new(pair_arguments, ordered_arguments)
   end
 
   class ConstructorTest < self

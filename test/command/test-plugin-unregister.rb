@@ -17,8 +17,7 @@
 class PluginUnregisterCommandTest < Test::Unit::TestCase
   private
   def plugin_unregister_command(pair_arguments={}, ordered_arguments=[])
-    Groonga::Command::PluginUnregister.new("plugin_unregister",
-                                           pair_arguments,
+    Groonga::Command::PluginUnregister.new(pair_arguments,
                                            ordered_arguments)
   end
 

@@ -17,8 +17,7 @@
 class QueryExpandCommandTest < Test::Unit::TestCase
   private
   def query_expand_command(pair_arguments={}, ordered_arguments=[])
-    Groonga::Command::QueryExpand.new("query_expand",
-                                      pair_arguments,
+    Groonga::Command::QueryExpand.new(pair_arguments,
                                       ordered_arguments)
   end
 

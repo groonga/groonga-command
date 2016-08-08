@@ -22,15 +22,19 @@ module Groonga
     #
     # @since 1.1.3
     class ObjectExist < Base
-      Command.register("object_exist", self)
-
       class << self
+        def command_name
+          "object_exist"
+        end
+
         def parameter_names
           [
             :name,
           ]
         end
       end
+
+      Command.register(command_name, self)
 
       # @return [String] `name` parameter value.
       #

@@ -22,9 +22,11 @@ module Groonga
     #
     # @since 1.1.3
     class IOFlush < Base
-      Command.register("io_flush", self)
-
       class << self
+        def command_name
+          "io_flush"
+        end
+
         def parameter_names
           [
             :target_name,
@@ -32,6 +34,8 @@ module Groonga
           ]
         end
       end
+
+      Command.register(command_name, self)
 
       # @return [String] `target_name` parameter value.
       #

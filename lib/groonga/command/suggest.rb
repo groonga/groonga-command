@@ -21,9 +21,11 @@ require "groonga/command/base"
 module Groonga
   module Command
     class Suggest < Base
-      Command.register("suggest", self)
-
       class << self
+        def command_name
+          "suggest"
+        end
+
         def parameter_names
           [
             :types,
@@ -41,6 +43,8 @@ module Groonga
           ]
         end
       end
+
+      Command.register(command_name, self)
     end
   end
 end

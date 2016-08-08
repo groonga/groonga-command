@@ -17,8 +17,7 @@
 class LogicalShardListCommandTest < Test::Unit::TestCase
   private
   def logical_shard_list_command(pair_arguments={}, ordered_arguments=[])
-    Groonga::Command::LogicalShardList.new("logical_shard_list",
-                                           pair_arguments,
+    Groonga::Command::LogicalShardList.new(pair_arguments,
                                            ordered_arguments)
   end
 

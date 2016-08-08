@@ -22,9 +22,11 @@ module Groonga
     #
     # @since 1.1.3
     class LogicalTableRemove < Base
-      Command.register("logical_table_remove", self)
-
       class << self
+        def command_name
+          "logical_table_remove"
+        end
+
         def parameter_names
           [
             :logical_table,
@@ -36,6 +38,8 @@ module Groonga
           ]
         end
       end
+
+      Command.register(command_name, self)
 
       # @return [String] `logical_table` parameter value.
       #

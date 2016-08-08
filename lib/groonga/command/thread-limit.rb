@@ -22,15 +22,19 @@ module Groonga
     #
     # @since 1.1.3
     class ThreadLimit < Base
-      Command.register("thread_limit", self)
-
       class << self
+        def command_name
+          "thread_limit"
+        end
+
         def parameter_names
           [
             :max,
           ]
         end
       end
+
+      Command.register(command_name, self)
 
       # @return [Integer] `max` parameter value.
       #

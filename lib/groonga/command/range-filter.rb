@@ -22,9 +22,11 @@ module Groonga
     #
     # @since 1.1.0
     class RangeFilter < Base
-      Command.register("range_filter", self)
-
       class << self
+        def command_name
+          "range_filter"
+        end
+
         def parameter_names
           [
             :table,
@@ -40,6 +42,8 @@ module Groonga
           ]
         end
       end
+
+      Command.register(command_name, self)
 
       # @return [String] `table` parameter value.
       #

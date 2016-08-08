@@ -21,9 +21,11 @@ require "groonga/command/base"
 module Groonga
   module Command
     class Dump < Base
-      Command.register("dump", self)
-
       class << self
+        def command_name
+          "dump"
+        end
+
         def parameter_names
           [
             :tables,
@@ -35,6 +37,8 @@ module Groonga
           ]
         end
       end
+
+      Command.register(command_name, self)
 
       def output_type
         :none

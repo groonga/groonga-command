@@ -17,8 +17,7 @@
 class ReindexCommandTest < Test::Unit::TestCase
   private
   def reindex_command(pair_arguments={}, ordered_arguments=[])
-    Groonga::Command::Reindex.new("reindex",
-                                  pair_arguments,
+    Groonga::Command::Reindex.new(pair_arguments,
                                   ordered_arguments)
   end
 

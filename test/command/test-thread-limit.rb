@@ -17,8 +17,7 @@
 class ThreadLimitCommandTest < Test::Unit::TestCase
   private
   def thread_limit_command(pair_arguments={}, ordered_arguments=[])
-    Groonga::Command::ThreadLimit.new("thread_limit",
-                                      pair_arguments,
+    Groonga::Command::ThreadLimit.new(pair_arguments,
                                       ordered_arguments)
   end
 

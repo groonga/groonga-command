@@ -17,8 +17,7 @@
 class ObjectRemoveCommandTest < Test::Unit::TestCase
   private
   def object_remove_command(pair_arguments={}, ordered_arguments=[])
-    Groonga::Command::ObjectRemove.new("object_remove",
-                                       pair_arguments,
+    Groonga::Command::ObjectRemove.new(pair_arguments,
                                        ordered_arguments)
   end
 

@@ -19,8 +19,7 @@
 class RubyLoadCommandTest < Test::Unit::TestCase
   private
   def ruby_load_command(pair_arguments={}, ordered_arguments=[])
-    Groonga::Command::RubyLoad.new("ruby_load",
-                                   pair_arguments,
+    Groonga::Command::RubyLoad.new(pair_arguments,
                                    ordered_arguments)
   end
 

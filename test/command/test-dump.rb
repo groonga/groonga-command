@@ -19,7 +19,7 @@
 class DumpCommandTest < Test::Unit::TestCase
   private
   def dump_command(pair_arguments={}, ordered_arguments=[])
-    Groonga::Command::Dump.new("dump", pair_arguments, ordered_arguments)
+    Groonga::Command::Dump.new(pair_arguments, ordered_arguments)
   end
 
   class ConstructorTest < self

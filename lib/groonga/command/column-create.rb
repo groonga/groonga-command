@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-#
-# Copyright (C) 2012-2014  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-2016  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -21,9 +19,11 @@ require "groonga/command/base"
 module Groonga
   module Command
     class ColumnCreate < Base
-      Command.register("column_create", self)
-
       class << self
+        def command_name
+          "column_create"
+        end
+
         def parameter_names
           [
             :table,
@@ -34,6 +34,8 @@ module Groonga
           ]
         end
       end
+
+      Command.register(command_name, self)
 
       # @return [String] table name.
       # @since 1.0.7

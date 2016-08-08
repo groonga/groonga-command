@@ -22,15 +22,19 @@ module Groonga
     #
     # @since 1.1.3
     class TableList < Base
-      Command.register("table_list", self)
-
       class << self
+        def command_name
+          "table_list"
+        end
+
         def parameter_names
           [
             :prefix,
           ]
         end
       end
+
+      Command.register(command_name, self)
 
       # @return [String] `prefix` parameter value.
       #

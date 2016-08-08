@@ -21,15 +21,19 @@ require "groonga/command/base"
 module Groonga
   module Command
     class Register < Base
-      Command.register("register", self)
-
       class << self
+        def command_name
+          "register"
+        end
+
         def parameter_names
           [
             :path,
           ]
         end
       end
+
+      Command.register(command_name, self)
     end
   end
 end

@@ -17,8 +17,7 @@
 class TableListCommandTest < Test::Unit::TestCase
   private
   def table_list_command(pair_arguments={}, ordered_arguments=[])
-    Groonga::Command::TableList.new("table_list",
-                                    pair_arguments,
+    Groonga::Command::TableList.new(pair_arguments,
                                     ordered_arguments)
   end
 

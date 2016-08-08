@@ -19,8 +19,7 @@
 class ColumnRenameCommandTest < Test::Unit::TestCase
   private
   def column_rename_command(pair_arguments={}, ordered_arguments=[])
-    Groonga::Command::ColumnRename.new("column_rename",
-                                       pair_arguments,
+    Groonga::Command::ColumnRename.new(pair_arguments,
                                        ordered_arguments)
   end
 

@@ -17,8 +17,7 @@
 class ConfigDeleteCommandTest < Test::Unit::TestCase
   private
   def config_delete_command(pair_arguments={}, ordered_arguments=[])
-    Groonga::Command::ConfigDelete.new("config_delete",
-                                       pair_arguments,
+    Groonga::Command::ConfigDelete.new(pair_arguments,
                                        ordered_arguments)
   end
 

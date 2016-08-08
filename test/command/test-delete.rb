@@ -19,8 +19,7 @@
 class DeleteCommandTest < Test::Unit::TestCase
   private
   def delete_command(pair_arguments={}, ordered_arguments=[])
-    Groonga::Command::Delete.new("delete",
-                                 pair_arguments,
+    Groonga::Command::Delete.new(pair_arguments,
                                  ordered_arguments)
   end
 

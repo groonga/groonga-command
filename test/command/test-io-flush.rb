@@ -17,8 +17,7 @@
 class IOFlushCommandTest < Test::Unit::TestCase
   private
   def io_flush_command(pair_arguments={}, ordered_arguments=[])
-    Groonga::Command::IOFlush.new("io_flush",
-                                  pair_arguments,
+    Groonga::Command::IOFlush.new(pair_arguments,
                                   ordered_arguments)
   end
 

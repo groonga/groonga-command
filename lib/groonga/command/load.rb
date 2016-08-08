@@ -23,9 +23,11 @@ require "groonga/command/base"
 module Groonga
   module Command
     class Load < Base
-      Command.register("load", self)
-
       class << self
+        def command_name
+          "load"
+        end
+
         def parameter_names
           [
             :values,
@@ -37,6 +39,8 @@ module Groonga
           ]
         end
       end
+
+      Command.register(command_name, self)
 
       attr_writer :values
       attr_writer :columns

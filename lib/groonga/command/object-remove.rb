@@ -22,9 +22,11 @@ module Groonga
     #
     # @since 1.1.7
     class ObjectRemove < Base
-      Command.register("object_remove", self)
-
       class << self
+        def command_name
+          "object_remove"
+        end
+
         def parameter_names
           [
             :name,
@@ -32,6 +34,8 @@ module Groonga
           ]
         end
       end
+
+      Command.register(command_name, self)
 
       # @return [String] `name` parameter value.
       #

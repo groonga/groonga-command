@@ -17,8 +17,7 @@
 class LogicalTableRemoveCommandTest < Test::Unit::TestCase
   private
   def logical_table_remove_command(pair_arguments={}, ordered_arguments=[])
-    Groonga::Command::LogicalTableRemove.new("logical_table_remove",
-                                             pair_arguments,
+    Groonga::Command::LogicalTableRemove.new(pair_arguments,
                                              ordered_arguments)
   end
 

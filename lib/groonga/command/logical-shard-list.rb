@@ -22,15 +22,19 @@ module Groonga
     #
     # @since 1.1.3
     class LogicalShardList < Base
-      Command.register("logical_shard_list", self)
-
       class << self
+        def command_name
+          "logical_shard_list"
+        end
+
         def parameter_names
           [
             :logical_table,
           ]
         end
       end
+
+      Command.register(command_name, self)
 
       # @return [String] `logical_table` parameter value.
       #

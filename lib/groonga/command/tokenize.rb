@@ -24,9 +24,11 @@ module Groonga
     #
     # @since 1.0.6
     class Tokenize < Base
-      Command.register("tokenize", self)
-
       class << self
+        def command_name
+          "tokenize"
+        end
+
         def parameter_names
           [
             :tokenizer,
@@ -38,6 +40,8 @@ module Groonga
           ]
         end
       end
+
+      Command.register(command_name, self)
 
       # @return [String] `tokenizer` parameter value.
       # @since 1.0.6

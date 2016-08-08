@@ -19,8 +19,7 @@
 class RegisterCommandTest < Test::Unit::TestCase
   private
   def register_command(pair_arguments={}, ordered_arguments=[])
-    Groonga::Command::Register.new("register",
-                                   pair_arguments,
+    Groonga::Command::Register.new(pair_arguments,
                                    ordered_arguments)
   end
 

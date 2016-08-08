@@ -19,9 +19,11 @@ require "groonga/command/base"
 module Groonga
   module Command
     class TableCreate < Base
-      Command.register("table_create", self)
-
       class << self
+        def command_name
+          "table_create"
+        end
+
         def parameter_names
           [
             :name,
@@ -34,6 +36,8 @@ module Groonga
           ]
         end
       end
+
+      Command.register(command_name, self)
 
       # @return [String, nil] Key type name, nil for array no key table.
       # @since 1.0.7

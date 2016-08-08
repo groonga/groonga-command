@@ -17,8 +17,7 @@
 class LogicalSelectCommandTest < Test::Unit::TestCase
   private
   def logical_select_command(pair_arguments={}, ordered_arguments=[])
-    Groonga::Command::LogicalSelect.new("logical_select",
-                                        pair_arguments,
+    Groonga::Command::LogicalSelect.new(pair_arguments,
                                         ordered_arguments)
   end
 

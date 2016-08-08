@@ -21,9 +21,11 @@ require "groonga/command/base"
 module Groonga
   module Command
     class ColumnRemove < Base
-      Command.register("column_remove", self)
-
       class << self
+        def command_name
+          "column_remove"
+        end
+
         def parameter_names
           [
             :table,
@@ -31,6 +33,8 @@ module Groonga
           ]
         end
       end
+
+      Command.register(command_name, self)
     end
   end
 end

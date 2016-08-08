@@ -17,8 +17,7 @@
 class RequestCancelCommandTest < Test::Unit::TestCase
   private
   def request_cancel_command(pair_arguments={}, ordered_arguments=[])
-    Groonga::Command::RequestCancel.new("request_cancel",
-                                        pair_arguments,
+    Groonga::Command::RequestCancel.new(pair_arguments,
                                         ordered_arguments)
   end
 

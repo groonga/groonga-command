@@ -22,9 +22,11 @@ module Groonga
     #
     # @since 1.1.5
     class ConfigSet < Base
-      Command.register("config_set", self)
-
       class << self
+        def command_name
+          "config_set"
+        end
+
         def parameter_names
           [
             :key,
@@ -32,6 +34,8 @@ module Groonga
           ]
         end
       end
+
+      Command.register(command_name, self)
 
       # @return [String] `key` parameter value.
       #

@@ -19,8 +19,7 @@
 class ColumnRemoveCommandTest < Test::Unit::TestCase
   private
   def column_remove_command(pair_arguments={}, ordered_arguments=[])
-    Groonga::Command::ColumnRemove.new("column_remove",
-                                       pair_arguments,
+    Groonga::Command::ColumnRemove.new(pair_arguments,
                                        ordered_arguments)
   end
 

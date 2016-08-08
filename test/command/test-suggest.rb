@@ -20,8 +20,7 @@
 class SuggestCommandTest < Test::Unit::TestCase
   private
   def suggest_command(pair_arguments={}, ordered_arguments=[])
-    Groonga::Command::Suggest.new("suggest",
-                                  pair_arguments,
+    Groonga::Command::Suggest.new(pair_arguments,
                                   ordered_arguments)
   end
 

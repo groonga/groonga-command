@@ -17,9 +17,8 @@
 class ConfigGetCommandTest < Test::Unit::TestCase
   private
   def config_get_command(pair_arguments={}, ordered_arguments=[])
-    Groonga::Command::ConfigGet.new("config_get",
-                                  pair_arguments,
-                                  ordered_arguments)
+    Groonga::Command::ConfigGet.new(pair_arguments,
+                                    ordered_arguments)
   end
 
   class ConstructorTest < self

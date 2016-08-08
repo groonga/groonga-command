@@ -22,9 +22,11 @@ module Groonga
     #
     # @since 1.2.1
     class QueryExpand < Base
-      Command.register("query_expand", self)
-
       class << self
+        def command_name
+          "query_expand"
+        end
+
         def parameter_names
           [
             :expander,
@@ -33,6 +35,8 @@ module Groonga
           ]
         end
       end
+
+      Command.register(command_name, self)
 
       # @return [String] `expander` parameter value.
       #

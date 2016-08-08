@@ -24,9 +24,11 @@ module Groonga
     #
     # @since 1.1.1
     class LogicalCount < Base
-      Command.register("logical_count", self)
-
       class << self
+        def command_name
+          "logical_count"
+        end
+
         def parameter_names
           [
             :logical_table,
@@ -39,6 +41,8 @@ module Groonga
           ]
         end
       end
+
+      Command.register(command_name, self)
 
       # @return [String] `logical_table` parameter value.
       #

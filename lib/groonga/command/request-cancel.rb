@@ -22,15 +22,19 @@ module Groonga
     #
     # @since 1.1.0
     class RequestCancel < Base
-      Command.register("request_cancel", self)
-
       class << self
+        def command_name
+          "request_cancel"
+        end
+
         def parameter_names
           [
             :id,
           ]
         end
       end
+
+      Command.register(command_name, self)
 
       # @return [String] `id` parameter value.
       # @since 1.1.0

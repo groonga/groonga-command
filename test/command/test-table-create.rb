@@ -17,8 +17,7 @@
 class TableCreateCommandTest < Test::Unit::TestCase
   private
   def table_create_command(pair_arguments={}, ordered_arguments=[])
-    Groonga::Command::TableCreate.new("table_create",
-                                      pair_arguments,
+    Groonga::Command::TableCreate.new(pair_arguments,
                                       ordered_arguments)
   end
 

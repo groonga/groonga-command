@@ -17,8 +17,7 @@
 class LogPutCommandTest < Test::Unit::TestCase
   private
   def log_put_command(pair_arguments={}, ordered_arguments=[])
-    Groonga::Command::LogPut.new("log_put",
-                                 pair_arguments,
+    Groonga::Command::LogPut.new(pair_arguments,
                                  ordered_arguments)
   end
 

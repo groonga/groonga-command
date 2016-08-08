@@ -22,15 +22,19 @@ module Groonga
     #
     # @since 1.1.4
     class Reindex < Base
-      Command.register("reindex", self)
-
       class << self
+        def command_name
+          "reindex"
+        end
+
         def parameter_names
           [
             :target_name,
           ]
         end
       end
+
+      Command.register(command_name, self)
 
       # @return [String] `target_name` parameter value.
       #

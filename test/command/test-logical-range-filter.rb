@@ -17,8 +17,7 @@
 class LogicalRangeFilterCommandTest < Test::Unit::TestCase
   private
   def logical_range_filter_command(pair_arguments={}, ordered_arguments=[])
-    Groonga::Command::LogicalRangeFilter.new("logical_range_filter",
-                                             pair_arguments,
+    Groonga::Command::LogicalRangeFilter.new(pair_arguments,
                                              ordered_arguments)
   end
 

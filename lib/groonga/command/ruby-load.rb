@@ -24,15 +24,19 @@ module Groonga
     #
     # @since 1.0.6
     class RubyLoad < Base
-      Command.register("ruby_load", self)
-
       class << self
+        def command_name
+          "ruby_load"
+        end
+
         def parameter_names
           [
             :path,
           ]
         end
       end
+
+      Command.register(command_name, self)
 
       # @return [String] `path` parameter value.
       # @since 1.0.6

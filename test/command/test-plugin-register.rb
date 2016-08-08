@@ -17,9 +17,8 @@
 class PluginRegisterCommandTest < Test::Unit::TestCase
   private
   def plugin_register_command(pair_arguments={}, ordered_arguments=[])
-    Groonga::Command::PluginRegister.new("plugin_register",
-                                           pair_arguments,
-                                           ordered_arguments)
+    Groonga::Command::PluginRegister.new(pair_arguments,
+                                         ordered_arguments)
   end
 
   class ConstructorTest < self

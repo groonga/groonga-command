@@ -17,8 +17,7 @@
 class ObjectExistCommandTest < Test::Unit::TestCase
   private
   def object_exist_command(pair_arguments={}, ordered_arguments=[])
-    Groonga::Command::ObjectExist.new("object_exist",
-                                      pair_arguments,
+    Groonga::Command::ObjectExist.new(pair_arguments,
                                       ordered_arguments)
   end
 

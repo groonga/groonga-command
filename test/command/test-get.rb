@@ -20,7 +20,7 @@
 class GetCommandTest < Test::Unit::TestCase
   private
   def get_command(pair_arguments={}, ordered_arguments=[])
-    Groonga::Command::Get.new("get", pair_arguments, ordered_arguments)
+    Groonga::Command::Get.new(pair_arguments, ordered_arguments)
   end
 
   class ConstructorTest < self

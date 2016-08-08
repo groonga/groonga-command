@@ -21,9 +21,11 @@ require "groonga/command/base"
 module Groonga
   module Command
     class Get < Base
-      Command.register("get", self)
-
       class << self
+        def command_name
+          "get"
+        end
+
         def parameter_names
           [
             :table,
@@ -33,6 +35,8 @@ module Groonga
           ]
         end
       end
+
+      Command.register(command_name, self)
     end
   end
 end

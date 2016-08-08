@@ -17,8 +17,7 @@
 class ShutdownCommandTest < Test::Unit::TestCase
   private
   def shutdown_command(pair_arguments={}, ordered_arguments=[])
-    Groonga::Command::Shutdown.new("shutdown",
-                                   pair_arguments,
+    Groonga::Command::Shutdown.new(pair_arguments,
                                    ordered_arguments)
   end
 

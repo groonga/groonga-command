@@ -17,8 +17,7 @@
 class RangeFilterCommandTest < Test::Unit::TestCase
   private
   def range_filter_command(pair_arguments={}, ordered_arguments=[])
-    Groonga::Command::RangeFilter.new("range_filter",
-                                      pair_arguments,
+    Groonga::Command::RangeFilter.new(pair_arguments,
                                       ordered_arguments)
   end
 

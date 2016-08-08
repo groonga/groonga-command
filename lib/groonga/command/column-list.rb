@@ -24,15 +24,19 @@ module Groonga
     #
     # @since 1.0.6
     class ColumnList < Base
-      Command.register("column_list", self)
-
       class << self
+        def command_name
+          "column_list"
+        end
+
         def parameter_names
           [
             :table,
           ]
         end
       end
+
+      Command.register(command_name, self)
 
       # @return [String] `table` parameter value.
       # @since 1.0.6

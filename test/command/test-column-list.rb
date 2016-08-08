@@ -19,8 +19,7 @@
 class ColumnListCommandTest < Test::Unit::TestCase
   private
   def column_list_command(pair_arguments={}, ordered_arguments=[])
-    Groonga::Command::ColumnList.new("column_list",
-                                     pair_arguments,
+    Groonga::Command::ColumnList.new(pair_arguments,
                                      ordered_arguments)
   end
 

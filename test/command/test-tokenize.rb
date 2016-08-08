@@ -19,8 +19,7 @@
 class TokenizeCommandTest < Test::Unit::TestCase
   private
   def tokenize_command(pair_arguments={}, ordered_arguments=[])
-    Groonga::Command::Tokenize.new("tokenize",
-                                   pair_arguments,
+    Groonga::Command::Tokenize.new(pair_arguments,
                                    ordered_arguments)
   end
 

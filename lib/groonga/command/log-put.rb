@@ -22,9 +22,11 @@ module Groonga
     #
     # @since 1.1.3
     class LogPut < Base
-      Command.register("log_put", self)
-
       class << self
+        def command_name
+          "log_put"
+        end
+
         def parameter_names
           [
             :level,
@@ -32,6 +34,8 @@ module Groonga
           ]
         end
       end
+
+      Command.register(command_name, self)
 
       # @return [String] `level` parameter value.
       #

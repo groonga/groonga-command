@@ -21,9 +21,11 @@ require "groonga/command/base"
 module Groonga
   module Command
     class Delete < Base
-      Command.register("delete", self)
-
       class << self
+        def command_name
+          "delete"
+        end
+
         def parameter_names
           [
             :table,
@@ -33,6 +35,8 @@ module Groonga
           ]
         end
       end
+
+      Command.register(command_name, self)
     end
   end
 end

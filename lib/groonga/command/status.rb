@@ -21,7 +21,13 @@ require "groonga/command/base"
 module Groonga
   module Command
     class Status < Base
-      Command.register("status", self)
+      class << self
+        def command_name
+          "status"
+        end
+      end
+
+      Command.register(command_name, self)
     end
   end
 end

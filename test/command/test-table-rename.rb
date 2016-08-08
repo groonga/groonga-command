@@ -19,8 +19,7 @@
 class TableRenameCommandTest < Test::Unit::TestCase
   private
   def table_rename_command(pair_arguments={}, ordered_arguments=[])
-    Groonga::Command::TableRename.new("table_rename",
-                                      pair_arguments,
+    Groonga::Command::TableRename.new(pair_arguments,
                                       ordered_arguments)
   end
 

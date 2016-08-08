@@ -17,8 +17,7 @@
 class LogLevelCommandTest < Test::Unit::TestCase
   private
   def log_level_command(pair_arguments={}, ordered_arguments=[])
-    Groonga::Command::LogLevel.new("log_level",
-                                   pair_arguments,
+    Groonga::Command::LogLevel.new(pair_arguments,
                                    ordered_arguments)
   end
 

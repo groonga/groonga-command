@@ -22,9 +22,11 @@ module Groonga
     #
     # @since 1.1.0
     class TableTokenize < Base
-      Command.register("table_tokenize", self)
-
       class << self
+        def command_name
+          "table_tokenize"
+        end
+
         def parameter_names
           [
             :table,
@@ -34,6 +36,8 @@ module Groonga
           ]
         end
       end
+
+      Command.register(command_name, self)
 
       # @return [String] `table` parameter value.
       #

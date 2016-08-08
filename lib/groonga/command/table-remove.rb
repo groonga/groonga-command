@@ -19,9 +19,11 @@ require "groonga/command/base"
 module Groonga
   module Command
     class TableRemove < Base
-      Command.register("table_remove", self)
-
       class << self
+        def command_name
+          "table_remove"
+        end
+
         def parameter_names
           [
             :name,
@@ -29,6 +31,8 @@ module Groonga
           ]
         end
       end
+
+      Command.register(command_name, self)
 
       # @return [String] `name` parameter value.
       #

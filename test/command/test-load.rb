@@ -19,8 +19,7 @@
 class LoadCommandTest < Test::Unit::TestCase
   private
   def load_command(pair_arguments={}, ordered_arguments=[])
-    Groonga::Command::Load.new("load",
-                               pair_arguments,
+    Groonga::Command::Load.new(pair_arguments,
                                ordered_arguments)
   end
 

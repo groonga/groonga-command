@@ -17,8 +17,7 @@
 class TableTokenizeCommandTest < Test::Unit::TestCase
   private
   def table_tokenize_command(pair_arguments={}, ordered_arguments=[])
-    Groonga::Command::TableTokenize.new("table_tokenize",
-                                        pair_arguments,
+    Groonga::Command::TableTokenize.new(pair_arguments,
                                         ordered_arguments)
   end
 

@@ -17,8 +17,7 @@
 class ObjectInspectCommandTest < Test::Unit::TestCase
   private
   def object_inspect_command(pair_arguments={}, ordered_arguments=[])
-    Groonga::Command::ObjectInspect.new("object_inspect",
-                                        pair_arguments,
+    Groonga::Command::ObjectInspect.new(pair_arguments,
                                         ordered_arguments)
   end
 

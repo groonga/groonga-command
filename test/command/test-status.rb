@@ -19,7 +19,7 @@
 class StatusCommandTest < Test::Unit::TestCase
   private
   def status_command(pair_arguments={}, ordered_arguments=[])
-    Groonga::Command::Status.new("status", pair_arguments, ordered_arguments)
+    Groonga::Command::Status.new(pair_arguments, ordered_arguments)
   end
 
   class ConstructorTest < self

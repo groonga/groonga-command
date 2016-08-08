@@ -24,15 +24,19 @@ module Groonga
     #
     # @since 1.0.6
     class RubyEval < Base
-      Command.register("ruby_eval", self)
-
       class << self
+        def command_name
+          "ruby_eval"
+        end
+
         def parameter_names
           [
             :script,
           ]
         end
       end
+
+      Command.register(command_name, self)
 
       # @return [String] `script` parameter value.
       # @since 1.0.6

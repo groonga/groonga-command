@@ -22,7 +22,13 @@ module Groonga
     #
     # @since 1.2.1
     class Schema < Base
-      Command.register("schema", self)
+      class << self
+        def command_name
+          "schema"
+        end
+      end
+
+      Command.register(command_name, self)
     end
   end
 end

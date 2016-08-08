@@ -22,15 +22,19 @@ module Groonga
     #
     # @since 1.1.8
     class Shutdown < Base
-      Command.register("shutdown", self)
-
       class << self
+        def command_name
+          "shutdown"
+        end
+
         def parameter_names
           [
             :mode,
           ]
         end
       end
+
+      Command.register(command_name, self)
 
       # @return [String] `mode` parameter value.
       #

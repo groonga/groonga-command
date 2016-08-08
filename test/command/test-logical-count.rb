@@ -17,8 +17,7 @@
 class LogicalCountCommandTest < Test::Unit::TestCase
   private
   def logical_count_command(pair_arguments={}, ordered_arguments=[])
-    Groonga::Command::LogicalCount.new("logical_count",
-                                       pair_arguments,
+    Groonga::Command::LogicalCount.new(pair_arguments,
                                        ordered_arguments)
   end
 

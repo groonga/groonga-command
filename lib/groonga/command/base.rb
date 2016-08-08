@@ -57,7 +57,43 @@ module Groonga
       attr_reader :command_name
       attr_reader :arguments
       attr_accessor :original_format, :original_source, :path_prefix
-      def initialize(command_name, pair_arguments, ordered_arguments=[])
+
+      # @overload initialize(pair_arguments, ordered_arguments={})
+      #   Initializes a new known command. The command class must implement
+      #   {.command_name} method.
+      #
+      #   @param pair_arguments [::Hash<String, String>] The list of
+      #     pair arguments.
+      #
+      #   @param ordered_arguments [::Array<String>] The list of
+      #     ordered arguments.
+      #
+      #   @since 1.2.3
+      #
+      # @overload initialize(command_name, pair_arguments, ordered_arguments={})
+      #   Initializes a new unknown command.
+      #
+      #   @param command_name [String] The command name.
+      #
+      #   @param pair_arguments [::Hash<String, String>] The list of
+      #     pair arguments.
+      #
+      #   @param ordered_arguments [::Array<String>] The list of
+      #     ordered arguments.
+      def initialize(arg1=nil, arg2=nil, arg3=nil)
+        case arg1
+        when String
+          command_name = arg1
+          pair_arguments = arg2
+          ordered_arguments = arg3
+        else
+          command_name = self.class.command_name
+          pair_arguments = arg1
+          ordered_arguments = arg2
+        end
+        pair_arguments ||= {}
+        ordered_arguments ||= []
+
         @command_name = command_name
         @arguments = construct_arguments(pair_arguments, ordered_arguments)
         @original_format = nil

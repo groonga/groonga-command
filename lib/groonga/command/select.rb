@@ -21,9 +21,11 @@ require "groonga/command/base"
 module Groonga
   module Command
     class Select < Base
-      Command.register("select", self)
-
       class << self
+        def command_name
+          "select"
+        end
+
         def parameter_names
           [
             :table,
@@ -48,6 +50,8 @@ module Groonga
           ]
         end
       end
+
+      Command.register(command_name, self)
 
       def sortby
         self[:sortby]

@@ -19,8 +19,7 @@
 class TruncateCommandTest < Test::Unit::TestCase
   private
   def truncate_command(pair_arguments={}, ordered_arguments=[])
-    Groonga::Command::Truncate.new("truncate",
-                                   pair_arguments,
+    Groonga::Command::Truncate.new(pair_arguments,
                                    ordered_arguments)
   end
 

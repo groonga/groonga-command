@@ -19,7 +19,7 @@
 class SelectCommandTest < Test::Unit::TestCase
   private
   def select_command(pair_arguments={}, ordered_arguments=[])
-    Groonga::Command::Select.new("select", pair_arguments, ordered_arguments)
+    Groonga::Command::Select.new(pair_arguments, ordered_arguments)
   end
 
   class ConstructorTest < self
