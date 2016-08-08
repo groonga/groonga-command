@@ -43,6 +43,13 @@ module Groonga
         self[:table]
       end
 
+      # @return [String] The column name.
+      #
+      # @since 1.2.4
+      def name
+        self[:name]
+      end
+
       def flags
         @flags ||= (self[:flags] || "").split(/\s*\|\s*/)
       end
