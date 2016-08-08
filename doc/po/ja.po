@@ -7,8 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: groonga-command 0.9.5\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-20 22:17+0900\n"
-"PO-Revision-Date: 2013-10-29 18:14+0900\n"
+"PO-Revision-Date: 2016-08-08 11:17+0900\n"
 "Last-Translator: Haruka Yoshihara <yoshihara@clear-code.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -17,23 +16,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../../README.md:1
 msgid "# README"
 msgstr ""
 
-#: ../../README.md:3
+msgid ""
+"[![Gem Version](https://badge.fury.io/rb/groonga-command.svg)](http://badge.fu"
+"ry.io/rb/groonga-command)\n"
+"[![Build Status](https://travis-ci.org/groonga/groonga-command.svg?branch=mast"
+"er)](https://travis-ci.org/groonga/groonga-command)"
+msgstr ""
+
 msgid "## Name"
 msgstr "## 名前"
 
-#: ../../README.md:5
 msgid "groonga-command"
 msgstr ""
 
-#: ../../README.md:7
 msgid "## Description"
 msgstr "## 説明"
 
-#: ../../README.md:9
 msgid ""
 "Groonga-command is a library that represents\n"
 "[Groonga](http://groonga.org/)'s command. You can write a program that\n"
@@ -43,39 +44,30 @@ msgstr ""
 "TPの記法や、\"/d/select?table=Sites\"といったHTTPの記法）を処理するためのライブラリです。groonga-commandを使ってG"
 "roongaのコマンドを処理することができます。"
 
-#: ../../README.md:13
 msgid "## Install"
 msgstr "## インストール"
 
-#: ../../README.md:15
 msgid "    % gem install groonga-command"
 msgstr ""
 
-#: ../../README.md:17
 msgid "## Usage"
 msgstr "## 使い方"
 
-#: ../../README.md:19 ../../README.md:23
 msgid "TODO..."
 msgstr ""
 
-#: ../../README.md:21
 msgid "## Examples"
 msgstr "## 使用例"
 
-#: ../../README.md:25
 msgid "## Dependencies"
 msgstr "## 依存関係"
 
-#: ../../README.md:27
 msgid "* Ruby"
 msgstr ""
 
-#: ../../README.md:29
 msgid "## Mailing list"
 msgstr "## メーリングリスト"
 
-#: ../../README.md:31
 msgid ""
 "* English: [groonga-talk@lists.sourceforge.net](https://lists.sourceforge.net/"
 "lists/listinfo/groonga-talk)\n"
@@ -87,43 +79,34 @@ msgstr ""
 "* 日本語: [groonga-dev@lists.sourceforge.jp](http://lists.sourceforge.jp/mailman/"
 "listinfo/groonga-dev)"
 
-#: ../../README.md:34
 msgid "## Thanks"
 msgstr "## 感謝"
 
-#: ../../README.md:36
 msgid "* ..."
 msgstr ""
 
-#: ../../README.md:38
 msgid "## Authors"
 msgstr "## 作者"
 
-#: ../../README.md:40
 msgid "* Kouhei Sutou \\<kou@clear-code.com\\>"
 msgstr ""
 
-#: ../../README.md:42
 msgid "## License"
 msgstr "## ライセンス"
 
-#: ../../README.md:44
 msgid "LGPLv2.1 or later. See doc/text/lgpl-2.1.txt for details."
 msgstr "LGPLv2.1以降です。詳しくはdoc/text/lgpl-2.1.txtを見てください。"
 
-#: ../../README.md:46
 msgid ""
 "(Kouhei Sutou has a right to change the license including contributed\n"
 "patches.)"
 msgstr "（コントリビュートされたパッチなども含み、Kouhei Sutouがライセンスを変更する権利を持ちます。）"
 
-#: ../../doc/text/lgpl-2.1.txt:1
 msgid ""
 "                  GNU LESSER GENERAL PUBLIC LICENSE\n"
 "                       Version 2.1, February 1999"
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:4
 msgid ""
 " Copyright (C) 1991, 1999 Free Software Foundation, Inc.\n"
 " 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA\n"
@@ -131,18 +114,15 @@ msgid ""
 " of this license document, but changing it is not allowed."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:9
 msgid ""
 "[This is the first released version of the Lesser GPL.  It also counts\n"
 " as the successor of the GNU Library Public License, version 2, hence\n"
 " the version number 2.1.]"
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:13
 msgid "                            Preamble"
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:15
 msgid ""
 "  The licenses for most software are designed to take away your\n"
 "freedom to share and change it.  By contrast, the GNU General Public\n"
@@ -150,7 +130,6 @@ msgid ""
 "free software--to make sure the software is free for all its users."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:20
 msgid ""
 "  This license, the Lesser General Public License, applies to some\n"
 "specially designated software packages--typically libraries--of the\n"
@@ -160,7 +139,6 @@ msgid ""
 "strategy to use in any particular case, based on the explanations below."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:27
 msgid ""
 "  When we speak of free software, we are referring to freedom of use,\n"
 "not price.  Our General Public Licenses are designed to make sure that\n"
@@ -171,7 +149,6 @@ msgid ""
 "these things."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:35
 msgid ""
 "  To protect your rights, we need to make restrictions that forbid\n"
 "distributors to deny you these rights or to ask you to surrender these\n"
@@ -179,7 +156,6 @@ msgid ""
 "you if you distribute copies of the library or if you modify it."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:40
 msgid ""
 "  For example, if you distribute copies of the library, whether gratis\n"
 "or for a fee, you must give the recipients all the rights that we gave\n"
@@ -190,14 +166,12 @@ msgid ""
 "it.  And you must show them these terms so they know their rights."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:48
 msgid ""
 "  We protect your rights with a two-step method: (1) we copyright the\n"
 "library, and (2) we offer you this license, which gives you legal\n"
 "permission to copy, distribute and/or modify the library."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:52
 msgid ""
 "  To protect each distributor, we want to make it very clear that\n"
 "there is no warranty for the free library.  Also, if the library is\n"
@@ -207,7 +181,6 @@ msgid ""
 "introduced by others."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:59
 msgid ""
 "  Finally, software patents pose a constant threat to the existence of\n"
 "any free program.  We wish to make sure that a company cannot\n"
@@ -217,7 +190,6 @@ msgid ""
 "consistent with the full freedom of use specified in this license."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:66
 msgid ""
 "  Most GNU software, including some libraries, is covered by the\n"
 "ordinary GNU General Public License.  This license, the GNU Lesser\n"
@@ -227,7 +199,6 @@ msgid ""
 "libraries into non-free programs."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:73
 msgid ""
 "  When a program is linked with a library, whether statically or using\n"
 "a shared library, the combination of the two is legally speaking a\n"
@@ -238,7 +209,6 @@ msgid ""
 "the library."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:81
 msgid ""
 "  We call this license the \"Lesser\" General Public License because it\n"
 "does Less to protect the user's freedom than the ordinary General\n"
@@ -249,7 +219,6 @@ msgid ""
 "special circumstances."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:89
 msgid ""
 "  For example, on rare occasions, there may be a special need to\n"
 "encourage the widest possible use of a certain library, so that it becomes\n"
@@ -260,7 +229,6 @@ msgid ""
 "software only, so we use the Lesser General Public License."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:97
 msgid ""
 "  In other cases, permission to use a particular library in non-free\n"
 "programs enables a greater number of people to use a large body of\n"
@@ -270,7 +238,6 @@ msgid ""
 "system."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:104
 msgid ""
 "  Although the Lesser General Public License is Less protective of the\n"
 "users' freedom, it does ensure that the user of a program that is\n"
@@ -278,7 +245,6 @@ msgid ""
 "that program using a modified version of the Library."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:109
 msgid ""
 "  The precise terms and conditions for copying, distribution and\n"
 "modification follow.  Pay close attention to the difference between a\n"
@@ -287,13 +253,11 @@ msgid ""
 "be combined with the library in order to run."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:115
 msgid ""
 "                  GNU LESSER GENERAL PUBLIC LICENSE\n"
 "   TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION"
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:118
 msgid ""
 "  0. This License Agreement applies to any software library or other\n"
 "program which contains a notice placed by the copyright holder or\n"
@@ -302,14 +266,12 @@ msgid ""
 "Each licensee is addressed as \"you\"."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:124
 msgid ""
 "  A \"library\" means a collection of software functions and/or data\n"
 "prepared so as to be conveniently linked with application programs\n"
 "(which use some of those functions and data) to form executables."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:128
 msgid ""
 "  The \"Library\", below, refers to any such software library or work\n"
 "which has been distributed under these terms.  A \"work based on the\n"
@@ -320,7 +282,6 @@ msgid ""
 "included without limitation in the term \"modification\".)"
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:136
 msgid ""
 "  \"Source code\" for a work means the preferred form of the work for\n"
 "making modifications to it.  For a library, complete source code means\n"
@@ -329,7 +290,6 @@ msgid ""
 "and installation of the library."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:142
 msgid ""
 "  Activities other than copying, distribution and modification are not\n"
 "covered by this License; they are outside its scope.  The act of\n"
@@ -340,7 +300,6 @@ msgid ""
 "and what the program that uses the Library does."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:150
 msgid ""
 "  1. You may copy and distribute verbatim copies of the Library's\n"
 "complete source code as you receive it, in any medium, provided that\n"
@@ -351,14 +310,12 @@ msgid ""
 "Library."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:158
 msgid ""
 "  You may charge a fee for the physical act of transferring a copy,\n"
 "and you may at your option offer warranty protection in exchange for a\n"
 "fee."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:162
 msgid ""
 "  2. You may modify your copy or copies of the Library or any portion\n"
 "of it, thus forming a work based on the Library, and copy and\n"
@@ -366,23 +323,19 @@ msgid ""
 "above, provided that you also meet all of these conditions:"
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:167
 msgid "    a) The modified work must itself be a software library."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:169
 msgid ""
 "    b) You must cause the files modified to carry prominent notices\n"
 "    stating that you changed the files and the date of any change."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:172
 msgid ""
 "    c) You must cause the whole of the work to be licensed at no\n"
 "    charge to all third parties under the terms of this License."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:175
 msgid ""
 "    d) If a facility in the modified Library refers to a function or a\n"
 "    table of data to be supplied by an application program that uses\n"
@@ -393,7 +346,6 @@ msgid ""
 "    its purpose remains meaningful."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:183
 msgid ""
 "    (For example, a function in a library to compute square roots has\n"
 "    a purpose that is entirely well-defined independent of the\n"
@@ -403,7 +355,6 @@ msgid ""
 "    root function must still compute square roots.)"
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:190
 msgid ""
 "These requirements apply to the modified work as a whole.  If\n"
 "identifiable sections of that work are not derived from the Library,\n"
@@ -417,7 +368,6 @@ msgid ""
 "it."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:201
 msgid ""
 "Thus, it is not the intent of this section to claim rights or contest\n"
 "your rights to work written entirely by you; rather, the intent is to\n"
@@ -425,7 +375,6 @@ msgid ""
 "collective works based on the Library."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:206
 msgid ""
 "In addition, mere aggregation of another work not based on the Library\n"
 "with the Library (or with a work based on the Library) on a volume of\n"
@@ -433,7 +382,6 @@ msgid ""
 "the scope of this License."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:211
 msgid ""
 "  3. You may opt to apply the terms of the ordinary GNU General Public\n"
 "License instead of this License to a given copy of the Library.  To do\n"
@@ -445,20 +393,17 @@ msgid ""
 "these notices."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:220
 msgid ""
 "  Once this change is made in a given copy, it is irreversible for\n"
 "that copy, so the ordinary GNU General Public License applies to all\n"
 "subsequent copies and derivative works made from that copy."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:224
 msgid ""
 "  This option is useful when you wish to copy part of the code of\n"
 "the Library into a program that is not a library."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:227
 msgid ""
 "  4. You may copy and distribute the Library (or a portion or\n"
 "derivative of it, under Section 2) in object code or executable form\n"
@@ -468,7 +413,6 @@ msgid ""
 "medium customarily used for software interchange."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:234
 msgid ""
 "  If distribution of object code is made by offering access to copy\n"
 "from a designated place, then offering equivalent access to copy the\n"
@@ -477,7 +421,6 @@ msgid ""
 "compelled to copy the source along with the object code."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:240
 msgid ""
 "  5. A program that contains no derivative of any portion of the\n"
 "Library, but is designed to work with the Library by being compiled or\n"
@@ -486,7 +429,6 @@ msgid ""
 "therefore falls outside the scope of this License."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:246
 msgid ""
 "  However, linking a \"work that uses the Library\" with the Library\n"
 "creates an executable that is a derivative of the Library (because it\n"
@@ -495,7 +437,6 @@ msgid ""
 "Section 6 states terms for distribution of such executables."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:252
 msgid ""
 "  When a \"work that uses the Library\" uses material from a header file\n"
 "that is part of the Library, the object code for the work may be a\n"
@@ -505,7 +446,6 @@ msgid ""
 "threshold for this to be true is not precisely defined by law."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:259
 msgid ""
 "  If such an object file uses only numerical parameters, data\n"
 "structure layouts and accessors, and small macros and small inline\n"
@@ -515,7 +455,6 @@ msgid ""
 "Library will still fall under Section 6.)"
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:266
 msgid ""
 "  Otherwise, if the work is a derivative of the Library, you may\n"
 "distribute the object code for the work under the terms of Section 6.\n"
@@ -523,7 +462,6 @@ msgid ""
 "whether or not they are linked directly with the Library itself."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:271
 msgid ""
 "  6. As an exception to the Sections above, you may also combine or\n"
 "link a \"work that uses the Library\" with the Library to produce a\n"
@@ -533,7 +471,6 @@ msgid ""
 "engineering for debugging such modifications."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:278
 msgid ""
 "  You must give prominent notice with each copy of the work that the\n"
 "Library is used in it and that the Library and its use are covered by\n"
@@ -544,7 +481,6 @@ msgid ""
 "of these things:"
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:286
 msgid ""
 "    a) Accompany the work with the complete corresponding\n"
 "    machine-readable source code for the Library including whatever\n"
@@ -559,7 +495,6 @@ msgid ""
 "    to use the modified definitions.)"
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:298
 msgid ""
 "    b) Use a suitable shared library mechanism for linking with the\n"
 "    Library.  A suitable mechanism is one that (1) uses at run time a\n"
@@ -570,7 +505,6 @@ msgid ""
 "    interface-compatible with the version that the work was made with."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:306
 msgid ""
 "    c) Accompany the work with a written offer, valid for at\n"
 "    least three years, to give the same user the materials\n"
@@ -578,20 +512,17 @@ msgid ""
 "    than the cost of performing this distribution."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:311
 msgid ""
 "    d) If distribution of the work is made by offering access to copy\n"
 "    from a designated place, offer equivalent access to copy the above\n"
 "    specified materials from the same place."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:315
 msgid ""
 "    e) Verify that the user has already received a copy of these\n"
 "    materials or that you have already sent this user a copy."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:318
 msgid ""
 "  For an executable, the required form of the \"work that uses the\n"
 "Library\" must include any data and utility programs needed for\n"
@@ -603,7 +534,6 @@ msgid ""
 "the executable."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:327
 msgid ""
 "  It may happen that this requirement contradicts the license\n"
 "restrictions of other proprietary libraries that do not normally\n"
@@ -612,7 +542,6 @@ msgid ""
 "distribute."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:333
 msgid ""
 "  7. You may place library facilities that are a work based on the\n"
 "Library side-by-side in a single library together with other library\n"
@@ -622,7 +551,6 @@ msgid ""
 "permitted, and provided that you do these two things:"
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:340
 msgid ""
 "    a) Accompany the combined library with a copy of the same work\n"
 "    based on the Library, uncombined with any other library\n"
@@ -630,14 +558,12 @@ msgid ""
 "    Sections above."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:345
 msgid ""
 "    b) Give prominent notice with the combined library of the fact\n"
 "    that part of it is a work based on the Library, and explaining\n"
 "    where to find the accompanying uncombined form of the same work."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:349
 msgid ""
 "  8. You may not copy, modify, sublicense, link with, or distribute\n"
 "the Library except as expressly provided under this License.  Any\n"
@@ -648,7 +574,6 @@ msgid ""
 "terminated so long as such parties remain in full compliance."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:357
 msgid ""
 "  9. You are not required to accept this License, since you have not\n"
 "signed it.  However, nothing else grants you permission to modify or\n"
@@ -660,7 +585,6 @@ msgid ""
 "the Library or works based on it."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:366
 msgid ""
 "  10. Each time you redistribute the Library (or any work based on the\n"
 "Library), the recipient automatically receives a license from the\n"
@@ -671,7 +595,6 @@ msgid ""
 "this License."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:374
 msgid ""
 "  11. If, as a consequence of a court judgment or allegation of patent\n"
 "infringement or for any other reason (not limited to patent issues),\n"
@@ -687,14 +610,12 @@ msgid ""
 "refrain entirely from distribution of the Library."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:387
 msgid ""
 "If any portion of this section is held invalid or unenforceable under any\n"
 "particular circumstance, the balance of the section is intended to apply,\n"
 "and the section as a whole is intended to apply in other circumstances."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:391
 msgid ""
 "It is not the purpose of this section to induce you to infringe any\n"
 "patents or other property right claims or to contest validity of any\n"
@@ -708,13 +629,11 @@ msgid ""
 "impose that choice."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:402
 msgid ""
 "This section is intended to make thoroughly clear what is believed to\n"
 "be a consequence of the rest of this License."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:405
 msgid ""
 "  12. If the distribution and/or use of the Library is restricted in\n"
 "certain countries either by patents or by copyrighted interfaces, the\n"
@@ -725,7 +644,6 @@ msgid ""
 "written in the body of this License."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:413
 msgid ""
 "  13. The Free Software Foundation may publish revised and/or new\n"
 "versions of the Lesser General Public License from time to time.\n"
@@ -733,7 +651,6 @@ msgid ""
 "but may differ in detail to address new problems or concerns."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:418
 msgid ""
 "Each version is given a distinguishing version number.  If the Library\n"
 "specifies a version number of this License which applies to it and\n"
@@ -744,7 +661,6 @@ msgid ""
 "the Free Software Foundation."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:426
 msgid ""
 "  14. If you wish to incorporate parts of the Library into other free\n"
 "programs whose distribution conditions are incompatible with these,\n"
@@ -756,11 +672,9 @@ msgid ""
 "and reuse of software generally."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:435
 msgid "                            NO WARRANTY"
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:437
 msgid ""
 "  15. BECAUSE THE LIBRARY IS LICENSED FREE OF CHARGE, THERE IS NO\n"
 "WARRANTY FOR THE LIBRARY, TO THE EXTENT PERMITTED BY APPLICABLE LAW.\n"
@@ -773,7 +687,6 @@ msgid ""
 "THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:447
 msgid ""
 "  16. IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN\n"
 "WRITING WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MAY MODIFY\n"
@@ -787,15 +700,12 @@ msgid ""
 "DAMAGES."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:458
 msgid "                     END OF TERMS AND CONDITIONS"
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:460
 msgid "           How to Apply These Terms to Your New Libraries"
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:462
 msgid ""
 "  If you develop a new library, and you want it to be of the greatest\n"
 "possible use to the public, we recommend making it free software that\n"
@@ -804,7 +714,6 @@ msgid ""
 "ordinary General Public License)."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:468
 msgid ""
 "  To apply these terms, attach the following notices to the library.  It is\n"
 "safest to attach them to the start of each source file to most effectively\n"
@@ -812,13 +721,11 @@ msgid ""
 "\"copyright\" line and a pointer to where the full notice is found."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:473
 msgid ""
 "    <one line to give the library's name and a brief idea of what it does.>\n"
 "    Copyright (C) <year>  <name of author>"
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:476
 msgid ""
 "    This library is free software; you can redistribute it and/or\n"
 "    modify it under the terms of the GNU Lesser General Public\n"
@@ -826,7 +733,6 @@ msgid ""
 "    version 2.1 of the License, or (at your option) any later version."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:481
 msgid ""
 "    This library is distributed in the hope that it will be useful,\n"
 "    but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
@@ -834,7 +740,6 @@ msgid ""
 "    Lesser General Public License for more details."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:486
 msgid ""
 "    You should have received a copy of the GNU Lesser General Public\n"
 "    License along with this library; if not, write to the Free Software\n"
@@ -842,49 +747,214 @@ msgid ""
 " USA"
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:490
 msgid "Also add information on how to contact you by electronic and paper mail."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:492
 msgid ""
 "You should also get your employer (if you work as a programmer) or your\n"
 "school, if any, to sign a \"copyright disclaimer\" for the library, if\n"
 "necessary.  Here is a sample; alter the names:"
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:496
 msgid ""
 "  Yoyodyne, Inc., hereby disclaims all copyright interest in the\n"
 "  library `Frob' (a library for tweaking knobs) written by James Random Hacker"
 "."
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:499
 msgid ""
 "  <signature of Ty Coon>, 1 April 1990\n"
 "  Ty Coon, President of Vice"
 msgstr ""
 
-#: ../../doc/text/lgpl-2.1.txt:502
 msgid "That's all there is to it!"
 msgstr ""
 
-#: ../../doc/text/news.md:1
 msgid "# News"
 msgstr "# おしらせ"
 
-#: ../../doc/text/news.md:3
-msgid "## 1.0.6: 2013-10-29"
+msgid "## 1.2.3: 2016-08-08"
 msgstr ""
 
-#: ../../doc/text/news.md:5 ../../doc/text/news.md:17 ../../doc/text/news.md:24
-#: ../../doc/text/news.md:35 ../../doc/text/news.md:55
-#: ../../doc/text/news.md:67
 msgid "### Improvements"
 msgstr "### 改善"
 
-#: ../../doc/text/news.md:7
+msgid "  * {Groonga::Command::Base#initialize}: Made command name optional."
+msgstr ""
+
+msgid "## 1.2.2: 2016-08-05"
+msgstr ""
+
+msgid "  * {Groonga::Command::TableCreate#value_type}: Added."
+msgstr ""
+
+msgid "## 1.2.1: 2016-08-03"
+msgstr ""
+
+msgid ""
+"  * {Groonga::Command::Schema}: Added.\n"
+"  * {Groonga::Command::QueryExpand}: Added.\n"
+"  * {Groonga::Command::TableCreate#token_filters}: Added."
+msgstr ""
+
+msgid "## 1.2.0: 2016-03-21"
+msgstr ""
+
+msgid "  * Suppressed a warning."
+msgstr ""
+
+msgid "## 1.1.9: 2016-03-21"
+msgstr ""
+
+msgid "### Fixes"
+msgstr "### 修正"
+
+msgid "  * Fixed a bug that correct command name isn't used."
+msgstr ""
+
+msgid "## 1.1.8: 2016-03-21"
+msgstr ""
+
+msgid ""
+"  * {Groonga::Command::Shutdown}: Added.\n"
+"  * {Groonga::Command::TableRemove#name}: Added.\n"
+"  * {Groonga::Command::TableRemove#dependent?}: Added.\n"
+"  * {Groonga::Command::Base#request_id}: Added.\n"
+"  * {Groonga::Command.all}: Added.\n"
+"  * {Groonga::Command.find}: Supported `Symbol` as command name.\n"
+"  * {Groonga::Command::Base#command_name}: Added. Because\n"
+"    {Groonga::Command::Base#name} may be overwritten by subclasses. For\n"
+"    example, {Groonga::Command::TableRemove#name} overwrites it.\n"
+"  * {Groonga::Command::Base#name}: Made deprecated."
+msgstr ""
+
+msgid "## 1.1.7: 2016-03-07"
+msgstr ""
+
+msgid ""
+"  * Renamed to {Groonga::Command::ObjectInspect} from\n"
+"    `Groonga::Command::Inspect`.\n"
+"  * {Groonga::Command::ObjectRemove}: Added."
+msgstr ""
+
+msgid "## 1.1.6: 2016-02-03"
+msgstr ""
+
+msgid "  * `Groonga::Command::Inspect`: Added."
+msgstr ""
+
+msgid "## 1.1.5: 2016-01-19"
+msgstr ""
+
+msgid ""
+"  * Renamed to {Groonga::Command::ConfigGet} from `Groonga::Command::ConfGet`."
+"\n"
+"  * Renamed to {Groonga::Command::ConfigSet} from `Groonga::Command::ConfSet`."
+"\n"
+"  * Renamed to {Groonga::Command::ConfigDelete} from\n"
+"    `Groonga::Command::ConfDelete`."
+msgstr ""
+
+msgid "## 1.1.4: 2016-01-13"
+msgstr ""
+
+msgid ""
+"  * `Groonga::Command::ConfGet`: Added.\n"
+"  * `Groonga::Command::ConfSet`: Added.\n"
+"  * `Groonga::Command::ConfDelete`: Added."
+msgstr ""
+
+msgid "## 1.1.3: 2015-08-19"
+msgstr ""
+
+msgid ""
+"  * {Groonga::Command::ColumnCopy}: Added.\n"
+"  * {Groonga::Command::IOFlush}: Added.\n"
+"  * {Groonga::Command::LogLevel}: Added.\n"
+"  * {Groonga::Command::LogPut}: Added.\n"
+"  * {Groonga::Command::LogicalSelect}: Added.\n"
+"  * {Groonga::Command::LogicalShardList}: Added.\n"
+"  * {Groonga::Command::LogicalTableRemove}: Added.\n"
+"  * {Groonga::Command::ObjectExist}: Added.\n"
+"  * {Groonga::Command::TableList}: Added.\n"
+"  * {Groonga::Command::ThreadLimit}: Added."
+msgstr ""
+
+msgid "## 1.1.2: 2015-04-02"
+msgstr ""
+
+msgid ""
+"  * {Groonga::Command::PluginRegister}: Added.\n"
+"  * {Groonga::Command::PluginUnregister}: Added."
+msgstr ""
+
+msgid "## 1.1.1: 2015-02-13"
+msgstr ""
+
+msgid ""
+"  * {Groonga::Command::LogicalRangeFilter}: Added.\n"
+"    [GitHub#4] [Patch by Hiroshi Hatake]\n"
+"  * {Groonga::Command::LogicalCount}: Added.\n"
+"    [GitHub#5] [Patch by Hiroshi Hatake]"
+msgstr ""
+
+msgid ""
+"  * Fixed return type in YARD doc.\n"
+"    [GitHub#7] [Patch by Hiroshi Hatake]"
+msgstr ""
+
+msgid "## 1.1.0: 2015-02-09"
+msgstr ""
+
+msgid ""
+"  * {Groonga::Command::RangeFilter}: Added.\n"
+"  * {Groonga::Command::TableTokenize}: Added.\n"
+"  * {Groonga::Command::Tokenize#mode}: Added.\n"
+"  * {Groonga::Command::Tokenize#token_filters}: Added.\n"
+"  * {Groonga::Command::RequestCancel}: Added."
+msgstr ""
+
+msgid "## 1.0.9: 2014-10-02"
+msgstr ""
+
+msgid ""
+"  * {Groonga::Command::Base#path_prefix}: Added.\n"
+"    [GitHub#1] [Patch by Hajime Wakahara]\n"
+"  * {Groonga::Command::Base#path_prefix=}: Added. It is for customizing\n"
+"    \"/d\" position in command URI.\n"
+"    [GitHub#1] [Patch by Hajime Wakahara]"
+msgstr ""
+
+msgid "### Thanks"
+msgstr "### 感謝"
+
+msgid "  * Hajime Wakahara"
+msgstr ""
+
+msgid "## 1.0.8: 2014-09-30"
+msgstr ""
+
+msgid ""
+"  * {Groonga::Command::Base#key?}: Added.\n"
+"  * Accepted nil value arguments on formatting to URI or command line.\n"
+"    Nil value arguments are ignored."
+msgstr ""
+
+msgid "## 1.0.7: 2014-03-15"
+msgstr ""
+
+msgid ""
+"  * {Groonga::Command::ColumnCreate#sources}: Added.\n"
+"  * {Groonga::Command::ColumnCreate#table}: Added.\n"
+"  * {Groonga::Command::ColumnCreate#type}: Added.\n"
+"  * {Groonga::Command::TableCreate#key_type}: Added.\n"
+"  * {Groonga::Command::TableCreate#default_tokenizer}: Added.\n"
+"  * {Groonga::Command::TableCreate#normalizer}: Added."
+msgstr ""
+
+msgid "## 1.0.6: 2013-10-29"
+msgstr ""
+
 msgid ""
 "  * {Groonga::Command::Status}: Added.\n"
 "  * {Groonga::Command::Select}: Added accessor for \"values\" parameter.\n"
@@ -902,23 +972,19 @@ msgstr ""
 "  * {Groonga::Command::RubyEval}: 追加。\n"
 "  * {Groonga::Command::RubyLoad}: 追加。"
 
-#: ../../doc/text/news.md:15
 msgid "## 1.0.5: 2013-09-29"
 msgstr ""
 
-#: ../../doc/text/news.md:19
 msgid ""
-"  * Extracted {Groonga::Command::Parser} as groonga-command-parser gem.\n"
+"  * Extracted `Groonga::Command::Parser` as groonga-command-parser gem.\n"
 "    Now, groonga-command gem doesn't depend on any extension libraries."
 msgstr ""
-"  * {Groonga::Command::Parser}をgroonga-command-parser gemに移動した。\n"
+"  * `Groonga::Command::Parser`をgroonga-command-parser gemに移動した。\n"
 "    これで、groonga-command gemは拡張ライブラリに依存しなくなった。"
 
-#: ../../doc/text/news.md:22
 msgid "## 1.0.4: 2013-09-18"
 msgstr ""
 
-#: ../../doc/text/news.md:26
 msgid ""
 "  * {Groonga::Command::TableCreate}: Supported \"--normalizer\" parameter.\n"
 "  * {Groonga::Command::Select}: Supported all parameters."
@@ -926,19 +992,12 @@ msgstr ""
 "  * {Groonga::Command::TableCreate}: \"--normalizer\"パラメーターをサポート。\n"
 "  * {Groonga::Command::Select}: すべてのパラメーターをサポート。"
 
-#: ../../doc/text/news.md:29 ../../doc/text/news.md:71
-msgid "### Fixes"
-msgstr "### 修正"
-
-#: ../../doc/text/news.md:31
 msgid "  * Fixed a bug that is caused by using with rroonga."
 msgstr "  * rroongaと一緒に使うと問題が発生するバグを修正。"
 
-#: ../../doc/text/news.md:33
 msgid "## 1.0.3: 2013-07-23"
 msgstr ""
 
-#: ../../doc/text/news.md:37
 msgid ""
 "  * Added predicate methods of table_create flags\n"
 "    to {Groonga::Command::TableCreate}\n"
@@ -970,11 +1029,9 @@ msgstr ""
 "    * {Groonga::Command::ColumnCreate#with_weight?}\n"
 "    * {Groonga::Command::ColumnCreate#with_position?}"
 
-#: ../../doc/text/news.md:53
 msgid "## 1.0.2: 2013-06-27"
 msgstr ""
 
-#: ../../doc/text/news.md:57
 msgid ""
 "  * Supported \"dump\" command.\n"
 "  * Added {Groonga::Command::Base#output_type}.\n"
@@ -987,19 +1044,15 @@ msgstr ""
 "  * [http] キーのみのパラメーターをサポート。\n"
 "  * filterパラメーターがないときでも{Groonga::Command::Select#conditions}を使えるようにした。"
 
-#: ../../doc/text/news.md:63
 msgid "## 1.0.1: 2012-12-06"
 msgstr ""
 
-#: ../../doc/text/news.md:65
 msgid "It's bug fix release."
 msgstr "バグフィックスリリースです。"
 
-#: ../../doc/text/news.md:69
 msgid "  * Supported \"register\" command."
 msgstr " * registerコマンドをサポート。"
 
-#: ../../doc/text/news.md:73
 msgid ""
 "  * Asigned value and columns of \"load\" command to a result command\n"
 "    correctly in stand alone parsing."
@@ -1007,61 +1060,17 @@ msgstr ""
 "  * loadコマンドをスタンドアロンでパースしているときに、valuesとして設\n"
 "    定された値を正しく返り値に設定するように修正。"
 
-#: ../../doc/text/news.md:76
 msgid "## 1.0.0: 2012-11-29"
 msgstr ""
 
-#: ../../doc/text/news.md:78
 msgid "The first release!!!"
 msgstr "最初のリリース！！！"
 
 # Groonga
-#: ../../lib/groonga/command/base.rb:3
-#: ../../lib/groonga/command/column-create.rb:3
-#: ../../lib/groonga/command/column-list.rb:3
-#: ../../lib/groonga/command/column-remove.rb:3
-#: ../../lib/groonga/command/column-rename.rb:3
-#: ../../lib/groonga/command/delete.rb:3 ../../lib/groonga/command/dump.rb:3
-#: ../../lib/groonga/command/error.rb:3
-#: ../../lib/groonga/command/format/command.rb:3
-#: ../../lib/groonga/command/format/uri.rb:3 ../../lib/groonga/command/get.rb:3
-#: ../../lib/groonga/command/load.rb:3 ../../lib/groonga/command/normalize.rb:3
-#: ../../lib/groonga/command/register.rb:3
-#: ../../lib/groonga/command/ruby-eval.rb:3
-#: ../../lib/groonga/command/ruby-load.rb:3
-#: ../../lib/groonga/command/select.rb:3 ../../lib/groonga/command/status.rb:3
-#: ../../lib/groonga/command/suggest.rb:3
-#: ../../lib/groonga/command/table-create.rb:3
-#: ../../lib/groonga/command/table-remove.rb:3
-#: ../../lib/groonga/command/table-rename.rb:3
-#: ../../lib/groonga/command/tokenize.rb:3
-#: ../../lib/groonga/command/truncate.rb:3
-#: ../../lib/groonga/command/version.rb:3
-msgid "Copyright (C) 2012-2013  Kouhei Sutou <kou@clear-code.com>"
+msgid "Copyright (C) 2012-2016  Kouhei Sutou <kou@clear-code.com>"
 msgstr ""
 
 # Groonga
-#: ../../lib/groonga/command/base.rb:5
-#: ../../lib/groonga/command/column-create.rb:5
-#: ../../lib/groonga/command/column-list.rb:5
-#: ../../lib/groonga/command/column-remove.rb:5
-#: ../../lib/groonga/command/column-rename.rb:5
-#: ../../lib/groonga/command/delete.rb:5 ../../lib/groonga/command/dump.rb:5
-#: ../../lib/groonga/command/error.rb:5
-#: ../../lib/groonga/command/format/command.rb:5
-#: ../../lib/groonga/command/format/uri.rb:5 ../../lib/groonga/command/get.rb:5
-#: ../../lib/groonga/command/load.rb:5 ../../lib/groonga/command/normalize.rb:5
-#: ../../lib/groonga/command/register.rb:5
-#: ../../lib/groonga/command/ruby-eval.rb:5
-#: ../../lib/groonga/command/ruby-load.rb:5
-#: ../../lib/groonga/command/select.rb:5 ../../lib/groonga/command/status.rb:5
-#: ../../lib/groonga/command/suggest.rb:5
-#: ../../lib/groonga/command/table-create.rb:5
-#: ../../lib/groonga/command/table-remove.rb:5
-#: ../../lib/groonga/command/table-rename.rb:5
-#: ../../lib/groonga/command/tokenize.rb:5
-#: ../../lib/groonga/command/truncate.rb:5
-#: ../../lib/groonga/command/version.rb:5
 msgid ""
 "This library is free software; you can redistribute it and/or\n"
 "modify it under the terms of the GNU Lesser General Public\n"
@@ -1070,29 +1079,6 @@ msgid ""
 msgstr ""
 
 # Groonga
-#: ../../lib/groonga/command/base.rb:10
-#: ../../lib/groonga/command/column-create.rb:10
-#: ../../lib/groonga/command/column-list.rb:10
-#: ../../lib/groonga/command/column-remove.rb:10
-#: ../../lib/groonga/command/column-rename.rb:10
-#: ../../lib/groonga/command/delete.rb:10 ../../lib/groonga/command/dump.rb:10
-#: ../../lib/groonga/command/error.rb:10
-#: ../../lib/groonga/command/format/command.rb:10
-#: ../../lib/groonga/command/format/uri.rb:10
-#: ../../lib/groonga/command/get.rb:10 ../../lib/groonga/command/load.rb:10
-#: ../../lib/groonga/command/normalize.rb:10
-#: ../../lib/groonga/command/register.rb:10
-#: ../../lib/groonga/command/ruby-eval.rb:10
-#: ../../lib/groonga/command/ruby-load.rb:10
-#: ../../lib/groonga/command/select.rb:10
-#: ../../lib/groonga/command/status.rb:10
-#: ../../lib/groonga/command/suggest.rb:10
-#: ../../lib/groonga/command/table-create.rb:10
-#: ../../lib/groonga/command/table-remove.rb:10
-#: ../../lib/groonga/command/table-rename.rb:10
-#: ../../lib/groonga/command/tokenize.rb:10
-#: ../../lib/groonga/command/truncate.rb:10
-#: ../../lib/groonga/command/version.rb:10
 msgid ""
 "This library is distributed in the hope that it will be useful,\n"
 "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
@@ -1101,227 +1087,415 @@ msgid ""
 msgstr ""
 
 # Groonga
-#: ../../lib/groonga/command/base.rb:15
-#: ../../lib/groonga/command/column-create.rb:15
-#: ../../lib/groonga/command/column-list.rb:15
-#: ../../lib/groonga/command/column-remove.rb:15
-#: ../../lib/groonga/command/column-rename.rb:15
-#: ../../lib/groonga/command/delete.rb:15 ../../lib/groonga/command/dump.rb:15
-#: ../../lib/groonga/command/error.rb:15
-#: ../../lib/groonga/command/format/command.rb:15
-#: ../../lib/groonga/command/format/uri.rb:15
-#: ../../lib/groonga/command/get.rb:15 ../../lib/groonga/command/load.rb:15
-#: ../../lib/groonga/command/normalize.rb:15
-#: ../../lib/groonga/command/register.rb:15
-#: ../../lib/groonga/command/ruby-eval.rb:15
-#: ../../lib/groonga/command/ruby-load.rb:15
-#: ../../lib/groonga/command/select.rb:15
-#: ../../lib/groonga/command/status.rb:15
-#: ../../lib/groonga/command/suggest.rb:15
-#: ../../lib/groonga/command/table-create.rb:15
-#: ../../lib/groonga/command/table-remove.rb:15
-#: ../../lib/groonga/command/table-rename.rb:15
-#: ../../lib/groonga/command/tokenize.rb:15
-#: ../../lib/groonga/command/truncate.rb:15
-#: ../../lib/groonga/command/version.rb:15
 msgid ""
 "You should have received a copy of the GNU Lesser General Public\n"
 "License along with this library; if not, write to the Free Software\n"
 "Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA"
 msgstr ""
 
+# @return [String]
+msgid "The command name."
+msgstr ""
+
+# @since
+msgid "1.1.8"
+msgstr ""
+
 # Groonga::Command::Base#arguments
-#: ../../lib/groonga/command/base.rb:43
 msgid "Returns the value of attribute arguments"
 msgstr ""
 
-# Groonga::Command::Base#name
-#: ../../lib/groonga/command/base.rb:43
-msgid "Returns the value of attribute name"
-msgstr ""
-
 # @param
-#: ../../lib/groonga/command/base.rb:43 ../../lib/groonga/command/load.rb:41
-#: ../../lib/groonga/command/load.rb:42
 msgid "tag|param|value"
 msgstr ""
 
 # @param value
-#: ../../lib/groonga/command/base.rb:43
+msgid "the value to set the attribute original_format to."
+msgstr ""
+
+# @param value
 msgid "the value to set the attribute original_source to."
 msgstr ""
 
 # @param value
-#: ../../lib/groonga/command/base.rb:43
-msgid "the value to set the attribute original_format to."
-msgstr ""
-
-# Groonga::Command::Base#original_format=
-#: ../../lib/groonga/command/base.rb:44
-msgid "Sets the attribute original_format"
+msgid "the value to set the attribute path_prefix to."
 msgstr ""
 
 # Groonga::Command::Base#original_format
-#: ../../lib/groonga/command/base.rb:44
 msgid "Returns the value of attribute original_format"
 msgstr ""
 
-# Groonga::Command::Base#original_source=
-#: ../../lib/groonga/command/base.rb:44
-msgid "Sets the attribute original_source"
-msgstr ""
-
-# @return [Base]
-#: ../../lib/groonga/command/base.rb:44
-msgid "a new instance of Base"
+# Groonga::Command::Base#original_format=
+msgid "Sets the attribute original_format"
 msgstr ""
 
 # Groonga::Command::Base#original_source
-#: ../../lib/groonga/command/base.rb:44
 msgid "Returns the value of attribute original_source"
 msgstr ""
 
+# Groonga::Command::Base#original_source=
+msgid "Sets the attribute original_source"
+msgstr ""
+
+# Groonga::Command::Base#path_prefix
+msgid "Returns the value of attribute path_prefix"
+msgstr ""
+
+# Groonga::Command::Base#path_prefix=
+msgid "Sets the attribute path_prefix"
+msgstr ""
+
+# @overload
+msgid "tag|overload|initialize"
+msgstr ""
+
+# @param [::Hash<String, String>]
+msgid "tag|param|pair_arguments"
+msgstr ""
+
+# @param [::Hash<String, String>] pair_arguments
+msgid ""
+"The list of\n"
+"pair arguments."
+msgstr ""
+
+# @param [::Array<String>]
+msgid "tag|param|ordered_arguments"
+msgstr ""
+
+# @param [::Array<String>] ordered_arguments
+msgid ""
+"The list of\n"
+"ordered arguments."
+msgstr ""
+
+# @since
+msgid "1.2.3"
+msgstr ""
+
+# @param [String]
+msgid "tag|param|command_name"
+msgstr ""
+
+# @return [Base]
+msgid "a new instance of Base"
+msgstr ""
+
+# Groonga::Command::Base#initialize
+msgid ""
+"Initializes a new known command. The command class must implement\n"
+"{.command_name} method."
+msgstr ""
+
+# Groonga::Command::Base#initialize
+msgid "Initializes a new unknown command."
+msgstr ""
+
+# @deprecated
+msgid "since 1.1.8. Use {#command_name} instead."
+msgstr ""
+
+# @return [String, nil]
+msgid "`request_id` parameter value."
+msgstr ""
+
+# Groonga::Command::ColumnCopy
+msgid "A command class that represents `column_copy` command."
+msgstr ""
+
+# @since
+msgid "1.1.3"
+msgstr ""
+
+# @return [String]
+msgid "`from_table` parameter value."
+msgstr ""
+
+# @return [String]
+msgid "`from_name` parameter value."
+msgstr ""
+
+# @return [String]
+msgid "`to_table` parameter value."
+msgstr ""
+
+# @return [String]
+msgid "`to_name` parameter value."
+msgstr ""
+
+# @return [String]
+msgid "table name."
+msgstr ""
+
+# @since
+msgid "1.0.7"
+msgstr ""
+
+# @return [String]
+msgid "value type name of the column."
+msgstr ""
+
 # @return [Boolean]
-#: ../../lib/groonga/command/column-create.rb:45
 msgid ""
 "true if \"COLUMN_SCALAR\" is specified in {#flags},\n"
 "false otherwise."
 msgstr ""
 
 # @since
-#: ../../lib/groonga/command/column-create.rb:45
-#: ../../lib/groonga/command/column-create.rb:52
-#: ../../lib/groonga/command/column-create.rb:59
-#: ../../lib/groonga/command/column-create.rb:66
-#: ../../lib/groonga/command/column-create.rb:73
-#: ../../lib/groonga/command/column-create.rb:80
-#: ../../lib/groonga/command/table-create.rb:46
-#: ../../lib/groonga/command/table-create.rb:53
-#: ../../lib/groonga/command/table-create.rb:60
-#: ../../lib/groonga/command/table-create.rb:67
-#: ../../lib/groonga/command/table-create.rb:74
 msgid "1.0.3"
 msgstr ""
 
 # @return [Boolean]
-#: ../../lib/groonga/command/column-create.rb:52
 msgid ""
 "true if \"COLUMN_VECTOR\" is specified in {#flags},\n"
 "false otherwise."
 msgstr ""
 
 # @return [Boolean]
-#: ../../lib/groonga/command/column-create.rb:59
 msgid ""
 "true if \"COLUMN_INDEX\" is specified in {#flags},\n"
 "false otherwise."
 msgstr ""
 
 # @return [Boolean]
-#: ../../lib/groonga/command/column-create.rb:66
 msgid ""
 "true if \"WITH_SECTION\" is specified in {#flags},\n"
 "false otherwise."
 msgstr ""
 
 # @return [Boolean]
-#: ../../lib/groonga/command/column-create.rb:73
 msgid ""
 "true if \"WITH_WEIGHT\" is specified in {#flags},\n"
 "false otherwise."
 msgstr ""
 
 # @return [Boolean]
-#: ../../lib/groonga/command/column-create.rb:80
 msgid ""
 "true if \"WITH_POSITION\" is specified in {#flags},\n"
 "false otherwise."
 msgstr ""
 
+# @return [::Array<String>]
+msgid ""
+"an array of index sources. If\n"
+"`source` parameter value is empty or nil, this method\n"
+"returns an empty array."
+msgstr ""
+
 # Groonga::Command::ColumnList
-#: ../../lib/groonga/command/column-list.rb:24
 msgid "A command class that represents `column_list` command."
 msgstr ""
 
 # @since
-#: ../../lib/groonga/command/column-list.rb:30
-#: ../../lib/groonga/command/column-list.rb:39
-#: ../../lib/groonga/command/normalize.rb:30
-#: ../../lib/groonga/command/normalize.rb:41
-#: ../../lib/groonga/command/normalize.rb:47
-#: ../../lib/groonga/command/normalize.rb:57
-#: ../../lib/groonga/command/ruby-eval.rb:30
-#: ../../lib/groonga/command/ruby-eval.rb:39
-#: ../../lib/groonga/command/ruby-load.rb:30
-#: ../../lib/groonga/command/ruby-load.rb:39
-#: ../../lib/groonga/command/tokenize.rb:30
-#: ../../lib/groonga/command/tokenize.rb:42
-#: ../../lib/groonga/command/tokenize.rb:48
-#: ../../lib/groonga/command/tokenize.rb:54
-#: ../../lib/groonga/command/tokenize.rb:64
 msgid "1.0.6"
 msgstr ""
 
 # @return [String]
-#: ../../lib/groonga/command/column-list.rb:39
 msgid "`table` parameter value."
 msgstr ""
 
+# Groonga::Command::ConfigDelete
+msgid "A command class that represents `config_delete` command."
+msgstr ""
+
+# @since
+msgid "1.1.5"
+msgstr ""
+
+# @return [String]
+msgid "`key` parameter value."
+msgstr ""
+
+# @since
+msgid "1.1.4"
+msgstr ""
+
+# Groonga::Command::ConfigGet
+msgid "A command class that represents `config_get` command."
+msgstr ""
+
+# Groonga::Command::ConfigSet
+msgid "A command class that represents `config_set` command."
+msgstr ""
+
+# @return [String]
+msgid "`value` parameter value."
+msgstr ""
+
 # @return [Command]
-#: ../../lib/groonga/command/format/command.rb:40
 msgid "a new instance of Command"
 msgstr ""
 
 # @return [URI]
-#: ../../lib/groonga/command/format/uri.rb:25
 msgid "a new instance of URI"
 msgstr ""
 
+# Groonga::Command::IOFlush
+msgid "A command class that represents `io_flush` command."
+msgstr ""
+
+# @return [String]
+msgid "`target_name` parameter value."
+msgstr ""
+
+# @return [Boolean]
+msgid "`recursive` parameter value."
+msgstr ""
+
 # @param value
-#: ../../lib/groonga/command/load.rb:41
 msgid "the value to set the attribute values to."
 msgstr ""
 
 # Groonga::Command::Load#values=
-#: ../../lib/groonga/command/load.rb:42
 msgid "Sets the attribute values"
 msgstr ""
 
 # @param value
-#: ../../lib/groonga/command/load.rb:42
 msgid "the value to set the attribute columns to."
 msgstr ""
 
 # Groonga::Command::Load#columns=
-#: ../../lib/groonga/command/load.rb:43
 msgid "Sets the attribute columns"
 msgstr ""
 
 # @return [Load]
-#: ../../lib/groonga/command/load.rb:43
 msgid "a new instance of Load"
 msgstr ""
 
+# Groonga::Command::LogLevel
+msgid "A command class that represents `log_level` command."
+msgstr ""
+
+# @return [String]
+msgid "`level` parameter value."
+msgstr ""
+
+# Groonga::Command::LogPut
+msgid "A command class that represents `log_put` command."
+msgstr ""
+
+# @return [String]
+msgid "`message` parameter value."
+msgstr ""
+
+# Groonga::Command::LogicalCount
+msgid "A command class that represents `logical_count` command."
+msgstr ""
+
+# @since
+msgid "1.1.1"
+msgstr ""
+
+# @return [String]
+msgid "`logical_table` parameter value."
+msgstr ""
+
+# @return [String]
+msgid "`shard_key` parameter value."
+msgstr ""
+
+# @return [String]
+msgid "`min` parameter value."
+msgstr ""
+
+# @return [String]
+msgid "`min_border` parameter value."
+msgstr ""
+
+# @return [Integer]
+# @return [String]
+msgid "`max` parameter value."
+msgstr ""
+
+# @return [String]
+msgid "`max_border` parameter value."
+msgstr ""
+
+# @return [String]
+msgid "`filter` parameter value."
+msgstr ""
+
+# Groonga::Command::LogicalRangeFilter
+msgid "A command class that represents `logical_range_filter` command."
+msgstr ""
+
+# @return [String]
+msgid "`order` parameter value."
+msgstr ""
+
+# @return [Integer]
+msgid "`offset` parameter value."
+msgstr ""
+
+# @return [Integer]
+msgid "`limit` parameter value."
+msgstr ""
+
+# @return [String]
+msgid "`output_columns` parameter value."
+msgstr ""
+
+# Groonga::Command::LogicalSelect
+msgid "A command class that represents `logical_select` command."
+msgstr ""
+
+# @return [String]
+msgid "`sortby` parameter value."
+msgstr ""
+
+# @return [String]
+msgid "`drilldown` parameter value."
+msgstr ""
+
+# @return [Array<String>]
+msgid "drilldown keys."
+msgstr ""
+
+# @return [String]
+msgid "`drilldown_sortby` parameter value."
+msgstr ""
+
+# @return [String]
+msgid "`drilldown_output_columns` parameter value."
+msgstr ""
+
+# @return [String]
+msgid "`drilldown_offset` parameter value."
+msgstr ""
+
+# @return [String]
+msgid "`drilldown_limit` parameter value."
+msgstr ""
+
+# @return [String]
+msgid "`drilldown_calc_types` parameter value."
+msgstr ""
+
+# @return [String]
+msgid "`drilldown_calc_target` parameter value."
+msgstr ""
+
+# Groonga::Command::LogicalShardList
+msgid "A command class that represents `logical_shard_list` command."
+msgstr ""
+
+# Groonga::Command::LogicalTableRemove
+msgid "A command class that represents `logical_table_remove` command."
+msgstr ""
+
 # Groonga::Command::Normalize
-#: ../../lib/groonga/command/normalize.rb:24
 msgid "A command class that represents `normalize` command."
 msgstr ""
 
 # @return [String]
-#: ../../lib/groonga/command/normalize.rb:41
-#: ../../lib/groonga/command/tokenize.rb:54
 msgid "`normalizer` parameter value."
 msgstr ""
 
 # @return [String]
-#: ../../lib/groonga/command/normalize.rb:47
-#: ../../lib/groonga/command/tokenize.rb:48
 msgid "`string` parameter value."
 msgstr ""
 
 # @return [Array<String>]
-#: ../../lib/groonga/command/normalize.rb:57
-#: ../../lib/groonga/command/tokenize.rb:64
 msgid ""
 "An array of flags specified in `flags`\n"
 "parameter value. This array is extracted by parsing `flags`\n"
@@ -1329,68 +1503,241 @@ msgid ""
 "an empty array is returned."
 msgstr ""
 
+# Groonga::Command::ObjectExist
+msgid "A command class that represents `object_exist` command."
+msgstr ""
+
+# @return [String]
+msgid "`name` parameter value."
+msgstr ""
+
+# Groonga::Command::ObjectInspect
+msgid "A command class that represents `object_inspect` command."
+msgstr ""
+
+# @since
+msgid "1.1.7"
+msgstr ""
+
+# Groonga::Command::ObjectRemove
+msgid "A command class that represents `object_remove` command."
+msgstr ""
+
+# @return [Boolean]
+msgid "`force` parameter value."
+msgstr ""
+
+# Groonga::Command::PluginRegister
+msgid "A command class that represents `plugin_register` command."
+msgstr ""
+
+# @since
+msgid "1.1.2"
+msgstr ""
+
+# Groonga::Command::PluginUnregister
+msgid "A command class that represents `plugin_unregister` command."
+msgstr ""
+
+# Groonga::Command::QueryExpand
+msgid "A command class that represents `query_expand` command."
+msgstr ""
+
+# @since
+msgid "1.2.1"
+msgstr ""
+
+# @return [String]
+msgid "`expander` parameter value."
+msgstr ""
+
+# @return [String]
+msgid "`query` parameter value."
+msgstr ""
+
+# @return [Array<String>]
+msgid "`flags` parameter value."
+msgstr ""
+
+# @return [Boolean]
+msgid ""
+"`true` if `\"ALLOW_PRAGMA\"` is specified in\n"
+"{#flags}, `false` otherwise."
+msgstr ""
+
+# @return [Boolean]
+msgid ""
+"`true` if `\"ALLOW_COLUMN\"` is specified in\n"
+"{#flags}, `false` otherwise."
+msgstr ""
+
+# @return [Boolean]
+msgid ""
+"`true` if `\"ALLOW_UPDATE\"` is specified in\n"
+"{#flags}, `false` otherwise."
+msgstr ""
+
+# @return [Boolean]
+msgid ""
+"`true` if `\"ALLOW_LEADING_NOT\"` is specified in\n"
+"{#flags}, `false` otherwise."
+msgstr ""
+
+# @return [Boolean]
+msgid ""
+"`true` if `\"NONE\"` is specified in {#flags},\n"
+"`false` otherwise."
+msgstr ""
+
+# Groonga::Command::RangeFilter
+msgid "A command class that represents `range_filter` command."
+msgstr ""
+
+# @since
+msgid "1.1.0"
+msgstr ""
+
+# @return [String]
+msgid "`column` parameter value."
+msgstr ""
+
+# Groonga::Command::Reindex
+msgid "A command class that represents `reindex` command."
+msgstr ""
+
+# Groonga::Command::RequestCancel
+msgid "A command class that represents `request_cancel` command."
+msgstr ""
+
+# @return [String]
+msgid "`id` parameter value."
+msgstr ""
+
 # Groonga::Command::RubyEval
-#: ../../lib/groonga/command/ruby-eval.rb:24
 msgid "A command class that represents `ruby_eval` command."
 msgstr ""
 
 # @return [String]
-#: ../../lib/groonga/command/ruby-eval.rb:39
 msgid "`script` parameter value."
 msgstr ""
 
 # Groonga::Command::RubyLoad
-#: ../../lib/groonga/command/ruby-load.rb:24
 msgid "A command class that represents `ruby_load` command."
 msgstr ""
 
 # @return [String]
-#: ../../lib/groonga/command/ruby-load.rb:39
 msgid "`path` parameter value."
 msgstr ""
 
+# Groonga::Command::Schema
+msgid "A command class that represents `schema` command."
+msgstr ""
+
+# Groonga::Command::Shutdown
+msgid "A command class that represents `shutdown` command."
+msgstr ""
+
+# @return [String]
+msgid "`mode` parameter value."
+msgstr ""
+
+# @return [String, nil]
+msgid "Key type name, nil for array no key table."
+msgstr ""
+
+# @return [String, nil]
+msgid ""
+"Value type name, `nil` for no value\n"
+"table. Double array trie table always returns `nil` because\n"
+"double array trie table doesn't support value."
+msgstr ""
+
+# @since
+msgid "1.2.2"
+msgstr ""
+
 # @return [Boolean]
-#: ../../lib/groonga/command/table-create.rb:46
 msgid ""
 "true if \"TABLE_NO_KEY\" is specified in {#flags},\n"
 "false otherwise."
 msgstr ""
 
 # @return [Boolean]
-#: ../../lib/groonga/command/table-create.rb:53
 msgid ""
 "true if \"TABLE_HASH_KEY\" is specified in {#flags},\n"
 "false otherwise."
 msgstr ""
 
 # @return [Boolean]
-#: ../../lib/groonga/command/table-create.rb:60
 msgid ""
 "true if \"TABLE_PAT_KEY\" is specified in {#flags},\n"
 "false otherwise."
 msgstr ""
 
 # @return [Boolean]
-#: ../../lib/groonga/command/table-create.rb:67
 msgid ""
 "true if \"TABLE_DAT_KEY\" is specified in {#flags},\n"
 "false otherwise."
 msgstr ""
 
 # @return [Boolean]
-#: ../../lib/groonga/command/table-create.rb:74
 msgid ""
 "true if \"KEY_WITH_SIS\" is specified in {#flags},\n"
 "false otherwise."
 msgstr ""
 
+# @return [String, nil]
+msgid "Default tokenizer name or nil."
+msgstr ""
+
+# @return [String, nil]
+msgid "Normalizer name or nil."
+msgstr ""
+
+# @return [::Array<String>]
+msgid "Token filter names."
+msgstr ""
+
+# Groonga::Command::TableList
+msgid "A command class that represents `table_list` command."
+msgstr ""
+
+# @return [String]
+msgid "`prefix` parameter value."
+msgstr ""
+
+# @return [Boolean]
+msgid "`dependent` parameter value."
+msgstr ""
+
+# Groonga::Command::TableTokenize
+msgid "A command class that represents `table_tokenize` command."
+msgstr ""
+
+# @return [Array<String>]
+msgid ""
+"An array of flag specified in `flags`\n"
+"parameter value. This array is extracted by parsing `flags`\n"
+"parameter value. If `flags` parameter value is nil or empty,\n"
+"an empty array is returned."
+msgstr ""
+
+# Groonga::Command::ThreadLimit
+msgid "A command class that represents `thread_limit` command."
+msgstr ""
+
 # Groonga::Command::Tokenize
-#: ../../lib/groonga/command/tokenize.rb:24
 msgid "A command class that represents `tokenize` command."
 msgstr ""
 
 # @return [String]
-#: ../../lib/groonga/command/tokenize.rb:42
 msgid "`tokenizer` parameter value."
 msgstr ""
 
+# @return [Array<String>]
+msgid ""
+"An array of token filter specified in\n"
+"`token_filters` parameter value. This array is extracted by\n"
+"parsing `token_filters` parameter value. If `token_filters`\n"
+"parameter value is nil or empty, an empty array is returned."
+msgstr ""
