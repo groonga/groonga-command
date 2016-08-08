@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-#
-# Copyright (C) 2012-2013  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-2016  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -32,6 +30,13 @@ class RegisterCommandTest < Test::Unit::TestCase
                      :path => path,
                    },
                    command.arguments)
+    end
+  end
+
+  class PathTest < self
+    def test_reader
+      command = register_command(:path => "query_expanders/tsv")
+      assert_equal("query_expanders/tsv", command.path)
     end
   end
 end
