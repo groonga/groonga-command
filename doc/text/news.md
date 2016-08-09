@@ -1,5 +1,11 @@
 # News
 
+## 1.2.6: 2016-08-09
+
+### Improvements
+
+  * {Groonga::Command::Base#initialize}: Accepted Symbol as command name.
+
 ## 1.2.5: 2016-08-08
 
 ### Improvements
