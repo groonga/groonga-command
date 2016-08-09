@@ -82,8 +82,8 @@ module Groonga
       #     ordered arguments.
       def initialize(arg1=nil, arg2=nil, arg3=nil)
         case arg1
-        when String
-          command_name = arg1
+        when String, Symbol
+          command_name = arg1.to_s
           pair_arguments = arg2
           ordered_arguments = arg3
         else
