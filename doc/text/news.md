@@ -1,5 +1,11 @@
 # News
 
+## 1.2.7: 2016-08-15
+
+### Improvements
+
+  * {Groonga::Command::TableCopy}: Added.
+
 ## 1.2.6: 2016-08-09
 
 ### Improvements
