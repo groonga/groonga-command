@@ -1,5 +1,28 @@
 # News
 
+## 1.2.8: 2016-10-11
+
+### Improvements
+
+  * {Groonga::Command::Select}: Supported labeled drilldowns.
+
+  * {Groonga::Command::Select}: Supported `adjuster` parameter.
+
+  * {Groonga::Command::Select}: Supported `drilldown_calc_types` parameter.
+
+  * {Groonga::Command::Select}: Supported `drilldown_calc_target` parameter.
+
+  * {Groonga::Command::Select}: Supported `sort_keys` parameter.
+
+  * {Groonga::Command::Select}: Supported `drilldown_sort_keys` parameter.
+
+  * {Groonga::Command::Select#sort_keys}: Added.
+
+  * {Groonga::Command::Select#sortby}: Deprecated. Use
+    {Groonga::Command::Select#sort_keys} instead.
+
+  * {Groonga::Command::Select#drilldown_sort_keys}: Added.
+
 ## 1.2.7: 2016-08-15
 
 ### Improvements
