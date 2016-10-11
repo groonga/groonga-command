@@ -45,14 +45,30 @@ module Groonga
             :query_expansion,
             :query_flags,
             :query_expander,
+            :adjuster,
+            :drilldown_calc_types,
+            :drilldown_calc_target,
+            :sort_keys,
+            :drilldown_sort_keys,
           ]
         end
       end
 
       Command.register(command_name, self)
 
+      # @return [String] The sort keys as String. Each key is
+      #   separated by "," or spaces.
+      #
+      # @deprecated since 1.2.8. Use {#sort_keys} instead.
       def sortby
         self[:sortby]
+      end
+
+      # @return [::Array<String>] The sort keys.
+      #
+      # @since 1.2.8
+      def sort_keys
+        parse_array_value(self[:sort_keys] || self[:sortby] || "")
       end
 
       def scorer
@@ -75,6 +91,17 @@ module Groonga
         @drilldowns ||= array_value(:drilldown)
       end
 
+      # @return [::Array<String>] The sort keys for drilldowns.
+      #
+      # @since 1.2.8
+      def drilldown_sort_keys
+        value = self[:drilldown_sort_keys] || self[:drilldown_sortby] || ""
+        parse_array_value(value)
+      end
+
+      # @return [::Hash<String, Drilldown>] The labeled drilldowns.
+      #
+      # @since 1.2.8
       def labeled_drilldowns
         @labeled_drilldowns ||= parse_labeled_drilldowns
       end

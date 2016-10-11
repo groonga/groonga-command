@@ -41,6 +41,11 @@ class SelectCommandTest < Test::Unit::TestCase
       query_expansion            = "deprecated"
       query_flags                = "ALLOW_LEADING_NOT"
       query_expander             = "Terms.synonym"
+      adjuster                   = "tag * 10"
+      drilldown_calc_types       = "MIN, MAX"
+      drilldown_calc_target      = "age"
+      sort_keys                  = "-_score"
+      drilldown_sort_keys        = "-_nsubrecs"
 
       ordered_arguments = [
         table,
@@ -62,6 +67,11 @@ class SelectCommandTest < Test::Unit::TestCase
         query_expansion,
         query_flags,
         query_expander,
+        adjuster,
+        drilldown_calc_types,
+        drilldown_calc_target,
+        sort_keys,
+        drilldown_sort_keys,
       ]
       command = select_command({}, ordered_arguments)
 
@@ -85,6 +95,11 @@ class SelectCommandTest < Test::Unit::TestCase
                      :query_expansion            => query_expansion,
                      :query_flags                => query_flags,
                      :query_expander             => query_expander,
+                     :adjuster                   => adjuster,
+                     :drilldown_calc_types       => drilldown_calc_types,
+                     :drilldown_calc_target      => drilldown_calc_target,
+                     :sort_keys                  => sort_keys,
+                     :drilldown_sort_keys        => drilldown_sort_keys,
                    },
                    command.arguments)
     end
@@ -122,6 +137,34 @@ class SelectCommandTest < Test::Unit::TestCase
                                :filter => nil)
       assert_equal([],
                    command.conditions)
+    end
+  end
+
+  class SortKeysTest < self
+    def test_reader
+      command = select_command(:sort_keys => "-_score,_key")
+      assert_equal(["-_score", "_key"],
+                   command.sort_keys)
+    end
+
+    def test_sortby
+      command = select_command(:sortby => "-_score,_key")
+      assert_equal(["-_score", "_key"],
+                   command.sort_keys)
+    end
+  end
+
+  class DrilldownSortKeysTest < self
+    def test_reader
+      command = select_command(:drilldown_sort_keys => "-_nsubrecs,_key")
+      assert_equal(["-_nsubrecs", "_key"],
+                   command.drilldown_sort_keys)
+    end
+
+    def test_sortby
+      command = select_command(:drilldown_sortby => "-_nsubrecs,_key")
+      assert_equal(["-_nsubrecs", "_key"],
+                   command.drilldown_sort_keys)
     end
   end
 
