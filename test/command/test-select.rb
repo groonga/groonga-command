@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-#
-# Copyright (C) 2011-2013  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2011-2016  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -124,6 +122,55 @@ class SelectCommandTest < Test::Unit::TestCase
                                :filter => nil)
       assert_equal([],
                    command.conditions)
+    end
+  end
+
+  class LabeledDrilldownsTest < self
+    def test_multiple
+      parameters = {
+        "drilldowns[tag].keys" => "tag",
+        "drilldowns[tag].sort_keys" => "-_nsubrecs,_key",
+        "drilldowns[tag].output_columns" => "_key,_nsubrecs,_min,_max",
+        "drilldowns[tag].offset" => "1",
+        "drilldowns[tag].limit" => "10",
+        "drilldowns[tag].calc_types" => "MIN,MAX",
+        "drilldowns[tag].calc_target" => "_nsubrecs",
+
+        "drilldowns[author_tag].keys" => "author,tag",
+        "drilldowns[author_tag].sort_keys" => "_value.author",
+        "drilldowns[author_tag].output_columns" => "_value.author,_nsubrecs",
+      }
+      command = select_command(parameters)
+      drilldowns = {
+        "author_tag" => drilldown(:keys => ["author", "tag"],
+                                  :sort_keys => ["_value.author"],
+                                  :output_columns => [
+                                    "_value.author",
+                                    "_nsubrecs",
+                                  ]),
+        "tag" => drilldown(:keys => ["tag"],
+                           :sort_keys => ["-_nsubrecs", "_key"],
+                           :output_columns => [
+                             "_key",
+                             "_nsubrecs",
+                             "_min",
+                             "_max",
+                           ],
+                           :offset => 1,
+                           :limit => 10,
+                           :calc_types => ["MIN", "MAX"],
+                           :calc_target => "_nsubrecs"),
+      }
+      assert_equal(drilldowns,
+                   command.labeled_drilldowns)
+    end
+
+    def drilldown(parameters)
+      drilldown = Groonga::Command::Select::Drilldown.new
+      parameters.each do |key, value|
+        drilldown[key] = value
+      end
+      drilldown
     end
   end
 end

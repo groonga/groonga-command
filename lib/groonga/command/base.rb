@@ -184,8 +184,12 @@ module Groonga
       end
 
       def integer_value(name)
-        value = self[name]
+        parse_integer_value(self[name])
+      end
+
+      def parse_integer_value(value)
         return value if value.nil?
+        return nil if value.empty?
 
         begin
           Integer(value)
@@ -195,7 +199,12 @@ module Groonga
       end
 
       def array_value(name)
-        (self[name] || "").strip.split(/\s*,\s*/)
+        parse_array_value(self[name] || "")
+      end
+
+      def parse_array_value(value)
+        return nil if value.nil?
+        value.strip.split(/\s*,\s*/)
       end
     end
   end

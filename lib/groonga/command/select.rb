@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-#
-# Copyright (C) 2012-2013  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-2016  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -77,6 +75,10 @@ module Groonga
         @drilldowns ||= array_value(:drilldown)
       end
 
+      def labeled_drilldowns
+        @labeled_drilldowns ||= parse_labeled_drilldowns
+      end
+
       def output_columns
         self[:output_columns]
       end
@@ -89,6 +91,52 @@ module Groonga
           condition = condition.gsub(/[\s\)]*\z/, '') unless /\(/ =~ condition
           condition
         end
+      end
+
+      def parse_labeled_drilldowns
+        raw_labeled_drilldowns = {}
+        @arguments.each do |name, value|
+          case name.to_s
+          when /\Adrilldowns?\[(.+?)\]\.(.+?)\z/
+            label = $1
+            parameter_name = $2
+            raw_labeled_drilldowns[label] ||= {}
+            raw_labeled_drilldowns[label][parameter_name] = value
+          end
+        end
+        build_labeled_drilldowns(raw_labeled_drilldowns)
+      end
+
+      def build_labeled_drilldowns(raw_labeled_drilldowns)
+        labeled_drilldowns = {}
+        raw_labeled_drilldowns.each do |label, raw_drilldown|
+          keys = parse_array_value(raw_drilldown["keys"])
+          sort_keys = raw_drilldown["sort_keys"] || raw_drilldown["sortby"]
+          sort_keys = parse_array_value(sort_keys)
+          output_columns = parse_array_value(raw_drilldown["output_columns"])
+          offset = parse_integer_value(raw_drilldown["offset"])
+          limit = parse_integer_value(raw_drilldown["limit"])
+          calc_types = parse_array_value(raw_drilldown["calc_types"])
+          calc_target = raw_drilldown["calc_target"]
+          drilldown = Drilldown.new(keys,
+                                    sort_keys,
+                                    output_columns,
+                                    offset,
+                                    limit,
+                                    calc_types,
+                                    calc_target)
+          labeled_drilldowns[label] = drilldown
+        end
+        labeled_drilldowns
+      end
+
+      class Drilldown < Struct.new(:keys,
+                                   :sort_keys,
+                                   :output_columns,
+                                   :offset,
+                                   :limit,
+                                   :calc_types,
+                                   :calc_target)
       end
     end
   end
