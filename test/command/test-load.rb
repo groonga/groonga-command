@@ -31,6 +31,7 @@ class LoadCommandTest < Test::Unit::TestCase
       ifexists   = "_key == \"Alice\""
       input_type = "json"
       each       = "strlen(_key)"
+      output_ids = "no"
 
       ordered_arguments = [
         values,
@@ -39,6 +40,7 @@ class LoadCommandTest < Test::Unit::TestCase
         ifexists,
         input_type,
         each,
+        output_ids,
       ]
       command = load_command({}, ordered_arguments)
       assert_equal({
@@ -48,6 +50,7 @@ class LoadCommandTest < Test::Unit::TestCase
                      :ifexists   => ifexists,
                      :input_type => input_type,
                      :each       => each,
+                     :output_ids => output_ids,
                    },
                    command.arguments)
     end
@@ -85,6 +88,22 @@ class LoadCommandTest < Test::Unit::TestCase
                      :reader          => command.values,
                      :array_reference => command[:values],
                    })
+    end
+  end
+
+  class OutputIDsTest < self
+    def test_specified
+      command = load_command({"output_ids" => "yes"})
+      assert do
+        command.output_ids?
+      end
+    end
+
+    def test_omitted
+      command = load_command
+      assert do
+        not command.output_ids?
+      end
     end
   end
 end

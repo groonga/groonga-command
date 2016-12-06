@@ -36,6 +36,7 @@ module Groonga
             :ifexists,
             :input_type,
             :each,
+            :output_ids,
           ]
         end
       end
@@ -56,6 +57,13 @@ module Groonga
 
       def columns
         @columns ||= parse_columns(self[:columns])
+      end
+
+      # @return [Boolean] `true` if `output_ids` value is `"yes"`.
+      #
+      # @since 1.3.0
+      def output_ids?
+        self[:output_ids] == "yes"
       end
 
       private
