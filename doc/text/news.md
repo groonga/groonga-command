@@ -1,5 +1,18 @@
 # News
 
+## 1.3.1: 2016-12-08
+
+### Improvements
+
+  * {Groonga::Command::Select#slices}: Changed return value from
+    `Hash<String, Groonga::Command::Select>` to `Hash<String,
+    Groonga::Command::Select::Slice`.
+
+### Fixes
+
+  * {Groonga::Command::TableCreate#token_filters}: Fixed a bug that
+    multiple token filters can't be parsed.
+
 ## 1.3.0: 2016-12-08
 
 ### Improvements
