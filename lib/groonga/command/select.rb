@@ -159,7 +159,8 @@ module Groonga
                                     offset,
                                     limit,
                                     calc_types,
-                                    calc_target)
+                                    calc_target,
+                                    label)
           labeled_drilldowns[label] = drilldown
         end
         labeled_drilldowns
@@ -191,7 +192,8 @@ module Groonga
           output_columns = parse_array_value(raw_slice["output_columns"])
           offset = parse_integer_value(raw_slice["offset"])
           limit = parse_integer_value(raw_slice["limit"])
-          slices[label] = Slice.new(match_columns,
+          slices[label] = Slice.new(label,
+                                    match_columns,
                                     query,
                                     query_expander,
                                     query_flags,
@@ -210,11 +212,13 @@ module Groonga
                                    :offset,
                                    :limit,
                                    :calc_types,
-                                   :calc_target)
+                                   :calc_target,
+                                   :label)
       end
 
       # @since 1.3.1
-      class Slice < Struct.new(:match_columns,
+      class Slice < Struct.new(:label,
+                               :match_columns,
                                :query,
                                :query_expander,
                                :query_flags,

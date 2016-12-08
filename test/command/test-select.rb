@@ -186,13 +186,15 @@ class SelectCommandTest < Test::Unit::TestCase
       }
       command = select_command(parameters)
       drilldowns = {
-        "author_tag" => drilldown(:keys => ["author", "tag"],
+        "author_tag" => drilldown(:label => "author_tag",
+                                  :keys => ["author", "tag"],
                                   :sort_keys => ["_value.author"],
                                   :output_columns => [
                                     "_value.author",
                                     "_nsubrecs",
                                   ]),
-        "tag" => drilldown(:keys => ["tag"],
+        "tag" => drilldown(:label => "tag",
+                           :keys => ["tag"],
                            :sort_keys => ["-_nsubrecs", "_key"],
                            :output_columns => [
                              "_key",
@@ -233,7 +235,8 @@ class SelectCommandTest < Test::Unit::TestCase
       command = select_command(parameters)
 
       slices = {
-        "book_alice" => slice(:match_columns => "tag",
+        "book_alice" => slice(:label => "book_alice",
+                              :match_columns => "tag",
                               :query => "Book",
                               :query_expander => "Synonyms.tag",
                               :query_flags => [
@@ -258,8 +261,10 @@ class SelectCommandTest < Test::Unit::TestCase
       command = select_command(parameters)
 
       slices = {
-        "groonga" => slice(:query => "tag:Groonga"),
-        "rroonga" => slice(:filter => "tag == Rroonga",
+        "groonga" => slice(:label => "groonga",
+                           :query => "tag:Groonga"),
+        "rroonga" => slice(:label => "rroonga",
+                           :filter => "tag == Rroonga",
                            :sort_keys => ["date"],
                            :output_columns => ["_key", "date"]),
       }
