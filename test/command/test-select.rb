@@ -219,6 +219,35 @@ class SelectCommandTest < Test::Unit::TestCase
   end
 
   class SlicesTest < self
+    def test_full
+      parameters = {
+        "slices[book_alice].match_columns"  => "tag",
+        "slices[book_alice].query"          => "Book",
+        "slices[book_alice].query_expander" => "Synonyms.tag",
+        "slices[book_alice].query_flags"    => "ALLOW_COLUMN|ALLOW_LEADING_NOT",
+        "slices[book_alice].filter"         => "user == \"alice\"",
+        "slices[book_alice].sort_keys"      => "_score, user",
+        "slices[book_alice].offset"         => "10",
+        "slices[book_alice].limit"          => "25",
+      }
+      command = select_command(parameters)
+
+      slices = {
+        "book_alice" => slice(:match_columns => "tag",
+                              :query => "Book",
+                              :query_expander => "Synonyms.tag",
+                              :query_flags => [
+                                "ALLOW_COLUMN",
+                                "ALLOW_LEADING_NOT",
+                              ],
+                              :filter => "user == \"alice\"",
+                              :sort_keys => ["_score", "user"],
+                              :offset => 10,
+                              :limit => 25),
+      }
+      assert_equal(slices, command.slices)
+    end
+
     def test_multiple
       parameters = {
         "slices[groonga].query" => "tag:Groonga",
@@ -229,12 +258,20 @@ class SelectCommandTest < Test::Unit::TestCase
       command = select_command(parameters)
 
       slices = {
-        "groonga" => select_command(:query => "tag:Groonga"),
-        "rroonga" => select_command(:filter => "tag == Rroonga",
-                                    :sort_keys => "date",
-                                    :output_columns => "_key, date"),
+        "groonga" => slice(:query => "tag:Groonga"),
+        "rroonga" => slice(:filter => "tag == Rroonga",
+                           :sort_keys => ["date"],
+                           :output_columns => ["_key", "date"]),
       }
       assert_equal(slices, command.slices)
+    end
+
+    def slice(parameters)
+      slice = Groonga::Command::Select::Slice.new
+      parameters.each do |key, value|
+        slice[key] = value
+      end
+      slice
     end
   end
 end

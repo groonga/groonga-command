@@ -107,7 +107,7 @@ module Groonga
         @labeled_drilldowns ||= parse_labeled_drilldowns
       end
 
-      # @return [::Hash<String, Select>] The slices.
+      # @return [::Hash<String, Slice>] The slices.
       #
       # @since 1.3.0
       def slices
@@ -182,7 +182,24 @@ module Groonga
       def build_slices(raw_slices)
         slices = {}
         raw_slices.each do |label, raw_slice|
-          slices[label] = Select.new(raw_slice)
+          match_columns = raw_slice["match_columns"]
+          query = raw_slice["query"]
+          query_expander = raw_slice["query_expander"]
+          query_flags = parse_flags_value(raw_slice["query_flags"])
+          filter = raw_slice["filter"]
+          sort_keys = parse_array_value(raw_slice["sort_keys"])
+          output_columns = parse_array_value(raw_slice["output_columns"])
+          offset = parse_integer_value(raw_slice["offset"])
+          limit = parse_integer_value(raw_slice["limit"])
+          slices[label] = Slice.new(match_columns,
+                                    query,
+                                    query_expander,
+                                    query_flags,
+                                    filter,
+                                    sort_keys,
+                                    output_columns,
+                                    offset,
+                                    limit)
         end
         slices
       end
@@ -194,6 +211,18 @@ module Groonga
                                    :limit,
                                    :calc_types,
                                    :calc_target)
+      end
+
+      # @since 1.3.1
+      class Slice < Struct.new(:match_columns,
+                               :query,
+                               :query_expander,
+                               :query_flags,
+                               :filter,
+                               :sort_keys,
+                               :output_columns,
+                               :offset,
+                               :limit)
       end
     end
   end
