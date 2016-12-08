@@ -1,5 +1,13 @@
 # News
 
+## 1.3.0: 2016-12-08
+
+### Improvements
+
+  * {Groonga::Command::Load}: Supported `output_ids` parameter.
+
+  * {Groonga::Command::Select}: Supported slices.
+
 ## 1.2.8: 2016-10-11
 
 ### Improvements
