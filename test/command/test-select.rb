@@ -1,4 +1,5 @@
 # Copyright (C) 2011-2016  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2016  Masafumi Yokoyama <yokoyama@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -214,6 +215,26 @@ class SelectCommandTest < Test::Unit::TestCase
         drilldown[key] = value
       end
       drilldown
+    end
+  end
+
+  class SlicesTest < self
+    def test_multiple
+      parameters = {
+        "slices[groonga].query" => "tag:Groonga",
+        "slices[rroonga].filter" => "tag == Rroonga",
+        "slices[rroonga].sort_keys" => "date",
+        "slices[rroonga].output_columns" => "_key, date",
+      }
+      command = select_command(parameters)
+
+      slices = {
+        "groonga" => select_command(:query => "tag:Groonga"),
+        "rroonga" => select_command(:filter => "tag == Rroonga",
+                                    :sort_keys => "date",
+                                    :output_columns => "_key, date"),
+      }
+      assert_equal(slices, command.slices)
     end
   end
 end

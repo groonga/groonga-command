@@ -1,4 +1,5 @@
 # Copyright (C) 2012-2016  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2016  Masafumi Yokoyama <yokoyama@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -106,6 +107,13 @@ module Groonga
         @labeled_drilldowns ||= parse_labeled_drilldowns
       end
 
+      # @return [::Hash<String, Select>] The slices.
+      #
+      # @since 1.3.0
+      def slices
+        @slices ||= parse_slices
+      end
+
       def output_columns
         self[:output_columns]
       end
@@ -155,6 +163,28 @@ module Groonga
           labeled_drilldowns[label] = drilldown
         end
         labeled_drilldowns
+      end
+
+      def parse_slices
+        raw_slices = {}
+        @arguments.each do |name, value|
+          case name.to_s
+          when /\Aslices?\[(.+?)\]\.(.+?)\z/
+            label = $1
+            parameter_name = $2
+            raw_slices[label] ||= {}
+            raw_slices[label][parameter_name] = value
+          end
+        end
+        build_slices(raw_slices)
+      end
+
+      def build_slices(raw_slices)
+        slices = {}
+        raw_slices.each do |label, raw_slice|
+          slices[label] = Select.new(raw_slice)
+        end
+        slices
       end
 
       class Drilldown < Struct.new(:keys,
