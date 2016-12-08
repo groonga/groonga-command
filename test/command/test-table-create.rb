@@ -209,7 +209,7 @@ class TableCreateCommandTest < Test::Unit::TestCase
   class TokenFiltersTest < self
     def test_multiple
       arguments = {
-        "token_filters" => "TokenFilterStopWord|TokenFilterStem",
+        "token_filters" => "TokenFilterStopWord,TokenFilterStem",
       }
       command = table_create_command(arguments)
       assert_equal(["TokenFilterStopWord", "TokenFilterStem"],

@@ -115,7 +115,7 @@ module Groonga
       # @return [::Array<String>] Token filter names.
       # @since 1.2.1
       def token_filters
-        @token_filters ||= (self[:token_filters] || "").split(/\s*\|\s*/)
+        @token_filters ||= array_value(:token_filters)
       end
     end
   end
