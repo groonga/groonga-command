@@ -108,7 +108,7 @@ module Groonga
       #
       # @since 1.0.7
       def sources
-        @sources ||= (self[:source] || "").split(/\s*,\s*/)
+        @sources ||= array_value(:source)
       end
     end
   end

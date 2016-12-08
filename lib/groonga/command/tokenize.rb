@@ -85,7 +85,7 @@ module Groonga
       #
       # @since 1.1.0
       def token_filters
-        @token_filters ||= (self[:token_filters] || "").split(/\s*,\s*/)
+        @token_filters ||= array_value(:token_filters)
       end
     end
   end
