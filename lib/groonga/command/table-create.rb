@@ -62,7 +62,7 @@ module Groonga
       end
 
       def flags
-        @flags ||= (self[:flags] || "").split(/\s*\|\s*/)
+        @flags ||= flags_value(:flags)
       end
 
       # @return [Boolean] true if "TABLE_NO_KEY" is specified in {#flags},
