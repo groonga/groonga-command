@@ -114,6 +114,9 @@ module Groonga
         @slices ||= parse_slices
       end
 
+      # TODO: We should return `::Array` instead of raw
+      #   `output_columns` value. But it breaks backward
+      #   compatibility...
       def output_columns
         self[:output_columns]
       end
