@@ -51,7 +51,7 @@ module Groonga
       end
 
       def flags
-        @flags ||= (self[:flags] || "").split(/\s*\|\s*/)
+        @flags ||= flags_value(:flags)
       end
 
       # @return [String] value type name of the column.

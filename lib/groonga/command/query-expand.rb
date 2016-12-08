@@ -56,7 +56,7 @@ module Groonga
       #
       # @since 1.2.1
       def flags
-        @flags ||= (self[:flags] || "").split(/(?:\s*\|\s*)|(?:\s+)/)
+        @flags ||= flags_value(:flags)
       end
 
       # @return [Boolean] `true` if `"ALLOW_PRAGMA"` is specified in

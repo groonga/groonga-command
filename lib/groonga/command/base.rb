@@ -206,6 +206,15 @@ module Groonga
         return nil if value.nil?
         value.strip.split(/\s*,\s*/)
       end
+
+      def flags_value(name)
+        parse_flags_value(self[name] || "")
+      end
+
+      def parse_flags_value(value)
+        return nil if value.nil?
+        value.strip.split(/\s*[| ]\s*/)
+      end
     end
   end
 end

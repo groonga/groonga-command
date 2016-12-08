@@ -60,7 +60,7 @@ module Groonga
       #
       # @since 1.1.0
       def flags
-        @flags ||= (self[:flags] || "").split(/\s*[| ]\s*/)
+        @flags ||= flags_value(:flags)
       end
 
       # @return [String] `mode` parameter value.
