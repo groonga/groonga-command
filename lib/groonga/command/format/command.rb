@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-#
-# Copyright (C) 2012-2013  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-2017  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -42,16 +40,20 @@ module Groonga
           @arguments = arguments
         end
 
-        def command_line
+        def command_line(options={})
+          pretty_print = options[:pretty_print]
           components = [@name]
           sorted_arguments = @arguments.sort_by do |name, _|
             name.to_s
           end
           sorted_arguments.each do |name, value|
-            components << "--#{name}"
-            components << self.class.escape_value(value)
+            components << "--#{name} #{self.class.escape_value(value)}"
           end
-          components.join(" ")
+          if pretty_print
+            components.join(" \\\n  ")
+          else
+            components.join(" ")
+          end
         end
       end
     end

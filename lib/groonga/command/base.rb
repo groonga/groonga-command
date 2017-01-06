@@ -1,4 +1,4 @@
-# Copyright (C) 2012-2016  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-2017  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -148,8 +148,9 @@ module Groonga
         Format::URI.new(@path_prefix, @command_name, normalized_arguments).path
       end
 
-      def to_command_format
-        Format::Command.new(@command_name, normalized_arguments).command_line
+      def to_command_format(options={})
+        format = Format::Command.new(@command_name, normalized_arguments)
+        format.command_line(options)
       end
 
       private

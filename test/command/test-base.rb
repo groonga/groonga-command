@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-#
-# Copyright (C) 2011-2014  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2011-2017  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -107,6 +105,20 @@ class BaseCommandTest < Test::Unit::TestCase
                                           :output_type => "json")
       assert_equal("select --output_type \"json\" --table \"Users\"",
                    select.to_command_format)
+    end
+
+    def test_pretty_print
+      select = Groonga::Command::Base.new("select",
+                                          :table => "Users",
+                                          :filter => "_key == 29",
+                                          :output_type => "json")
+      command = select.to_command_format(:pretty_print => true)
+      assert_equal(<<-COMMAND.chomp, command)
+select \\
+  --filter "_key == 29" \\
+  --output_type "json" \\
+  --table "Users"
+      COMMAND
     end
   end
 
