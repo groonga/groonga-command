@@ -1,5 +1,11 @@
 # News
 
+## 1.3.2: 2017-01-18
+
+### Improvements
+
+  * {Groonga::Command::Format::Command}: Supported pretty print.
+
 ## 1.3.1: 2016-12-08
 
 ### Improvements
