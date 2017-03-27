@@ -1,4 +1,4 @@
-# Copyright (C) 2012-2016  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-2017  Kouhei Sutou <kou@clear-code.com>
 # Copyright (C) 2016  Masafumi Yokoyama <yokoyama@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
@@ -49,6 +49,7 @@ module Groonga
             :adjuster,
             :drilldown_calc_types,
             :drilldown_calc_target,
+            :drilldown_filter,
             :sort_keys,
             :drilldown_sort_keys,
           ]
@@ -90,6 +91,13 @@ module Groonga
 
       def drilldowns
         @drilldowns ||= array_value(:drilldown)
+      end
+
+      # @return [String, nil] The filter for the drilled down result.
+      #
+      # @since 1.3.3
+      def drilldown_filter
+        self[:drilldown_filter]
       end
 
       # @return [::Array<String>] The sort keys for drilldowns.
@@ -156,6 +164,7 @@ module Groonga
           limit = parse_integer_value(raw_drilldown["limit"])
           calc_types = parse_array_value(raw_drilldown["calc_types"])
           calc_target = raw_drilldown["calc_target"]
+          filter = raw_drilldown["filter"]
           drilldown = Drilldown.new(keys,
                                     sort_keys,
                                     output_columns,
@@ -163,6 +172,7 @@ module Groonga
                                     limit,
                                     calc_types,
                                     calc_target,
+                                    filter,
                                     label)
           labeled_drilldowns[label] = drilldown
         end
@@ -216,6 +226,7 @@ module Groonga
                                    :limit,
                                    :calc_types,
                                    :calc_target,
+                                   :filter,
                                    :label)
       end
 

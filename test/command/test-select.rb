@@ -1,4 +1,4 @@
-# Copyright (C) 2011-2016  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2011-2017  Kouhei Sutou <kou@clear-code.com>
 # Copyright (C) 2016  Masafumi Yokoyama <yokoyama@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
@@ -45,6 +45,7 @@ class SelectCommandTest < Test::Unit::TestCase
       adjuster                   = "tag * 10"
       drilldown_calc_types       = "MIN, MAX"
       drilldown_calc_target      = "age"
+      drilldown_filter           = "_nsubrecs > 1"
       sort_keys                  = "-_score"
       drilldown_sort_keys        = "-_nsubrecs"
 
@@ -71,6 +72,7 @@ class SelectCommandTest < Test::Unit::TestCase
         adjuster,
         drilldown_calc_types,
         drilldown_calc_target,
+        drilldown_filter,
         sort_keys,
         drilldown_sort_keys,
       ]
@@ -99,6 +101,7 @@ class SelectCommandTest < Test::Unit::TestCase
                      :adjuster                   => adjuster,
                      :drilldown_calc_types       => drilldown_calc_types,
                      :drilldown_calc_target      => drilldown_calc_target,
+                     :drilldown_filter           => drilldown_filter,
                      :sort_keys                  => sort_keys,
                      :drilldown_sort_keys        => drilldown_sort_keys,
                    },
@@ -155,6 +158,14 @@ class SelectCommandTest < Test::Unit::TestCase
     end
   end
 
+  class DrilldownFilterTest < self
+    def test_reader
+      command = select_command(:drilldown_filter => "_nsubrecs > 1")
+      assert_equal("_nsubrecs > 1",
+                   command.drilldown_filter)
+    end
+  end
+
   class DrilldownSortKeysTest < self
     def test_reader
       command = select_command(:drilldown_sort_keys => "-_nsubrecs,_key")
@@ -179,6 +190,7 @@ class SelectCommandTest < Test::Unit::TestCase
         "drilldowns[tag].limit" => "10",
         "drilldowns[tag].calc_types" => "MIN,MAX",
         "drilldowns[tag].calc_target" => "_nsubrecs",
+        "drilldowns[tag].filter" => "_nsubrecs > 1",
 
         "drilldowns[author_tag].keys" => "author,tag",
         "drilldowns[author_tag].sort_keys" => "_value.author",
@@ -205,7 +217,8 @@ class SelectCommandTest < Test::Unit::TestCase
                            :offset => 1,
                            :limit => 10,
                            :calc_types => ["MIN", "MAX"],
-                           :calc_target => "_nsubrecs"),
+                           :calc_target => "_nsubrecs",
+                           :filter => "_nsubrecs > 1"),
       }
       assert_equal(drilldowns,
                    command.labeled_drilldowns)
