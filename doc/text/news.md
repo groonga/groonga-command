@@ -1,5 +1,19 @@
 # News
 
+## 1.3.3: 2017-06-25
+
+### Improvements
+
+  * {Groonga::Command::Select#drilldown_filter}: Added.
+
+  * {Groonga::Command::QueryLogFlagsAdd}: Added.
+
+  * {Groonga::Command::QueryLogFlagsGet}: Added.
+
+  * {Groonga::Command::QueryLogFlagsRemove}: Added.
+
+  * {Groonga::Command::QueryLogFlagsSet}: Added.
+
 ## 1.3.2: 2017-01-18
 
 ### Improvements
