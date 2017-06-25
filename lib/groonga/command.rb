@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-#
-# Copyright (C) 2012-2016  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-2017  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -47,6 +45,10 @@ require "groonga/command/object-remove"
 require "groonga/command/plugin-register"
 require "groonga/command/plugin-unregister"
 require "groonga/command/query-expand"
+require "groonga/command/query-log-flags-add"
+require "groonga/command/query-log-flags-get"
+require "groonga/command/query-log-flags-remove"
+require "groonga/command/query-log-flags-set"
 require "groonga/command/range-filter"
 require "groonga/command/register"
 require "groonga/command/reindex"
