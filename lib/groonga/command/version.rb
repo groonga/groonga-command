@@ -16,6 +16,6 @@
 
 module Groonga
   module Command
-    VERSION = "1.3.4"
+    VERSION = "1.3.5"
   end
 end
