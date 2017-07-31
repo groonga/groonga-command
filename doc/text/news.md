@@ -1,5 +1,11 @@
 # News
 
+## 1.3.4: 2017-07-31
+
+### Improvements
+
+  * {Groonga::Command::Dump#sort_hash_table}: Added.
+
 ## 1.3.3: 2017-06-25
 
 ### Improvements
