@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-#
-# Copyright (C) 2013-2016  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2013-2017  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -30,6 +28,7 @@ class DumpCommandTest < Test::Unit::TestCase
       dump_records = "no"
       dump_indexes = "yes"
       dump_configs = "no"
+      sort_hash_table = "yes"
 
       command = dump_command({},
                              [
@@ -39,6 +38,7 @@ class DumpCommandTest < Test::Unit::TestCase
                                dump_records,
                                dump_indexes,
                                dump_configs,
+                               sort_hash_table,
                              ])
       assert_equal({
                      :tables       => tables,
@@ -47,6 +47,7 @@ class DumpCommandTest < Test::Unit::TestCase
                      :dump_records => dump_records,
                      :dump_indexes => dump_indexes,
                      :dump_configs => dump_configs,
+                     :sort_hash_table => sort_hash_table,
                    },
                    command.arguments)
     end
@@ -55,6 +56,20 @@ class DumpCommandTest < Test::Unit::TestCase
   class OutputTypeTest < self
     def test_none
       assert_equal(:none, dump_command.output_type)
+    end
+  end
+
+  class SortHashTableTest < self
+    def test_default
+      assert do
+        not dump_command.sort_hash_table?
+      end
+    end
+
+    def test_yes
+      assert do
+        dump_command("sort_hash_table" => "yes").sort_hash_table?
+      end
     end
   end
 end

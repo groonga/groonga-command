@@ -48,7 +48,7 @@ module Groonga
       #
       # @since 1.1.7
       def force?
-        self[:force] == "yes"
+        boolean_value(:force, false)
       end
     end
   end

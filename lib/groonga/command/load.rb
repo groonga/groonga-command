@@ -63,7 +63,7 @@ module Groonga
       #
       # @since 1.3.0
       def output_ids?
-        self[:output_ids] == "yes"
+        boolean_value(:output_ids, false)
       end
 
       private

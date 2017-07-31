@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-#
-# Copyright (C) 2013-2016  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2013-2017  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -34,6 +32,7 @@ module Groonga
             :dump_records,
             :dump_indexes,
             :dump_configs,
+            :sort_hash_table,
           ]
         end
       end
@@ -42,6 +41,13 @@ module Groonga
 
       def output_type
         :none
+      end
+
+      # @return [Boolean] `true` if `sort_hash_table` value is `"yes"`.
+      #
+      # @since 1.3.4
+      def sort_hash_table?
+        boolean_value(:sort_hash_table, false)
       end
     end
   end

@@ -216,6 +216,17 @@ module Groonga
         return nil if value.nil?
         value.strip.split(/\s*[| ]\s*/)
       end
+
+      def boolean_value(name, default_value)
+        parse_boolean_value(self[name], default_value)
+      end
+
+      def parse_boolean_value(value, default_value)
+        return default_value if value.nil?
+        value = value.strip
+        return default_value if value.empty?
+        value == "yes"
+      end
     end
   end
 end
