@@ -153,6 +153,14 @@ module Groonga
         format.command_line(options)
       end
 
+      def to_s
+        if uri_format?
+          to_uri_format
+        else
+          to_command_format
+        end
+      end
+
       private
       def construct_arguments(pair_arguments, ordered_arguments)
         arguments = {}

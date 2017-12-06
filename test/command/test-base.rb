@@ -122,6 +122,30 @@ select \\
     end
   end
 
+  sub_test_case("#to_s") do
+    def setup
+      @table = "Users"
+      @select = Groonga::Command::Base.new("select", :table => @table)
+    end
+
+    def test_uri_format
+      @select.original_format = :uri
+      assert_equal(@select.to_uri_format,
+                   @select.to_s)
+    end
+
+    def test_command_format
+      @select.original_format = :command
+      assert_equal(@select.to_command_format,
+                   @select.to_s)
+    end
+
+    def test_default
+      assert_equal(@select.to_command_format,
+                   @select.to_s)
+    end
+  end
+
   sub_test_case("#[]") do
     def setup
       @table = "Users"
