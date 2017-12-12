@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-#
-# Copyright (C) 2012-2013  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-2017  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -43,12 +41,21 @@ module Groonga
 
       Command.register(command_name, self)
 
+      attr_writer :table
       attr_writer :values
       attr_writer :columns
       def initialize(*argumetns)
         super
+        @table = nil
         @values = nil
         @columns = nil
+      end
+
+      # @return [String] The table name to be loaded.
+      #
+      # @since 1.3.5
+      def table
+        @table ||= self[:table]
       end
 
       def values
