@@ -1,5 +1,13 @@
 # News
 
+## 1.3.5: 2018-05-21
+
+### Improvements
+
+  * {Groonga::Command::Base#to_s}: Added.
+
+  * {Groonga::Command::Load#table}: Added.
+
 ## 1.3.4: 2017-07-31
 
 ### Improvements
