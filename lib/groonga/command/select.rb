@@ -1,4 +1,4 @@
-# Copyright (C) 2012-2017  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-2018  Kouhei Sutou <kou@clear-code.com>
 # Copyright (C) 2016  Masafumi Yokoyama <yokoyama@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
@@ -16,10 +16,13 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 require "groonga/command/base"
+require "groonga/command/searchable"
 
 module Groonga
   module Command
     class Select < Base
+      include Searchable
+
       class << self
         def command_name
           "select"
@@ -85,10 +88,6 @@ module Groonga
         self[:filter]
       end
 
-      def conditions
-        @conditions ||= split_filter_conditions
-      end
-
       def drilldowns
         @drilldowns ||= array_value(:drilldown)
       end
@@ -130,15 +129,6 @@ module Groonga
       end
 
       private
-      def split_filter_conditions
-        (filter || "").split(/(?:&&|&!|\|\|)/).collect do |condition|
-          condition = condition.strip
-          condition = condition.gsub(/\A[\s\(]*/, '')
-          condition = condition.gsub(/[\s\)]*\z/, '') unless /\(/ =~ condition
-          condition
-        end
-      end
-
       def parse_labeled_drilldowns
         raw_labeled_drilldowns = {}
         @arguments.each do |name, value|

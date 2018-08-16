@@ -1,6 +1,5 @@
-# -*- coding: utf-8 -*-
-#
 # Copyright (C) 2015  Hiroshi Hatake <hatake@clear-code.com>
+# Copyright (C) 2018  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -17,6 +16,7 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 require "groonga/command/base"
+require "groonga/command/searchable"
 
 module Groonga
   module Command
@@ -24,6 +24,8 @@ module Groonga
     #
     # @since 1.1.1
     class LogicalRangeFilter < Base
+      include Searchable
+
       class << self
         def command_name
           "logical_range_filter"
