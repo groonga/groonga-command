@@ -1,5 +1,15 @@
 # News
 
+## 1.3.6: 2018-08-16
+
+### Improvements
+
+  * {Groonga::Command::RangeFilter#conditions}: Added.
+
+  * {Groonga::Command::LogicalSelect#conditions}: Added.
+
+  * {Groonga::Command::LogicalRangeFilter#conditions}: Added.
+
 ## 1.3.5: 2018-05-21
 
 ### Improvements
