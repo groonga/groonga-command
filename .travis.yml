@@ -1,6 +1,6 @@
 notifications:
   webhooks:
-    - https://webhook.clear-code.com/
+    - https://webhook.commit-email.info/
 rvm:
   - 2.1
   - 2.2
