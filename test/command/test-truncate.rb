@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-#
-# Copyright (C) 2012-2013  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-2018  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -25,13 +23,30 @@ class TruncateCommandTest < Test::Unit::TestCase
 
   class ConstructorTest < self
     def test_ordered_arguments
-      table = "Users"
+      target_name = "Users"
 
-      command = truncate_command([], [table])
+      command = truncate_command([], [target_name])
       assert_equal({
-                     :table => table,
+                     :target_name => target_name,
                    },
                    command.arguments)
+    end
+  end
+
+  class TargetNameTest < self
+    def test_nil
+      command = truncate_command
+      assert_nil(command.target_name)
+    end
+
+    def test_specified
+      command = truncate_command(:target_name => "Users")
+      assert_equal("Users", command.target_name)
+    end
+
+    def test_table
+      command = truncate_command(:table => "Users")
+      assert_equal("Users", command.target_name)
     end
   end
 end

@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-#
-# Copyright (C) 2012  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-2018  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -28,12 +26,17 @@ module Groonga
 
         def parameter_names
           [
+            :target_name,
             :table,
           ]
         end
       end
 
       Command.register(command_name, self)
+
+      def target_name
+        @target_name ||= self[:target_name] || self[:table]
+      end
     end
   end
 end
