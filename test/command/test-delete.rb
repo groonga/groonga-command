@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
-#
-# Copyright (C) 2012-2013  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-2018  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -38,6 +36,18 @@ class DeleteCommandTest < Test::Unit::TestCase
                      :filter => filter,
                    },
                    command.arguments)
+    end
+  end
+
+  class TableTest < self
+    def test_nil
+      command = delete_command
+      assert_nil(command.table)
+    end
+
+    def test_specified
+      command = delete_command(:table => "Users")
+      assert_equal("Users", command.table)
     end
   end
 end
