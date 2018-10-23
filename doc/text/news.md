@@ -1,5 +1,11 @@
 # News
 
+## 1.3.8: 2018-10-23
+
+### Improvements
+
+  * {Groonga::Command::Delete#table}: Added.
+
 ## 1.3.7: 2018-10-23
 
 ### Improvements
