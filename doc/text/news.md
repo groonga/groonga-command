@@ -1,5 +1,11 @@
 # News
 
+## 1.3.7: 2018-10-23
+
+### Improvements
+
+  * {Groonga::Command::Truncate#target_name}: Added.
+
 ## 1.3.6: 2018-08-16
 
 ### Improvements
