@@ -122,6 +122,81 @@ select \\
     end
   end
 
+  class CovnertToElasticsearchFormatTest < self
+    sub_test_case("non_target_command") do
+      def test_select_command
+        select = Groonga::Command::Base.new("select",
+                                            :table => "Users",
+                                            :filter => "age<=30",
+                                            :output_type => "json")
+        assert_equal(nil,
+                     select.to_elasticsearch_format)
+      end
+    end
+
+    sub_test_case("single_record") do
+      def test_brackets_format
+        load = Groonga::Command::Base.new("load",
+                                          :table => "Site",
+                                          :values => <<-VALUES)
+  [
+  ["_key","title"],
+  ["http://example.org/","This is test record 1!"]
+  ]
+        VALUES
+        assert_equal("{\"index\":{\"_index\":\"groonga\",\"_type\":\"Site\"}}\n" +
+                     "{\"_key\":\"http://example.org/\",\"title\":\"This is test record 1!\"}",
+                     load.to_elasticsearch_format)
+      end
+
+      def test_curly_brackets_format
+        load = Groonga::Command::Base.new("load",
+                                          :table => "Site",
+                                          :values => <<-VALUES)
+  [
+  {"_key": "http://example.org/", "title": "This is test record 1!"}
+  ]
+        VALUES
+        assert_equal("{\"index\":{\"_index\":\"groonga\",\"_type\":\"Site\"}}\n" +
+                     "{\"_key\":\"http://example.org/\",\"title\":\"This is test record 1!\"}",
+                     load.to_elasticsearch_format)
+      end
+    end
+
+    sub_test_case("multiple_records") do
+      def test_brackets_format
+        load = Groonga::Command::Base.new("load",
+                                          :table => "Site",
+                                          :values => <<-VALUES)
+  [
+  ["_key","title"],
+  ["http://example.org/","This is test record 1!"],
+  ["http://example.net/","This is test record 2!"]
+  ]
+        VALUES
+        assert_equal("{\"index\":{\"_index\":\"groonga\",\"_type\":\"Site\"}}\n" +
+                     "{\"_key\":\"http://example.org/\",\"title\":\"This is test record 1!\"}\n" +
+                     "{\"_key\":\"http://example.net/\",\"title\":\"This is test record 2!\"}",
+                     load.to_elasticsearch_format)
+      end
+
+      def test_curly_brackets_format
+        load = Groonga::Command::Base.new("load",
+                                          :table => "Site",
+                                          :values => <<-VALUES)
+  [
+  {"_key": "http://example.org/", "title": "This is test record 1!"},
+  {"_key": "http://example.net/", "title": "This is test record 2!"}
+  ]
+        VALUES
+        assert_equal("{\"index\":{\"_index\":\"groonga\",\"_type\":\"Site\"}}\n" +
+                     "{\"_key\":\"http://example.org/\",\"title\":\"This is test record 1!\"}\n" +
+                     "{\"_key\":\"http://example.net/\",\"title\":\"This is test record 2!\"}",
+                     load.to_elasticsearch_format)
+      end
+    end
+  end
+
   sub_test_case("#to_s") do
     def setup
       @table = "Users"

@@ -1,4 +1,5 @@
 # Copyright (C) 2012-2017  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2019 Yasuhiro Horimoto <horimoto@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -16,6 +17,7 @@
 
 require "groonga/command/format/uri"
 require "groonga/command/format/command"
+require "groonga/command/format/elasticsearch"
 
 module Groonga
   module Command
@@ -151,6 +153,11 @@ module Groonga
       def to_command_format(options={})
         format = Format::Command.new(@command_name, normalized_arguments)
         format.command_line(options)
+      end
+
+      def to_elasticsearch_format
+        format = Format::Elasticsearch.new(@command_name, normalized_arguments)
+        format.command_line
       end
 
       def to_s
