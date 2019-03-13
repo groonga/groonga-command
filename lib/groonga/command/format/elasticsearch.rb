@@ -56,7 +56,7 @@ module Groonga
                   column_names.each_with_index do |column_name, i|
                     body.merge!({"#{column_name}"=>"#{column_values[i]}"})
                   end
-                    components << JSON.generate(body) + "\n"
+                  components << JSON.generate(body) + "\n"
                 end
               else
                 JSON.parse(value).each do |load_value|
