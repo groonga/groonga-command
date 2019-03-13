@@ -146,7 +146,7 @@ select \\
         VALUES
 
         expected = <<-OUTPUT
-{"index":{"_index":"groonga","_type":"Site"}}
+{"index":{"_index":"site","_type":"groonga"}}
 {"_key":"http://example.org/","title":"This is test record 1!"}
         OUTPUT
 
@@ -163,7 +163,7 @@ select \\
         VALUES
 
         expected = <<-OUTPUT
-{"index":{"_index":"groonga","_type":"Site"}}
+{"index":{"_index":"site","_type":"groonga"}}
 {"_key":"http://example.org/","title":"This is test record 1!"}
         OUTPUT
 
@@ -184,7 +184,7 @@ select \\
         VALUES
 
         expected = <<-OUTPUT
-{"index":{"_index":"groonga","_type":"Site"}}
+{"index":{"_index":"site","_type":"groonga"}}
 {"_key":"http://example.org/","title":"This is test record 1!"}
 {"_key":"http://example.net/","title":"This is test record 2!"}
         OUTPUT
@@ -203,12 +203,86 @@ select \\
         VALUES
 
         expected = <<-OUTPUT
-{"index":{"_index":"groonga","_type":"Site"}}
+{"index":{"_index":"site","_type":"groonga"}}
 {"_key":"http://example.org/","title":"This is test record 1!"}
 {"_key":"http://example.net/","title":"This is test record 2!"}
         OUTPUT
 
         assert_equal(expected.chomp, load.to_elasticsearch_format)
+      end
+    end
+
+    sub_test_case("options") do
+      def test_options_elasticsearch_version_5
+        load = Groonga::Command::Base.new("load",
+                                          :table => "Site",
+                                          :values => <<-VALUES)
+  [
+  ["_key","title"],
+  ["http://example.org/","This is test record 1!"]
+  ]
+        VALUES
+
+        expected = <<-OUTPUT
+{"index":{"_index":"site","_type":"groonga"}}
+{"_key":"http://example.org/","title":"This is test record 1!"}
+        OUTPUT
+
+        assert_equal(expected.chomp, load.to_elasticsearch_format(:version=>5))
+      end
+
+      def test_options_elasticsearch_version_6
+        load = Groonga::Command::Base.new("load",
+                                          :table => "Site",
+                                          :values => <<-VALUES)
+  [
+  ["_key","title"],
+  ["http://example.org/","This is test record 1!"]
+  ]
+        VALUES
+
+        expected = <<-OUTPUT
+{"index":{"_index":"site","_type":"groonga"}}
+{"_key":"http://example.org/","title":"This is test record 1!"}
+        OUTPUT
+
+        assert_equal(expected.chomp, load.to_elasticsearch_format(:version=>6))
+      end
+
+      def test_options_elasticsearch_version_7
+        load = Groonga::Command::Base.new("load",
+                                          :table => "Site",
+                                          :values => <<-VALUES)
+  [
+  ["_key","title"],
+  ["http://example.org/","This is test record 1!"]
+  ]
+        VALUES
+
+        expected = <<-OUTPUT
+{"index":{"_index":"site","_type":"_doc"}}
+{"_key":"http://example.org/","title":"This is test record 1!"}
+        OUTPUT
+
+        assert_equal(expected.chomp, load.to_elasticsearch_format(:version=>7))
+      end
+
+      def test_options_elasticsearch_version_8
+        load = Groonga::Command::Base.new("load",
+                                          :table => "Site",
+                                          :values => <<-VALUES)
+  [
+  ["_key","title"],
+  ["http://example.org/","This is test record 1!"]
+  ]
+        VALUES
+
+        expected = <<-OUTPUT
+{"index":{"_index":"site"}}
+{"_key":"http://example.org/","title":"This is test record 1!"}
+        OUTPUT
+
+        assert_equal(expected.chomp, load.to_elasticsearch_format(:version=>8))
       end
     end
   end

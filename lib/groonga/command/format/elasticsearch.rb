@@ -25,12 +25,13 @@ module Groonga
           @arguments = arguments
         end
 
-        def command_line
+        def command_line(options={})
           return if @name != "load"
 
           header = Hash.new
           body = Hash.new
           components = ""
+          elasticsearch_version = options[:version]
 
           sorted_arguments = @arguments.sort_by do |name, _|
             name.to_s
@@ -38,7 +39,16 @@ module Groonga
           sorted_arguments.each do |name, value|
             case name
             when :table
-              header = {"index"=>{"_index"=>"groonga", "_type"=>"#{value}"}}
+              case elasticsearch_version
+              when 5, 6
+                header = {"index"=>{"_index"=>"#{value.downcase}", "_type"=>"groonga"}}
+              when 7
+                header = {"index"=>{"_index"=>"#{value.downcase}", "_type"=>"_doc"}}
+              when 8
+                header = {"index"=>{"_index"=>"#{value.downcase}"}}
+              else
+                header = {"index"=>{"_index"=>"#{value.downcase}", "_type"=>"groonga"}}
+              end
               components << JSON.generate(header) + "\n"
             when :values
               json_value = JSON.parse(value)
