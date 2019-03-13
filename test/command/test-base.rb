@@ -144,9 +144,13 @@ select \\
   ["http://example.org/","This is test record 1!"]
   ]
         VALUES
-        assert_equal("{\"index\":{\"_index\":\"groonga\",\"_type\":\"Site\"}}\n" +
-                     "{\"_key\":\"http://example.org/\",\"title\":\"This is test record 1!\"}",
-                     load.to_elasticsearch_format)
+
+        expected = <<-OUTPUT
+{"index":{"_index":"groonga","_type":"Site"}}
+{"_key":"http://example.org/","title":"This is test record 1!"}
+        OUTPUT
+
+        assert_equal(expected.chomp, load.to_elasticsearch_format)
       end
 
       def test_curly_brackets_format
@@ -157,9 +161,13 @@ select \\
   {"_key": "http://example.org/", "title": "This is test record 1!"}
   ]
         VALUES
-        assert_equal("{\"index\":{\"_index\":\"groonga\",\"_type\":\"Site\"}}\n" +
-                     "{\"_key\":\"http://example.org/\",\"title\":\"This is test record 1!\"}",
-                     load.to_elasticsearch_format)
+
+        expected = <<-OUTPUT
+{"index":{"_index":"groonga","_type":"Site"}}
+{"_key":"http://example.org/","title":"This is test record 1!"}
+        OUTPUT
+
+        assert_equal(expected.chomp, load.to_elasticsearch_format)
       end
     end
 
@@ -174,10 +182,14 @@ select \\
   ["http://example.net/","This is test record 2!"]
   ]
         VALUES
-        assert_equal("{\"index\":{\"_index\":\"groonga\",\"_type\":\"Site\"}}\n" +
-                     "{\"_key\":\"http://example.org/\",\"title\":\"This is test record 1!\"}\n" +
-                     "{\"_key\":\"http://example.net/\",\"title\":\"This is test record 2!\"}",
-                     load.to_elasticsearch_format)
+
+        expected = <<-OUTPUT
+{"index":{"_index":"groonga","_type":"Site"}}
+{"_key":"http://example.org/","title":"This is test record 1!"}
+{"_key":"http://example.net/","title":"This is test record 2!"}
+        OUTPUT
+
+        assert_equal(expected.chomp, load.to_elasticsearch_format)
       end
 
       def test_curly_brackets_format
@@ -189,10 +201,14 @@ select \\
   {"_key": "http://example.net/", "title": "This is test record 2!"}
   ]
         VALUES
-        assert_equal("{\"index\":{\"_index\":\"groonga\",\"_type\":\"Site\"}}\n" +
-                     "{\"_key\":\"http://example.org/\",\"title\":\"This is test record 1!\"}\n" +
-                     "{\"_key\":\"http://example.net/\",\"title\":\"This is test record 2!\"}",
-                     load.to_elasticsearch_format)
+
+        expected = <<-OUTPUT
+{"index":{"_index":"groonga","_type":"Site"}}
+{"_key":"http://example.org/","title":"This is test record 1!"}
+{"_key":"http://example.net/","title":"This is test record 2!"}
+        OUTPUT
+
+        assert_equal(expected.chomp, load.to_elasticsearch_format)
       end
     end
   end
