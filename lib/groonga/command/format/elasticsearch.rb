@@ -61,7 +61,7 @@ module Groonga
               components << JSON.generate(header) + "\n"
             when :values
               record = JSON.parse(value)
-              if record.first.to_s.start_with?("[")
+              if record[0].is_a?(::Array)
                 is_first = true
                 column_names = []
                 column_values = []
