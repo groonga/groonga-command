@@ -60,13 +60,13 @@ module Groonga
               end
               components << JSON.generate(header) + "\n"
             when :values
-              json_value = JSON.parse(value)
-              if json_value.first.to_s.start_with?("[")
+              record = JSON.parse(value)
+              if record.first.to_s.start_with?("[")
                 is_first = true
                 column_names = []
                 column_values = []
 
-                json_value.each do |load_value|
+                record.each do |load_value|
                   if is_first
                     column_names = load_value
                     is_first = false
@@ -79,7 +79,7 @@ module Groonga
                   components << JSON.generate(body) + "\n"
                 end
               else
-                json_value.each do |load_value|
+                record.each do |load_value|
                   load_value.keys.each do |key|
                     body.merge!({"#{key}"=>"#{load_value[key]}"})
                   end
