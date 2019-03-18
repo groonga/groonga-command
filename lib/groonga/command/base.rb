@@ -157,7 +157,7 @@ module Groonga
 
       def to_elasticsearch_format(options={})
         format = Format::Elasticsearch.new(@command_name, normalized_arguments)
-        format.command_line(options)
+        format.json(options)
       end
 
       def to_s

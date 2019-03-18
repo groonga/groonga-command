@@ -22,7 +22,7 @@ module Groonga
           @arguments = arguments
         end
 
-        def command_line(options={})
+        def json(options={})
           return if @name != "load"
 
           header = Hash.new
