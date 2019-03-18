@@ -37,12 +37,26 @@ module Groonga
             when :table
               case elasticsearch_version
               when 7
-                header = {"index"=>{"_index"=>"#{value.downcase}", "_type"=>"_doc"}}
+                header = {
+                  "index" => {
+                    "_index" => value.downcase,
+                    "_type"=>"_doc",
+                  }
+                }
               when 8
-                header = {"index"=>{"_index"=>"#{value.downcase}"}}
+                header = {
+                  "index" => {
+                    "_index" => value.downcase,
+                  }
+                }
               else
                 # Version 5.x or 6.x
-                header = {"index"=>{"_index"=>"#{value.downcase}", "_type"=>"groonga"}}
+                header = {
+                  "index" => {
+                    "_index" => value.downcase,
+                    "_type" => "groonga",
+                  }
+                }
               end
               components << JSON.generate(header) + "\n"
             when :values
