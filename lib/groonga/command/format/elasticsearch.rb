@@ -27,7 +27,7 @@ module Groonga
 
           body = {}
           components = ""
-          elasticsearch_version = options[:version]
+          elasticsearch_version = options[:version] || 5
 
           sorted_arguments = @arguments.sort_by do |name, _|
             name.to_s
