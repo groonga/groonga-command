@@ -25,7 +25,7 @@ module Groonga
         def json(options={})
           return if @name != "load"
 
-          body = Hash.new
+          body = {}
           components = ""
           elasticsearch_version = options[:version]
 
