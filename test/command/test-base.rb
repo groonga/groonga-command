@@ -237,10 +237,10 @@ select \\
 ]
       VALUES
 
-      data("version 5" => [expections[:version5], load, :version=>5],
-           "version 6" => [expections[:version6], load, :version=>6],
-           "version 7" => [expections[:version7], load, :version=>7],
-           "version 8" => [expections[:version8], load, :version=>8])
+      data("version 5" => [expections[:version5], load, :version => 5],
+           "version 6" => [expections[:version6], load, :version => 6],
+           "version 7" => [expections[:version7], load, :version => 7],
+           "version 8" => [expections[:version8], load, :version => 8])
       def test_options_elasticsearch_version(data)
         expected, target, version = data
         assert_equal(expected.chomp, target.to_elasticsearch_format(version))
