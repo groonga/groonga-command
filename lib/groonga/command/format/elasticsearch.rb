@@ -70,8 +70,8 @@ module Groonga
                   end
                   column_values = nil
                   column_values = load_value
-                  column_names.each_with_index do |column_name, i|
-                    body[column_name] = column_values[i]
+                  column_names.zip(column_values) do |column_name, column_value|
+                    body[column_name] = column_value
                   end
                   components << JSON.generate(body)
                 end
