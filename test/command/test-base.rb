@@ -145,12 +145,12 @@ select \\
   ]
         VALUES
 
-        expected = <<-OUTPUT
+        expected = <<-OUTPUT.chomp
 {"index":{"_index":"site","_type":"groonga"}}
 {"_key":"http://example.org/","title":"This is test record 1!"}
         OUTPUT
 
-        assert_equal(expected.chomp, load.to_elasticsearch_format)
+        assert_equal(expected, load.to_elasticsearch_format)
       end
 
       def test_curly_brackets_format
@@ -162,12 +162,12 @@ select \\
   ]
         VALUES
 
-        expected = <<-OUTPUT
+        expected = <<-OUTPUT.chomp
 {"index":{"_index":"site","_type":"groonga"}}
 {"_key":"http://example.org/","title":"This is test record 1!"}
         OUTPUT
 
-        assert_equal(expected.chomp, load.to_elasticsearch_format)
+        assert_equal(expected, load.to_elasticsearch_format)
       end
     end
 
@@ -183,13 +183,13 @@ select \\
   ]
         VALUES
 
-        expected = <<-OUTPUT
+        expected = <<-OUTPUT.chomp
 {"index":{"_index":"site","_type":"groonga"}}
 {"_key":"http://example.org/","title":"This is test record 1!"}
 {"_key":"http://example.net/","title":"This is test record 2!"}
         OUTPUT
 
-        assert_equal(expected.chomp, load.to_elasticsearch_format)
+        assert_equal(expected, load.to_elasticsearch_format)
       end
 
       def test_curly_brackets_format
@@ -202,28 +202,28 @@ select \\
   ]
         VALUES
 
-        expected = <<-OUTPUT
+        expected = <<-OUTPUT.chomp
 {"index":{"_index":"site","_type":"groonga"}}
 {"_key":"http://example.org/","title":"This is test record 1!"}
 {"_key":"http://example.net/","title":"This is test record 2!"}
         OUTPUT
 
-        assert_equal(expected.chomp, load.to_elasticsearch_format)
+        assert_equal(expected, load.to_elasticsearch_format)
       end
     end
 
     sub_test_case("options") do
       expections = {}
-      expections[:version5] = <<-OUTPUT
+      expections[:version5] = <<-OUTPUT.chomp
 {"index":{"_index":"site","_type":"groonga"}}
 {"_key":"http://example.org/","title":"This is test record 1!"}
       OUTPUT
       expections[:version6] = expections[:version5]
-      expections[:version7] = <<-OUTPUT
+      expections[:version7] = <<-OUTPUT.chomp
 {"index":{"_index":"site","_type":"_doc"}}
 {"_key":"http://example.org/","title":"This is test record 1!"}
       OUTPUT
-      expections[:version8] = <<-OUTPUT
+      expections[:version8] = <<-OUTPUT.chomp
 {"index":{"_index":"site"}}
 {"_key":"http://example.org/","title":"This is test record 1!"}
       OUTPUT
@@ -243,7 +243,7 @@ select \\
            "version 8" => [expections[:version8], load, :version => 8])
       def test_options_elasticsearch_version(data)
         expected, target, version = data
-        assert_equal(expected.chomp, target.to_elasticsearch_format(version))
+        assert_equal(expected, target.to_elasticsearch_format(version))
       end
     end
   end
