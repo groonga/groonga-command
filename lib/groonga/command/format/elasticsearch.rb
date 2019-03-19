@@ -61,7 +61,7 @@ module Groonga
               record = JSON.parse(value)
               if record[0].is_a?(::Array)
                 is_column_namse = true
-                column_names = []
+                column_names = nil
 
                 record.each do |load_value|
                   if is_column_namse
@@ -69,7 +69,7 @@ module Groonga
                     is_column_namse = false
                     next
                   end
-                  column_values = []
+                  column_values = nil
                   column_values = load_value
                   column_names.each_with_index do |column_name, i|
                     body.merge!({"#{column_name}"=>"#{column_values[i]}"})
