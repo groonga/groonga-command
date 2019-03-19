@@ -123,7 +123,7 @@ select \\
   end
 
   class CovnertToElasticsearchFormatTest < self
-    sub_test_case("non_target_command") do
+    sub_test_case("non target command") do
       def test_select_command
         select = Groonga::Command::Base.new("select",
                                             :table => "Users",
@@ -134,7 +134,7 @@ select \\
       end
     end
 
-    sub_test_case("single_record") do
+    sub_test_case("single record") do
       def test_brackets_format
         load = Groonga::Command::Base.new("load",
                                           :table => "Site",
@@ -171,7 +171,7 @@ select \\
       end
     end
 
-    sub_test_case("multiple_records") do
+    sub_test_case("multiple records") do
       def test_brackets_format
         load = Groonga::Command::Base.new("load",
                                           :table => "Site",
