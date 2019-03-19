@@ -212,23 +212,8 @@ select \\
       end
     end
 
-    sub_test_case("options") do
-      expections = {}
-      expections[:version5] = <<-OUTPUT.chomp
-{"index":{"_index":"site","_type":"groonga"}}
-{"_key":"http://example.org/","title":"This is test record 1!"}
-      OUTPUT
-      expections[:version6] = expections[:version5]
-      expections[:version7] = <<-OUTPUT.chomp
-{"index":{"_index":"site","_type":"_doc"}}
-{"_key":"http://example.org/","title":"This is test record 1!"}
-      OUTPUT
-      expections[:version8] = <<-OUTPUT.chomp
-{"index":{"_index":"site"}}
-{"_key":"http://example.org/","title":"This is test record 1!"}
-      OUTPUT
-
-      load = Groonga::Command::Base.new("load",
+    def setup
+      @load = Groonga::Command::Base.new("load",
                                         :table => "Site",
                                         :values => <<-VALUES)
 [
@@ -236,14 +221,35 @@ select \\
 ["http://example.org/","This is test record 1!"]
 ]
       VALUES
+    end
 
-      data("version 5" => [expections[:version5], load, :version => 5],
-           "version 6" => [expections[:version6], load, :version => 6],
-           "version 7" => [expections[:version7], load, :version => 7],
-           "version 8" => [expections[:version8], load, :version => 8])
-      def test_options_elasticsearch_version(data)
-        expected, target, version = data
-        assert_equal(expected, target.to_elasticsearch_format(version))
+    sub_test_case(":version") do
+      def test_5
+        assert_equal(<<-REQUESTS.chomp, @load.to_elasticsearch_format(:version => 5))
+{"index":{"_index":"site","_type":"groonga"}}
+{"_key":"http://example.org/","title":"This is test record 1!"}
+        REQUESTS
+      end
+
+      def test_6
+        assert_equal(<<-REQUESTS.chomp, @load.to_elasticsearch_format(:version => 6))
+{"index":{"_index":"site","_type":"groonga"}}
+{"_key":"http://example.org/","title":"This is test record 1!"}
+        REQUESTS
+      end
+
+      def test_7
+        assert_equal(<<-REQUESTS.chomp, @load.to_elasticsearch_format(:version => 7))
+{"index":{"_index":"site","_type":"_doc"}}
+{"_key":"http://example.org/","title":"This is test record 1!"}
+        REQUESTS
+      end
+
+      def test_8
+        assert_equal(<<-REQUESTS.chomp, @load.to_elasticsearch_format(:version => 8))
+{"index":{"_index":"site"}}
+{"_key":"http://example.org/","title":"This is test record 1!"}
+        REQUESTS
       end
     end
   end
