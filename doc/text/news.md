@@ -1,5 +1,11 @@
 # News
 
+## 1.3.9: 2019-03-19
+
+### Improvements
+
+  * {Groonga::Command::IndexColumnDiff}: Added.
+
 ## 1.3.8: 2018-10-23
 
 ### Improvements
