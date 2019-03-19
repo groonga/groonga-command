@@ -60,13 +60,11 @@ module Groonga
             when :values
               record = JSON.parse(value)
               if record[0].is_a?(::Array)
-                is_column_namse = true
-                column_names = nil
 
+                column_names = nil
                 record.each do |load_value|
-                  if is_column_namse
+                  if column_names.nil?
                     column_names = load_value
-                    is_column_namse = false
                     next
                   end
                   column_values = nil
