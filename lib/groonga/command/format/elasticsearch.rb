@@ -26,7 +26,7 @@ module Groonga
           return if @name != "load"
 
           body = {}
-          components = ""
+          components = []
           elasticsearch_version = options[:version] || 5
 
           sorted_arguments = @arguments.sort_by do |name, _|
@@ -58,7 +58,7 @@ module Groonga
                   }
                 }
               end
-              components << JSON.generate(header) + "\n"
+              components << JSON.generate(header)
             when :values
               record = JSON.parse(value)
               if record[0].is_a?(::Array)
@@ -76,19 +76,19 @@ module Groonga
                   column_names.each_with_index do |column_name, i|
                     body.merge!({"#{column_name}"=>"#{column_values[i]}"})
                   end
-                  components << JSON.generate(body) + "\n"
+                  components << JSON.generate(body)
                 end
               else
                 record.each do |load_value|
                   load_value.keys.each do |key|
                     body.merge!({"#{key}"=>"#{load_value[key]}"})
                   end
-                  components << JSON.generate(body) + "\n"
+                  components << JSON.generate(body)
                 end
               end
             end
           end
-          components.chomp!
+          components.join("\n")
         end
       end
     end
