@@ -23,7 +23,7 @@ module Groonga
         end
 
         def json(options={})
-          return if @name != "load"
+          return nil unless @name == "load"
 
           components = []
           elasticsearch_version = options[:version] || 5
