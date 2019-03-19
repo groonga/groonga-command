@@ -77,10 +77,7 @@ module Groonga
                 end
               else
                 record.each do |load_value|
-                  load_value.keys.each do |key|
-                    body[key] = load_value[key]
-                  end
-                  components << JSON.generate(body)
+                  components << JSON.generate(load_value)
                 end
               end
             end
