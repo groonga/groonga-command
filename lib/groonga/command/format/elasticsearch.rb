@@ -29,9 +29,7 @@ module Groonga
           components = []
           elasticsearch_version = options[:version] || 5
 
-          sorted_arguments = @arguments.sort_by do |name, _|
-            name.to_s
-          end
+          sorted_arguments = @arguments.sort_by(&:first)
           sorted_arguments.each do |name, value|
             case name
             when :table
