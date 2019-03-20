@@ -122,6 +122,138 @@ select \\
     end
   end
 
+  class CovnertToElasticsearchFormatTest < self
+    sub_test_case("non target command") do
+      def test_select_command
+        select = Groonga::Command::Base.new("select",
+                                            :table => "Users",
+                                            :filter => "age<=30",
+                                            :output_type => "json")
+        assert_equal(nil,
+                     select.to_elasticsearch_format)
+      end
+    end
+
+    sub_test_case("single record") do
+      def test_brackets_format
+        load = Groonga::Command::Base.new("load",
+                                          :table => "Site",
+                                          :values => <<-VALUES)
+  [
+  ["_key","title"],
+  ["http://example.org/","This is test record 1!"]
+  ]
+        VALUES
+
+        expected = <<-OUTPUT.chomp
+{"index":{"_index":"site","_type":"groonga"}}
+{"_key":"http://example.org/","title":"This is test record 1!"}
+        OUTPUT
+
+        assert_equal(expected, load.to_elasticsearch_format)
+      end
+
+      def test_curly_brackets_format
+        load = Groonga::Command::Base.new("load",
+                                          :table => "Site",
+                                          :values => <<-VALUES)
+  [
+  {"_key": "http://example.org/", "title": "This is test record 1!"}
+  ]
+        VALUES
+
+        expected = <<-OUTPUT.chomp
+{"index":{"_index":"site","_type":"groonga"}}
+{"_key":"http://example.org/","title":"This is test record 1!"}
+        OUTPUT
+
+        assert_equal(expected, load.to_elasticsearch_format)
+      end
+    end
+
+    sub_test_case("multiple records") do
+      def test_brackets_format
+        load = Groonga::Command::Base.new("load",
+                                          :table => "Site",
+                                          :values => <<-VALUES)
+  [
+  ["_key","title"],
+  ["http://example.org/","This is test record 1!"],
+  ["http://example.net/","This is test record 2!"]
+  ]
+        VALUES
+
+        expected = <<-OUTPUT.chomp
+{"index":{"_index":"site","_type":"groonga"}}
+{"_key":"http://example.org/","title":"This is test record 1!"}
+{"_key":"http://example.net/","title":"This is test record 2!"}
+        OUTPUT
+
+        assert_equal(expected, load.to_elasticsearch_format)
+      end
+
+      def test_curly_brackets_format
+        load = Groonga::Command::Base.new("load",
+                                          :table => "Site",
+                                          :values => <<-VALUES)
+  [
+  {"_key": "http://example.org/", "title": "This is test record 1!"},
+  {"_key": "http://example.net/", "title": "This is test record 2!"}
+  ]
+        VALUES
+
+        expected = <<-OUTPUT.chomp
+{"index":{"_index":"site","_type":"groonga"}}
+{"_key":"http://example.org/","title":"This is test record 1!"}
+{"_key":"http://example.net/","title":"This is test record 2!"}
+        OUTPUT
+
+        assert_equal(expected, load.to_elasticsearch_format)
+      end
+    end
+
+    def setup
+      @load = Groonga::Command::Base.new("load",
+                                         :table => "Site",
+                                         :values => <<-VALUES)
+[
+["_key","title"],
+["http://example.org/","This is test record 1!"]
+]
+      VALUES
+    end
+
+    sub_test_case(":version") do
+      def test_5
+        assert_equal(<<-REQUESTS.chomp, @load.to_elasticsearch_format(:version => 5))
+{"index":{"_index":"site","_type":"groonga"}}
+{"_key":"http://example.org/","title":"This is test record 1!"}
+        REQUESTS
+      end
+
+      def test_6
+        assert_equal(<<-REQUESTS.chomp, @load.to_elasticsearch_format(:version => 6))
+{"index":{"_index":"site","_type":"groonga"}}
+{"_key":"http://example.org/","title":"This is test record 1!"}
+        REQUESTS
+      end
+
+      def test_7
+        assert_equal(<<-REQUESTS.chomp, @load.to_elasticsearch_format(:version => 7))
+{"index":{"_index":"site","_type":"_doc"}}
+{"_key":"http://example.org/","title":"This is test record 1!"}
+        REQUESTS
+      end
+
+      def test_8
+        assert_equal(<<-REQUESTS.chomp, @load.to_elasticsearch_format(:version => 8))
+{"index":{"_index":"site"}}
+{"_key":"http://example.org/","title":"This is test record 1!"}
+        REQUESTS
+      end
+    end
+  end
+
   sub_test_case("#to_s") do
     def setup
       @table = "Users"
