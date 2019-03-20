@@ -58,7 +58,6 @@ module Groonga
               end
               components << JSON.generate(header)
             when :values
-              body = {}
               record = JSON.parse(value)
 
               if record[0].is_a?(::Array)
@@ -69,6 +68,7 @@ module Groonga
                     column_names = load_value
                     next
                   end
+                  body = {}
                   column_values = load_value
                   column_names.zip(column_values) do |column_name, column_value|
                     body[column_name] = column_value
