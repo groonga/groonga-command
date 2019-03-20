@@ -69,7 +69,6 @@ module Groonga
                     column_names = load_value
                     next
                   end
-                  column_values = nil
                   column_values = load_value
                   column_names.zip(column_values) do |column_name, column_value|
                     body[column_name] = column_value
