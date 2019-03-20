@@ -214,8 +214,8 @@ select \\
 
     def setup
       @load = Groonga::Command::Base.new("load",
-                                        :table => "Site",
-                                        :values => <<-VALUES)
+                                         :table => "Site",
+                                         :values => <<-VALUES)
 [
 ["_key","title"],
 ["http://example.org/","This is test record 1!"]
