@@ -1,5 +1,13 @@
 # News
 
+## 1.4.0: 2019-03-20
+
+### Improvements
+
+  * {Groonga::Command::Format::Elasticsearch}: Added.
+
+  * {Groonga::Command::Base#to_elasticsearch_format}: Added.
+  
 ## 1.3.9: 2019-03-19
 
 ### Improvements
