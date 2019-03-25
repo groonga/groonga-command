@@ -27,6 +27,7 @@ module Groonga
           return nil unless @name == "load"
 
           components = []
+          column_names = []
           elasticsearch_version = options[:version] || 5
 
           sorted_arguments = @arguments.sort_by(&:first)
@@ -57,17 +58,15 @@ module Groonga
                 }
               end
               components << JSON.generate(header)
+            when :columns
+              value.split(",").each do |column_name|
+                column_names << column_name
+              end
             when :values
               record = JSON.parse(value)
 
               if record[0].is_a?(::Array)
-                column_names = nil
-
                 record.each do |load_value|
-                  if column_names.nil?
-                    column_names = load_value
-                    next
-                  end
                   body = {}
                   column_values = load_value
                   column_names.zip(column_values) do |column_name, column_value|

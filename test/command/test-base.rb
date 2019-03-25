@@ -138,9 +138,9 @@ select \\
       def test_brackets_format
         load = Groonga::Command::Base.new("load",
                                           :table => "Site",
+                                          :columns => "_key,title",
                                           :values => <<-VALUES)
   [
-  ["_key","title"],
   ["http://example.org/","This is test record 1!"]
   ]
         VALUES
@@ -175,9 +175,9 @@ select \\
       def test_brackets_format
         load = Groonga::Command::Base.new("load",
                                           :table => "Site",
+                                          :columns => "_key,title",
                                           :values => <<-VALUES)
   [
-  ["_key","title"],
   ["http://example.org/","This is test record 1!"],
   ["http://example.net/","This is test record 2!"]
   ]
@@ -215,9 +215,9 @@ select \\
     def setup
       @load = Groonga::Command::Base.new("load",
                                          :table => "Site",
+                                         :columns =>"_key,title",
                                          :values => <<-VALUES)
 [
-["_key","title"],
 ["http://example.org/","This is test record 1!"]
 ]
       VALUES
