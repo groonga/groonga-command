@@ -27,6 +27,7 @@ module Groonga
           return nil unless @name == "load"
 
           components = []
+          header = []
           column_names = []
           elasticsearch_version = options[:version] || 5
 
@@ -73,10 +74,12 @@ module Groonga
                     body[column_name] = column_value
                   end
                   components << JSON.generate(body)
+                  components << JSON.generate(header) if load_value != record.last
                 end
               else
                 record.each do |load_value|
                   components << JSON.generate(load_value)
+                  components << JSON.generate(header) if load_value != record.last
                 end
               end
             end

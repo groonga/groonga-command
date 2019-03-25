@@ -186,6 +186,7 @@ select \\
         expected = <<-OUTPUT.chomp
 {"index":{"_index":"site","_type":"groonga"}}
 {"_key":"http://example.org/","title":"This is test record 1!"}
+{"index":{"_index":"site","_type":"groonga"}}
 {"_key":"http://example.net/","title":"This is test record 2!"}
         OUTPUT
 
@@ -205,6 +206,7 @@ select \\
         expected = <<-OUTPUT.chomp
 {"index":{"_index":"site","_type":"groonga"}}
 {"_key":"http://example.org/","title":"This is test record 1!"}
+{"index":{"_index":"site","_type":"groonga"}}
 {"_key":"http://example.net/","title":"This is test record 2!"}
         OUTPUT
 
