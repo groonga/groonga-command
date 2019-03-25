@@ -134,9 +134,49 @@ select \\
       end
     end
 
+    sub_test_case("no use :columns") do
+      def single_record
+        load = Groonga::Command::Load.new("load",
+                                          :table => "Site",
+                                          :values => <<-VALUES)
+  [
+  ["_key", "title"]
+  ["http://example.org/","This is test record 1!"]
+  ]
+        VALUES
+
+        expected = <<-OUTPUT.chomp
+{"index":{"_index":"site","_type":"groonga"}}
+{"_key":"http://example.org/","title":"This is test record 1!"}
+        OUTPUT
+
+        assert_equal(expected, load.to_elasticsearch_format)
+      end
+
+      def multiple_records
+        load = Groonga::Command::Load.new("load",
+                                          :table => "Site",
+                                          :columns => "_key,title",
+                                          :values => <<-VALUES)
+  [
+  ["http://example.org/","This is test record 1!"],
+  ["http://example.net/","This is test record 2!"]
+  ]
+        VALUES
+
+        expected = <<-OUTPUT.chomp
+{"index":{"_index":"site","_type":"groonga"}}
+{"_key":"http://example.org/","title":"This is test record 1!"}
+{"_key":"http://example.net/","title":"This is test record 2!"}
+        OUTPUT
+
+        assert_equal(expected, load.to_elasticsearch_format)
+      end
+    end
+
     sub_test_case("single record") do
       def test_brackets_format
-        load = Groonga::Command::Base.new("load",
+        load = Groonga::Command::Load.new("load",
                                           :table => "Site",
                                           :columns => "_key,title",
                                           :values => <<-VALUES)
@@ -154,7 +194,7 @@ select \\
       end
 
       def test_curly_brackets_format
-        load = Groonga::Command::Base.new("load",
+        load = Groonga::Command::Load.new("load",
                                           :table => "Site",
                                           :values => <<-VALUES)
   [
@@ -173,7 +213,7 @@ select \\
 
     sub_test_case("multiple records") do
       def test_brackets_format
-        load = Groonga::Command::Base.new("load",
+        load = Groonga::Command::Load.new("load",
                                           :table => "Site",
                                           :columns => "_key,title",
                                           :values => <<-VALUES)
@@ -194,7 +234,7 @@ select \\
       end
 
       def test_curly_brackets_format
-        load = Groonga::Command::Base.new("load",
+        load = Groonga::Command::Load.new("load",
                                           :table => "Site",
                                           :values => <<-VALUES)
   [
@@ -215,7 +255,7 @@ select \\
     end
 
     def setup
-      @load = Groonga::Command::Base.new("load",
+      @load = Groonga::Command::Load.new("load",
                                          :table => "Site",
                                          :columns =>"_key,title",
                                          :values => <<-VALUES)
