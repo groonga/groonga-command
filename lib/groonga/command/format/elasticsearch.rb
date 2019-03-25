@@ -40,7 +40,7 @@ module Groonga
         end
 
         def build_action(options)
-          index_name = @command[:table].downcase
+          index_name = @command.table.downcase
           case elasticsearch_version(options)
           when 5, 6
             {
@@ -66,10 +66,8 @@ module Groonga
         end
 
         def each_source
-          unless @command[:columns].nil?
-            columns = @command[:columns].split(/\s*,\s*/)
-          end
-          values = JSON.parse(@command[:values]) || []
+          columns = @command.columns
+          values = @command.values || []
           values.each do |value|
             if value.is_a?(::Array)
               if columns.nil?
