@@ -18,71 +18,67 @@ module Groonga
   module Command
     module Format
       class Elasticsearch
-        def initialize(name, arguments)
-          @name = name
-          @arguments = arguments
+        def initialize(command)
+          @command = command
         end
 
         def json(options={})
-          return nil unless @name == "load"
+          return nil unless @command.is_a?(Load)
 
           components = []
-          elasticsearch_version = options[:version] || 5
-
-          sorted_arguments = @arguments.sort_by(&:first)
-          sorted_arguments.each do |name, value|
-            case name
-            when :table
-              case elasticsearch_version
-              when 7
-                header = {
-                  "index" => {
-                    "_index" => value.downcase,
-                    "_type"=>"_doc",
-                  }
-                }
-              when 8
-                header = {
-                  "index" => {
-                    "_index" => value.downcase,
-                  }
-                }
-              else
-                # Version 5.x or 6.x
-                header = {
-                  "index" => {
-                    "_index" => value.downcase,
-                    "_type" => "groonga",
-                  }
-                }
-              end
-              components << JSON.generate(header)
-            when :values
-              record = JSON.parse(value)
-
-              if record[0].is_a?(::Array)
-                column_names = nil
-
-                record.each do |load_value|
-                  if column_names.nil?
-                    column_names = load_value
-                    next
-                  end
-                  body = {}
-                  column_values = load_value
-                  column_names.zip(column_values) do |column_name, column_value|
-                    body[column_name] = column_value
-                  end
-                  components << JSON.generate(body)
-                end
-              else
-                record.each do |load_value|
-                  components << JSON.generate(load_value)
-                end
-              end
-            end
+          action = build_action(options)
+          each_source do |source|
+            components << JSON.generate(action)
+            components << JSON.generate(source)
           end
           components.join("\n")
+        end
+
+        private
+        def elasticsearch_version(options)
+          options[:version] || 5
+        end
+
+        def build_action(options)
+          index_name = @command.table.downcase
+          case elasticsearch_version(options)
+          when 5, 6
+            {
+              "index" => {
+                "_index" => index_name,
+                "_type" => "groonga",
+              }
+            }
+          when 7
+            {
+              "index" => {
+                "_index" => index_name,
+                "_type"=>"_doc",
+              }
+            }
+          else
+            {
+              "index" => {
+                "_index" => index_name,
+              }
+            }
+          end
+        end
+
+        def each_source
+          columns = @command.columns
+          values = @command.values || []
+          values.each do |value|
+            if value.is_a?(::Array)
+              if columns.nil?
+                columns = value
+              else
+                yield(Hash[columns.zip(value)])
+              end
+            else
+              yield(value)
+            end
+          end
         end
       end
     end
