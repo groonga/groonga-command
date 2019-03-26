@@ -1,5 +1,12 @@
 # News
 
+## 1.4.1: 2019-03-26
+
+### Fixes
+
+  * Fixed a bug that result of conversion to the Elasticsearch
+    format result is wrong
+  
 ## 1.4.0: 2019-03-20
 
 ### Improvements
