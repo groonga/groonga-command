@@ -1,4 +1,4 @@
-# Copyright (C) 2015  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2015-2019  Sutou Kouhei <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -40,6 +40,24 @@ class PluginUnregisterCommandTest < Test::Unit::TestCase
     def test_reader
       command = plugin_unregister_command(:name => "query_expanders/tsv")
       assert_equal("query_expanders/tsv", command.name)
+    end
+  end
+
+  class EqualTest < self
+    def test_equal
+      command1 = plugin_unregister_command(:name => "query_expanders/tsv")
+      command2 = plugin_unregister_command(:name => "query_expanders/tsv")
+      assert do
+        command1 == command2
+      end
+    end
+
+    def test_not_equal
+      command1 = plugin_unregister_command(:name => "query_expanders/tsv")
+      command2 = plugin_unregister_command(:name => "functions/vector")
+      assert do
+        command1 != command2
+      end
     end
   end
 end

@@ -1,4 +1,4 @@
-# Copyright (C) 2012-2017  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-2019  Sutou Kouhei <kou@clear-code.com>
 # Copyright (C) 2019 Yasuhiro Horimoto <horimoto@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
@@ -123,7 +123,7 @@ module Groonga
 
       def ==(other)
         other.is_a?(self.class) and
-          @command_name == other.name and
+          @command_name == other.command_name and
           @arguments == other.arguments
       end
 
