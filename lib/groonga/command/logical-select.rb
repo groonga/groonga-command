@@ -194,7 +194,7 @@ module Groonga
       #
       # @since 1.4.2
       def sort_keys
-        parse_array_value(self[:sort_keys] || "")
+        parse_array_value(self[:sort_keys] || self[:sortby] || "")
       end
     end
   end
