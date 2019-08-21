@@ -1,12 +1,22 @@
 # News
 
+## 1.4.2: 2019-08-21
+
+### Improvements
+
+  * {Groonga::Command::LogicalSelect#sort_keys}: Added.
+
+### Fixes
+
+  * Fixed a bug that Command::Base#== uses name instead of command_name [GitHub#13][Reported by yagisumi]
+
 ## 1.4.1: 2019-03-26
 
 ### Fixes
 
   * Fixed a bug that result of conversion to the Elasticsearch
     format result is wrong
-  
+
 ## 1.4.0: 2019-03-20
 
 ### Improvements
@@ -14,7 +24,7 @@
   * {Groonga::Command::Format::Elasticsearch}: Added.
 
   * {Groonga::Command::Base#to_elasticsearch_format}: Added.
-  
+
 ## 1.3.9: 2019-03-19
 
 ### Improvements
