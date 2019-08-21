@@ -41,6 +41,7 @@ class LogicalSelectCommandTest < Test::Unit::TestCase
       drilldown_limit            = "10"
       drilldown_calc_types       = "MIN,AVG"
       drilldown_calc_target      = "n_occurred"
+      sort_keys                  = "-_score"
 
       ordered_arguments = [
         logical_table,
@@ -61,6 +62,7 @@ class LogicalSelectCommandTest < Test::Unit::TestCase
         drilldown_limit,
         drilldown_calc_types,
         drilldown_calc_target,
+        sort_keys,
       ]
       command = logical_select_command({}, ordered_arguments)
       assert_equal({
@@ -82,6 +84,7 @@ class LogicalSelectCommandTest < Test::Unit::TestCase
                      :drilldown_limit          => drilldown_limit,
                      :drilldown_calc_types     => drilldown_calc_types,
                      :drilldown_calc_target    => drilldown_calc_target,
+                     :sort_keys                => sort_keys,
                    },
                    command.arguments)
     end
@@ -203,6 +206,13 @@ class LogicalSelectCommandTest < Test::Unit::TestCase
     def test_reader
       command = logical_select_command(:drilldown_calc_target => "n_occurred")
       assert_equal("n_occurred", command.drilldown_calc_target)
+    end
+  end
+
+  class SortKeysTest < self
+    def test_reader
+      command = logical_select_command(:sort_keys => "-_score, _key")
+      assert_equal(["-_score", "_key"], command.sort_keys)
     end
   end
 end

@@ -50,6 +50,7 @@ module Groonga
             :drilldown_limit,
             :drilldown_calc_types,
             :drilldown_calc_target,
+            :sort_keys,
           ]
         end
       end
@@ -187,6 +188,13 @@ module Groonga
       # @since 1.1.3
       def drilldown_calc_target
         self[:drilldown_calc_target]
+      end
+
+      # @return [::Array<String>] The sort keys.
+      #
+      # @since 1.4.2
+      def sort_keys
+        parse_array_value(self[:sort_keys] || "")
       end
     end
   end
