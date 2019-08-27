@@ -44,6 +44,7 @@ module Groonga
             :limit,
             :filter,
             :output_columns,
+            :sort_keys,
           ]
         end
       end
@@ -129,6 +130,13 @@ module Groonga
       # @since 1.1.1
       def output_columns
         self[:output_columns]
+      end
+
+      # @return [::Array<String>] The sort keys.
+      #
+      # @since 1.4.3
+      def sort_keys
+        parse_array_value(self[:sort_keys] || "")
       end
     end
   end
