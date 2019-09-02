@@ -344,6 +344,7 @@ class LogicalSelectCommandTest < Test::Unit::TestCase
 
     def slice(parameters)
       slice = Groonga::Command::LogicalSelect::Slice.new
+      slice.labeled_drilldowns = {}
       parameters.each do |key, value|
         slice[key] = value
       end

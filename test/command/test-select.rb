@@ -335,6 +335,7 @@ class SelectCommandTest < Test::Unit::TestCase
 
     def slice(parameters)
       slice = Groonga::Command::Select::Slice.new
+      slice.labeled_drilldowns = {}
       parameters.each do |key, value|
         slice[key] = value
       end

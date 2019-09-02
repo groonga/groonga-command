@@ -51,6 +51,7 @@ module Groonga
           output_columns = parse_array_value(raw_slice["output_columns"])
           offset = parse_integer_value(raw_slice["offset"])
           limit = parse_integer_value(raw_slice["limit"])
+          labeled_drilldowns = parse_labeled_drilldowns("slices[#{label}].")
           slices[label] = Slice.new(label,
                                     match_columns,
                                     query,
@@ -60,7 +61,8 @@ module Groonga
                                     sort_keys,
                                     output_columns,
                                     offset,
-                                    limit)
+                                    limit,
+                                    labeled_drilldowns)
         end
         slices
       end
@@ -75,7 +77,8 @@ module Groonga
                                :sort_keys,
                                :output_columns,
                                :offset,
-                               :limit)
+                               :limit,
+                               :labeled_drilldowns)
       end
     end
   end

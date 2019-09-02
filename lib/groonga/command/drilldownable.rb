@@ -91,15 +91,15 @@ module Groonga
       #
       # @since 1.2.8
       def labeled_drilldowns
-        @labeled_drilldowns ||= parse_labeled_drilldowns
+        @labeled_drilldowns ||= parse_labeled_drilldowns("")
       end
 
       private
-      def parse_labeled_drilldowns
+      def parse_labeled_drilldowns(prefix)
         raw_labeled_drilldowns = {}
         @arguments.each do |name, value|
           case name.to_s
-          when /\Adrilldowns?\[(.+?)\]\.(.+?)\z/
+          when /\A#{Regexp.escape(prefix)}drilldowns?\[(.+?)\]\.(.+?)\z/
             label = $1
             parameter_name = $2
             raw_labeled_drilldowns[label] ||= {}
