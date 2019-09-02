@@ -1,5 +1,15 @@
 # News
 
+## 1.4.3: 2019-09-02
+
+### Improvements
+
+  * {Groonga::Command::LogicalRangeFilter#use_range_index}: Added.
+
+  * {Groonga::Command::LogicalRangeFilter#post_filter}: Added.
+
+  * {Groonga::Command::LogicalRangeFilter#sort_keys}: Added.
+
 ## 1.4.2: 2019-08-21
 
 ### Improvements
