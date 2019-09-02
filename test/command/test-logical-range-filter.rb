@@ -34,7 +34,7 @@ class LogicalRangeFilterCommandTest < Test::Unit::TestCase
       limit          = "20"
       filter         = "value == 10"
       output_columns = "_key, timestamp"
-      sort_keys      = "-_score"
+      sort_keys      = "timestamp, -_score"
 
       ordered_arguments = [
         logical_table,
@@ -141,8 +141,8 @@ class LogicalRangeFilterCommandTest < Test::Unit::TestCase
 
   class SortKeysTest < self
     def test_reader
-      command = logical_range_filter_command(:sort_keys => "-_score, _key")
-      assert_equal(["-_score", "_key"], command.sort_keys)
+      command = logical_range_filter_command(:sort_keys => "timestamp, -_score")
+      assert_equal(["timestamp", "-_score"], command.sort_keys)
     end
   end
 end
