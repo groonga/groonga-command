@@ -1,5 +1,13 @@
 # News
 
+## 1.4.4: 2019-09-02
+
+### Improvements
+
+  * {Groonga::Command::LogicalSelect}: Added support for slices.
+
+  * {Groonga::Command::LogicalSelect}: Added support for labeled drilldowns.
+
 ## 1.4.3: 2019-09-02
 
 ### Improvements
