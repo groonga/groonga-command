@@ -48,7 +48,9 @@ module Groonga
       #
       # @since 1.1.7
       def force?
-        boolean_value(:force, false)
+        boolean_value(:force,
+                      default: false,
+                      invalid: false)
       end
     end
   end

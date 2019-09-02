@@ -232,15 +232,22 @@ module Groonga
         value.strip.split(/\s*[| ]\s*/)
       end
 
-      def boolean_value(name, default_value)
-        parse_boolean_value(self[name], default_value)
+      def boolean_value(name, **keyword_args)
+        parse_boolean_value(self[name], **keyword_args)
       end
 
-      def parse_boolean_value(value, default_value)
-        return default_value if value.nil?
+      def parse_boolean_value(value, default:, invalid:)
+        return default if value.nil?
         value = value.strip
-        return default_value if value.empty?
-        value == "yes"
+        return default if value.empty?
+        case value
+        when "yes"
+          true
+        when "no"
+          false
+        else
+          invalid
+        end
       end
     end
   end

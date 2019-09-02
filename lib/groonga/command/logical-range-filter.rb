@@ -44,6 +44,7 @@ module Groonga
             :limit,
             :filter,
             :output_columns,
+            :use_range_index,
             :sort_keys,
           ]
         end
@@ -130,6 +131,16 @@ module Groonga
       # @since 1.1.1
       def output_columns
         self[:output_columns]
+      end
+
+      # @return [Boolean, nil] Whether force to use or not use range index.
+      #   `nil` means that decided whether use range index automatically.
+      #
+      # @since 1.4.3
+      def use_range_index
+        boolean_value(:use_range_index,
+                      default: nil,
+                      invalid: nil)
       end
 
       # @return [::Array<String>] The sort keys.
