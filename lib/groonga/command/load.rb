@@ -70,7 +70,9 @@ module Groonga
       #
       # @since 1.3.0
       def output_ids?
-        boolean_value(:output_ids, false)
+        boolean_value(:output_ids,
+                      default: false,
+                      invalid: false)
       end
 
       private

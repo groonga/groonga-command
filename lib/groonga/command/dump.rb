@@ -47,7 +47,9 @@ module Groonga
       #
       # @since 1.3.4
       def sort_hash_table?
-        boolean_value(:sort_hash_table, false)
+        boolean_value(:sort_hash_table,
+                      default: false,
+                      invalid: false)
       end
     end
   end

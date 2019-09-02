@@ -1,4 +1,6 @@
 # Copyright (C) 2015  Hiroshi Hatake <hatake@clear-code.com>
+# Copyright (C) 2019  Yasuhiro Horimoto <horimoto@clear-code.com>
+# Copyright (C) 2019  Sutou Kouhei <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -23,17 +25,20 @@ class LogicalRangeFilterCommandTest < Test::Unit::TestCase
 
   class ConstructorTest < self
     def test_ordered_arguments
-      logical_table  = "Logs"
-      shard_key      = "timestamp",
-      min            = "2015-02-12 00:00:00"
-      min_border     = "include"
-      max            = "2015-02-13 00:00:00"
-      max_border     = "exclude"
-      order          = "ascending"
-      offset         = "10"
-      limit          = "20"
-      filter         = "value == 10"
-      output_columns = "_key, timestamp"
+      logical_table   = "Logs"
+      shard_key       = "timestamp",
+      min             = "2015-02-12 00:00:00"
+      min_border      = "include"
+      max             = "2015-02-13 00:00:00"
+      max_border      = "exclude"
+      order           = "ascending"
+      offset          = "10"
+      limit           = "20"
+      filter          = "value == 10"
+      output_columns  = "_key, timestamp"
+      use_range_index = "yes"
+      post_filter     = "_score > 10"
+      sort_keys       = "timestamp, -_score"
 
       ordered_arguments = [
         logical_table,
@@ -47,20 +52,26 @@ class LogicalRangeFilterCommandTest < Test::Unit::TestCase
         limit,
         filter,
         output_columns,
+        use_range_index,
+        post_filter,
+        sort_keys,
       ]
       command = logical_range_filter_command({}, ordered_arguments)
       assert_equal({
-                     :logical_table  => logical_table,
-                     :shard_key      => shard_key,
-                     :min            => min,
-                     :min_border     => min_border,
-                     :max            => max,
-                     :max_border     => max_border,
-                     :order          => order,
-                     :offset         => offset,
-                     :limit          => limit,
-                     :filter         => filter,
-                     :output_columns => output_columns,
+                     :logical_table   => logical_table,
+                     :shard_key       => shard_key,
+                     :min             => min,
+                     :min_border      => min_border,
+                     :max             => max,
+                     :max_border      => max_border,
+                     :order           => order,
+                     :offset          => offset,
+                     :limit           => limit,
+                     :filter          => filter,
+                     :output_columns  => output_columns,
+                     :use_range_index => use_range_index,
+                     :post_filter     => post_filter,
+                     :sort_keys       => sort_keys,
                    },
                    command.arguments)
     end
@@ -133,6 +144,42 @@ class LogicalRangeFilterCommandTest < Test::Unit::TestCase
     def test_reader
       command = logical_range_filter_command(:output_columns => "_key, timestamp")
       assert_equal("_key, timestamp", command.output_columns)
+    end
+  end
+
+  class UseRangeIndexTest < self
+    def test_yes
+      command = logical_range_filter_command(:use_range_index => "yes")
+      assert_true(command.use_range_index)
+    end
+
+    def test_no
+      command = logical_range_filter_command(:use_range_index => "no")
+      assert_false(command.use_range_index)
+    end
+
+    def test_default
+      command = logical_range_filter_command
+      assert_nil(command.use_range_index)
+    end
+
+    def test_invalid
+      command = logical_range_filter_command(:use_range_index => "invalid")
+      assert_nil(command.use_range_index)
+    end
+  end
+
+  class PostFilterTest < self
+    def test_reader
+      command = logical_range_filter_command(:post_filter => "_score > 10")
+      assert_equal("_score > 10", command.post_filter)
+    end
+  end
+
+  class SortKeysTest < self
+    def test_reader
+      command = logical_range_filter_command(:sort_keys => "timestamp, -_score")
+      assert_equal(["timestamp", "-_score"], command.sort_keys)
     end
   end
 end

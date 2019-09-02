@@ -1,5 +1,6 @@
 # Copyright (C) 2015  Hiroshi Hatake <hatake@clear-code.com>
-# Copyright (C) 2018  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2018-2019  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2019  Yasuhiro Horimoto <horimoto@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -44,6 +45,9 @@ module Groonga
             :limit,
             :filter,
             :output_columns,
+            :use_range_index,
+            :post_filter,
+            :sort_keys,
           ]
         end
       end
@@ -129,6 +133,30 @@ module Groonga
       # @since 1.1.1
       def output_columns
         self[:output_columns]
+      end
+
+      # @return [Boolean, nil] Whether force to use or not use range index.
+      #   `nil` means that decided whether use range index automatically.
+      #
+      # @since 1.4.3
+      def use_range_index
+        boolean_value(:use_range_index,
+                      default: nil,
+                      invalid: nil)
+      end
+
+      # @return [String] `post_filter` parameter value.
+      #
+      # @since 1.4.3
+      def post_filter
+        self[:post_filter]
+      end
+
+      # @return [::Array<String>] The sort keys.
+      #
+      # @since 1.4.3
+      def sort_keys
+        parse_array_value(self[:sort_keys] || "")
       end
     end
   end
