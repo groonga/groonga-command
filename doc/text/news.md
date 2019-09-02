@@ -1,5 +1,14 @@
 # News
 
+## 1.4.5: 2019-09-02
+
+### Improvements
+
+  * {Groonga::Command::Select}: Added support for labeled drilldowns in slice.
+
+  * {Groonga::Command::LogicalSelect}: Added support for labeled
+    drilldowns in slice.
+
 ## 1.4.4: 2019-09-02
 
 ### Improvements
