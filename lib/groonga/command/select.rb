@@ -1,4 +1,4 @@
-# Copyright (C) 2012-2018  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-2019  Sutou Kouhei <kou@clear-code.com>
 # Copyright (C) 2016  Masafumi Yokoyama <yokoyama@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
@@ -17,11 +17,13 @@
 
 require "groonga/command/base"
 require "groonga/command/searchable"
+require "groonga/command/sliceable"
 
 module Groonga
   module Command
     class Select < Base
       include Searchable
+      include Sliceable
 
       class << self
         def command_name
@@ -114,13 +116,6 @@ module Groonga
         @labeled_drilldowns ||= parse_labeled_drilldowns
       end
 
-      # @return [::Hash<String, Slice>] The slices.
-      #
-      # @since 1.3.0
-      def slices
-        @slices ||= parse_slices
-      end
-
       # TODO: We should return `::Array` instead of raw
       #   `output_columns` value. But it breaks backward
       #   compatibility...
@@ -169,46 +164,6 @@ module Groonga
         labeled_drilldowns
       end
 
-      def parse_slices
-        raw_slices = {}
-        @arguments.each do |name, value|
-          case name.to_s
-          when /\Aslices?\[(.+?)\]\.(.+?)\z/
-            label = $1
-            parameter_name = $2
-            raw_slices[label] ||= {}
-            raw_slices[label][parameter_name] = value
-          end
-        end
-        build_slices(raw_slices)
-      end
-
-      def build_slices(raw_slices)
-        slices = {}
-        raw_slices.each do |label, raw_slice|
-          match_columns = raw_slice["match_columns"]
-          query = raw_slice["query"]
-          query_expander = raw_slice["query_expander"]
-          query_flags = parse_flags_value(raw_slice["query_flags"])
-          filter = raw_slice["filter"]
-          sort_keys = parse_array_value(raw_slice["sort_keys"])
-          output_columns = parse_array_value(raw_slice["output_columns"])
-          offset = parse_integer_value(raw_slice["offset"])
-          limit = parse_integer_value(raw_slice["limit"])
-          slices[label] = Slice.new(label,
-                                    match_columns,
-                                    query,
-                                    query_expander,
-                                    query_flags,
-                                    filter,
-                                    sort_keys,
-                                    output_columns,
-                                    offset,
-                                    limit)
-        end
-        slices
-      end
-
       class Drilldown < Struct.new(:keys,
                                    :sort_keys,
                                    :output_columns,
@@ -218,19 +173,6 @@ module Groonga
                                    :calc_target,
                                    :filter,
                                    :label)
-      end
-
-      # @since 1.3.1
-      class Slice < Struct.new(:label,
-                               :match_columns,
-                               :query,
-                               :query_expander,
-                               :query_flags,
-                               :filter,
-                               :sort_keys,
-                               :output_columns,
-                               :offset,
-                               :limit)
       end
     end
   end
