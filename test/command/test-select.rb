@@ -158,6 +158,55 @@ class SelectCommandTest < Test::Unit::TestCase
     end
   end
 
+  class DrilldownTest < self
+    def test_reader
+      command = select_command(:drilldown => "name")
+      assert_equal("name", command.drilldown)
+    end
+  end
+
+  class DrilldownSortbyTest < self
+    def test_reader
+      command = select_command(:drilldown_sortby => "_nsubrecs")
+      assert_equal("_nsubrecs", command.drilldown_sortby)
+    end
+  end
+
+  class DrilldownOutputColumnsTest < self
+    def test_reader
+      command = select_command(:drilldown_output_columns => "name, _nsubrecs")
+      assert_equal("name, _nsubrecs", command.drilldown_output_columns)
+    end
+  end
+
+  class DrilldownOffsetTest < self
+    def test_reader
+      command = select_command(:drilldown_offset => "5")
+      assert_equal(5, command.drilldown_offset)
+    end
+  end
+
+  class DrilldownLimitTest < self
+    def test_reader
+      command = select_command(:drilldown_limit => "10")
+      assert_equal(10, command.drilldown_limit)
+    end
+  end
+
+  class DrilldownCalcTypesTest < self
+    def test_reader
+      command = select_command(:drilldown_calc_types => "MIN,AVG")
+      assert_equal("MIN,AVG", command.drilldown_calc_types)
+    end
+  end
+
+  class DrilldownCalcTargetTest < self
+    def test_reader
+      command = select_command(:drilldown_calc_target => "n_occurred")
+      assert_equal("n_occurred", command.drilldown_calc_target)
+    end
+  end
+
   class DrilldownFilterTest < self
     def test_reader
       command = select_command(:drilldown_filter => "_nsubrecs > 1")

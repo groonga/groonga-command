@@ -160,6 +160,13 @@ class LogicalSelectCommandTest < Test::Unit::TestCase
     end
   end
 
+  class SortKeysTest < self
+    def test_reader
+      command = logical_select_command(:sort_keys => "-_score, _key")
+      assert_equal(["-_score", "_key"], command.sort_keys)
+    end
+  end
+
   class DrilldownTest < self
     def test_reader
       command = logical_select_command(:drilldown => "name")
@@ -209,10 +216,78 @@ class LogicalSelectCommandTest < Test::Unit::TestCase
     end
   end
 
-  class SortKeysTest < self
+  class DrilldownFilterTest < self
     def test_reader
-      command = logical_select_command(:sort_keys => "-_score, _key")
-      assert_equal(["-_score", "_key"], command.sort_keys)
+      command = logical_select_command(:drilldown_filter => "_nsubrecs > 1")
+      assert_equal("_nsubrecs > 1",
+                   command.drilldown_filter)
+    end
+  end
+
+  class DrilldownSortKeysTest < self
+    def test_reader
+      command = logical_select_command(:drilldown_sort_keys => "-_nsubrecs,_key")
+      assert_equal(["-_nsubrecs", "_key"],
+                   command.drilldown_sort_keys)
+    end
+
+    def test_sortby
+      command = logical_select_command(:drilldown_sortby => "-_nsubrecs,_key")
+      assert_equal(["-_nsubrecs", "_key"],
+                   command.drilldown_sort_keys)
+    end
+  end
+
+  class LabeledDrilldownsTest < self
+    def test_multiple
+      parameters = {
+        "drilldowns[tag].keys" => "tag",
+        "drilldowns[tag].sort_keys" => "-_nsubrecs,_key",
+        "drilldowns[tag].output_columns" => "_key,_nsubrecs,_min,_max",
+        "drilldowns[tag].offset" => "1",
+        "drilldowns[tag].limit" => "10",
+        "drilldowns[tag].calc_types" => "MIN,MAX",
+        "drilldowns[tag].calc_target" => "_nsubrecs",
+        "drilldowns[tag].filter" => "_nsubrecs > 1",
+
+        "drilldowns[author_tag].keys" => "author,tag",
+        "drilldowns[author_tag].sort_keys" => "_value.author",
+        "drilldowns[author_tag].output_columns" => "_value.author,_nsubrecs",
+      }
+      command = logical_select_command(parameters)
+      drilldowns = {
+        "author_tag" => drilldown(:label => "author_tag",
+                                  :keys => ["author", "tag"],
+                                  :sort_keys => ["_value.author"],
+                                  :output_columns => [
+                                    "_value.author",
+                                    "_nsubrecs",
+                                  ]),
+        "tag" => drilldown(:label => "tag",
+                           :keys => ["tag"],
+                           :sort_keys => ["-_nsubrecs", "_key"],
+                           :output_columns => [
+                             "_key",
+                             "_nsubrecs",
+                             "_min",
+                             "_max",
+                           ],
+                           :offset => 1,
+                           :limit => 10,
+                           :calc_types => ["MIN", "MAX"],
+                           :calc_target => "_nsubrecs",
+                           :filter => "_nsubrecs > 1"),
+      }
+      assert_equal(drilldowns,
+                   command.labeled_drilldowns)
+    end
+
+    def drilldown(parameters)
+      drilldown = Groonga::Command::LogicalSelect::Drilldown.new
+      parameters.each do |key, value|
+        drilldown[key] = value
+      end
+      drilldown
     end
   end
 

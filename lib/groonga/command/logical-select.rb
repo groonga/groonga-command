@@ -15,6 +15,7 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 require "groonga/command/base"
+require "groonga/command/drilldownable"
 require "groonga/command/searchable"
 require "groonga/command/sliceable"
 
@@ -24,6 +25,7 @@ module Groonga
     #
     # @since 1.1.3
     class LogicalSelect < Base
+      include Drilldownable
       include Searchable
       include Sliceable
 
@@ -53,6 +55,13 @@ module Groonga
             :drilldown_calc_types,
             :drilldown_calc_target,
             :sort_keys,
+            :drilldown_sort_keys,
+            :match_columns,
+            :query,
+            :drilldown_filter,
+            :load_table,
+            :load_columns,
+            :load_values,
           ]
         end
       end
@@ -134,62 +143,6 @@ module Groonga
       # @since 1.1.3
       def limit
         integer_value(:limit)
-      end
-
-      # @return [String] `drilldown` parameter value.
-      #
-      # @since 1.1.3
-      def drilldown
-        self[:drilldown]
-      end
-
-      # @return [Array<String>] drilldown keys.
-      #
-      # @since 1.1.3
-      def drilldowns
-        @drilldowns ||= array_value(:drilldown)
-      end
-
-      # @return [String] `drilldown_sortby` parameter value.
-      #
-      # @since 1.1.3
-      def drilldown_sortby
-        self[:drilldown_sortby]
-      end
-
-      # @return [String] `drilldown_output_columns` parameter value.
-      #
-      # @since 1.1.3
-      def drilldown_output_columns
-        self[:drilldown_output_columns]
-      end
-
-      # @return [String] `drilldown_offset` parameter value.
-      #
-      # @since 1.1.3
-      def drilldown_offset
-        integer_value(:drilldown_offset)
-      end
-
-      # @return [String] `drilldown_limit` parameter value.
-      #
-      # @since 1.1.3
-      def drilldown_limit
-        integer_value(:drilldown_limit)
-      end
-
-      # @return [String] `drilldown_calc_types` parameter value.
-      #
-      # @since 1.1.3
-      def drilldown_calc_types
-        self[:drilldown_calc_types]
-      end
-
-      # @return [String] `drilldown_calc_target` parameter value.
-      #
-      # @since 1.1.3
-      def drilldown_calc_target
-        self[:drilldown_calc_target]
       end
 
       # @return [::Array<String>] The sort keys.
