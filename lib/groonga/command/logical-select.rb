@@ -1,4 +1,4 @@
-# Copyright (C) 2015-2018  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2015-2019  Sutou Kouhei <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -16,6 +16,7 @@
 
 require "groonga/command/base"
 require "groonga/command/searchable"
+require "groonga/command/sliceable"
 
 module Groonga
   module Command
@@ -24,6 +25,7 @@ module Groonga
     # @since 1.1.3
     class LogicalSelect < Base
       include Searchable
+      include Sliceable
 
       class << self
         def command_name

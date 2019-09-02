@@ -1,4 +1,4 @@
-# Copyright (C) 2015  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2015-2019  Sutou Kouhei <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -213,6 +213,66 @@ class LogicalSelectCommandTest < Test::Unit::TestCase
     def test_reader
       command = logical_select_command(:sort_keys => "-_score, _key")
       assert_equal(["-_score", "_key"], command.sort_keys)
+    end
+  end
+
+  class SlicesTest < self
+    def test_full
+      parameters = {
+        "slices[book_alice].match_columns"  => "tag",
+        "slices[book_alice].query"          => "Book",
+        "slices[book_alice].query_expander" => "Synonyms.tag",
+        "slices[book_alice].query_flags"    => "ALLOW_COLUMN|ALLOW_LEADING_NOT",
+        "slices[book_alice].filter"         => "user == \"alice\"",
+        "slices[book_alice].sort_keys"      => "_score, user",
+        "slices[book_alice].offset"         => "10",
+        "slices[book_alice].limit"          => "25",
+      }
+      command = logical_select_command(parameters)
+
+      slices = {
+        "book_alice" => slice(:label => "book_alice",
+                              :match_columns => "tag",
+                              :query => "Book",
+                              :query_expander => "Synonyms.tag",
+                              :query_flags => [
+                                "ALLOW_COLUMN",
+                                "ALLOW_LEADING_NOT",
+                              ],
+                              :filter => "user == \"alice\"",
+                              :sort_keys => ["_score", "user"],
+                              :offset => 10,
+                              :limit => 25),
+      }
+      assert_equal(slices, command.slices)
+    end
+
+    def test_multiple
+      parameters = {
+        "slices[groonga].query" => "tag:Groonga",
+        "slices[rroonga].filter" => "tag == Rroonga",
+        "slices[rroonga].sort_keys" => "date",
+        "slices[rroonga].output_columns" => "_key, date",
+      }
+      command = logical_select_command(parameters)
+
+      slices = {
+        "groonga" => slice(:label => "groonga",
+                           :query => "tag:Groonga"),
+        "rroonga" => slice(:label => "rroonga",
+                           :filter => "tag == Rroonga",
+                           :sort_keys => ["date"],
+                           :output_columns => ["_key", "date"]),
+      }
+      assert_equal(slices, command.slices)
+    end
+
+    def slice(parameters)
+      slice = Groonga::Command::LogicalSelect::Slice.new
+      parameters.each do |key, value|
+        slice[key] = value
+      end
+      slice
     end
   end
 end
