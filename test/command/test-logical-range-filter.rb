@@ -1,4 +1,6 @@
 # Copyright (C) 2015  Hiroshi Hatake <hatake@clear-code.com>
+# Copyright (C) 2019  Yasuhiro Horimoto <horimoto@clear-code.com>
+# Copyright (C) 2019  Sutou Kouhei <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -35,6 +37,7 @@ class LogicalRangeFilterCommandTest < Test::Unit::TestCase
       filter          = "value == 10"
       output_columns  = "_key, timestamp"
       use_range_index = "yes"
+      post_filter     = "_score > 10"
       sort_keys       = "timestamp, -_score"
 
       ordered_arguments = [
@@ -50,6 +53,7 @@ class LogicalRangeFilterCommandTest < Test::Unit::TestCase
         filter,
         output_columns,
         use_range_index,
+        post_filter,
         sort_keys,
       ]
       command = logical_range_filter_command({}, ordered_arguments)
@@ -66,6 +70,7 @@ class LogicalRangeFilterCommandTest < Test::Unit::TestCase
                      :filter          => filter,
                      :output_columns  => output_columns,
                      :use_range_index => use_range_index,
+                     :post_filter     => post_filter,
                      :sort_keys       => sort_keys,
                    },
                    command.arguments)
@@ -161,6 +166,13 @@ class LogicalRangeFilterCommandTest < Test::Unit::TestCase
     def test_invalid
       command = logical_range_filter_command(:use_range_index => "invalid")
       assert_nil(command.use_range_index)
+    end
+  end
+
+  class PostFilterTest < self
+    def test_reader
+      command = logical_range_filter_command(:post_filter => "_score > 10")
+      assert_equal("_score > 10", command.post_filter)
     end
   end
 
