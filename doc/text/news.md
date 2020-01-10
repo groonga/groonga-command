@@ -1,5 +1,12 @@
 # News
 
+## 1.4.7: 2020-01-10
+
+### Improvements
+
+  * {Groonga::Command::Load#build_arrow_table}: Added support for raw
+    values case.
+
 ## 1.4.6: 2020-01-10
 
 ### Improvements
