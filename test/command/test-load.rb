@@ -1,4 +1,4 @@
-# Copyright (C) 2012-2017  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-2020  Sutou Kouhei <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -113,6 +113,59 @@ class LoadCommandTest < Test::Unit::TestCase
       command = load_command
       assert do
         not command.output_ids?
+      end
+    end
+  end
+
+  sub_test_case("#build_arrow_table") do
+    def setup
+      omit("red-arrow is needed") unless defined?(Arrow)
+    end
+
+    sub_test_case("Array") do
+      def test_no_columns_argument
+        command = load_command({"values" => [
+                                  ["column1", "column2"],
+                                  ["value1", "value2"],
+                                ].to_json})
+        assert_equal(Arrow::Table.new({
+                                        "column1" => ["value1"],
+                                        "column2" => ["value2"],
+                                      }),
+                     command.build_arrow_table)
+      end
+
+      def test_columns_argument
+        command = load_command({"columns" => ["column1", "column2"].join(", "),
+                                "values" => [
+                                  ["value1", "value2"],
+                                ].to_json})
+        assert_equal(Arrow::Table.new({
+                                        "column1" => ["value1"],
+                                        "column2" => ["value2"],
+                                      }),
+                     command.build_arrow_table)
+      end
+    end
+
+    sub_test_case("Hash") do
+      def test_integer
+        command = load_command({"values" => [
+                                  {
+                                    "column1" => 1,
+                                    "column2" => 2,
+                                  },
+                                  {
+                                    "column1" => 10,
+                                    "column2" => 20,
+                                  },
+                                ].to_json})
+        columns = {
+          "column1" => Arrow::Int64Array.new([1, 10]),
+          "column2" => Arrow::Int64Array.new([2, 20]),
+        }
+        assert_equal(Arrow::Table.new(columns),
+                     command.build_arrow_table)
       end
     end
   end
