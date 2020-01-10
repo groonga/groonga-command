@@ -1,5 +1,11 @@
 # News
 
+## 1.4.6: 2020-01-10
+
+### Improvements
+
+  * {Groonga::Command::Load#build_arrow_table}: Added.
+
 ## 1.4.5: 2019-09-02
 
 ### Improvements
