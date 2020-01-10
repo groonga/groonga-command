@@ -123,7 +123,7 @@ class LoadCommandTest < Test::Unit::TestCase
     end
 
     sub_test_case("Array") do
-      def test_no_columns_argument
+      def test_without_columns_argument
         command = load_command({"values" => [
                                   ["column1", "column2"],
                                   ["value1", "value2"],
@@ -135,7 +135,7 @@ class LoadCommandTest < Test::Unit::TestCase
                      command.build_arrow_table)
       end
 
-      def test_columns_argument
+      def test_with_columns_argument
         command = load_command({"columns" => ["column1", "column2"].join(", "),
                                 "values" => [
                                   ["value1", "value2"],
@@ -163,6 +163,39 @@ class LoadCommandTest < Test::Unit::TestCase
         columns = {
           "column1" => Arrow::Int64Array.new([1, 10]),
           "column2" => Arrow::Int64Array.new([2, 20]),
+        }
+        assert_equal(Arrow::Table.new(columns),
+                     command.build_arrow_table)
+      end
+    end
+
+    sub_test_case("raw values") do
+      def test_without_columns_argument
+        columns = ["column1", "column2"]
+        command = load_command("columns" => columns.join(","))
+        command.original_source = "load\n" + [
+          columns,
+          ["value1", "value2"],
+          ["value10", "value20"],
+        ].to_json
+        columns = {
+          "column1" => ["value1", "value10"],
+          "column2" => ["value2", "value20"],
+        }
+        assert_equal(Arrow::Table.new(columns),
+                     command.build_arrow_table)
+      end
+
+      def test_with_columns_argument
+        columns = ["column1", "column2"]
+        command = load_command("columns" => columns.join(","))
+        command.original_source = "load --columns #{columns.join(",")}\n" + [
+          ["value1", "value2"],
+          ["value10", "value20"],
+        ].to_json
+        columns = {
+          "column1" => ["value1", "value10"],
+          "column2" => ["value2", "value20"],
         }
         assert_equal(Arrow::Table.new(columns),
                      command.build_arrow_table)

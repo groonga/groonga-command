@@ -84,17 +84,17 @@ module Groonga
         unless defined?(::Arrow)
           raise NotImplementedError, "red-arrow is required"
         end
-        source_lines = original_source.lines
-        if source_lines.size == 1
-          target_columns = columns
-          target_values = values
-        else
+        source_lines = (original_source || "").lines
+        if source_lines.size >= 2
           if /\s--columns\s/ =~ source_lines.first
             target_columns = columns
           else
             target_columns = nil
           end
           target_values = JSON.parse(source_lines[1..-1].join(""))
+        else
+          target_columns = columns
+          target_values = values
         end
         builder = ArrowTableBuilder.new(target_columns, target_values)
         builder.build
