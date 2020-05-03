@@ -181,8 +181,8 @@ module Groonga
               data_type ||= :string
               arrow_array = build_arrow_array(data_type, raw_array)
             when Hash
-              arrow_array = build_arrow_array(arrow_weight_vector_data_type,
-                                              raw_array)
+              data_type = arrow_weight_vector_data_type(sample)
+              arrow_array = build_arrow_array(data_type, raw_array)
             else
               data_type = detect_arrow_data_type(raw_array) || :string
               if data_type == :string
@@ -226,9 +226,14 @@ module Groonga
           Arrow::ListArrayBuilder.build(arrow_list_data_type, raw_array)
         end
 
-        def arrow_weight_vector_data_type
+        def arrow_weight_vector_data_type(raw_value)
+          if raw_value.values.any? {|value| value.is_a?(Float)}
+            weight_type = :float
+          else
+            weight_type = :int32
+          end
           Arrow::StructDataType.new("value" => :string,
-                                    "weight" => :int32)
+                                    "weight" => weight_type)
         end
 
         def detect_arrow_data_type(raw_array)
@@ -249,8 +254,8 @@ module Groonga
               type = nil if type == :int64
               type ||= :double
             when Hash
-              arrow_list_field =
-                Arrow::Field.new("item", arrow_weight_vector_data_type)
+              item_type = arrow_weight_vector_data_type(element)
+              arrow_list_field = Arrow::Field.new("item", item_type)
               arrow_list_data_type = Arrow::ListDataType.new(arrow_list_field)
               return arrow_list_data_type
             else
