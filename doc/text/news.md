@@ -1,5 +1,12 @@
 # News
 
+## 1.4.8: 2020-05-03
+
+### Improvements
+
+  * {Groonga::Command::Load#build_arrow_table}: Added support for
+    float32 weight vector.
+
 ## 1.4.7: 2020-01-10
 
 ### Improvements
