@@ -1,4 +1,4 @@
-# Copyright (C) 2015  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2015-2020  Sutou Kouhei <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -44,11 +44,25 @@ module Groonga
         self[:target_name]
       end
 
-      # @return [Boolean] `recursive` parameter value.
+      # @return [String] `recursive` parameter value.
+      #
+      # @since 1.4.9
+      def recursive
+        self[:recursive]
+      end
+
+      # @return [Boolean] Whether `recursive` parameter value isn't `no`.
       #
       # @since 1.1.3
       def recursive?
-        self[:recursive] != "no"
+        recursive != "no"
+      end
+
+      # @return [Boolean] `recursive` parameter value.
+      #
+      # @since 1.4.9
+      def recursive_dependent?
+        recursive == "dependent"
       end
     end
   end

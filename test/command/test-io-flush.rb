@@ -1,4 +1,4 @@
-# Copyright (C) 2015  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2015-2020  Sutou Kouhei <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -53,12 +53,28 @@ class IOFlushCommandTest < Test::Unit::TestCase
         assert do
           command.recursive?
         end
+        assert do
+          not command.recursive_dependent?
+        end
       end
 
       def test_no
         command = io_flush_command(:recursive => "no")
         assert do
           not command.recursive?
+        end
+        assert do
+          not command.recursive_dependent?
+        end
+      end
+
+      def test_dependent
+        command = reference_acquire_command(:recursive => "dependent")
+        assert do
+          command.recursive?
+        end
+        assert do
+          command.recursive_dependent?
         end
       end
     end
