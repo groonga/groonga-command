@@ -1,5 +1,19 @@
 # News
 
+## 1.4.9: 2020-06-14
+
+### Improvements
+
+  * {Groonga::Command::ReferenceAcquire}: Added support for
+    `reference_acquire`.
+
+  * {Groonga::Command::ReferenceRelease}: Added support for
+    `reference_release`.
+
+  * {Groonga::Command::IOFlush#recursive}: Added.
+
+  * {Groonga::Command::IOFlush#recursive_dependent?}: Added.
+
 ## 1.4.8: 2020-05-03
 
 ### Improvements
