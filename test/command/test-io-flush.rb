@@ -69,7 +69,7 @@ class IOFlushCommandTest < Test::Unit::TestCase
       end
 
       def test_dependent
-        command = reference_acquire_command(:recursive => "dependent")
+        command = io_flush_command(:recursive => "dependent")
         assert do
           command.recursive?
         end
