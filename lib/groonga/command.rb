@@ -1,4 +1,4 @@
-# Copyright (C) 2012-2017  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-2020  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -51,6 +51,8 @@ require "groonga/command/query-log-flags-get"
 require "groonga/command/query-log-flags-remove"
 require "groonga/command/query-log-flags-set"
 require "groonga/command/range-filter"
+require "groonga/command/reference-acquire"
+require "groonga/command/reference-release"
 require "groonga/command/register"
 require "groonga/command/reindex"
 require "groonga/command/request-cancel"
