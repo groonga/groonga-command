@@ -1,4 +1,4 @@
-# Copyright (C) 2012-2016  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-2020  Sutou Kouhei <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -28,14 +28,24 @@ class ColumnCreateCommandTest < Test::Unit::TestCase
       flags    = "COLUMN_INDEX"
       type     = "Posts"
       source   = "content"
+      path     = "Lexicon.content_index"
 
-      command = column_create_command({}, [table, name, flags, type, source])
+      command = column_create_command({},
+                                      [
+                                        table,
+                                        name,
+                                        flags,
+                                        type,
+                                        source,
+                                        path,
+                                      ])
       assert_equal({
                      :table    => table,
                      :name     => name,
                      :flags    => flags,
                      :type     => type,
                      :source   => source,
+                     :path     => path,
                    },
                    command.arguments)
     end
@@ -196,6 +206,18 @@ class ColumnCreateCommandTest < Test::Unit::TestCase
       command = column_create_command("source" => "title, text, comment")
       assert_equal(["title", "text", "comment"],
                    command.sources)
+    end
+  end
+
+  class PathTest < self
+    def test_specified
+      command = column_create_command({"path" => "Lexicon.content_index"})
+      assert_equal("Lexicon.content_index", command.path)
+    end
+
+    def test_omitted
+      command = column_create_command
+      assert_nil(command.path)
     end
   end
 end

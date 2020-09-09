@@ -1,4 +1,4 @@
-# Copyright (C) 2012-2016  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-2020  Sutou Kouhei <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -31,6 +31,7 @@ module Groonga
             :flags,
             :type,
             :source,
+            :path,
           ]
         end
       end
@@ -109,6 +110,12 @@ module Groonga
       # @since 1.0.7
       def sources
         @sources ||= array_value(:source)
+      end
+
+      # @return [String, nil] Path or nil
+      # @since 1.5.0
+      def path
+        self[:path]
       end
     end
   end
