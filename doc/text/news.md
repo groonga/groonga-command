@@ -1,5 +1,13 @@
 # News
 
+## 1.5.0: 2020-09-09
+
+### Improvements
+
+  * {Groonga::Command::TableCreate}: Added support for `path`.
+
+  * {Groonga::Command::ColumnCreate}: Added support for `path`.
+
 ## 1.4.9: 2020-06-14
 
 ### Improvements
