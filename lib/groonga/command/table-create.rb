@@ -1,4 +1,4 @@
-# Copyright (C) 2012-2016  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-2020  Sutou Kouhei <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -33,6 +33,7 @@ module Groonga
             :default_tokenizer,
             :normalizer,
             :token_filters,
+            :path,
           ]
         end
       end
@@ -116,6 +117,12 @@ module Groonga
       # @since 1.2.1
       def token_filters
         @token_filters ||= array_value(:token_filters)
+      end
+
+      # @return [String, nil] Path or nil
+      # @since 1.5.0
+      def path
+        self[:path]
       end
     end
   end

@@ -1,4 +1,4 @@
-# Copyright (C) 2012-2016  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-2020  Sutou Kouhei <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -30,6 +30,7 @@ class TableCreateCommandTest < Test::Unit::TestCase
       default_tokenizer = "TokenBigram"
       normalizer        = "NormalizerAuto"
       token_filters     = "TokenFilterStopWord|TokenFilterStem"
+      path              = "tables.users"
 
       ordered_arguments = [
         name,
@@ -39,6 +40,7 @@ class TableCreateCommandTest < Test::Unit::TestCase
         default_tokenizer,
         normalizer,
         token_filters,
+        path,
       ]
       command = table_create_command({}, ordered_arguments)
       assert_equal({
@@ -49,6 +51,7 @@ class TableCreateCommandTest < Test::Unit::TestCase
                      :default_tokenizer => default_tokenizer,
                      :normalizer        => normalizer,
                      :token_filters     => token_filters,
+                     :path              => path,
                    },
                    command.arguments)
     end
@@ -228,6 +231,18 @@ class TableCreateCommandTest < Test::Unit::TestCase
     def test_no_flags
       command = table_create_command
       assert_equal([], command.token_filters)
+    end
+  end
+
+  class PathTest < self
+    def test_specified
+      command = table_create_command({"path" => "tables.users"})
+      assert_equal("tables.users", command.path)
+    end
+
+    def test_omitted
+      command = table_create_command
+      assert_nil(command.path)
     end
   end
 end
