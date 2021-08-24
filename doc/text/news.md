@@ -1,5 +1,11 @@
 # News
 
+## 1.5.1: 2021-08-24
+
+### Improvements
+
+  * {Groonga::Command::TableCreateSimilar}: Added.
+
 ## 1.5.0: 2020-09-09
 
 ### Improvements
