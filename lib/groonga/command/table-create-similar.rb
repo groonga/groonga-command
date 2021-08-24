@@ -40,6 +40,7 @@ module Groonga
       def name
         self[:name]
       end
+
       # @return [String] The base table name.
       #
       # @since 1.5.1
