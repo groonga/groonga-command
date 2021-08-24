@@ -1,4 +1,4 @@
-# Copyright (C) 2012-2020  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2012-2021  Sutou Kouhei <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -65,6 +65,7 @@ require "groonga/command/status"
 require "groonga/command/suggest"
 require "groonga/command/table-copy"
 require "groonga/command/table-create"
+require "groonga/command/table-create-similar"
 require "groonga/command/table-list"
 require "groonga/command/table-remove"
 require "groonga/command/table-rename"
