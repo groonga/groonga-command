@@ -20,6 +20,7 @@ require "groonga/command/error"
 
 require "groonga/command/column-copy"
 require "groonga/command/column-create"
+require "groonga/command/column-create-similar"
 require "groonga/command/column-list"
 require "groonga/command/column-remove"
 require "groonga/command/column-rename"
