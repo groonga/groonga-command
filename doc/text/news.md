@@ -1,5 +1,11 @@
 # News
 
+## 1.5.2: 2021-08-25
+
+### Improvements
+
+  * {Groonga::Command::ColumnCreateSimilar}: Added.
+
 ## 1.5.1: 2021-08-24
 
 ### Improvements
