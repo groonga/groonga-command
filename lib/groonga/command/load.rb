@@ -84,6 +84,7 @@ module Groonga
         unless defined?(::Arrow)
           raise NotImplementedError, "red-arrow is required"
         end
+        return self[:values] if self[:values].is_a?(::Arrow::Table)
         source_lines = (original_source || "").lines
         if source_lines.size >= 2
           if /\s--columns\s/ =~ source_lines.first
@@ -112,6 +113,7 @@ module Groonga
       private
       def parse_values(values)
         return values if values.nil?
+        return values if defined?(::Arrow) and values.is_a?(::Arrow::Table)
         JSON.parse(values)
       end
 
