@@ -146,6 +146,13 @@ module Groonga
         self[:request_id]
       end
 
+      # @return [Boolean] `output_trace_log` parameter value.
+      #
+      # @since 1.5.3
+      def output_trace_log?
+        boolean_value(:output_trace_log, default: false, invalid: false)
+      end
+
       def to_uri_format
         Format::URI.new(@path_prefix, @command_name, normalized_arguments).path
       end

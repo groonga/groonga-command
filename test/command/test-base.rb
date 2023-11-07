@@ -1,4 +1,4 @@
-# Copyright (C) 2011-2017  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2011-2023  Sutou Kouhei <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -373,6 +373,23 @@ select \\
       command = Groonga::Command::Base.new("table_list",
                                            :output_type => "xml")
       assert_equal(:xml, command.output_type)
+    end
+  end
+
+  sub_test_case("#output_trace_log?") do
+    def test_default
+      command = Groonga::Command::Base.new("table_list", {})
+      assert do
+        not command.output_trace_log?
+      end
+    end
+
+    def test_specified
+      command = Groonga::Command::Base.new("table_list",
+                                           output_trace_log: "yes")
+      assert do
+        command.output_trace_log?
+      end
     end
   end
 end
