@@ -1,4 +1,4 @@
-# Copyright (C) 2016  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2016-2023  Sutou Kouhei <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -43,8 +43,13 @@ class ObjectRemoveCommandTest < Test::Unit::TestCase
   end
 
   class ForceTest < self
-    def test_reader
+    def test_reader_yes
       command = object_remove_command(:force => "yes")
+      assert_true(command.force?)
+    end
+
+    def test_reader_true
+      command = object_remove_command(force: "true")
       assert_true(command.force?)
     end
   end

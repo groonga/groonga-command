@@ -1,4 +1,4 @@
-# Copyright (C) 2012-2019  Sutou Kouhei <kou@clear-code.com>
+# Copyright (C) 2012-2023  Sutou Kouhei <kou@clear-code.com>
 # Copyright (C) 2019 Yasuhiro Horimoto <horimoto@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
@@ -241,9 +241,9 @@ module Groonga
         value = value.strip
         return default if value.empty?
         case value
-        when "yes"
+        when "yes", "true"
           true
-        when "no"
+        when "no", "false"
           false
         else
           invalid
