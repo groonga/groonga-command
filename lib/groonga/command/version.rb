@@ -1,4 +1,4 @@
-# Copyright (C) 2012-2021  Sutou Kouhei <kou@clear-code.com>
+# Copyright (C) 2012-2023  Sutou Kouhei <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -16,6 +16,6 @@
 
 module Groonga
   module Command
-    VERSION = "1.5.3"
+    VERSION = "1.5.4"
   end
 end
