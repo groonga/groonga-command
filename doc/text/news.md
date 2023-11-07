@@ -1,5 +1,13 @@
 # News
 
+## 1.5.3: 2023-11-07
+
+### Improvements
+
+  * {Groonga::Command::Load}: Added support for `Arrow::Table` as values.
+
+  * {Groonga::Command::Base}: Added support for `output_trace_log`.
+
 ## 1.5.2: 2021-08-25
 
 ### Improvements
