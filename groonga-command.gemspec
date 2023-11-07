@@ -1,6 +1,6 @@
 # -*- ruby -*-
 #
-# Copyright (C) 2012-2020  Sutou Kouhei <kou@clear-code.com>
+# Copyright (C) 2012-2023  Sutou Kouhei <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -60,7 +60,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency("red-arrow")
   spec.add_development_dependency("redcarpet")
   spec.add_development_dependency("test-unit")
-  spec.add_development_dependency("test-unit-notify")
   spec.add_development_dependency("yard")
 end
 
