@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 #
-# Copyright (C) 2012-2023  Sutou Kouhei <kou@clear-code.com>
+# Copyright (C) 2012-2025  Sutou Kouhei <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -17,8 +17,6 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 $VERBOSE = true
-
-$KCODE = "u" if RUBY_VERSION < "1.9"
 
 base_dir = File.expand_path(File.join(File.dirname(__FILE__), ".."))
 lib_dir = File.join(base_dir, "lib")
