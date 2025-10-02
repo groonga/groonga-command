@@ -1,7 +1,6 @@
 # README
 
 [![Gem Version](https://badge.fury.io/rb/groonga-command.svg)](http://badge.fury.io/rb/groonga-command)
-[![Build Status](https://travis-ci.org/groonga/groonga-command.svg?branch=master)](https://travis-ci.org/groonga/groonga-command)
 
 ## Name
 
