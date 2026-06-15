@@ -1,5 +1,11 @@
 # News
 
+## 1.5.4: 2026-06-15
+
+### Improvements
+
+  * Changed to use `cgi/escape` instead of `cgi`.
+
 ## 1.5.3: 2023-11-07
 
 ### Improvements
